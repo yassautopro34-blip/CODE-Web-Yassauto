@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1764630005400-2336",
+    "status": "confirmed",
+    "createdAt": "2025-12-01T23:00:05.400Z",
+    "form": {
+      "clientName": "Jean Dupont",
+      "issueDescription": "La climatisation ne fonctionne pas correctement",
+      "requestType": "repair",
+      "licensePlate": "AB-123-CD",
+      "clientPhone": "0612345678",
+      "clientEmail": "jean@example.com",
+      "hasPhotos": true
+    },
+    "updatedAt": "2025-12-01T23:00:25.747Z"
+  }
+]

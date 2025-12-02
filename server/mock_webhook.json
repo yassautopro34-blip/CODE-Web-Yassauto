@@ -1,0 +1,10 @@
+{
+  "type": "checkout.session.completed",
+  "data": {
+    "object": {
+      "id": "cs_test_mock",
+      "metadata": { "reservationId": "1764622179065-7055" },
+      "payment_status": "paid"
+    }
+  }
+}
