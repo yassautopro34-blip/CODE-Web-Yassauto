@@ -1,10 +1,8 @@
-"use client";
-import React, { useState } from "react";
 
 const BookingConfirmation = () => {
   // Simuler les props qui viendraient normalement de votre backend ou formulaire
   // Vous pouvez modifier ces valeurs pour tester les différents états
-  const [data] = useState({
+  const data = {
     bookingTypeLabel: "Accompagnement Achat Véhicule",
     bookingDateTime: "Samedi 24 Octobre à 14:00",
     clientName: "Thomas Dupont",
@@ -14,7 +12,7 @@ const BookingConfirmation = () => {
     isStudentFlag: true, // Changez à false pour voir le tarif normal
     totalCents: 10500, // 105.00€ (Prix étudiant simulé)
     depositCents: 3000, // 30.00€
-  });
+  };
 
   // Calcul du solde
   const balanceCents = data.totalCents - data.depositCents;
