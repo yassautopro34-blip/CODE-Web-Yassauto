@@ -3,7 +3,7 @@ import BookingConfirmation from "@/components/emails/success-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendPaymentSuccessEmail(email: string, name: string) {
+export async function sendPaymentSuccessEmail(email: string, _name: string) {
   try {
     await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",

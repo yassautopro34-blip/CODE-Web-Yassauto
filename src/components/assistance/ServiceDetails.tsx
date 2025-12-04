@@ -26,7 +26,7 @@ export const ServiceDetails: React.FC = () => {
           <span className="text-zinc-500 ml-2">/ premier déplacement</span>
         </div>
         <p className="text-sm text-zinc-600 mb-6 border-b border-zinc-200 pb-4">
-          Si le véhicule n'est pas acheté, le prochain déplacement est à{" "}
+          Si le véhicule n&apos;est pas acheté, le prochain déplacement est à{" "}
           <strong>100€</strong>.
         </p>
 
@@ -139,7 +139,7 @@ export const ServiceDetails: React.FC = () => {
       <div className="mb-8">
         <h3 className="font-bold mb-4 flex items-center">
           <MapPin className="w-5 h-5 mr-2 text-brand-red" /> Zones
-          d'intervention (Sans supplément)
+          d&apos;intervention (Sans supplément)
         </h3>
         <div className="flex flex-wrap gap-2">
           {SERVICE_ZONES.map((zone) => (

@@ -18,7 +18,7 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
 }) => {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
-      <h3 className="text-xl font-bold mb-2">3. Paiement de l'acompte</h3>
+      <h3 className="text-xl font-bold mb-2">3. Paiement de l&apos;acompte</h3>
 
       <div className="bg-zinc-50 p-6 rounded-xl border border-zinc-200">
         <div className="flex justify-between items-center mb-4 pb-4 border-b border-zinc-200">
@@ -44,7 +44,7 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
       <div className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-start space-x-3">
         <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
         <p className="text-xs text-red-800">
-          <strong>Politique d'annulation :</strong> <br />
+          <strong>Politique d&apos;annulation :</strong> <br />
           &bull; Annulation {">"} 2h avant : Acompte remboursé.
           <br />
           &bull; Annulation {"<"} 2h avant ou absence : Acompte perdu.

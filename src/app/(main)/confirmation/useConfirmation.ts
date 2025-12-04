@@ -41,9 +41,10 @@ export function useConfirmation() {
           return;
         }
         setData(jsonData);
-      } catch (e: any) {
+      } catch (e) {
         console.error("[Confirmation] Network/fetch error", e);
-        setError(e.message || "Erreur réseau");
+        const msg = e instanceof Error ? e.message : "Erreur réseau";
+        setError(msg);
       } finally {
         setLoading(false);
       }

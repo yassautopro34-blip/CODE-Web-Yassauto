@@ -21,7 +21,7 @@ export const ServicesGrid: React.FC = () => {
             <h3 className="text-xl font-bold mb-3">Diagnostic Complet</h3>
             <p className="text-zinc-600 mb-6">
               Passage à la valise, inspection moteur, châssis, carrosserie. Rien
-              n'est laissé au hasard lors de la visite.
+              n&apos;est laissé au hasard lors de la visite.
             </p>
             <Link
               href="/accompagnement"
@@ -37,7 +37,7 @@ export const ServicesGrid: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Sécurisation Achat</h3>
             <p className="text-zinc-600 mb-6">
-              Vérification des papiers, de l'historique et des factures. Évitez
+              Vérification des papiers, de l&apos;historique et des factures. Évitez
               les vices cachés et les arnaques.
             </p>
             <Link

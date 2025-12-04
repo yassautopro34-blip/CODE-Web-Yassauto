@@ -13,6 +13,7 @@ const stripe = process.env.STRIPE_SECRET_KEY
 function readBookings() {
   // TODO: Replace with your actual database fetch (Prisma, MongoDB, JSON file read, etc.)
   // Returning an empty array to prevent TS errors in this snippet
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return [] as any[];
 }
 
@@ -81,12 +82,13 @@ export async function GET(request: NextRequest) {
 
     // 6. Return Data
     return NextResponse.json({ success: true, session, booking });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error fetching stripe session", err);
+    const msg = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
       {
         error: "Erreur serveur lors de la récupération de la session Stripe",
-        details: err.message,
+        details: msg,
       },
       { status: 500 },
     );

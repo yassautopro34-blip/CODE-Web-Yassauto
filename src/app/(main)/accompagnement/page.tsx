@@ -30,7 +30,7 @@ const Accompagnement: React.FC = () => {
             Accompagnement Achat
           </h1>
           <p className="text-xl text-zinc-400">
-            L'expertise YassAuto pour acheter sereinement.
+            L&apos;expertise YassAuto pour acheter sereinement.
           </p>
         </div>
       </div>

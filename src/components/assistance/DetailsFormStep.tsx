@@ -95,7 +95,7 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
       {bookingData.isStudent && (
         <div className="p-3 bg-yellow-100 rounded-md text-sm text-yellow-900 border border-yellow-200">
           ⚠️ Votre statut étudiant sera vérifié le jour du rendez-vous. Merci de
-          vous munir de votre carte d'étudiant en cours de validité. En cas de
+          vous munir de votre carte d&apos;étudiant en cours de validité. En cas de
           non-présentation, le tarif plein sera appliqué.
         </div>
       )}

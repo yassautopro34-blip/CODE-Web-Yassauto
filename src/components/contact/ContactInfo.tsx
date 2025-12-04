@@ -47,7 +47,7 @@ export const ContactInfo: React.FC = () => {
             <MapPin className="w-6 h-6 text-brand-red" />
           </div>
           <div>
-            <p className="font-bold text-zinc-900">Zone d'intervention</p>
+            <p className="font-bold text-zinc-900">Zone d&apos;intervention</p>
             <p className="text-zinc-600">
               Montpellier, Sète, Nîmes, Lunel, Mauguio...
             </p>

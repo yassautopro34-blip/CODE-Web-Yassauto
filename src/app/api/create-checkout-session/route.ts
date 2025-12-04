@@ -21,11 +21,16 @@ export async function POST(request: NextRequest) {
     const form = await request.json();
 
     // 2. Minimal Validation
-    if (!form.clientName || !form.clientPhone || !form.bookingDate) {
+    if (
+      !form.clientName ||
+      !form.clientPhone ||
+      !form.bookingDate ||
+      !form.clientEmail
+    ) {
       return NextResponse.json(
         {
           error:
-            "Champs manquants : clientName, clientPhone, bookingDate requis",
+            "Champs manquants : clientName, clientPhone, clientEmail, bookingDate requis",
         },
         { status: 400 },
       );
@@ -43,6 +48,7 @@ export async function POST(request: NextRequest) {
     // 7. Create Stripe Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
+      customer_email: form.clientEmail,
       mode: "payment",
       line_items: [
         {

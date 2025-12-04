@@ -37,7 +37,7 @@ export const AboutContent: React.FC = () => {
       </p>
 
       <h3 className="text-xl font-bold text-brand-black mt-8 mb-4">
-        L'Objectif
+        L&apos;Objectif
       </h3>
       <p>
         L’objectif est simple : offrir un service{" "}
