@@ -15,6 +15,16 @@ export const createBookingInternal = async (payload: BookingDetails) => {
     throw error; // Throw so the webhook catches it
   }
 };
+export const getAllBookings = async () => {
+  await connectToMongoDB();
+  try {
+    const updated = await Booking.find({});
+    return { success: true, data: updated };
+  } catch (error) {
+    console.error("DB Error:", error);
+    throw error; // Throw so the webhook catches it
+  }
+};
 
 export const updateBookingInternal = async (payload: {
   email: string;

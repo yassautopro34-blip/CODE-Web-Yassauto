@@ -1,9 +1,10 @@
 import { calculateTotals, BookingRequest } from "./admin-utils";
 import { Phone, Mail } from "lucide-react";
 import { StatusBadge } from "@/components/admin/status-badge";
+import { BookingDetails } from "@/types";
 
 interface Props {
-  request: BookingRequest;
+  request: BookingDetails;
   onClose: () => void;
   onUpdateStatus: (
     id: string,
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
-  const isReservation = request.type === "reservation";
+  const isReservation = request.bookingType === "reservation";
   const totals = calculateTotals(request);
 
   return (
@@ -31,7 +32,7 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
         <div className="p-6 space-y-6">
           {/* Header Info */}
           <div className="grid grid-cols-2 gap-4">
-            <InfoBlock label="ID" value={request.id} mono />
+            <InfoBlock label="ID" value={request._id} mono />
             <div>
               <p className="text-xs text-gray-600 uppercase font-semibold mb-1">
                 Statut
@@ -42,10 +43,10 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
               label="Créée"
               value={new Date(request.createdAt).toLocaleString("fr-FR")}
             />
-            {request.confirmedAt && (
+            {request.bookingDate && (
               <InfoBlock
                 label="Confirmée"
-                value={new Date(request.confirmedAt).toLocaleString("fr-FR")}
+                value={new Date(request.bookingDate).toLocaleString("fr-FR")}
               />
             )}
           </div>
@@ -55,26 +56,23 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
           <Section title="Client">
             <p>
               <span className="text-gray-600">Nom:</span>{" "}
-              <span className="font-medium">{request.form.clientName}</span>
+              <span className="font-medium">{request.clientName}</span>
             </p>
-            {request.form.clientEmail && (
+            {request.clientEmail && (
               <p>
                 <span className="text-gray-600">Email:</span>{" "}
                 <a
-                  href={`mailto:${request.form.clientEmail}`}
+                  href={`mailto:${request.clientEmail}`}
                   className="text-blue-600"
                 >
-                  {request.form.clientEmail}
+                  {request.clientEmail}
                 </a>
               </p>
             )}
             <p>
               <span className="text-gray-600">Tél:</span>{" "}
-              <a
-                href={`tel:${request.form.clientPhone}`}
-                className="text-blue-600"
-              >
-                {request.form.clientPhone}
+              <a href={`tel:${request.clientPhone}`} className="text-blue-600">
+                {request.clientPhone}
               </a>
             </p>
           </Section>
@@ -86,27 +84,23 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
               <Section title="Rendez-vous">
                 <p>
                   <span className="text-gray-600">Date:</span>{" "}
-                  <span className="font-medium">
-                    {request.form.bookingDate}
-                  </span>
+                  <span className="font-medium">{request.bookingDate}</span>
                 </p>
                 <p>
                   <span className="text-gray-600">Heure:</span>{" "}
-                  <span className="font-medium">
-                    {request.form.timeSlot}
-                  </span>
+                  <span className="font-medium">{request.timeSlot}</span>
                 </p>
               </Section>
               <hr />
               <Section title="Détails" isDescription>
-                {request.form.description}
+                {request.description}
               </Section>
               <hr />
               <Section title="Tarifs">
                 <p>
                   <span className="text-gray-600">Statut étudiant:</span>{" "}
                   <span className="font-medium">
-                    {request.form.isStudent ? "Oui" : "Non"}
+                    {request.isStudent ? "Oui" : "Non"}
                   </span>
                 </p>
                 <p>
@@ -123,7 +117,7 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
                   <span className="text-gray-600">Solde à régler:</span>{" "}
                   <span className="font-medium">{totals.remaining}</span>
                 </p>
-                {request.form.isStudent && (
+                {request.isStudent && (
                   <p className="text-sm text-yellow-800 mt-2">
                     ⚠️ Vérifier la carte d&apos;étudiant
                   </p>
@@ -136,13 +130,13 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
                 <p>
                   <span className="text-gray-600">Immat:</span>{" "}
                   <span className="font-medium">
-                    {request.form.licensePlate || "N/A"}
+                    {request.licensePlate || "N/A"}
                   </span>
                 </p>
                 <p>
                   <span className="text-gray-600">Type:</span>{" "}
                   <span className="font-medium">
-                    {request.form.requestType === "repair"
+                    {request.requestType === "repair"
                       ? "Réparation"
                       : "Diagnostic"}
                   </span>
@@ -150,13 +144,13 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
                 <p>
                   <span className="text-gray-600">Photos:</span>{" "}
                   <span className="font-medium">
-                    {request.form.hasPhotos ? "Oui" : "Non"}
+                    {request.hasPhotos ? "Oui" : "Non"}
                   </span>
                 </p>
               </Section>
               <hr />
               <Section title="Problème décrit" isDescription>
-                {request.form.issueDescription}
+                {request.issueDescription}
               </Section>
             </>
           )}
@@ -166,26 +160,30 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
           <div className="space-y-3">
             <div className="flex gap-2">
               <ActionBtn
-                href={`tel:${request.form.clientPhone}`}
+                href={`tel:${request.clientPhone}`}
                 icon={<Phone size={16} />}
                 label="Appeler"
                 color="blue"
               />
-              {request.form.clientEmail && (
+              {request.clientEmail && (
                 <ActionBtn
-                  href={`mailto:${request.form.clientEmail}`}
+                  href={`mailto:${request.clientEmail}`}
                   icon={<Mail size={16} />}
                   label="Email"
                   color="blue"
                 />
               )}
             </div>
-            {request.status !== "cancelled" && (
+            {request.status !== "failed" && (
               <div className="bg-yellow-50 p-3 rounded flex gap-2">
-                {request.status !== "confirmed" && (
+                {request.status !== "paid" && (
                   <button
                     onClick={() => {
-                      onUpdateStatus(request.id, "confirmed", request.type);
+                      onUpdateStatus(
+                        request._id,
+                        "confirmed",
+                        request.bookingType,
+                      );
                       onClose();
                     }}
                     className="px-4 py-2 bg-green-500 text-white rounded"
@@ -195,7 +193,7 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
                 )}
                 <button
                   onClick={() => {
-                    onUpdateStatus(request.id, "cancelled", request.type);
+                    onUpdateStatus(request._id, "failed", request.bookingType);
                     onClose();
                   }}
                   className="px-4 py-2 bg-red-500 text-white rounded"

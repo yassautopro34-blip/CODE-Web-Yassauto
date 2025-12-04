@@ -4,9 +4,11 @@ import {
   FilterState,
   getDateRangeParams,
 } from "@/components/admin/admin-utils";
+import { IBookingDocument } from "@/lib/models/booking";
+import { BookingDetails } from "@/types";
 
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LesMakhloufs";
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 // --- Auth Hook ---
 export function useAdminAuth() {
@@ -37,7 +39,7 @@ export function useAdminAuth() {
 
 // --- Data Fetching Hook ---
 export function useRequests(filters: FilterState, isAuthenticated: boolean) {
-  const [requests, setRequests] = useState<BookingRequest[]>([]);
+  const [requests, setRequests] = useState<BookingDetails[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchRequests = useCallback(async () => {
@@ -58,34 +60,24 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
 
       params.append("sortOrder", filters.sortOrder);
 
-      const [resRes, devisRes] = await Promise.all([
-        fetch(`${API_URL}/api/reservations?${params.toString()}`),
-        fetch(`${API_URL}/api/devis?${params.toString()}`),
-      ]);
-
-      let allRequests: BookingRequest[] = [];
+      const [resRes] = await Promise.all([fetch(`${API_URL}/api/bookings`)]);
+      let allRequests: BookingDetails[] = [];
 
       if (resRes.ok) {
         const resData = await resRes.json();
         allRequests.push(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...resData.map((r: any) => ({ ...r, type: "reservation" as const })),
-        );
-      }
-
-      if (devisRes.ok) {
-        const devisData = await devisRes.json();
-        allRequests.push(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...devisData.map((d: any) => ({ ...d, type: "devis" as const })),
+          ...resData.data.map((r) => ({
+            ...r,
+            bookingType: "reservation" as const,
+          })),
         );
       }
 
       // Client side type filtering (as per original logic)
       if (filters.type === "reservation") {
-        allRequests = allRequests.filter((r) => r.type === "reservation");
-      } else if (filters.type === "devis") {
-        allRequests = allRequests.filter((r) => r.type === "devis");
+        allRequests = allRequests.filter(
+          (r) => r.bookingType === "reservation",
+        );
       }
 
       // Client side sorting (redundant if API sorts, but kept for safety matching original)
@@ -120,7 +112,7 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
         const updated = await response.json();
         const updatedRequest = { ...updated, type };
         setRequests((prev) =>
-          prev.map((r) => (r.id === requestId ? updatedRequest : r)),
+          prev.map((r) => (r._id === requestId ? updatedRequest : r)),
         );
         return updatedRequest;
       }

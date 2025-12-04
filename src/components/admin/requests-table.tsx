@@ -1,11 +1,12 @@
 import { Eye, Phone, Mail } from "lucide-react";
 import { BookingRequest } from "./admin-utils";
 import { StatusBadge } from "@/components/admin/status-badge";
+import { BookingDetails } from "@/types";
 
 interface Props {
-  requests: BookingRequest[];
+  requests: BookingDetails[];
   loading: boolean;
-  onView: (req: BookingRequest) => void;
+  onView: (req: BookingDetails) => void;
 }
 
 export function RequestsTable({ requests, loading, onView }: Props) {
@@ -32,24 +33,24 @@ export function RequestsTable({ requests, loading, onView }: Props) {
           <tbody className="divide-y divide-gray-200">
             {requests.map((req) => {
               const dateStr =
-                req.type === "reservation"
-                  ? req.form.bookingDate
+                req.bookingType === "reservation"
+                  ? req.bookingDate
                   : req.createdAt.split("T")[0];
               const timeStr =
                 req.type === "reservation"
-                  ? req.form.timeSlot
+                  ? req.timeSlot
                   : new Date(req.createdAt).toLocaleTimeString("fr-FR", {
                       hour: "2-digit",
                       minute: "2-digit",
                     });
 
               return (
-                <tr key={req.id} className="hover:bg-gray-50">
+                <tr key={req._id} className="hover:bg-gray-50">
                   <td className="px-4 py-3">{dateStr}</td>
                   <td className="px-4 py-3">{timeStr}</td>
                   <td className="px-4 py-3 font-medium">
-                    {req.form.clientName}
-                    {req.type === "reservation" && req.form.isStudent && (
+                    {req.clientName}
+                    {req.bookingType === "reservation" && req.isStudent && (
                       <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-medium">
                         Étudiant
                       </span>
@@ -57,22 +58,23 @@ export function RequestsTable({ requests, loading, onView }: Props) {
                   </td>
                   <td className="px-4 py-3 space-y-1 text-xs">
                     <div className="flex items-center gap-1 text-blue-600">
-                      <Phone size={12} /> {req.form.clientPhone}
+                      <Phone size={12} /> {req.clientPhone}
                     </div>
-                    {req.form.clientEmail && (
+                    {req.clientEmail && (
                       <div className="flex items-center gap-1 text-blue-600">
-                        <Mail size={12} />{" "}
-                        {req.form.clientEmail.split("@")[0]}...
+                        <Mail size={12} /> {req.clientEmail.split("@")[0]}
+                        ...
                       </div>
                     )}
                   </td>
                   <td
                     className="px-4 py-3 text-xs font-medium"
                     style={{
-                      color: req.type === "devis" ? "#9333ea" : "#2563eb",
+                      color:
+                        req.bookingType === "devis" ? "#9333ea" : "#2563eb",
                     }}
                   >
-                    {req.type === "devis"
+                    {req.bookingType === "devis"
                       ? "Devis Mécanique"
                       : "Accompagnement Achat"}
                   </td>
