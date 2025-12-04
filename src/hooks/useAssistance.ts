@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BookingDetails, Step } from "@/types";
 
-export const useAccompagnement = () => {
+export const useAssistance = () => {
   const [currentStep, setCurrentStep] = useState<Step>(Step.DATE_SELECTION);
   const [bookingData, setBookingData] = useState<BookingDetails>({
     date: "",

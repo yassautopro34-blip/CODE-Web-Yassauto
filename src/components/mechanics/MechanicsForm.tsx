@@ -1,15 +1,15 @@
 import React from "react";
 import { Button } from "@/components/Button";
 import { PenTool, Camera, Car, AlertCircle } from "lucide-react";
-import { ExtendedMechanicQuote } from "@/hooks/useMecanique";
+import { ExtendedMechanicQuote } from "@/hooks/useMechanics";
 
-interface MecaniqueFormProps {
+interface MechanicsFormProps {
   formData: ExtendedMechanicQuote;
   updateFormData: (data: Partial<ExtendedMechanicQuote>) => void;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
-export const MecaniqueForm: React.FC<MecaniqueFormProps> = ({
+export const MechanicsForm: React.FC<MechanicsFormProps> = ({
   formData,
   updateFormData,
   handleSubmit,

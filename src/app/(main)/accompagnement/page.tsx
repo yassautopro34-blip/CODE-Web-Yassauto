@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import { Step } from "@/types";
-import { useAccompagnement } from "@/hooks/useAccompagnement";
-import { DateSelectionStep } from "@/components/accompagnement/DateSelectionStep";
-import { DetailsFormStep } from "@/components/accompagnement/DetailsFormStep";
-import { PaymentStep } from "@/components/accompagnement/PaymentStep";
-import { ConfirmationStep } from "@/components/accompagnement/ConfirmationStep";
-import { ServiceDetails } from "@/components/accompagnement/ServiceDetails";
+import { useAssistance } from "@/hooks/useAssistance";
+import { DateSelectionStep } from "@/components/assistance/DateSelectionStep";
+import { DetailsFormStep } from "@/components/assistance/DetailsFormStep";
+import { PaymentStep } from "@/components/assistance/PaymentStep";
+import { ConfirmationStep } from "@/components/assistance/ConfirmationStep";
+import { ServiceDetails } from "@/components/assistance/ServiceDetails";
 
 const Accompagnement: React.FC = () => {
   const {
@@ -19,7 +19,7 @@ const Accompagnement: React.FC = () => {
     prevStep,
     setTimeSlot,
     simulatePayment,
-  } = useAccompagnement();
+  } = useAssistance();
 
   return (
     <div className="bg-white min-h-screen pb-20">

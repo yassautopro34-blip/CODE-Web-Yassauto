@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import { useMecanique } from "@/hooks/useMecanique";
-import { MecaniqueForm } from "@/components/mecanique/MecaniqueForm";
-import { MecaniqueSuccess } from "@/components/mecanique/MecaniqueSuccess";
+import { useMechanics } from "@/hooks/useMechanics";
+import { MechanicsForm } from "@/components/mechanics/MechanicsForm";
+import { MechanicsSuccess } from "@/components/mechanics/MechanicsSuccess";
 
 export default function Mecanique() {
   const { formData, submitted, updateFormData, handleSubmit, resetForm } =
-    useMecanique();
+    useMechanics();
 
   if (submitted) {
-    return <MecaniqueSuccess resetForm={resetForm} />;
+    return <MechanicsSuccess resetForm={resetForm} />;
   }
 
   return (
@@ -26,7 +26,7 @@ export default function Mecanique() {
         </div>
       </div>
 
-      <MecaniqueForm
+      <MechanicsForm
         formData={formData}
         updateFormData={updateFormData}
         handleSubmit={handleSubmit}
