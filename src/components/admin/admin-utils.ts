@@ -29,8 +29,6 @@ export interface DevisRequest extends BaseRequest {
   form: DevisDetails;
 }
 
-export type BookingRequest = ReservationRequest | DevisRequest;
-
 export type SortOrder = "asc" | "desc";
 
 export interface FilterState {
@@ -47,12 +45,12 @@ export interface FilterState {
 export const formatCurrency = (cents: number) =>
   (cents / 100).toFixed(2) + " €";
 
-export const calculateTotals = (req: BookingRequest) => {
-  const isStudent = req.type === "reservation" ? req.form.isStudent : false;
+export const calculateTotals = (req: BookingDetails) => {
+  const isStudent = req.bookingType === "reservation" ? req.isStudent : false;
   const defaultTotal = isStudent ? 10000 : 15000; // 100€ or 150€
 
-  const totalCents = req.price_total_cents || defaultTotal;
-  const paidCents = req.amount_cents || 0;
+  const totalCents = defaultTotal;
+  const paidCents = 0;
   const remainingCents = totalCents - paidCents;
 
   return {

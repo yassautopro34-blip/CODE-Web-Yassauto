@@ -1,4 +1,4 @@
-import { calculateTotals, BookingRequest } from "./admin-utils";
+import { calculateTotals } from "./admin-utils";
 import { Phone, Mail } from "lucide-react";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { BookingDetails } from "@/types";
