@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { BookingDetails, Step } from "@/types";
 
-export const useAccompagnement = () => {
+export const useAssistance = () => {
   const [currentStep, setCurrentStep] = useState<Step>(Step.DATE_SELECTION);
   const [bookingData, setBookingData] = useState<BookingDetails>({
     date: "",
     timeSlot: "",
     status: "pending",
-    carUrl: "",
+    postLink: "",
     carModel: "",
-    city: "",
+    address: "",
     clientName: "",
     clientPhone: "",
     clientEmail: "",
@@ -18,7 +18,11 @@ export const useAccompagnement = () => {
     bookingDate: "",
     bookingType: "",
     description: "",
+    amount_cents: 0,
+    confirmedAt: "",
+    currency: "eur",
   });
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleInputChange = (
@@ -54,9 +58,12 @@ export const useAccompagnement = () => {
 
       // Prepare payload expected by backend
       const payload: BookingDetails = {
+        currency: "eur",
+        confirmedAt: "",
+        amount_cents: 0,
         carModel: bookingData.carModel,
-        carUrl: bookingData.carUrl,
-        city: bookingData.city,
+        postLink: bookingData.postLink,
+        address: bookingData.address,
         status: "pending",
         date: bookingData.date,
         hasDocs: bookingData.hasDocs,
@@ -67,7 +74,7 @@ export const useAccompagnement = () => {
         timeSlot: bookingData.timeSlot,
         bookingType: "accompagnement",
         isStudent: bookingData.isStudent,
-        description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.city} | Annonce: ${bookingData.carUrl} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
+        description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
       };
 
       // Create Stripe Checkout session on backend

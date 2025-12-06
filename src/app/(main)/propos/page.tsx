@@ -1,7 +1,7 @@
 import React from "react";
-import { AboutHero } from "@/components/propos/AboutHero";
-import { AboutProfile } from "@/components/propos/AboutProfile";
-import { AboutContent } from "@/components/propos/AboutContent";
+import { AboutHero } from "@/components/about/AboutHero";
+import { AboutProfile } from "@/components/about/AboutProfile";
+import { AboutContent } from "@/components/about/AboutContent";
 
 export default function About() {
   return (

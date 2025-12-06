@@ -1,15 +1,15 @@
 import React from "react";
 import { Button } from "@/components/Button";
 import { PenTool, Camera, Car, AlertCircle } from "lucide-react";
-import { ExtendedMechanicQuote } from "@/hooks/useMecanique";
+import { ExtendedMechanicQuote } from "@/hooks/useMechanics";
 
-interface MecaniqueFormProps {
+interface MechanicsFormProps {
   formData: ExtendedMechanicQuote;
   updateFormData: (data: Partial<ExtendedMechanicQuote>) => void;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
-export const MecaniqueForm: React.FC<MecaniqueFormProps> = ({
+export const MechanicsForm: React.FC<MechanicsFormProps> = ({
   formData,
   updateFormData,
   handleSubmit,
@@ -115,7 +115,7 @@ export const MecaniqueForm: React.FC<MecaniqueFormProps> = ({
           {/* Type de demande */}
           <div className="pt-4 border-t border-zinc-100">
             <label className="block text-sm font-bold text-zinc-700 mb-4">
-              Connaissez-vous lorigine de la panne ?
+              Connaissez-vous l&apos;origine de la panne ?
             </label>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -175,7 +175,7 @@ export const MecaniqueForm: React.FC<MecaniqueFormProps> = ({
                       : "text-zinc-600"
                   }`}
                 >
-                  Non, j'ai besoin d'un diagnostic
+                  Non, j&apos;ai besoin d&apos;un diagnostic
                 </span>
               </div>
             </div>
@@ -241,7 +241,7 @@ export const MecaniqueForm: React.FC<MecaniqueFormProps> = ({
                 className="text-sm text-zinc-700 flex items-center cursor-pointer"
               >
                 <Camera className="w-4 h-4 mr-2 text-zinc-500" />
-                J'ai des photos/vidéos du problème (à envoyer plus tard)
+                J&apos;ai des photos/vidéos du problème (à envoyer plus tard)
               </label>
             </div>
           </div>

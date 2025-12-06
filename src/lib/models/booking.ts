@@ -12,6 +12,7 @@ export interface IBookingDocument extends BookingDetails, Document {
 // and constraints
 const bookingSchema = new mongoose.Schema<IBookingDocument>(
   {
+    status: { type: String },
     clientEmail: { type: String },
     isStudent: { type: Boolean },
     bookingDate: { type: String },
@@ -19,8 +20,11 @@ const bookingSchema = new mongoose.Schema<IBookingDocument>(
     bookingType: { type: String },
     description: { type: String },
     carModel: { type: String },
-    carUrl: { type: String },
-    city: { type: String },
+    postLink: { type: String },
+    address: { type: String },
+    amount_cents: { type: Number },
+    currency: { type: String },
+    confirmedAt: { type: String },
     clientName: { type: String },
     clientPhone: { type: String },
     hasDocs: { type: Boolean },

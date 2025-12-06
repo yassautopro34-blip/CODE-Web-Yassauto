@@ -23,7 +23,7 @@ export const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
       </p>
       <div className="bg-zinc-50 p-4 rounded-lg max-w-sm mx-auto mb-8 border border-zinc-200">
         <p className="text-sm text-zinc-500">
-          Un email de confirmation et votre facture d'acompte ont été envoyés à
+          Un email de confirmation et votre facture d&apos;acompte ont été envoyés à
           votre adresse (simulée).
         </p>
       </div>

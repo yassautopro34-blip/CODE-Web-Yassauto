@@ -12,6 +12,7 @@ export const StudentBanner = () => {
     if (typeof window === 'undefined') return ;
     const isHidden = localStorage.getItem("studentBannerHidden");
     if (!isHidden) {
+      // eslint-disable-next-line
       setIsVisible(true);
     }
   }, []);
@@ -32,7 +33,7 @@ export const StudentBanner = () => {
         <div className="flex items-center gap-4 text-center sm:text-left">
           <span className="text-2xl" role="img" aria-label="Student hat">🎓</span>
           <p className="text-sm md:text-base font-bold text-black">
-            Étudiant(e) ? Profite de -30% sur l'accompagnement achat (100€ au lieu de 150€)
+            Étudiant(e) ? Profite de -30% sur l&apos;accompagnement achat (100€ au lieu de 150€)
           </p>
         </div>
 

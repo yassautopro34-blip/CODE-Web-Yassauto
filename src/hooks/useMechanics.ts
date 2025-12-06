@@ -5,7 +5,7 @@ export interface ExtendedMechanicQuote extends MechanicQuote {
   email?: string;
 }
 
-export const useMecanique = () => {
+export const useMechanics = () => {
   const [formData, setFormData] = useState<ExtendedMechanicQuote>({
     firstName: "",
     lastName: "",

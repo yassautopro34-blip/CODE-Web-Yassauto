@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { Button } from "@/components/Button";
+import Image from "next/image";
 
 export const TrustSection: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const TrustSection: React.FC = () => {
               La confiance avant tout.
             </h2>
             <p className="text-zinc-400 text-lg mb-6">
-              YassAuto, c'est une histoire de famille et de passion. Nous
+              YassAuto, c&apos;est une histoire de famille et de passion. Nous
               apportons une transparence totale dans un milieu souvent opaque.
             </p>
             <div className="flex flex-col space-y-4">
@@ -25,7 +26,7 @@ export const TrustSection: React.FC = () => {
                   />
                 </div>
                 <span className="font-semibold">
-                  Transparence totale sur l'état du véhicule
+                  Transparence totale sur l&apos;état du véhicule
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -58,12 +59,16 @@ export const TrustSection: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <Image
+              width={300}
+              height={300}
               src="https://picsum.photos/400/400?random=1"
               className="rounded-2xl shadow-lg border border-zinc-800"
               alt="Inspection engine"
             />
-            <img
+            <Image
+              width={300}
+              height={300}
               src="https://picsum.photos/400/400?random=2"
               className="rounded-2xl shadow-lg border border-zinc-800 mt-8"
               alt="Happy client"

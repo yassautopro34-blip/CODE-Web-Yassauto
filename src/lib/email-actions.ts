@@ -1,15 +1,26 @@
 import { Resend } from "resend";
-import BookingConfirmation from "@/components/emails/success-email";
+import BookingConfirmation from "../../emails/success-email";
+import { IBookingDocument } from "@/lib/models/booking";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendPaymentSuccessEmail(email: string, name: string) {
+export async function sendPaymentSuccessEmail(
+  email: string,
+  data: IBookingDocument | null,
+) {
   try {
     await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
+      from: "Yassauto <hello@yassauto.fr>",
       to: [email],
       subject: "Payment Successful",
-      react: BookingConfirmation(),
+      react: BookingConfirmation({
+        bookingDateTime: data?.bookingDate,
+        bookingType: data?.bookingType,
+        clientName: data?.clientName,
+        clientPhone: data?.clientPhone,
+        depositCents: data?.amount_cents,
+        isStudentFlag: data?.isStudent,
+      }),
     });
     return { success: true };
   } catch (error) {

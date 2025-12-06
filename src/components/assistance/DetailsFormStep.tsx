@@ -51,9 +51,9 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
 
       <input
         type="text"
-        name="carUrl"
+        name="postLink"
         placeholder="Lien de l'annonce (Leboncoin, LaCentrale...)"
-        value={bookingData.carUrl}
+        value={bookingData.postLink}
         onChange={handleInputChange}
         className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
       />
@@ -69,9 +69,9 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
         />
         <input
           type="text"
-          name="city"
-          placeholder="Ville du véhicule"
-          value={bookingData.city}
+          name="address"
+          placeholder="Address"
+          value={bookingData.address}
           onChange={handleInputChange}
           className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
         />
@@ -83,7 +83,7 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
           type="checkbox"
           id="isStudent"
           name="isStudent"
-          checked={!!bookingData.isStudent}
+          checked={bookingData.isStudent}
           onChange={handleCheckboxChange}
           className="h-5 w-5 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded"
         />
@@ -95,8 +95,8 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
       {bookingData.isStudent && (
         <div className="p-3 bg-yellow-100 rounded-md text-sm text-yellow-900 border border-yellow-200">
           ⚠️ Votre statut étudiant sera vérifié le jour du rendez-vous. Merci de
-          vous munir de votre carte d'étudiant en cours de validité. En cas de
-          non-présentation, le tarif plein sera appliqué.
+          vous munir de votre carte d&apos;étudiant en cours de validité. En cas
+          de non-présentation, le tarif plein sera appliqué.
         </div>
       )}
 
@@ -124,7 +124,7 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
           disabled={
             !bookingData.clientName ||
             !bookingData.clientPhone ||
-            !bookingData.city
+            !bookingData.address
           }
         >
           Suivant
