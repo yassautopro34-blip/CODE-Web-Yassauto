@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     if (!stripe) throw new Error("Stripe not initialized");
 
     const body = await req.text();
-    const signature = (await headers()).get("stripe-signature");
+    const signature = req.headers.get("stripe-signature");
 
     if (!signature) throw new Error("Missing Stripe signature");
 
