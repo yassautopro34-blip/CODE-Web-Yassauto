@@ -35,7 +35,8 @@ export async function POST(req: Request) {
       await Promise.all([
         updateBookingInternal({
           email: userEmail,
-          status: "paid",
+          amountCents: session.amount_total ?? 0,
+          currency: session.currency ?? "",
         })
           .then((r) => {
             console.log(
@@ -45,7 +46,7 @@ export async function POST(req: Request) {
             console.log(
               `Attempting to send payment success email to: ${userEmail}`,
             );
-            return sendPaymentSuccessEmail(userEmail, r.username ?? "");
+            return sendPaymentSuccessEmail(userEmail, r.data);
           })
           .then(() => {
             console.log(`Payment success email sent to: ${userEmail}`);

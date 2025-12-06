@@ -19,22 +19,13 @@ export function ConfirmationSuccess({
     session?.customer_details?.email ||
     reservation?.clientEmail ||
     "Votre email";
-  const isStudent =
-    session?.metadata?.isStudent === "1" ||
-    session?.metadata?.isStudent === "true" ||
-    reservation?.isStudent;
+  const isStudent = reservation?.isStudent;
 
-  const totalCents = isStudent ? 10000 : 15000;
-  const depositCents = 2000;
-  const balanceCents = totalCents - depositCents;
+  const totalCents = reservation?.amount_cents;
 
-  const bookingDate =
-    reservation?.bookingDate ||
-    reservation?.date ||
-    session?.metadata?.bookingDate ||
-    null;
-  const bookingTime =
-    reservation?.timeSlot || session?.metadata?.bookingTime || null;
+  const bookingDate = reservation?.bookingDate || reservation?.date;
+
+  const bookingTime = reservation?.timeSlot;
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4">
@@ -61,17 +52,14 @@ export function ConfirmationSuccess({
           )}
           <p className="mb-1">
             💶 Prix total :{" "}
-            <strong>
-              {(totalCents / 100).toFixed(0)} €
-              {isStudent ? " (tarif étudiant -30%)" : ""}
-            </strong>
+            <strong>150 €{isStudent ? " (tarif étudiant -30%)" : ""}</strong>
           </p>
           <p className="mb-1">
-            💳 Acompte payé : <strong>20 € TTC</strong>
+            💳 Acompte payé : <strong>{(totalCents ?? 100) / 100} € TTC</strong>
           </p>
           <p className="mb-0">
             💳 Solde à régler sur place :{" "}
-            <strong>{(balanceCents / 100).toFixed(0)} € TTC</strong>
+            <strong>{isStudent ? 150 * 0.7 - 20 : 130} € TTC</strong>
           </p>
         </div>
 

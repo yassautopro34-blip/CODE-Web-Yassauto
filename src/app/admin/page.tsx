@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { LogOut } from "lucide-react";
 import { RequestsTable } from "@/components/admin/requests-table";
 import { useAdminAuth, useRequests } from "@/components/admin/admin-hooks";
-import { FilterState, BookingRequest } from "@/components/admin/admin-utils";
+import { FilterState } from "@/components/admin/admin-utils";
 import { LoginScreen } from "@/components/admin/login-screen";
 import { StatsCards } from "@/components/admin/stats-cards";
 import { RequestFilterBar } from "@/components/admin/request-filterbar";
 import { RequestModal } from "@/components/admin/request-modal";
+import { BookingDetails } from "@/types";
+import { IBookingDocument } from "@/lib/models/booking";
 
 export default function AdminDashboard() {
   const { isAuthenticated, login, logout } = useAdminAuth();
@@ -25,9 +27,8 @@ export default function AdminDashboard() {
     filters,
     isAuthenticated,
   );
-  const [selectedRequest, setSelectedRequest] = useState<BookingRequest | null>(
-    null,
-  );
+  const [selectedRequest, setSelectedRequest] =
+    useState<IBookingDocument | null>(null);
 
   if (!isAuthenticated) {
     return <LoginScreen onLogin={login} />;
@@ -64,13 +65,10 @@ export default function AdminDashboard() {
         <RequestModal
           request={selectedRequest}
           onClose={() => setSelectedRequest(null)}
-          onUpdateStatus={(id, status, type) => {
-            updateStatus(id, status, type);
+          onUpdateStatus={(id, status, bookingType) => {
+            updateStatus(id, status, bookingType);
             // Optimistic update for the modal view if needed,
             // though the hook updates the list which usually satisfies the UX.
-            setSelectedRequest((prev) =>
-              prev ? { ...prev, status: status as BookingRequest["status"] } : null,
-            );
           }}
         />
       )}

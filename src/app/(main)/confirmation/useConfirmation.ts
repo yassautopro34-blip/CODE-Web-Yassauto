@@ -50,7 +50,7 @@ export function useConfirmation() {
       }
     }
 
-    fetchSession();
+    void fetchSession();
   }, [sessionId]);
 
   return { loading, error, data };

@@ -10,8 +10,9 @@ export const HeroSection: React.FC = () => {
       <div className="absolute inset-0 z-0 opacity-20">
         <Image
           src="/background/5.png"
-          layout={"fill"}
           alt="Background mechanic"
+          width={"1920"}
+          height={"1080"}
           className="w-full h-full object-cover"
         />
       </div>
@@ -32,8 +33,8 @@ export const HeroSection: React.FC = () => {
               </span>
             </h1>
             <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto md:mx-0">
-              Ne te fais plus arnaquer sur ton achat de voiture d&apos;occasion. Je
-              t&apos;accompagne, j&apos;inspecte, et je sécurise ton achat.
+              Ne te fais plus arnaquer sur ton achat de voiture d&apos;occasion.
+              Je t&apos;accompagne, j&apos;inspecte, et je sécurise ton achat.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link href="/accompagnement">

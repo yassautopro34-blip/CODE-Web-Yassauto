@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
-import { BookingDetails } from "@/types";
 import { createBookingInternal } from "@/lib/booking-actions";
 
 const stripe = process.env.STRIPE_SECRET_KEY
@@ -9,10 +8,6 @@ const stripe = process.env.STRIPE_SECRET_KEY
     })
   : null;
 
-async function saveBooking(booking: BookingDetails) {
-  await createBookingInternal(booking);
-  console.log("Persisting booking:", booking);
-}
 const frontendBase = process.env.FRONTEND_URL || "http://localhost:3000";
 
 export async function POST(request: NextRequest) {
@@ -45,6 +40,11 @@ export async function POST(request: NextRequest) {
     if (!stripe) {
       throw new Error("Stripe server returned");
     }
+    const res = await createBookingInternal({
+      ...form,
+      status: "pending",
+    });
+
     // 7. Create Stripe Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -61,17 +61,12 @@ export async function POST(request: NextRequest) {
         },
       ],
       metadata: {
-        bookingId,
+        bookingId: res.data._id.toString() ?? "failed",
         isStudent: isStudent ? "1" : "0",
       },
       // Keeping your HashRouter syntax
       success_url: `${frontendBase}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${frontendBase}/annulation`,
-    });
-    // 5. Persist reservation
-    await saveBooking({
-      ...form,
-      status: "pending",
     });
 
     // 8. Return Success
@@ -79,7 +74,7 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error("Error creating checkout session", err);
     return NextResponse.json(
-      { error: "Erreur serveur lors de la création de la session Stripe" },
+      { error: "Error creating checkout session" },
       { status: 500 },
     );
   }

@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
+import { getAllBookings } from "@/lib/booking-actions";
 
 // Initialize Stripe
 const stripe = process.env.STRIPE_SECRET_KEY
@@ -8,13 +9,9 @@ const stripe = process.env.STRIPE_SECRET_KEY
     })
   : null;
 
-// Placeholder: Import your actual DB logic here
-// import { getReservations } from '@/lib/db';
-function readBookings() {
-  // TODO: Replace with your actual database fetch (Prisma, MongoDB, JSON file read, etc.)
-  // Returning an empty array to prevent TS errors in this snippet
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return [] as any[];
+async function readBookings() {
+  const data = await getAllBookings();
+  return data.data;
 }
 
 export async function GET(request: NextRequest) {
@@ -28,34 +25,6 @@ export async function GET(request: NextRequest) {
         { error: "Missing session_id query parameter" },
         { status: 400 },
       );
-    }
-
-    // 2. Handle Fake Sessions (Local Testing)
-    if (sessionId.startsWith("fake-")) {
-      const bookingId = sessionId.replace("fake-", "");
-      const bookings = readBookings();
-
-      // Find booking in DB
-      const booking =
-        bookings.find((b) => b.id === bookingId) || null;
-
-      // Construct mock response
-      return NextResponse.json({
-        success: true,
-        session: {
-          id: sessionId,
-          payment_status:
-            booking && booking.status === "confirmed"
-              ? "paid"
-              : "unpaid",
-          customer_details: { email: booking?.form?.clientEmail || null },
-          metadata: {
-            bookingId: bookingId,
-            isStudent: booking?.form?.isStudent ? "1" : "0",
-          },
-        },
-        booking,
-      });
     }
 
     // 3. Check Stripe Configuration
@@ -74,10 +43,11 @@ export async function GET(request: NextRequest) {
     // 5. Retrieve associated booking from DB
     let booking = null;
     if (session && session.metadata && session.metadata.bookingId) {
-      const bookings = readBookings();
+      const bookings = await readBookings();
       booking =
-        bookings.find((b) => b.id === session.metadata?.bookingId) ||
-        null;
+        bookings.find(
+          (b) => b._id.toString() === session.metadata?.bookingId,
+        ) || null;
     }
 
     // 6. Return Data

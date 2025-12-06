@@ -7,9 +7,9 @@ export const useAssistance = () => {
     date: "",
     timeSlot: "",
     status: "pending",
-    carUrl: "",
+    postLink: "",
     carModel: "",
-    city: "",
+    address: "",
     clientName: "",
     clientPhone: "",
     clientEmail: "",
@@ -18,7 +18,11 @@ export const useAssistance = () => {
     bookingDate: "",
     bookingType: "",
     description: "",
+    amount_cents: 0,
+    confirmedAt: "",
+    currency: "eur",
   });
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleInputChange = (
@@ -54,9 +58,12 @@ export const useAssistance = () => {
 
       // Prepare payload expected by backend
       const payload: BookingDetails = {
+        currency: "eur",
+        confirmedAt: "",
+        amount_cents: 0,
         carModel: bookingData.carModel,
-        carUrl: bookingData.carUrl,
-        city: bookingData.city,
+        postLink: bookingData.postLink,
+        address: bookingData.address,
         status: "pending",
         date: bookingData.date,
         hasDocs: bookingData.hasDocs,
@@ -67,7 +74,7 @@ export const useAssistance = () => {
         timeSlot: bookingData.timeSlot,
         bookingType: "accompagnement",
         isStudent: bookingData.isStudent,
-        description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.city} | Annonce: ${bookingData.carUrl} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
+        description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
       };
 
       // Create Stripe Checkout session on backend

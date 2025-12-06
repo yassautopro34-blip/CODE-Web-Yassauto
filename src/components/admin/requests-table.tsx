@@ -1,12 +1,11 @@
 import { Eye, Phone, Mail } from "lucide-react";
-import { BookingRequest } from "./admin-utils";
 import { StatusBadge } from "@/components/admin/status-badge";
-import { BookingDetails } from "@/types";
+import { IBookingDocument } from "@/lib/models/booking";
 
 interface Props {
-  requests: BookingDetails[];
+  requests: IBookingDocument[];
   loading: boolean;
-  onView: (req: BookingDetails) => void;
+  onView: (req: IBookingDocument) => void;
 }
 
 export function RequestsTable({ requests, loading, onView }: Props) {
@@ -32,12 +31,8 @@ export function RequestsTable({ requests, loading, onView }: Props) {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {requests.map((req) => {
-              const dateStr =
-                req.bookingType === "reservation"
-                  ? req.bookingDate
-                  : req.createdAt.split("T")[0];
               const timeStr =
-                req.type === "reservation"
+                req.bookingType === "reservation"
                   ? req.timeSlot
                   : new Date(req.createdAt).toLocaleTimeString("fr-FR", {
                       hour: "2-digit",
@@ -45,8 +40,8 @@ export function RequestsTable({ requests, loading, onView }: Props) {
                     });
 
               return (
-                <tr key={req._id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3">{dateStr}</td>
+                <tr key={req._id.toString()} className="hover:bg-gray-50">
+                  <td className="px-4 py-3">{req.date}</td>
                   <td className="px-4 py-3">{timeStr}</td>
                   <td className="px-4 py-3 font-medium">
                     {req.clientName}

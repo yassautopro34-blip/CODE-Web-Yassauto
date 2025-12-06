@@ -1,8 +1,10 @@
-import { BookingRequest } from "./admin-utils";
+import { IBookingDocument } from "@/lib/models/booking";
 
-export function StatsCards({ requests }: { requests: BookingRequest[] }) {
-  const resCount = requests.filter((r) => r.type === "reservation").length;
-  const devisCount = requests.filter((r) => r.type === "devis").length;
+export function StatsCards({ requests }: { requests: IBookingDocument[] }) {
+  const resCount = requests.filter(
+    (r) => r.bookingType === "reservation",
+  ).length;
+  const devisCount = requests.filter((r) => r.bookingType === "devis").length;
   const confirmedCount = requests.filter(
     (r) => r.status === "confirmed",
   ).length;

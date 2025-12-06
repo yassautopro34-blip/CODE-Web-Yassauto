@@ -1,5 +1,5 @@
 import { connectToMongoDB } from "@/lib/db"; // Adjust your import path
-import Booking from "@/lib/models/booking";
+import Booking, { IBookingDocument } from "@/lib/models/booking";
 import { BookingDetails } from "@/types";
 
 // Note: No "use server" here. Just pure logic.
@@ -27,20 +27,26 @@ export const getAllBookings = async () => {
 };
 
 export const updateBookingInternal = async (payload: {
+  amountCents: number;
+  currency: string;
   email: string;
-  status: "pending" | "paid" | "failed";
 }) => {
   await connectToMongoDB();
   try {
-    const updated = await Booking.findOneAndUpdate(
+    const updated: IBookingDocument | null = await Booking.findOneAndUpdate(
       {
         clientEmail: payload.email,
       },
-      { $set: { status: payload.status } },
+      {
+        $set: {
+          currency: payload.currency,
+          amount_cents: payload.amountCents,
+        },
+      },
       { new: true }, // Return the updated document
     );
 
-    return { success: true, username: updated?.clientName };
+    return { success: true, data: updated };
   } catch (error) {
     console.error("DB Error:", error);
     throw error; // Throw so the webhook catches it

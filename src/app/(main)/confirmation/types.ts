@@ -6,12 +6,6 @@ export interface StripeSession {
   customer_details?: {
     email?: string | null;
   };
-  metadata?: {
-    isStudent?: string;
-    bookingDate?: string;
-    bookingTime?: string;
-    reservationId?: string;
-  };
 }
 
 export interface ApiResponse {

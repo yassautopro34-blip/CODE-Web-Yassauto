@@ -1,16 +1,12 @@
 import { calculateTotals } from "./admin-utils";
 import { Phone, Mail } from "lucide-react";
 import { StatusBadge } from "@/components/admin/status-badge";
-import { BookingDetails } from "@/types";
+import { IBookingDocument } from "@/lib/models/booking";
 
 interface Props {
-  request: BookingDetails;
+  request: IBookingDocument;
   onClose: () => void;
-  onUpdateStatus: (
-    id: string,
-    status: string,
-    type: "reservation" | "devis",
-  ) => void;
+  onUpdateStatus: (id: string, status: string, bookingType: string) => void;
 }
 
 export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
@@ -32,7 +28,7 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
         <div className="p-6 space-y-6">
           {/* Header Info */}
           <div className="grid grid-cols-2 gap-4">
-            <InfoBlock label="ID" value={request._id} mono />
+            <InfoBlock label="ID" value={request._id.toString()} mono />
             <div>
               <p className="text-xs text-gray-600 uppercase font-semibold mb-1">
                 Statut
@@ -126,32 +122,32 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
             </>
           ) : (
             <>
-              <Section title="Demande de devis">
-                <p>
-                  <span className="text-gray-600">Immat:</span>{" "}
-                  <span className="font-medium">
-                    {request.licensePlate || "N/A"}
-                  </span>
-                </p>
-                <p>
-                  <span className="text-gray-600">Type:</span>{" "}
-                  <span className="font-medium">
-                    {request.requestType === "repair"
-                      ? "Réparation"
-                      : "Diagnostic"}
-                  </span>
-                </p>
-                <p>
-                  <span className="text-gray-600">Photos:</span>{" "}
-                  <span className="font-medium">
-                    {request.hasPhotos ? "Oui" : "Non"}
-                  </span>
-                </p>
-              </Section>
-              <hr />
-              <Section title="Problème décrit" isDescription>
-                {request.issueDescription}
-              </Section>
+              {/*<Section title="Demande de devis">*/}
+              {/*  <p>*/}
+              {/*    <span className="text-gray-600">Immat:</span>{" "}*/}
+              {/*    <span className="font-medium">*/}
+              {/*      {request.licensePlate || "N/A"}*/}
+              {/*    </span>*/}
+              {/*  </p>*/}
+              {/*  <p>*/}
+              {/*    <span className="text-gray-600">Type:</span>{" "}*/}
+              {/*    <span className="font-medium">*/}
+              {/*      {request.requestType === "repair"*/}
+              {/*        ? "Réparation"*/}
+              {/*        : "Diagnostic"}*/}
+              {/*    </span>*/}
+              {/*  </p>*/}
+              {/*  <p>*/}
+              {/*    <span className="text-gray-600">Photos:</span>{" "}*/}
+              {/*    <span className="font-medium">*/}
+              {/*      {request.hasPhotos ? "Oui" : "Non"}*/}
+              {/*    </span>*/}
+              {/*  </p>*/}
+              {/*</Section>*/}
+              {/*<hr />*/}
+              {/*<Section title="Problème décrit" isDescription>*/}
+              {/*  {request.issueDescription}*/}
+              {/*</Section>*/}
             </>
           )}
           <hr />
@@ -176,11 +172,11 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
             </div>
             {request.status !== "failed" && (
               <div className="bg-yellow-50 p-3 rounded flex gap-2">
-                {request.status !== "paid" && (
+                {request.status !== "confirmed" && (
                   <button
                     onClick={() => {
                       onUpdateStatus(
-                        request._id,
+                        request._id.toString(),
                         "confirmed",
                         request.bookingType,
                       );
@@ -193,7 +189,11 @@ export function RequestModal({ request, onClose, onUpdateStatus }: Props) {
                 )}
                 <button
                   onClick={() => {
-                    onUpdateStatus(request._id, "failed", request.bookingType);
+                    onUpdateStatus(
+                      request._id.toString(),
+                      "failed",
+                      request.bookingType,
+                    );
                     onClose();
                   }}
                   className="px-4 py-2 bg-red-500 text-white rounded"

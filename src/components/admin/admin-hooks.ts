@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import {
-  BookingRequest,
   FilterState,
   getDateRangeParams,
 } from "@/components/admin/admin-utils";
 import { IBookingDocument } from "@/lib/models/booking";
-import { BookingDetails } from "@/types";
 
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LesMakhloufs";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
@@ -39,7 +37,7 @@ export function useAdminAuth() {
 
 // --- Data Fetching Hook ---
 export function useRequests(filters: FilterState, isAuthenticated: boolean) {
-  const [requests, setRequests] = useState<BookingDetails[]>([]);
+  const [requests, setRequests] = useState<IBookingDocument[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchRequests = useCallback(async () => {
@@ -61,16 +59,12 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
       params.append("sortOrder", filters.sortOrder);
 
       const [resRes] = await Promise.all([fetch(`${API_URL}/api/bookings`)]);
-      let allRequests: BookingDetails[] = [];
+      let allRequests: IBookingDocument[] = [];
 
       if (resRes.ok) {
-        const resData = await resRes.json();
-        allRequests.push(
-          ...resData.data.map((r) => ({
-            ...r,
-            bookingType: "reservation" as const,
-          })),
-        );
+        const resData: { success: boolean; data: IBookingDocument[] } =
+          await resRes.json();
+        allRequests.push(...resData.data);
       }
 
       // Client side type filtering (as per original logic)
@@ -98,10 +92,10 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
   const updateStatus = async (
     requestId: string,
     newStatus: string,
-    type: "reservation" | "devis",
+    bookingType: string,
   ) => {
     try {
-      const endpoint = type === "reservation" ? "reservations" : "devis";
+      const endpoint = bookingType === "reservation" ? "reservations" : "devis";
       const response = await fetch(`${API_URL}/api/${endpoint}/${requestId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -110,9 +104,11 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
 
       if (response.ok) {
         const updated = await response.json();
-        const updatedRequest = { ...updated, type };
+        const updatedRequest = { ...updated, bookingType };
         setRequests((prev) =>
-          prev.map((r) => (r._id === requestId ? updatedRequest : r)),
+          prev.map((r) =>
+            r._id.toString() === requestId ? updatedRequest : r,
+          ),
         );
         return updatedRequest;
       }

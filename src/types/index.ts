@@ -1,18 +1,21 @@
 export interface BookingDetails {
-  status: "pending" | "paid" | "failed";
-  date: string;
-  timeSlot: string;
-  carUrl: string;
-  carModel: string;
-  city: string;
   clientName: string;
   clientPhone: string;
+  description: string;
+  status: "pending" | "confirmed" | "canceled" | "failed";
+  amount_cents: number;
+  currency: string;
+  date: string;
+  timeSlot: string;
+  postLink: string;
+  carModel: string;
+  address: string;
   hasDocs: boolean;
   clientEmail: string;
   isStudent: boolean;
   bookingDate: string;
   bookingType: string;
-  description: string;
+  confirmedAt: string;
 }
 
 export interface MechanicQuote {
