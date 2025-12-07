@@ -58,7 +58,7 @@ export const calculateTotals = (req: AdminRequest) => {
   const defaultTotal = isStudent ? 10000 : 15000; // 100€ or 150€
 
   const totalCents = defaultTotal;
-  const paidCents = 0; // TODO: Fetch actual payment info if available
+  const paidCents = 2000; // TODO: Fetch actual payment info if available
   const remainingCents = totalCents - paidCents;
 
   return {
