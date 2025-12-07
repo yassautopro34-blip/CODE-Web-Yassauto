@@ -25,6 +25,9 @@ export default function RootLayout({
   connectToMongoDB().catch((err) => console.log(err));
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.ico" sizes="any" />
+      </head>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );

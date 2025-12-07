@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       },
       // Keeping your HashRouter syntax
       success_url: `${frontendBase}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${frontendBase}/annulation`,
+      cancel_url: `${frontendBase}/`,
     });
 
     // 8. Return Success
