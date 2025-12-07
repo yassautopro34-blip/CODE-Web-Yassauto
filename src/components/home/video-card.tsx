@@ -35,10 +35,11 @@ export default function VideoCard() {
           className="w-full h-auto object-cover aspect-[3/4]"
           autoPlay
           loop
+          preload="auto"
           muted={isMuted} // Controlled by state
           playsInline
         >
-          <source src="/intro.mp4" type="video/mp4" />
+          <source src="/intro.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
