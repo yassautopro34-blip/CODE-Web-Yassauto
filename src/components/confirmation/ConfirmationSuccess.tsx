@@ -67,7 +67,7 @@ export function ConfirmationSuccess({
           </p>
           <p className="mb-0">
             💳 Solde à régler sur place :{" "}
-            <strong>{isStudent ? 100 : 130} € TTC</strong>
+            <strong>{isStudent ? 80 : 130} € TTC</strong>
           </p>
         </div>
 
