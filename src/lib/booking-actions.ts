@@ -26,6 +26,18 @@ export const getAllBookings = async () => {
   }
 };
 
+export const getBookingById = async (id: string) => {
+  await connectToMongoDB();
+  try {
+    const booking = await Booking.findById(id);
+    if (!booking) return { success: false, error: "Booking not found" };
+    return { success: true, data: booking };
+  } catch (error) {
+    console.error("DB Error:", error);
+    throw error;
+  }
+};
+
 export const updateBookingInternal = async (payload: {
   amountCents: number;
   currency: string;
@@ -50,5 +62,29 @@ export const updateBookingInternal = async (payload: {
   } catch (error) {
     console.error("DB Error:", error);
     throw error; // Throw so the webhook catches it
+  }
+};
+
+export const updateBookingById = async (id: string, payload: Partial<BookingDetails>) => {
+  await connectToMongoDB();
+  try {
+    const updated = await Booking.findByIdAndUpdate(id, payload, { new: true });
+    if (!updated) return { success: false, error: "Booking not found" };
+    return { success: true, data: updated };
+  } catch (error) {
+    console.error("DB Error:", error);
+    throw error;
+  }
+};
+
+export const deleteBooking = async (id: string) => {
+  await connectToMongoDB();
+  try {
+    const deleted = await Booking.findByIdAndDelete(id);
+    if (!deleted) return { success: false, error: "Booking not found" };
+    return { success: true, data: deleted };
+  } catch (error) {
+    console.error("DB Error:", error);
+    throw error;
   }
 };

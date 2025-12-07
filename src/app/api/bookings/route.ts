@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAllBookings } from "@/lib/booking-actions";
+import { getAllBookings, createBookingInternal } from "@/lib/booking-actions";
+import { BookingDetails } from "@/types";
 
 export async function GET() {
   try {
@@ -12,6 +13,19 @@ export async function GET() {
         error: err,
       },
       { status: 500 },
+    );
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body: BookingDetails = await req.json();
+    const result = await createBookingInternal(body);
+    return NextResponse.json(result, { status: 201 });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Failed to create booking" },
+      { status: 500 }
     );
   }
 }
