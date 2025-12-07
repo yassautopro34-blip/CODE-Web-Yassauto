@@ -39,7 +39,10 @@ export default function VideoCard() {
           muted={isMuted} // Controlled by state
           playsInline
         >
-          <source src="/intro.webm" type="video/webm" />
+          <source
+            src="https://res.cloudinary.com/di1rwrzdc/video/upload/v1765132747/test_zikrgj.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
 
