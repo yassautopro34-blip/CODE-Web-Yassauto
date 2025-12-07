@@ -1,6 +1,6 @@
-import { IBookingDocument } from "@/lib/models/booking";
+import { AdminRequest } from "@/components/admin/admin-utils";
 
-export function StatsCards({ requests }: { requests: IBookingDocument[] }) {
+export function StatsCards({ requests }: { requests: AdminRequest[] }) {
   const resCount = requests.filter(
     (r) => r.bookingType === "reservation",
   ).length;

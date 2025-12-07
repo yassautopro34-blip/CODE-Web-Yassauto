@@ -1,14 +1,15 @@
-import { Eye, Phone, Mail } from "lucide-react";
+import { Eye, Phone, Mail, Trash2 } from "lucide-react";
 import { StatusBadge } from "@/components/admin/status-badge";
-import { IBookingDocument } from "@/lib/models/booking";
+import { AdminRequest } from "@/components/admin/admin-utils";
 
 interface Props {
-  requests: IBookingDocument[];
+  requests: AdminRequest[];
   loading: boolean;
-  onView: (req: IBookingDocument) => void;
+  onView: (req: AdminRequest) => void;
+  onDelete?: (id: string, type: "reservation" | "devis") => void;
 }
 
-export function RequestsTable({ requests, loading, onView }: Props) {
+export function RequestsTable({ requests, loading, onView, onDelete }: Props) {
   if (loading)
     return <div className="text-center py-8 text-gray-500">Chargement...</div>;
   if (requests.length === 0)
@@ -33,15 +34,19 @@ export function RequestsTable({ requests, loading, onView }: Props) {
             {requests.map((req) => {
               const timeStr =
                 req.bookingType === "reservation"
-                  ? req.timeSlot
+                  ? req.timeSlot || "-"
                   : new Date(req.createdAt).toLocaleTimeString("fr-FR", {
                       hour: "2-digit",
                       minute: "2-digit",
                     });
 
+              const dateStr = req.date
+                ? req.date
+                : new Date(req.createdAt).toLocaleDateString("fr-FR");
+
               return (
-                <tr key={req._id.toString()} className="hover:bg-gray-50">
-                  <td className="px-4 py-3">{req.date}</td>
+                <tr key={req._id} className="hover:bg-gray-50">
+                  <td className="px-4 py-3">{dateStr}</td>
                   <td className="px-4 py-3">{timeStr}</td>
                   <td className="px-4 py-3 font-medium">
                     {req.clientName}
@@ -76,13 +81,26 @@ export function RequestsTable({ requests, loading, onView }: Props) {
                   <td className="px-4 py-3">
                     <StatusBadge status={req.status} />
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 flex gap-2">
                     <button
                       onClick={() => onView(req)}
-                      className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded text-xs flex items-center gap-1"
+                      className="px-2 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded text-xs flex items-center gap-1"
+                      title="Voir détails"
                     >
-                      <Eye size={12} /> Détails
+                      <Eye size={14} />
                     </button>
+                    {onDelete && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDelete(req._id, req.bookingType);
+                        }}
+                        className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs flex items-center gap-1"
+                        title="Supprimer"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    )}
                   </td>
                 </tr>
               );
