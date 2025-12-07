@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "@/components/Button";
 import { PenTool, Camera, Car, AlertCircle } from "lucide-react";
-import { ExtendedMechanicQuote } from "@/hooks/useMechanics";
+import { MechanicQuote } from "@/types";
 
 interface MechanicsFormProps {
-  formData: ExtendedMechanicQuote;
-  updateFormData: (data: Partial<ExtendedMechanicQuote>) => void;
+  formData: MechanicQuote;
+  updateFormData: (data: Partial<MechanicQuote>) => void;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
@@ -192,10 +192,8 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
                     <p className="text-sm text-blue-800 mt-1">
                       Nous fixerons un rendez-vous pour identifier la panne. Si
                       vous acceptez le devis des réparations par la suite,{" "}
-                      <strong>
-                        les 50€ du diagnostic seront déduits
-                      </strong>{" "}
-                      de votre facture finale.
+                      <strong>les 50€ du diagnostic seront déduits</strong> de
+                      votre facture finale.
                     </p>
                   </div>
                 </div>

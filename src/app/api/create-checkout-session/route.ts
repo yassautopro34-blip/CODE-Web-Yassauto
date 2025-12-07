@@ -31,12 +31,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Create unique ID
-    const bookingId = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-
-    // 4. Determine price
-    const isStudent = !!form.isStudent;
-
     if (!stripe) {
       throw new Error("Stripe server returned");
     }
@@ -62,7 +56,7 @@ export async function POST(request: NextRequest) {
       ],
       metadata: {
         bookingId: res.data._id.toString() ?? "failed",
-        isStudent: isStudent ? "1" : "0",
+        isStudent: form.isStudent ? "1" : "0",
       },
       // Keeping your HashRouter syntax
       success_url: `${frontendBase}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
@@ -70,7 +64,7 @@ export async function POST(request: NextRequest) {
     });
 
     // 8. Return Success
-    return NextResponse.json({ url: session.url, bookingId });
+    return NextResponse.json({ url: session.url, bookingId: res.data._id });
   } catch (err) {
     console.error("Error creating checkout session", err);
     return NextResponse.json(

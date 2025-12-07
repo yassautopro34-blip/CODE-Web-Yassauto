@@ -7,6 +7,8 @@ export const AboutProfile: React.FC = () => {
     <div className="w-full md:w-1/3 flex flex-col gap-6">
       <div className="bg-zinc-100 p-2 rounded-2xl rotate-2 shadow-xl border border-zinc-200">
         <Image
+          width={400}
+          height={500}
           src="https://picsum.photos/400/500?grayscale"
           alt="Yassine Portrait"
           className="w-full h-auto rounded-xl grayscale hover:grayscale-0 transition-all duration-500"

@@ -29,7 +29,11 @@ export const Header = () => {
     <header className="fixed w-full top-0 z-50 bg-brand-black/95 backdrop-blur-sm border-b border-zinc-800 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/public" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
+          <Link
+            href="/"
+            className="flex items-center"
+            onClick={() => setIsMenuOpen(false)}
+          >
             <BrandLogo />
           </Link>
 
@@ -57,7 +61,11 @@ export const Header = () => {
               className="text-white p-2 focus:outline-none hover:text-brand-red transition-colors"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -76,7 +84,9 @@ export const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={getLinkStyles(link.href, true)}
                 >
-                  <Icon className={`h-5 w-5 ${pathname === link.href ? "text-brand-red" : "text-zinc-400"}`} />
+                  <Icon
+                    className={`h-5 w-5 ${pathname === link.href ? "text-brand-red" : "text-zinc-400"}`}
+                  />
                   <span>{link.label}</span>
                 </Link>
               );
