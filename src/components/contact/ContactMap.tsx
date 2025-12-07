@@ -7,7 +7,7 @@ export const ContactMap: React.FC = () => {
       <Image
         width={600}
         height={600}
-        src="https://picsum.photos/800/600?grayscale"
+        src="/background/2.png"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
         alt="Map placeholder"
       />

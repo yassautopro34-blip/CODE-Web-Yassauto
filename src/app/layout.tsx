@@ -10,6 +10,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "YassAuto - Expert Auto Montpellier",
+  icons: {
+    icon: "/logo.png",
+  },
   description:
     "Accompagnement achat véhicule d'occasion et mécanique générale à Montpellier",
 };

@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
       📅 Rendez-vous :
       - Type : ${form.bookingType}
-      - Date : ${form.date} à $form.timeSlot}
+      - Date : ${form.date} à ${form.timeSlot}
       - Lieu : ${form.address || "Non spécifié"}
 
       🚗 Détails Véhicule / Service :
