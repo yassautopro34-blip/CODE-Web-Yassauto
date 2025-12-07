@@ -21,8 +21,6 @@ export function ConfirmationSuccess({
     "Votre email";
   const isStudent = reservation?.isStudent;
 
-  const totalCents = reservation?.amount_cents;
-
   const bookingDate = reservation?.bookingDate || reservation?.date;
 
   const bookingTime = reservation?.timeSlot;
@@ -52,14 +50,24 @@ export function ConfirmationSuccess({
           )}
           <p className="mb-1">
             💶 Prix total :{" "}
-            <strong>150 €{isStudent ? " (tarif étudiant -30%)" : ""}</strong>
+            {isStudent ? (
+              <strong>
+                <span className={"line-through"}>150 </span> 100 € (tarif
+                étudiant -30%)
+              </strong>
+            ) : (
+              <strong>
+                <span>150 €</span>
+              </strong>
+            )}
           </p>
           <p className="mb-1">
-            💳 Acompte payé : <strong>{(totalCents ?? 100) / 100} € TTC</strong>
+            💳 Acompte payé :{" "}
+            <strong>{session ? session?.amount_total / 100 : 0} € TTC</strong>
           </p>
           <p className="mb-0">
             💳 Solde à régler sur place :{" "}
-            <strong>{isStudent ? 150 * 0.7 - 20 : 130} € TTC</strong>
+            <strong>{isStudent ? 100 : 130} € TTC</strong>
           </p>
         </div>
 

@@ -22,6 +22,7 @@ export interface MechanicQuote {
   firstName: string;
   lastName: string;
   phone: string;
+  email: string;
   licensePlate: string;
   requestType: "repair" | "diag"; // 'repair' = sait ce qu'il veut, 'diag' = ne sait pas
   issueDescription: string;

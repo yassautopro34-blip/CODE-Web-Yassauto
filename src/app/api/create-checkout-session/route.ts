@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
 import { createBookingInternal } from "@/lib/booking-actions";
+import { sendAdminNotification } from "@/lib/email-actions";
 
 const stripe = process.env.STRIPE_SECRET_KEY
   ? new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -31,12 +32,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Create unique ID
-    const bookingId = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-
-    // 4. Determine price
-    const isStudent = !!form.isStudent;
-
     if (!stripe) {
       throw new Error("Stripe server returned");
     }
@@ -44,7 +39,40 @@ export async function POST(request: NextRequest) {
       ...form,
       status: "pending",
     });
+    // Send notification asynchronously
+    const subject = `Nouvelle Réservation : ${form.clientName}`;
 
+    const message = `
+      Nouvelle réservation reçue de la part de ${form.clientName}.
+
+      👤 Client :
+      - Nom : ${form.clientName}
+      - Téléphone : ${form.clientPhone}
+      - Email : ${form.clientEmail}
+      - Étudiant : ${form.isStudent ? "Oui" : "Non"}
+
+      📅 Rendez-vous :
+      - Type : $form.bookingType}
+      - Date : $form.date} à $form.timeSlot}
+      - Lieu : $form.address || "Non spécifié"}
+
+      🚗 Détails Véhicule / Service :
+      - Modèle : ${form.carModel || "N/A"}
+      - Lien annonce : ${form.postLink || "N/A"}
+      - Description : ${form.description || "Aucune description"}
+
+      💰 Paiement :
+      - Montant : ${(form.amount_cents / 100).toFixed(2)} ${form.currency}
+      - Statut : ${form.status}
+
+      Veuillez consulter le tableau de bord pour plus de détails.
+    `;
+
+    try {
+      await sendAdminNotification(message, subject);
+    } catch (emailError) {
+      console.error("Failed to send admin notification:", emailError);
+    }
     // 7. Create Stripe Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -62,7 +90,7 @@ export async function POST(request: NextRequest) {
       ],
       metadata: {
         bookingId: res.data._id.toString() ?? "failed",
-        isStudent: isStudent ? "1" : "0",
+        isStudent: form.isStudent ? "1" : "0",
       },
       // Keeping your HashRouter syntax
       success_url: `${frontendBase}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
@@ -70,7 +98,7 @@ export async function POST(request: NextRequest) {
     });
 
     // 8. Return Success
-    return NextResponse.json({ url: session.url, bookingId });
+    return NextResponse.json({ url: session.url, bookingId: res.data._id });
   } catch (err) {
     console.error("Error creating checkout session", err);
     return NextResponse.json(

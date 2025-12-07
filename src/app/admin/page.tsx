@@ -3,13 +3,11 @@ import React, { useState } from "react";
 import { LogOut } from "lucide-react";
 import { RequestsTable } from "@/components/admin/requests-table";
 import { useAdminAuth, useRequests } from "@/components/admin/admin-hooks";
-import { FilterState } from "@/components/admin/admin-utils";
+import { FilterState, AdminRequest } from "@/components/admin/admin-utils";
 import { LoginScreen } from "@/components/admin/login-screen";
 import { StatsCards } from "@/components/admin/stats-cards";
 import { RequestFilterBar } from "@/components/admin/request-filterbar";
 import { RequestModal } from "@/components/admin/request-modal";
-import { BookingDetails } from "@/types";
-import { IBookingDocument } from "@/lib/models/booking";
 
 export default function AdminDashboard() {
   const { isAuthenticated, login, logout } = useAdminAuth();
@@ -23,12 +21,12 @@ export default function AdminDashboard() {
     sortOrder: "asc",
   });
 
-  const { requests, loading, updateStatus } = useRequests(
+  const { requests, loading, updateStatus, deleteRequest } = useRequests(
     filters,
     isAuthenticated,
   );
   const [selectedRequest, setSelectedRequest] =
-    useState<IBookingDocument | null>(null);
+    useState<AdminRequest | null>(null);
 
   if (!isAuthenticated) {
     return <LoginScreen onLogin={login} />;
@@ -58,6 +56,7 @@ export default function AdminDashboard() {
           requests={requests}
           loading={loading}
           onView={setSelectedRequest}
+          onDelete={deleteRequest}
         />
       </div>
 
@@ -67,8 +66,6 @@ export default function AdminDashboard() {
           onClose={() => setSelectedRequest(null)}
           onUpdateStatus={(id, status, bookingType) => {
             updateStatus(id, status, bookingType);
-            // Optimistic update for the modal view if needed,
-            // though the hook updates the list which usually satisfies the UX.
           }}
         />
       )}

@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { MechanicQuote } from "@/types";
 
-export interface ExtendedMechanicQuote extends MechanicQuote {
-  email?: string;
-}
-
 export const useMechanics = () => {
-  const [formData, setFormData] = useState<ExtendedMechanicQuote>({
+  const [formData, setFormData] = useState<MechanicQuote>({
     firstName: "",
     lastName: "",
     phone: "",
@@ -18,9 +14,9 @@ export const useMechanics = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const updateFormData = (data: Partial<ExtendedMechanicQuote>) => {
-      setFormData(prev => ({...prev, ...data}));
-  }
+  const updateFormData = (data: Partial<MechanicQuote>) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,16 +26,15 @@ export const useMechanics = () => {
         throw new Error("Veuillez fournir un téléphone ou un email");
       }
 
-      const apiUrl =
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
       // Send devis request to server
-      const response = await fetch(`${apiUrl}/devis`, {
+      const response = await fetch("/api/quotes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          clientName: `${formData.firstName} ${formData.lastName}`,
-          clientEmail: formData.email,
-          clientPhone: formData.phone,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
           licensePlate: formData.licensePlate,
           requestType: formData.requestType,
           issueDescription: formData.issueDescription,
@@ -68,17 +63,17 @@ export const useMechanics = () => {
       alert("Erreur: " + errorMsg);
     }
   };
-  
+
   const resetForm = () => {
-      setSubmitted(false);
-      // Optionally clear form data here if desired
-  }
+    setSubmitted(false);
+    // Optionally clear form data here if desired
+  };
 
   return {
     formData,
     submitted,
     updateFormData,
     handleSubmit,
-    resetForm
+    resetForm,
   };
 };

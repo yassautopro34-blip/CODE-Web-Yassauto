@@ -5,6 +5,8 @@ export const ContactMap: React.FC = () => {
   return (
     <div className="bg-zinc-200 rounded-2xl min-h-[400px] flex items-center justify-center relative overflow-hidden">
       <Image
+        width={600}
+        height={600}
         src="https://picsum.photos/800/600?grayscale"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
         alt="Map placeholder"

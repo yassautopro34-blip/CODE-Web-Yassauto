@@ -2,10 +2,13 @@ import { useState, useEffect, useCallback } from "react";
 import {
   FilterState,
   getDateRangeParams,
+  AdminRequest,
+  RequestType,
+  RequestStatus,
 } from "@/components/admin/admin-utils";
-import { IBookingDocument } from "@/lib/models/booking";
 
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LesMakhloufs";
+const ADMIN_PASSWORD =
+  process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LesMakhloufs";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 // --- Auth Hook ---
@@ -14,7 +17,6 @@ export function useAdminAuth() {
 
   useEffect(() => {
     const stored = localStorage.getItem("adminAuth");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (stored) setIsAuthenticated(true);
   }, []);
 
@@ -37,7 +39,7 @@ export function useAdminAuth() {
 
 // --- Data Fetching Hook ---
 export function useRequests(filters: FilterState, isAuthenticated: boolean) {
-  const [requests, setRequests] = useState<IBookingDocument[]>([]);
+  const [requests, setRequests] = useState<AdminRequest[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchRequests = useCallback(async () => {
@@ -45,36 +47,74 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
 
     setLoading(true);
     try {
-      const params = new URLSearchParams();
-      if (filters.status) params.append("status", filters.status);
+      const [bookingsRes, quotesRes] = await Promise.all([
+        fetch(`${API_URL}/api/bookings`),
+        fetch(`${API_URL}/api/quotes`),
+      ]);
+
+      let allRequests: AdminRequest[] = [];
+
+      // Process Bookings
+      if (bookingsRes.ok) {
+        const data = await bookingsRes.json();
+        const bookings = (data.data || []).map((b: any) => ({
+          ...b,
+          bookingType: "reservation" as RequestType,
+        }));
+        allRequests = [...allRequests, ...bookings];
+      }
+
+      // Process Quotes
+      if (quotesRes.ok) {
+        const data = await quotesRes.json();
+        // data.data is the array of quotes
+        const quotes = (data.data || []).map((q: any) => ({
+          _id: q._id,
+          bookingType: "devis" as RequestType,
+          status: q.status || "pending",
+          createdAt: q.createdAt,
+          updatedAt: q.updatedAt,
+          clientName: `${q.firstName} ${q.lastName}`,
+          clientPhone: q.phone,
+          clientEmail: q.email,
+          licensePlate: q.licensePlate,
+          requestType: q.requestType,
+          issueDescription: q.issueDescription,
+          hasPhotos: q.hasPhotos,
+        }));
+        allRequests = [...allRequests, ...quotes];
+      }
+
+      // Client-side Filtering
+      if (filters.status) {
+        allRequests = allRequests.filter((r) => r.status === filters.status);
+      }
+
+      if (filters.type) {
+        allRequests = allRequests.filter((r) => r.bookingType === filters.type);
+      }
 
       const { fromDate, toDate } = getDateRangeParams(
         filters.dateFilter,
         filters.dateFrom,
         filters.dateTo,
       );
-      if (fromDate) params.append("dateFrom", fromDate);
-      if (toDate) params.append("dateTo", toDate);
 
-      params.append("sortOrder", filters.sortOrder);
-
-      const [resRes] = await Promise.all([fetch(`${API_URL}/api/bookings`)]);
-      let allRequests: IBookingDocument[] = [];
-
-      if (resRes.ok) {
-        const resData: { success: boolean; data: IBookingDocument[] } =
-          await resRes.json();
-        allRequests.push(...resData.data);
-      }
-
-      // Client side type filtering (as per original logic)
-      if (filters.type === "reservation") {
+      if (fromDate) {
+        const fromTime = new Date(fromDate).getTime();
         allRequests = allRequests.filter(
-          (r) => r.bookingType === "reservation",
+          (r) => new Date(r.createdAt).getTime() >= fromTime,
+        );
+      }
+      if (toDate) {
+        // Add 1 day to include the end date fully
+        const toTime = new Date(toDate).getTime() + 86400000;
+        allRequests = allRequests.filter(
+          (r) => new Date(r.createdAt).getTime() < toTime,
         );
       }
 
-      // Client side sorting (redundant if API sorts, but kept for safety matching original)
+      // Client-side Sorting
       allRequests.sort((a, b) => {
         const aDate = new Date(a.createdAt).getTime();
         const bDate = new Date(b.createdAt).getTime();
@@ -91,11 +131,11 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
 
   const updateStatus = async (
     requestId: string,
-    newStatus: string,
-    bookingType: string,
+    newStatus: RequestStatus,
+    bookingType: RequestType,
   ) => {
     try {
-      const endpoint = bookingType === "reservation" ? "reservations" : "devis";
+      const endpoint = bookingType === "reservation" ? "bookings" : "quotes";
       const response = await fetch(`${API_URL}/api/${endpoint}/${requestId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -104,23 +144,55 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
 
       if (response.ok) {
         const updated = await response.json();
-        const updatedRequest = { ...updated, bookingType };
+        // Since we map data differently for quotes, we need to handle the state update carefully
+        // Ideally we just refetch or optimistically update
         setRequests((prev) =>
           prev.map((r) =>
-            r._id.toString() === requestId ? updatedRequest : r,
+            r._id === requestId ? { ...r, status: newStatus } : r,
           ),
         );
-        return updatedRequest;
+        return true;
       }
     } catch (err) {
       console.error("Error updating status", err);
     }
-    return null;
+    return false;
+  };
+
+  const deleteRequest = async (requestId: string, bookingType: RequestType) => {
+    if (
+      !confirm(
+        "Êtes-vous sûr de vouloir supprimer cette demande ? Cette action est irréversible.",
+      )
+    ) {
+      return false;
+    }
+
+    try {
+      const endpoint = bookingType === "reservation" ? "bookings" : "quotes";
+      const response = await fetch(`${API_URL}/api/${endpoint}/${requestId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setRequests((prev) => prev.filter((r) => r._id !== requestId));
+        return true;
+      }
+    } catch (err) {
+      console.error("Error deleting request", err);
+    }
+    return false;
   };
 
   useEffect(() => {
     fetchRequests();
   }, [fetchRequests]);
 
-  return { requests, loading, updateStatus, refetch: fetchRequests };
+  return {
+    requests,
+    loading,
+    updateStatus,
+    deleteRequest,
+    refetch: fetchRequests,
+  };
 }

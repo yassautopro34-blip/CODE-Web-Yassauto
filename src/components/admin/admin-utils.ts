@@ -1,32 +1,36 @@
 import { BookingDetails } from "@/types";
 
-export interface DevisDetails {
+export type RequestType = "reservation" | "devis";
+export type RequestStatus = "pending" | "confirmed" | "cancelled" | "failed";
+
+export interface AdminRequest {
+  _id: string;
+  bookingType: RequestType;
+  status: RequestStatus;
+  createdAt: string; // ISO string
+  updatedAt?: string;
+
+  // Client Info
   clientName: string;
-  clientEmail?: string;
   clientPhone: string;
-  licensePlate: string;
-  requestType: "repair" | "diag";
-  issueDescription: string;
-  hasPhotos: boolean;
-}
+  clientEmail?: string;
 
-interface BaseRequest {
-  id: string;
-  status: "pending" | "confirmed" | "cancelled";
-  createdAt: string;
-  confirmedAt?: string;
+  // Reservation Specific
+  bookingDate?: string; // The date of the appointment
+  timeSlot?: string;
+  isStudent?: boolean;
+  description?: string; // Additional details
+  date?: string; // String representation like "Lundi 12..."
+
+  // Quote Specific
+  licensePlate?: string;
+  requestType?: "repair" | "diag"; // "repair" or "diag"
+  issueDescription?: string;
+  hasPhotos?: boolean;
+
+  // Payment/Money
   amount_cents?: number;
-  price_total_cents?: number;
-}
-
-export interface ReservationRequest extends BaseRequest {
-  type: "reservation";
-  form: BookingDetails;
-}
-
-export interface DevisRequest extends BaseRequest {
-  type: "devis";
-  form: DevisDetails;
+  currency?: string;
 }
 
 export type SortOrder = "asc" | "desc";
@@ -45,12 +49,16 @@ export interface FilterState {
 export const formatCurrency = (cents: number) =>
   (cents / 100).toFixed(2) + " €";
 
-export const calculateTotals = (req: BookingDetails) => {
-  const isStudent = req.bookingType === "reservation" ? req.isStudent : false;
+export const calculateTotals = (req: AdminRequest) => {
+  if (req.bookingType === "devis") {
+    return { total: "-", paid: "-", remaining: "-" };
+  }
+
+  const isStudent = req.isStudent;
   const defaultTotal = isStudent ? 10000 : 15000; // 100€ or 150€
 
   const totalCents = defaultTotal;
-  const paidCents = 0;
+  const paidCents = 0; // TODO: Fetch actual payment info if available
   const remainingCents = totalCents - paidCents;
 
   return {
@@ -73,9 +81,9 @@ export const getDateRangeParams = (
     fromDate = toDate = today.toISOString().split("T")[0];
   } else if (filter === "week") {
     const start = new Date(today);
-    start.setDate(today.getDate() - today.getDay());
+    start.setDate(today.getDate() - today.getDay()); // Start of week (Sunday)
     const end = new Date(start);
-    end.setDate(start.getDate() + 6);
+    end.setDate(start.getDate() + 6); // End of week
     fromDate = start.toISOString().split("T")[0];
     toDate = end.toISOString().split("T")[0];
   } else if (filter === "month") {
