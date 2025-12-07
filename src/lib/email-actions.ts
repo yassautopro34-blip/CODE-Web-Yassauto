@@ -34,7 +34,7 @@ export async function sendAdminNotification(message: string, subject: string) {
   try {
     await resend.emails.send({
       from: "Yassauto <hello@yassauto.fr>",
-      to: "azizrezgui4@gmail.com",
+      to: process.env.ADMIN_EMAIL ?? "Yassauto",
       subject: `New Admin Notification, ${subject}`,
       react: AdminEmail({ message, subject }),
     });
