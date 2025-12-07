@@ -20,7 +20,7 @@ export async function sendPaymentSuccessEmail(
         clientName: data?.clientName,
         clientPhone: data?.clientPhone,
         depositCents: data?.amount_cents,
-        totalCents: data?.isStudent ? 15000 : 10000,
+        totalCents: data?.isStudent ? 10000 : 15000,
         isStudentFlag: data?.isStudent,
       }),
     });

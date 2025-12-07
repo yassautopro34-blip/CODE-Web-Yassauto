@@ -100,7 +100,7 @@ const BookingConfirmation = ({
                       isPrice
                       value={
                         <>
-                          {formatPrice(isStudentFlag ? 100 : 150)} TTC
+                          {formatPrice(isStudentFlag ? 10000 : 15000)} TTC
                           {isStudentFlag && (
                             <span className="ml-2 inline-block px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 border border-green-200">
                               -30% Étudiant
