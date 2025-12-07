@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import Image from "next/image";
+import VideoCard from "@/components/home/video-card";
 
 export const HeroSection: React.FC = () => {
   return (
@@ -51,22 +52,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Visual Element - Yassine Placeholder */}
-          <div className="relative hidden md:block flex items-center justify-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-zinc-800 rotate-2 hover:rotate-0 transition-all duration-500 scale-75">
-              <Image
-                src="/presentation.gif.gif"
-                alt="Yassine YassAuto"
-                className="w-full h-auto object-cover"
-                width={500}
-                height={500}
-                unoptimized
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                <p className="text-white font-bold">Yassine</p>
-                <p className="text-zinc-400 text-sm">Fondateur & Expert</p>
-              </div>
-            </div>
-          </div>
+          <VideoCard />
         </div>
       </div>
     </section>
