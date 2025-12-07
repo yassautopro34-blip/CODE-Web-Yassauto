@@ -62,14 +62,14 @@ export const TrustSection: React.FC = () => {
             <Image
               width={300}
               height={300}
-              src="https://picsum.photos/400/400?random=1"
+              src="/img1.jpeg"
               className="rounded-2xl shadow-lg border border-zinc-800"
               alt="Inspection engine"
             />
             <Image
               width={300}
               height={300}
-              src="https://picsum.photos/400/400?random=2"
+              src="/img4.jpeg"
               className="rounded-2xl shadow-lg border border-zinc-800 mt-8"
               alt="Happy client"
             />

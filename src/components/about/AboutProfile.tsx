@@ -9,7 +9,7 @@ export const AboutProfile: React.FC = () => {
         <Image
           width={400}
           height={500}
-          src="https://picsum.photos/400/500?grayscale"
+          src="/img2.jpeg"
           alt="Yassine Portrait"
           className="w-full h-auto rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
         />
