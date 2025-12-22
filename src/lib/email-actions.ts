@@ -1,3 +1,4 @@
+"use server"
 import { Resend } from "resend";
 import BookingConfirmation from "../../emails/success-email";
 import { IBookingDocument } from "@/lib/models/booking";
@@ -11,8 +12,8 @@ export async function sendPaymentSuccessEmail(
 ) {
   try {
     await resend.emails.send({
-      from: "Yassauto <hello@yassauto.fr>",
-      to: [email],
+      from: "Yassauto <hello@support.yassauto.fr>",
+      to: email,
       subject: "Payment Successful",
       react: BookingConfirmation({
         bookingDateTime: data?.bookingDate,
@@ -34,7 +35,7 @@ export async function sendPaymentSuccessEmail(
 export async function sendAdminNotification(message: string, subject: string) {
   try {
     await resend.emails.send({
-      from: "Yassauto <hello@yassauto.fr>",
+      from: "Yassauto <hello@support.yassauto.fr>",
       to: process.env.ADMIN_EMAIL ?? "Yassauto",
       subject: `New Admin Notification, ${subject}`,
       react: AdminEmail({ message, subject }),
