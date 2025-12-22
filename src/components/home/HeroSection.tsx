@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import Image from "next/image";
 import VideoCard from "@/components/home/video-card";
+import { trackButtonClick } from "@/lib/gtag";
 
 export const HeroSection: React.FC = () => {
+  const handleTracking = useCallback((eventName: string) => {
+    trackButtonClick(eventName, "conversions");
+  }, []);
   return (
     <section className="relative bg-brand-black py-20 lg:py-32 overflow-hidden">
       {/* Background Image Overlay */}
@@ -38,12 +42,18 @@ export const HeroSection: React.FC = () => {
               Je t&apos;accompagne, j&apos;inspecte, et je sécurise ton achat.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Link href="/accompagnement">
+              <Link
+                href="/accompagnement"
+                onClick={() => handleTracking("reserve_home_button")}
+              >
                 <Button fullWidth className="h-14">
                   Réserver un accompagnement
                 </Button>
               </Link>
-              <Link href="/mecanique">
+              <Link
+                href="/mecanique"
+                onClick={() => handleTracking("devis_home_button")}
+              >
                 <Button variant="outline" fullWidth className="h-14">
                   Demande de devis mécanique
                 </Button>
