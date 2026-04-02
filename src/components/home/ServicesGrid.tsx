@@ -54,7 +54,7 @@ export const ServicesGrid: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Mécanique Générale</h3>
             <p className="text-zinc-600 mb-6">
-              En partenariat avec <strong>Legna Auto</strong>. Entretien,
+              Service assuré par <strong>YASSAUTO MKLF</strong>. Entretien,
               réparation, devis rapide et transparent.
             </p>
             <Link

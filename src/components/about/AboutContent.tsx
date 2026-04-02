@@ -18,8 +18,8 @@ export const AboutContent: React.FC = () => {
       <p>
         Après un parcours solide en mécanique —{" "}
         <strong>Bac Scientifique, Bac Pro Mécanique, deux CAP spécialisés</strong>{" "}
-        — et plusieurs années d’expérience en garage (AD Garage, Carter Cash,
-        Legna Auto), Yassine a été confronté quotidiennement à ces situations :
+        — et plusieurs années d'expérience en garage (AD Garage, Carter Cash),
+        Yassine a été confronté quotidiennement à ces situations :
         clients mal informés, diagnostics bâclés, véhicules maquillés, problèmes
         non déclarés.
       </p>

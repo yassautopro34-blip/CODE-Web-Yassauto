@@ -15,7 +15,9 @@ export const Footer = () => {
             <p className="mt-6 text-zinc-400 text-sm max-w-sm">
               Expertise et accompagnement automobile à Montpellier. Nous vous aidons à acheter votre véhicule en toute confiance.
               <br /><br />
-              Partenaire mécanique : <strong className="text-white">Legna Auto</strong>
+              Garage : <strong className="text-white">YASSAUTO MKLF</strong>
+              <br />
+              101 781 854 R.C.S. Montpellier
             </p>
           </div>
 
@@ -31,7 +33,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-brand-red">Contact</h3>
             <ul className="space-y-2 text-zinc-400 text-sm">
-              <li>Montpellier & Alentours</li>
+              <li>7 rue André Marie Ampère, Gigean</li>
               <li><a href="tel:0648380568" className="hover:text-white transition-colors">06 48 38 05 68</a></li>
               <li><a href="mailto:yassauto.pro34@gmail.com" className="hover:text-white transition-colors">yassauto.pro34@gmail.com</a></li>
 

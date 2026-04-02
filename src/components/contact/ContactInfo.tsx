@@ -34,10 +34,10 @@ export const ContactInfo: React.FC = () => {
           <div>
             <p className="font-bold text-zinc-900">Email</p>
             <a
-              href="mailto:contact@yassauto.fr"
+              href="mailto:yassauto.pro34@gmail.com"
               className="text-lg text-zinc-600 hover:text-brand-red transition"
             >
-              contact@yassauto.fr
+              yassauto.pro34@gmail.com
             </a>
           </div>
         </div>
@@ -47,9 +47,12 @@ export const ContactInfo: React.FC = () => {
             <MapPin className="w-6 h-6 text-brand-red" />
           </div>
           <div>
-            <p className="font-bold text-zinc-900">Zone d&apos;intervention</p>
+            <p className="font-bold text-zinc-900">Notre Garage</p>
             <p className="text-zinc-600">
-              Montpellier, Sète, Nîmes, Lunel, Mauguio...
+              7 rue André Marie Ampère, Gigean
+            </p>
+            <p className="text-sm text-zinc-400 mt-1">
+              101 781 854 R.C.S. Montpellier
             </p>
           </div>
         </div>

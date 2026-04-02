@@ -20,8 +20,8 @@ export default function Mecanique() {
             Mécanique Générale
           </h1>
           <p className="text-xl text-zinc-400">
-            Service assuré par notre partenaire de confiance{" "}
-            <strong>Legna Auto</strong>.
+            Service assuré par notre garage{" "}
+            <strong>YASSAUTO MKLF</strong>.
           </p>
         </div>
       </div>
