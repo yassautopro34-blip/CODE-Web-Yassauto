@@ -44,7 +44,7 @@ export const Header = () => {
                 key={link.href}
                 href={link.href}
                 className={
-                  link.isCta
+                  link.href
                     ? "bg-white text-brand-black hover:bg-zinc-200 px-4 py-2 rounded-md font-bold text-sm uppercase transition-colors"
                     : getLinkStyles(link.href)
                 }
