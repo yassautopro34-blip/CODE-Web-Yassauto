@@ -243,13 +243,23 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
               </label>
             </div>
           </div>
-
+            <div className="mt-8 pt-8 border-t border-zinc-200">
+                <h3 className="text-xl font-bold mb-6">Ou prenez rendez-vous directement</h3>
+                <iframe
+                    src="https://calendly.com/yassauto-pro34/30min"
+                    className="w-full rounded-xl border-0"
+                    style={{ minHeight: "700px" }}
+                    title="Prendre rendez-vous — Mécanique"
+                />
+            </div>
           <Button fullWidth type="submit">
             {formData.requestType === "diag"
               ? "Demander mon RDV Diagnostic"
               : "Envoyer ma demande de devis"}
           </Button>
         </form>
+
+
       </div>
     </div>
   );

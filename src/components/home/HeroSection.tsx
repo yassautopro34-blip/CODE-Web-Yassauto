@@ -47,7 +47,7 @@ export const HeroSection: React.FC = () => {
                 onClick={() => handleTracking("reserve_home_button")}
               >
                 <Button fullWidth className="h-14">
-                  Réserver un accompagnement
+                  Prendre rendez-vous
                 </Button>
               </Link>
               <Link

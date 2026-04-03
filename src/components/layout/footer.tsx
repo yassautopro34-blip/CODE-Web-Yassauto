@@ -15,9 +15,11 @@ export const Footer = () => {
             <p className="mt-6 text-zinc-400 text-sm max-w-sm">
               Expertise et accompagnement automobile à Montpellier. Nous vous aidons à acheter votre véhicule en toute confiance.
               <br /><br />
-              Garage : <strong className="text-white">YASSAUTO MKLF</strong>
+              <strong className="text-white">YASSAUTO MKLF</strong> — SARL au capital de 1 000 €
               <br />
-              101 781 854 R.C.S. Montpellier
+              RCS Montpellier 101 781 854
+              <br />
+              Assurance professionnelle : AXA Pro
             </p>
           </div>
 
