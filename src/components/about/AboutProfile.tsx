@@ -52,7 +52,7 @@ export const AboutProfile: React.FC = () => {
           </li>
           <li className="flex items-center">
             <div className="w-1.5 h-1.5 bg-zinc-400 rounded-full mr-2"></div>
-            Legna Auto
+            YASSAUTO MKLF
           </li>
         </ul>
       </div>

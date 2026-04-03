@@ -16,8 +16,8 @@ export const MechanicsSuccess: React.FC<MechanicsSuccessProps> = ({
       </div>
       <h2 className="text-3xl font-black mb-4">Demande Envoyée !</h2>
       <p className="text-zinc-600 max-w-md mb-8">
-        Votre demande a bien été transmise à notre partenaire{" "}
-        <strong>Legna Auto</strong>. Vous serez recontacté dans la journée pour
+        Votre demande a bien été transmise à notre garage{" "}
+        <strong>YASSAUTO MKLF</strong>. Vous serez recontacté dans la journée pour
         confirmer le rendez-vous.
       </p>
       <Button onClick={resetForm} variant="outline">
