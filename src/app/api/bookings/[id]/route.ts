@@ -13,7 +13,7 @@ export async function GET(
       return NextResponse.json(result, { status: 404 });
     }
     return NextResponse.json(result);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch booking" },
       { status: 500 }
@@ -33,7 +33,7 @@ export async function PATCH(
       return NextResponse.json(result, { status: 404 });
     }
     return NextResponse.json(result);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to update booking" },
       { status: 500 }
@@ -52,7 +52,7 @@ export async function DELETE(
       return NextResponse.json(result, { status: 404 });
     }
     return NextResponse.json(result);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to delete booking" },
       { status: 500 }

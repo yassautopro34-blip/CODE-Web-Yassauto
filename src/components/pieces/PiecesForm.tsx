@@ -112,7 +112,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
         <div className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
-              Plaque d'immatriculation *
+              Plaque d&apos;immatriculation *
             </label>
             <div className="relative">
               <div className="absolute left-3 top-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
@@ -190,7 +190,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
 
           <div>
             <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
-              Préférence d'achat
+              Préférence d&apos;achat
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <button
@@ -242,8 +242,8 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
             />
             <Camera className="w-5 h-5 text-zinc-500" />
             <div>
-              <span className="font-medium text-zinc-700">J'ai une photo de la pièce</span>
-              <p className="text-xs text-zinc-500">On vous demandera de l'envoyer par email/WhatsApp</p>
+              <span className="font-medium text-zinc-700">J&apos;ai une photo de la pièce</span>
+              <p className="text-xs text-zinc-500">On vous demandera de l&apos;envoyer par email/WhatsApp</p>
             </div>
           </label>
         </div>
@@ -308,7 +308,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
                 Livraison 48h
               </span>
               <p className="text-xs text-zinc-500">Montpellier / Sète et alentours</p>
-              <p className="text-xs text-green-600 font-medium">Gratuit dès 40€ d'achat • Sinon frais détaillés sur devis</p>
+              <p className="text-xs text-green-600 font-medium">Gratuit dès 40€ d&apos;achat • Sinon frais détaillés sur devis</p>
             </div>
           </label>
 

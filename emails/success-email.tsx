@@ -143,7 +143,7 @@ const BookingConfirmation = ({
                       <Text className="text-sm text-amber-700 m-0 leading-[20px]">
                         Votre statut étudiant sera vérifié le jour du
                         rendez-vous. Merci de vous munir de votre carte
-                        d'étudiant.
+                        d&apos;étudiant.
                       </Text>
                       <Text className="text-xs text-amber-700 mt-2 m-0 opacity-80">
                         En cas de non-présentation, le solde sera de{" "}
@@ -181,6 +181,7 @@ const InfoRow = ({
   valueClassName = "",
   bgClassName = "",
   highlight = false,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isPrice = false,
 }: {
   label: string;

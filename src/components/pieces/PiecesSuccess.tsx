@@ -77,7 +77,7 @@ export const PiecesSuccess: React.FC<PiecesSuccessProps> = ({ resetForm }) => {
             Nouvelle demande
           </Button>
           <Button onClick={() => (window.location.href = "/")} className="flex-1">
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Button>
         </div>
       </div>

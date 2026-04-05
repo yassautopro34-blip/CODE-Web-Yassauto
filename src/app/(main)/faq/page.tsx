@@ -99,13 +99,13 @@ const faqSections: FAQSection[] = [
           <div className="space-y-3">
             <p>
               <strong>Je me déplace avec vous</strong> pour inspecter le véhicule que vous souhaitez acheter. 
-              L'objectif : vous éviter les arnaques et les mauvaises surprises !
+              L&apos;objectif : vous éviter les arnaques et les mauvaises surprises !
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong>Diagnostic complet</strong> : passage à la valise, inspection moteur, châssis, carrosserie</li>
-              <li><strong>Vérification des documents</strong> : carte grise, historique d'entretien, factures</li>
+              <li><strong>Vérification des documents</strong> : carte grise, historique d&apos;entretien, factures</li>
               <li><strong>Estimation des réparations</strong> : devis sur place si problèmes détectés</li>
-              <li><strong>Conseil achat</strong> : je vous dis honnêtement si c'est une bonne affaire ou non</li>
+              <li><strong>Conseil achat</strong> : je vous dis honnêtement si c&apos;est une bonne affaire ou non</li>
             </ul>
             <p className="text-green-700 bg-green-50 px-3 py-2 rounded-lg border border-green-100 mt-3">
               💡 Déplacement inclus sur Montpellier et rayon 30 km. Au-delà, supplément kilométrique.
@@ -133,7 +133,7 @@ const faqSections: FAQSection[] = [
               </li>
             </ol>
             <p className="text-blue-700 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100 mt-3">
-              ⏰ <strong>Confirmation sous 60 minutes max</strong> pendant nos horaires d'ouverture !
+              ⏰ <strong>Confirmation sous 60 minutes max</strong> pendant nos horaires d&apos;ouverture !
             </p>
           </div>
         ),
@@ -164,12 +164,12 @@ const faqSections: FAQSection[] = [
               Pour vous offrir un <strong>meilleur service</strong>, nous avons changé notre fonctionnement :
             </p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
-              <li>Nous vérifions d'abord nos disponibilités réelles</li>
+              <li>Nous vérifions d&apos;abord nos disponibilités réelles</li>
               <li>Nous pouvons échanger avec vous si besoin (lieu, horaire...)</li>
               <li>Vous ne payez que quand le RDV est 100% confirmé</li>
             </ul>
             <p className="mt-3">
-              Résultat : <strong>moins d'annulations</strong> et un service plus flexible !
+              Résultat : <strong>moins d&apos;annulations</strong> et un service plus flexible !
             </p>
           </div>
         ),
@@ -195,7 +195,7 @@ const faqSections: FAQSection[] = [
         question: "Que se passe-t-il si je dois annuler ?",
         answer: (
           <div className="space-y-2">
-            <p><strong>Politique d'annulation :</strong></p>
+            <p><strong>Politique d&apos;annulation :</strong></p>
             <ul className="space-y-1 mt-2">
               <li className="flex items-start gap-2">
                 <span className="text-green-600">✓</span>
@@ -230,7 +230,7 @@ const faqSections: FAQSection[] = [
         question: "Comment se passe la commande de pièces ?",
         answer: (
           <div className="space-y-3">
-            <p>Le processus est très simple et s'adapte à vos préférences. Vous pouvez :</p>
+            <p>Le processus est très simple et s&apos;adapte à vos préférences. Vous pouvez :</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Passer directement nous voir au garage à Gigean</li>
               <li>Nous appeler par téléphone</li>
@@ -239,7 +239,7 @@ const faqSections: FAQSection[] = [
             <p>
               Une fois votre demande traitée, nous vous envoyons un lien de paiement sécurisé. 
               Dès que le règlement est validé, vous recevez votre facture et votre commande est 
-              préparée pour l'expédition ou la livraison !
+              préparée pour l&apos;expédition ou la livraison !
             </p>
           </div>
         ),
@@ -298,12 +298,12 @@ const faqSections: FAQSection[] = [
         answer: (
           <div className="space-y-2">
             <p>
-              Oui, absolument ! Nous prenons en charge votre véhicule et l'emmenons passer son 
+              Oui, absolument ! Nous prenons en charge votre véhicule et l&apos;emmenons passer son 
               contrôle technique dans un centre partenaire.
             </p>
             <p>
-              Vous nous déposez simplement votre voiture au garage, et on s'occupe du reste. 
-              Fini la perte de temps dans les salles d'attente !
+              Vous nous déposez simplement votre voiture au garage, et on s&apos;occupe du reste.
+              Fini la perte de temps dans les salles d&apos;attente !
             </p>
             <p className="text-blue-700 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100 mt-2">
               💡 Si nécessaire, nous pouvons faire un pré-contrôle avant pour éviter toute contre-visite.
@@ -324,7 +324,7 @@ const faqSections: FAQSection[] = [
         answer: (
           <div className="space-y-2">
             <p>
-              Oui ! Nous proposons l'installation d'écrans et de modules CarPlay/Android Auto 
+              Oui ! Nous proposons l&apos;installation d&apos;écrans et de modules CarPlay/Android Auto 
               pour moderniser votre véhicule.
             </p>
             <p>
@@ -332,7 +332,7 @@ const faqSections: FAQSection[] = [
               sur le tableau de bord.
             </p>
             <p className="text-zinc-500 text-sm mt-2">
-              Contactez-nous avec la marque, le modèle et l'année de votre voiture pour vérifier 
+              Contactez-nous avec la marque, le modèle et l&apos;année de votre voiture pour vérifier 
               la compatibilité et recevoir un devis.
             </p>
           </div>
@@ -348,11 +348,11 @@ const faqSections: FAQSection[] = [
         answer: (
           <div className="space-y-2">
             <p>
-              <strong>C'est même fortement recommandé !</strong>
+              <strong>C&apos;est même fortement recommandé !</strong>
             </p>
             <p>
-              Nous effectuons un bilan complet (mécanique et électronique) d'un véhicule 
-              d'occasion avant votre achat pour vous éviter les mauvaises surprises.
+              Nous effectuons un bilan complet (mécanique et électronique) d&apos;un véhicule
+              d&apos;occasion avant votre achat pour vous éviter les mauvaises surprises.
             </p>
           </div>
         ),
@@ -381,7 +381,7 @@ const faqSections: FAQSection[] = [
           <div className="space-y-2">
             <p>
               Vous voulez vendre votre voiture au meilleur prix sans gérer les annonces, 
-              appels ou visites d'inconnus ? Confiez-nous la vente !
+              appels ou visites d&apos;inconnus ? Confiez-nous la vente !
             </p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
               <li>Nous exposons votre véhicule sur notre parc</li>
@@ -482,7 +482,7 @@ export default function FAQPage() {
               Aucun résultat trouvé
             </h3>
             <p className="text-zinc-500">
-              Essayez avec d'autres mots-clés ou{" "}
+              Essayez avec d&apos;autres mots-clés ou{" "}
               <a href="/contact" className="text-brand-red hover:underline">
                 contactez-nous directement
               </a>
@@ -508,7 +508,7 @@ export default function FAQPage() {
             Vous avez encore des questions ?
           </h3>
           <p className="text-zinc-400 mb-6">
-            Notre équipe est là pour vous aider. N'hésitez pas à nous contacter !
+            Notre équipe est là pour vous aider. N&apos;hésitez pas à nous contacter !
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

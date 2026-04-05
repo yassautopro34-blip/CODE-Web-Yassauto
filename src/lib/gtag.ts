@@ -1,8 +1,8 @@
 // Helper to update GA4 Consent Mode v2
 export const updateGA4Consent = (granted: boolean) => {
   const status = granted ? "granted" : "denied";
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).gtag) {
+    ((window as unknown as Record<string, unknown>).gtag as (...args: unknown[]) => void)("consent", "update", {
       analytics_storage: status,
       ad_storage: status,
       ad_user_data: status,
