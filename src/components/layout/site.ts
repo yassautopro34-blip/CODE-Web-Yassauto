@@ -1,8 +1,10 @@
 
-import { CarFront, PenTool, Phone } from "lucide-react";
+import { CarFront, HelpCircle, Package, PenTool, Phone } from "lucide-react";
 
 export const NAV_LINKS = [
+  { href: "/pieces", label: "Pièces", icon: Package },
   { href: "/accompagnement", label: "Accompagnement", icon: CarFront },
-  { href: "/contact", label: "Prendre rendez-vous", icon: Phone },
   { href: "/mecanique", label: "Mécanique", icon: PenTool },
+  { href: "/faq", label: "FAQ", icon: HelpCircle },
+  { href: "/contact", label: "Prendre rendez-vous", icon: Phone, isCta: true },
 ];

@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link
-                href="/accompagnement"
+                href="/mecanique"
                 onClick={() => handleTracking("reserve_home_button")}
               >
                 <Button fullWidth className="h-14">
@@ -51,11 +51,11 @@ export const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               <Link
-                href="/mecanique"
-                onClick={() => handleTracking("devis_home_button")}
+                href="/pieces"
+                onClick={() => handleTracking("pieces_home_button")}
               >
-                <Button variant="outline" fullWidth className="h-14">
-                  Demande de devis mécanique
+                <Button variant="outline" fullWidth className="h-14 border-2 border-white text-white hover:bg-white hover:text-brand-black">
+                  🔧 Pièces auto
                 </Button>
               </Link>
             </div>

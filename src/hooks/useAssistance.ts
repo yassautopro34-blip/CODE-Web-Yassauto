@@ -48,15 +48,73 @@ export const useAssistance = () => {
     setBookingData((prev) => ({ ...prev, timeSlot: slot }));
   };
 
+  // Nouvelle fonction : envoie la demande sans paiement
+  const submitRequest = async () => {
+    setIsProcessing(true);
+    try {
+      // Validate required fields
+      if (!bookingData.clientEmail || !bookingData.clientEmail.includes("@")) {
+        throw new Error("Veuillez entrer une adresse email valide");
+      }
+      if (!bookingData.clientPhone) {
+        throw new Error("Veuillez entrer votre numéro de téléphone");
+      }
+      if (!bookingData.date || !bookingData.timeSlot) {
+        throw new Error("Veuillez sélectionner une date et un créneau");
+      }
+
+      // Prepare payload
+      const payload = {
+        carModel: bookingData.carModel,
+        postLink: bookingData.postLink,
+        address: bookingData.address,
+        status: "pending",
+        date: bookingData.date,
+        timeSlot: bookingData.timeSlot,
+        hasDocs: bookingData.hasDocs,
+        clientName: bookingData.clientName || "Anonyme",
+        clientEmail: bookingData.clientEmail,
+        clientPhone: bookingData.clientPhone,
+        bookingType: "accompagnement",
+        isStudent: bookingData.isStudent,
+        description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
+      };
+
+      // Envoyer la demande au backend
+      const res = await fetch(`/api/booking-request`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Erreur lors de l'envoi de la demande");
+      }
+
+      // Passer à l'étape de confirmation
+      setCurrentStep(Step.CONFIRMATION);
+    } catch (error) {
+      const errorMsg =
+        error instanceof Error
+          ? error.message
+          : "Impossible d'envoyer la demande";
+      console.error("Request error:", errorMsg);
+      alert("Erreur: " + errorMsg);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // Ancienne fonction pour le paiement Stripe (garde pour compatibilité)
   const simulatePayment = async () => {
     setIsProcessing(true);
     try {
-      // Validate email
       if (!bookingData.clientEmail || !bookingData.clientEmail.includes("@")) {
         throw new Error("Veuillez entrer une adresse email valide");
       }
 
-      // Prepare payload expected by backend
       const payload: BookingDetails = {
         currency: "eur",
         confirmedAt: "",
@@ -77,7 +135,6 @@ export const useAssistance = () => {
         description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
       };
 
-      // Create Stripe Checkout session on backend
       const res = await fetch(`/api/create-checkout-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -92,10 +149,9 @@ export const useAssistance = () => {
         );
       }
 
-      // Redirect browser to Stripe Checkout (or mock URL returned by backend)
       if (data && data.url) {
         window.location.href = data.url;
-        return; // stop further processing — user is redirected to Stripe
+        return;
       }
 
       throw new Error("Aucun URL de session retourné par le serveur");
@@ -119,6 +175,7 @@ export const useAssistance = () => {
     nextStep,
     prevStep,
     setTimeSlot,
+    submitRequest,
     simulatePayment,
   };
 };
