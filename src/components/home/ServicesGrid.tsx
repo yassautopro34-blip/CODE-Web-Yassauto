@@ -151,6 +151,8 @@ export const ServicesGrid: React.FC = () => {
             <span>⚡ Réponse 24h</span>
             <span>•</span>
             <span>💳 CB/Espèces</span>
+            <span>•</span>
+            <span>👥 +500 clients depuis 2023</span>
           </div>
           
           {/* Desktop: stats */}
