@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { GraduationCap, X } from "lucide-react";
 
 export const StudentBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,34 +26,34 @@ export const StudentBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed left-0 right-0 top-20 z-40 flex justify-center pointer-events-none">
+    <div className="fixed bottom-4 right-4 z-40 max-w-xs">
       <div
-        className="pointer-events-auto w-full max-w-7xl mx-4 rounded-b-md shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 bg-[#FFA500]"
+        className="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3 flex items-center gap-3"
         role="alert"
       >
-        <div className="flex items-center gap-4 text-center sm:text-left">
-          <span className="text-2xl" role="img" aria-label="Student hat">🎓</span>
-          <p className="text-sm md:text-base font-bold text-black">
-            Étudiant(e) ? Profite de -30% sur l&apos;accompagnement achat (100€ au lieu de 150€)
-          </p>
+        <div className="w-9 h-9 bg-amber-500 rounded-lg flex items-center justify-center shrink-0">
+          <GraduationCap className="w-5 h-5 text-white" />
         </div>
-
-        <div className="flex items-center gap-4">
+        
+        <div className="flex-1 min-w-0">
+          <p className="text-white text-xs font-bold leading-tight">
+            Étudiant ? <span className="text-amber-400">-30%</span>
+          </p>
           <button
             onClick={() => router.push("/accompagnement")}
-            className="text-sm font-bold bg-black text-white px-3 py-2 rounded-md hover:opacity-90 transition animate-pulse hover:animate-none whitespace-nowrap"
+            className="text-[10px] text-zinc-400 hover:text-amber-400 transition-colors"
           >
-            → Réserver
-          </button>
-
-          <button
-            onClick={handleClose}
-            aria-label="Fermer le bandeau"
-            className="text-black text-xl font-bold opacity-70 hover:opacity-100 px-2"
-          >
-            ×
+            100€ au lieu de 150€ →
           </button>
         </div>
+
+        <button
+          onClick={handleClose}
+          aria-label="Fermer"
+          className="w-6 h-6 flex items-center justify-center text-zinc-500 hover:text-white transition-colors"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
     </div>
   );

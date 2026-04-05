@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/Button";
-import { PenTool, Camera, Car, AlertCircle } from "lucide-react";
+import { PenTool, Camera, Car, AlertCircle, Wrench, Search } from "lucide-react";
 import { MechanicQuote } from "@/types";
 
 interface MechanicsFormProps {
@@ -15,252 +15,196 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
   handleSubmit,
 }) => {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <div className="bg-white p-8 rounded-2xl shadow-lg border border-zinc-200">
-        <div className="flex items-center space-x-4 mb-8 pb-8 border-b border-zinc-100">
-          <div className="bg-zinc-100 p-3 rounded-lg">
-            <PenTool className="w-8 h-8 text-brand-red" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold">Demandez votre devis</h2>
-            <p className="text-zinc-500 text-sm">
-              Entretien, réparation ou recherche de panne
-            </p>
+    <div className="bg-white p-6 rounded-2xl shadow-lg border border-zinc-200">
+      {/* Header compact */}
+      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100">
+        <div className="bg-brand-red/10 p-2.5 rounded-xl">
+          <PenTool className="w-5 h-5 text-brand-red" />
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">Demande de devis</h2>
+          <p className="text-zinc-500 text-xs">Réponse sous 24h</p>
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Type de demande - En premier pour UX */}
+        <div>
+          <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-2">
+            Type de demande
+          </label>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={() => updateFormData({ requestType: "repair" })}
+              className={`p-3 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${
+                formData.requestType === "repair"
+                  ? "border-brand-red bg-red-50 text-brand-red"
+                  : "border-zinc-200 hover:border-zinc-300 text-zinc-600"
+              }`}
+            >
+              <Wrench className="w-5 h-5" />
+              <span className="text-sm font-medium">Je sais ce qu&apos;il faut</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => updateFormData({ requestType: "diag" })}
+              className={`p-3 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${
+                formData.requestType === "diag"
+                  ? "border-brand-red bg-red-50 text-brand-red"
+                  : "border-zinc-200 hover:border-zinc-300 text-zinc-600"
+              }`}
+            >
+              <Search className="w-5 h-5" />
+              <span className="text-sm font-medium">Diagnostic panne</span>
+            </button>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Identité */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                Nom
-              </label>
-              <input
-                required
-                type="text"
-                placeholder="Votre nom"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
-                value={formData.lastName}
-                onChange={(e) => updateFormData({ lastName: e.target.value })}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                Prénom
-              </label>
-              <input
-                required
-                type="text"
-                placeholder="Votre prénom"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
-                value={formData.firstName}
-                onChange={(e) => updateFormData({ firstName: e.target.value })}
-              />
-            </div>
-          </div>
-
-          {/* Véhicule */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                Téléphone
-              </label>
-              <input
-                required
-                type="tel"
-                placeholder="06 12 34 56 78"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
-                value={formData.phone}
-                onChange={(e) => updateFormData({ phone: e.target.value })}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                Email (optionnel)
-              </label>
-              <input
-                type="email"
-                placeholder="votre@email.com"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
-                value={formData.email}
-                onChange={(e) => updateFormData({ email: e.target.value })}
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                Immatriculation
-              </label>
-              <div className="relative">
-                <Car className="absolute left-3 top-3.5 h-5 w-5 text-zinc-400" />
-                <input
-                  required
-                  type="text"
-                  placeholder="AA-123-BB"
-                  className="w-full pl-10 px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red uppercase"
-                  value={formData.licensePlate}
-                  onChange={(e) =>
-                    updateFormData({
-                      licensePlate: e.target.value.toUpperCase(),
-                    })
-                  }
-                />
+        {/* Info Diagnostic */}
+        {formData.requestType === "diag" && (
+          <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 animate-in fade-in slide-in-from-top-2">
+            <div className="flex gap-2">
+              <AlertCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+              <div className="text-sm space-y-1">
+                <div>
+                  <span className="font-semibold text-blue-900">Diagnostic : 50€</span>
+                  <span className="text-blue-600"> • </span>
+                  <span className="text-green-700 font-medium">30€ étudiant</span>
+                  <span className="text-zinc-500 text-xs"> (carte valide)</span>
+                </div>
+                <p className="text-blue-700 text-xs">💡 Remboursé intégralement si réparation chez nous !</p>
               </div>
             </div>
           </div>
+        )}
 
-          {/* Type de demande */}
-          <div className="pt-4 border-t border-zinc-100">
-            <label className="block text-sm font-bold text-zinc-700 mb-4">
-              Connaissez-vous l&apos;origine de la panne ?
+        {/* Identité - Compact */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+              Nom
             </label>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div
-                onClick={() => updateFormData({ requestType: "repair" })}
-                className={`cursor-pointer p-4 rounded-xl border-2 transition-all flex items-center space-x-3 ${
-                  formData.requestType === "repair"
-                    ? "border-brand-red bg-red-50"
-                    : "border-zinc-200 hover:border-zinc-300"
-                }`}
-              >
-                <div
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    formData.requestType === "repair"
-                      ? "border-brand-red"
-                      : "border-zinc-300"
-                  }`}
-                >
-                  {formData.requestType === "repair" && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-red" />
-                  )}
-                </div>
-                <span
-                  className={`font-medium ${
-                    formData.requestType === "repair"
-                      ? "text-brand-red"
-                      : "text-zinc-600"
-                  }`}
-                >
-                  Oui, je connais la réparation à faire
-                </span>
-              </div>
-
-              <div
-                onClick={() => updateFormData({ requestType: "diag" })}
-                className={`cursor-pointer p-4 rounded-xl border-2 transition-all flex items-center space-x-3 ${
-                  formData.requestType === "diag"
-                    ? "border-brand-red bg-red-50"
-                    : "border-zinc-200 hover:border-zinc-300"
-                }`}
-              >
-                <div
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    formData.requestType === "diag"
-                      ? "border-brand-red"
-                      : "border-zinc-300"
-                  }`}
-                >
-                  {formData.requestType === "diag" && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-red" />
-                  )}
-                </div>
-                <span
-                  className={`font-medium ${
-                    formData.requestType === "diag"
-                      ? "text-brand-red"
-                      : "text-zinc-600"
-                  }`}
-                >
-                  Non, j&apos;ai besoin d&apos;un diagnostic
-                </span>
-              </div>
-            </div>
-
-            {/* Conditionnelle : Info Diagnostic */}
-            {formData.requestType === "diag" && (
-              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 animate-in fade-in slide-in-from-top-2">
-                <div className="flex items-start">
-                  <AlertCircle className="w-5 h-5 text-blue-600 mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h4 className="font-bold text-blue-900">
-                      Forfait Diagnostic : 50€
-                    </h4>
-                    <p className="text-sm text-blue-800 mt-1">
-                      Nous fixerons un rendez-vous pour identifier la panne. Si
-                      vous acceptez le devis des réparations par la suite,{" "}
-                      <strong>les 50€ du diagnostic seront déduits</strong> de
-                      votre facture finale.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div>
-              <label className="block text-sm font-bold text-zinc-700 mb-2">
-                {formData.requestType === "repair"
-                  ? "Quelle réparation souhaitez-vous ?"
-                  : "Décrivez les symptômes (bruit, voyant, comportement...)"}
-              </label>
-              <textarea
-                required
-                rows={4}
-                placeholder={
-                  formData.requestType === "repair"
-                    ? "Ex: Vidange, plaquettes de frein, distribution..."
-                    : "Ex: La voiture tremble à 110km/h, bruit métallique au freinage..."
-                }
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 focus:ring-brand-red focus:border-brand-red"
-                value={formData.issueDescription}
-                onChange={(e) =>
-                  updateFormData({ issueDescription: e.target.value })
-                }
-              ></textarea>
-            </div>
+            <input
+              required
+              type="text"
+              placeholder="Dupont"
+              className="w-full px-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm transition-all"
+              value={formData.lastName}
+              onChange={(e) => updateFormData({ lastName: e.target.value })}
+            />
           </div>
-
-          <div className="bg-zinc-50 p-4 rounded-lg border border-zinc-200">
-            <div className="flex items-center space-x-3">
-              <input
-                type="checkbox"
-                id="photos"
-                className="h-5 w-5 text-brand-red focus:ring-brand-red rounded border-gray-300"
-                checked={formData.hasPhotos}
-                onChange={(e) =>
-                  updateFormData({ hasPhotos: e.target.checked })
-                }
-              />
-              <label
-                htmlFor="photos"
-                className="text-sm text-zinc-700 flex items-center cursor-pointer"
-              >
-                <Camera className="w-4 h-4 mr-2 text-zinc-500" />
-                J&apos;ai des photos/vidéos du problème (à envoyer plus tard)
-              </label>
-            </div>
+          <div>
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+              Prénom
+            </label>
+            <input
+              required
+              type="text"
+              placeholder="Jean"
+              className="w-full px-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm transition-all"
+              value={formData.firstName}
+              onChange={(e) => updateFormData({ firstName: e.target.value })}
+            />
           </div>
-            <div className="mt-8 pt-8 border-t border-zinc-200">
-                <h3 className="text-xl font-bold mb-6">Ou prenez rendez-vous directement</h3>
-                <iframe
-                    src="https://calendly.com/yassauto-pro34/30min"
-                    className="w-full rounded-xl border-0"
-                    style={{ minHeight: "700px" }}
-                    title="Prendre rendez-vous — Mécanique"
-                />
-            </div>
-          <Button fullWidth type="submit">
-            {formData.requestType === "diag"
-              ? "Demander mon RDV Diagnostic"
-              : "Envoyer ma demande de devis"}
-          </Button>
-        </form>
+        </div>
 
+        {/* Contact */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+              Téléphone
+            </label>
+            <input
+              required
+              type="tel"
+              placeholder="06 12 34 56 78"
+              className="w-full px-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm transition-all"
+              value={formData.phone}
+              onChange={(e) => updateFormData({ phone: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+              Email <span className="text-zinc-400 normal-case font-normal">(optionnel)</span>
+            </label>
+            <input
+              type="email"
+              placeholder="email@exemple.fr"
+              className="w-full px-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm transition-all"
+              value={formData.email}
+              onChange={(e) => updateFormData({ email: e.target.value })}
+            />
+          </div>
+        </div>
 
-      </div>
+        {/* Immatriculation */}
+        <div>
+          <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+            Immatriculation
+          </label>
+          <div className="relative">
+            <Car className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
+            <input
+              required
+              type="text"
+              placeholder="AA-123-BB"
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm uppercase transition-all"
+              value={formData.licensePlate}
+              onChange={(e) =>
+                updateFormData({
+                  licensePlate: e.target.value.toUpperCase(),
+                })
+              }
+            />
+          </div>
+        </div>
+
+        {/* Description */}
+        <div>
+          <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-1.5">
+            {formData.requestType === "repair"
+              ? "Réparation souhaitée"
+              : "Symptômes observés"}
+          </label>
+          <textarea
+            required
+            rows={3}
+            placeholder={
+              formData.requestType === "repair"
+                ? "Ex: Vidange, plaquettes de frein..."
+                : "Ex: Bruit au freinage, voyant allumé..."
+            }
+            className="w-full px-3 py-2.5 rounded-lg border border-zinc-200 focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red text-sm transition-all resize-none"
+            value={formData.issueDescription}
+            onChange={(e) =>
+              updateFormData({ issueDescription: e.target.value })
+            }
+          ></textarea>
+        </div>
+
+        {/* Photos checkbox */}
+        <label className="flex items-center gap-2.5 p-3 bg-zinc-50 rounded-lg border border-zinc-100 cursor-pointer hover:bg-zinc-100 transition-colors">
+          <input
+            type="checkbox"
+            className="h-4 w-4 text-brand-red focus:ring-brand-red rounded border-zinc-300"
+            checked={formData.hasPhotos}
+            onChange={(e) =>
+              updateFormData({ hasPhotos: e.target.checked })
+            }
+          />
+          <Camera className="w-4 h-4 text-zinc-500" />
+          <span className="text-sm text-zinc-600">
+            J&apos;ai des photos/vidéos à envoyer
+          </span>
+        </label>
+
+        <Button fullWidth type="submit" className="mt-2">
+          {formData.requestType === "diag"
+            ? "Demander mon RDV Diagnostic"
+            : "Envoyer ma demande"}
+        </Button>
+      </form>
     </div>
   );
 };

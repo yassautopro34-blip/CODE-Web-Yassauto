@@ -2,13 +2,12 @@
 import React from "react";
 import { Step } from "@/types";
 import { useAssistance } from "@/hooks/useAssistance";
-import { Button } from "@/components/Button";
+
+import { DateSelectionStep } from "@/components/assistance/DateSelectionStep";
 import { DetailsFormStep } from "@/components/assistance/DetailsFormStep";
-import { PaymentStep } from "@/components/assistance/PaymentStep";
+import { RequestConfirmStep } from "@/components/assistance/RequestConfirmStep";
 import { ConfirmationStep } from "@/components/assistance/ConfirmationStep";
 import { ServiceDetails } from "@/components/assistance/ServiceDetails";
-
-const CALENDLY_URL = "https://calendly.com/yassauto-pro34/30min";
 
 const Accompagnement: React.FC = () => {
   const {
@@ -17,9 +16,10 @@ const Accompagnement: React.FC = () => {
     isProcessing,
     handleInputChange,
     handleCheckboxChange,
+    setTimeSlot,
     nextStep,
     prevStep,
-    simulatePayment,
+    submitRequest,
   } = useAssistance();
 
   return (
@@ -54,7 +54,7 @@ const Accompagnement: React.FC = () => {
                       ? "Date"
                       : currentStep === 2
                         ? "Infos"
-                        : "Paiement"}
+                        : "Confirmation"}
                   </span>
                 </div>
                 <div className="w-full bg-zinc-100 h-2 rounded-full overflow-hidden">
@@ -67,20 +67,12 @@ const Accompagnement: React.FC = () => {
             )}
 
             {currentStep === Step.DATE_SELECTION && (
-              <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
-                <h3 className="text-xl font-bold mb-4">1. Choisissez votre créneau</h3>
-                <iframe
-                  src={CALENDLY_URL}
-                  className="w-full rounded-xl border-0"
-                  style={{ minHeight: "600px" }}
-                  title="Prendre rendez-vous — Accompagnement"
-                />
-                <div className="pt-4">
-                  <Button fullWidth onClick={nextStep}>
-                    Suivant
-                  </Button>
-                </div>
-              </div>
+              <DateSelectionStep
+                bookingData={bookingData}
+                handleInputChange={handleInputChange}
+                setTimeSlot={setTimeSlot}
+                nextStep={nextStep}
+              />
             )}
             {currentStep === Step.DETAILS && (
               <DetailsFormStep
@@ -92,10 +84,10 @@ const Accompagnement: React.FC = () => {
               />
             )}
             {currentStep === Step.PAYMENT && (
-              <PaymentStep
+              <RequestConfirmStep
                 bookingData={bookingData}
                 prevStep={prevStep}
-                simulatePayment={simulatePayment}
+                submitRequest={submitRequest}
                 isProcessing={isProcessing}
               />
             )}

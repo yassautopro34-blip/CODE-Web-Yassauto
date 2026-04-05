@@ -38,14 +38,14 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex space-x-8 items-center">
+          <nav className="hidden md:flex space-x-6 items-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={
-                  link.href
-                    ? "bg-white text-brand-black hover:bg-zinc-200 px-4 py-2 rounded-md font-bold text-sm uppercase transition-colors"
+                  link.isCta
+                    ? "bg-white text-brand-black hover:bg-zinc-200 px-3 py-1.5 rounded-md font-semibold text-xs uppercase transition-colors"
                     : getLinkStyles(link.href)
                 }
               >

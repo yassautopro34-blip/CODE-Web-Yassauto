@@ -28,6 +28,7 @@ export const Footer = () => {
             <ul className="space-y-2 text-zinc-400">
               <li><Link href="/accompagnement" className="hover:text-white transition-colors">Accompagnement Achat</Link></li>
               <li><Link href="/mecanique" className="hover:text-white transition-colors">Devis Mécanique</Link></li>
+              <li><Link href="/faq" className="hover:text-white transition-colors">Questions Fréquentes</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>

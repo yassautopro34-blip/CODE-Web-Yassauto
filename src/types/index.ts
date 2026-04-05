@@ -29,6 +29,19 @@ export interface MechanicQuote {
   hasPhotos: boolean;
 }
 
+export interface PiecesRequest {
+  fullName: string;
+  phone: string;
+  email: string;
+  licensePlate: string;
+  carModel: string;
+  vin: string;
+  partDescription: string;
+  preference: "new" | "used" | "cheapest";
+  hasPhoto: boolean;
+  deliveryMethod: "pickup" | "delivery-local" | "delivery-france";
+}
+
 export enum Step {
   DATE_SELECTION = 1,
   DETAILS = 2,

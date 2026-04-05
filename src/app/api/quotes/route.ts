@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const result = await getQuotes();
     return NextResponse.json(result);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch quotes" },
       { status: 500 }
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json(result, { status: 201 });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to create quote" },
       { status: 500 }

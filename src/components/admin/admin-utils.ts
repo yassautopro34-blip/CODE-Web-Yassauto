@@ -1,5 +1,3 @@
-import { BookingDetails } from "@/types";
-
 export type RequestType = "reservation" | "devis";
 export type RequestStatus = "pending" | "confirmed" | "cancelled" | "failed";
 
