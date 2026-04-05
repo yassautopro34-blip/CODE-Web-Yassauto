@@ -21,11 +21,11 @@ export const ServicesGrid: React.FC = () => {
           </div>
           
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-3 md:mb-5">
-            Un souci avec <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">ta caisse ?</span>
+            Un souci avec <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">ta voiture ?</span>
           </h2>
           
           <p className="text-zinc-500 text-sm md:text-base lg:text-lg max-w-xl mx-auto mb-5 md:mb-7">
-            Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">je gère tout.</span>
+            Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">on gère tout.</span>
           </p>
 
           <a 
