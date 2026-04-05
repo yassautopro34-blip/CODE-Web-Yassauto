@@ -1,18 +1,15 @@
 import { NextResponse } from "next/server";
 import { getAllBookings, createBookingInternal } from "@/lib/booking-actions";
 import { BookingDetails } from "@/types";
-import { sendAdminNotification } from "@/lib/email-actions";
 
 export async function GET() {
   try {
     const data = await getAllBookings();
 
     return NextResponse.json({ success: true, data: data.data });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      {
-        error: err,
-      },
+      { error: "Failed to fetch bookings" },
       { status: 500 },
     );
   }
@@ -24,7 +21,7 @@ export async function POST(req: Request) {
     const result = await createBookingInternal(body);
 
     return NextResponse.json(result, { status: 201 });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to create booking" },
       { status: 500 },

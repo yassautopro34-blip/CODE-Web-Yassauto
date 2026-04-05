@@ -44,7 +44,7 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
               }`}
             >
               <Wrench className="w-5 h-5" />
-              <span className="text-sm font-medium">Je sais ce qu'il faut</span>
+              <span className="text-sm font-medium">Je sais ce qu&apos;il faut</span>
             </button>
             <button
               type="button"
@@ -195,7 +195,7 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
           />
           <Camera className="w-4 h-4 text-zinc-500" />
           <span className="text-sm text-zinc-600">
-            J'ai des photos/vidéos à envoyer
+            J&apos;ai des photos/vidéos à envoyer
           </span>
         </label>
 

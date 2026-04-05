@@ -15,6 +15,7 @@ export default function CookieBanner() {
       .find((row) => row.startsWith("cookie_consent="));
 
     if (!hasConsentCookie) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- initializing state from cookie on mount
       setIsVisible(true);
     } else {
       const isGranted = hasConsentCookie.split("=")[1] === "true";

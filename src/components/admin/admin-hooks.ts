@@ -17,6 +17,7 @@ export function useAdminAuth() {
 
   useEffect(() => {
     const stored = localStorage.getItem("adminAuth");
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- initializing state from localStorage on mount
     if (stored) setIsAuthenticated(true);
   }, []);
 
@@ -57,6 +58,7 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
       // Process Bookings
       if (bookingsRes.ok) {
         const data = await bookingsRes.json();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const bookings = (data.data || []).map((b: any) => ({
           ...b,
           bookingType: "reservation" as RequestType,
@@ -68,6 +70,7 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
       if (quotesRes.ok) {
         const data = await quotesRes.json();
         // data.data is the array of quotes
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const quotes = (data.data || []).map((q: any) => ({
           _id: q._id,
           bookingType: "devis" as RequestType,
@@ -143,7 +146,7 @@ export function useRequests(filters: FilterState, isAuthenticated: boolean) {
       });
 
       if (response.ok) {
-        const updated = await response.json();
+        await response.json();
         // Since we map data differently for quotes, we need to handle the state update carefully
         // Ideally we just refetch or optimistically update
         setRequests((prev) =>

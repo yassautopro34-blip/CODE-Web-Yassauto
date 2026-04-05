@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 
-export async function getCookieAction(name: string): Promise<any> {
+export async function getCookieAction(name: string): Promise<{ name: string; value: string } | undefined> {
   const cookieStore = await cookies();
   return cookieStore.get(name);
 }
