@@ -86,13 +86,15 @@ export const TrustSection: React.FC = () => {
               ))}
             </div>
 
-            <Link 
-              href="/propos"
+            <a
+              href="https://www.google.com/maps/place/YASSAUTO+MKLF/@43.4920827,3.7051598,17z/data=!3m1!4b1!4m6!3m5!1s0x12b14beb886c2d05:0x7674229ccefd9e45!8m2!3d43.4920827!4d3.7051598!16s%2Fg%2F11n58n0vkz?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-brand-red font-bold text-sm hover:gap-3 transition-all"
             >
-              Découvrir notre histoire
+              Voir tous les avis
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
 
           {/* Images avec défilement - visible sur TOUS les écrans */}

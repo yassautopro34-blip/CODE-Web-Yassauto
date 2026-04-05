@@ -6,8 +6,8 @@ export async function POST(request: NextRequest) {
     // 1. Parse JSON body
     const form = await request.json();
 
-    // 2. Validation
-    if (!form.name || !form.phone || !form.email || !form.licensePlate || !form.partDescription) {
+    // 2. Validation - utilise les bons noms de champs du formulaire
+    if (!form.fullName || !form.phone || !form.email || !form.licensePlate || !form.partDescription) {
       return NextResponse.json(
         {
           error: "Champs manquants : nom, téléphone, email, immatriculation et description requis",
@@ -24,49 +24,45 @@ export async function POST(request: NextRequest) {
     };
 
     const deliveryLabels: Record<string, string> = {
-      pickup: "🏪 Retrait sur place (Montpellier)",
-      local: "🚗 Livraison locale (Montpellier et alentours)",
-      france: "📦 Envoi partout en France",
+      pickup: "🏪 Retrait sur place (Gigean)",
+      delivery: "🚗 Livraison à domicile",
     };
 
-    const subject = `🔧 Nouvelle demande de pièce auto : ${form.name}`;
+    const subject = `🔧 Nouvelle demande de pièce - ${form.fullName}`;
 
     const message = `
-      ⚡ NOUVELLE DEMANDE DE PIÈCE AUTO ⚡
-      
-      👤 CLIENT :
-      - Nom : ${form.name}
-      - Téléphone : ${form.phone}
-      - Email : ${form.email}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ NOUVELLE DEMANDE DE PIÈCE AUTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      🚗 VÉHICULE :
-      - Immatriculation : ${form.licensePlate}
-      ${form.vehicleDetails ? `- Infos complémentaires : ${form.vehicleDetails}` : ""}
+👤 CLIENT :
+   Nom : ${form.fullName}
+   📞 Téléphone : ${form.phone}
+   📧 Email : ${form.email}
 
-      🔩 PIÈCE RECHERCHÉE :
-      - Description : ${form.partDescription}
-      - Préférence : ${preferenceLabels[form.partPreference] || form.partPreference}
+🚗 VÉHICULE :
+   Immatriculation : ${form.licensePlate.toUpperCase()}
+   ${form.carModel ? `Modèle : ${form.carModel}` : ""}
+   ${form.vin ? `VIN : ${form.vin}` : ""}
 
-      📦 LIVRAISON :
-      - Mode : ${deliveryLabels[form.deliveryMethod] || form.deliveryMethod}
-      ${form.deliveryAddress ? `- Adresse : ${form.deliveryAddress}` : ""}
+🔩 PIÈCE RECHERCHÉE :
+   ${form.partDescription}
+   
+   Préférence : ${preferenceLabels[form.preference] || form.preference}
+   ${form.hasPhoto ? "📸 Le client a des photos à envoyer" : ""}
 
-      ${form.comments ? `📝 COMMENTAIRES :\n${form.comments}` : ""}
+📦 LIVRAISON :
+   ${deliveryLabels[form.deliveryMethod] || form.deliveryMethod}
 
-      ---
-      📱 Appeler le client : ${form.phone}
-      📧 Email : ${form.email}
-      
-      ⏰ Envoyer un devis sous 24h !
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⏰ RAPPEL : Envoyer devis sous 24h !
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     `;
 
     // 4. Envoyer notification email à l'admin
-    try {
-      await sendAdminNotification(message, subject);
-    } catch (emailError) {
-      console.error("Failed to send admin notification:", emailError);
-      // On continue même si l'email échoue
-    }
+    await sendAdminNotification(message, subject);
+
+    console.log("✅ Email envoyé pour demande pièce de:", form.fullName);
 
     // 5. Retourner succès
     return NextResponse.json({
@@ -74,9 +70,9 @@ export async function POST(request: NextRequest) {
       message: "Demande de pièce envoyée avec succès",
     });
   } catch (error) {
-    console.error("Erreur lors de l'envoi de la demande de pièce:", error);
+    console.error("❌ Erreur lors de l'envoi de la demande de pièce:", error);
     return NextResponse.json(
-      { error: "Erreur serveur" },
+      { error: "Erreur serveur lors de l'envoi" },
       { status: 500 },
     );
   }
