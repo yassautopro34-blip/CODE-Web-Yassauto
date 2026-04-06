@@ -87,7 +87,7 @@ export const TrustSection: React.FC = () => {
             </div>
 
             <a
-              href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6?g_st=ic"
+              href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-brand-red font-bold text-sm hover:gap-3 transition-all"

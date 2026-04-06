@@ -19,7 +19,7 @@ export const ContactMap: React.FC = () => {
           7 rue André Marie Ampère, 34770 Gigean
         </p>
         <a
-          href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6?g_st=ic"
+          href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 px-5 py-2 rounded-lg bg-brand-red text-white font-bold hover:bg-red-700 transition"

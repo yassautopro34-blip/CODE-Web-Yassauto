@@ -5,7 +5,7 @@ import { PiecesForm } from "@/components/pieces/PiecesForm";
 import { PiecesSuccess } from "@/components/pieces/PiecesSuccess";
 
 export default function PiecesPage() {
-  const { formData, submitted, isProcessing, updateFormData, handleSubmit, resetForm } =
+  const { formData, errors, submitted, isProcessing, updateFormData, handleSubmit, resetForm } =
     usePieces();
 
   if (submitted) {
@@ -35,11 +35,17 @@ export default function PiecesPage() {
 
       {/* Formulaire */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {errors.global && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm font-medium">
+            Une erreur est survenue lors de l&apos;envoi. Réessayez ou contactez-nous directement.
+          </div>
+        )}
         <PiecesForm
           formData={formData}
           updateFormData={updateFormData}
           handleSubmit={handleSubmit}
           isProcessing={isProcessing}
+          errors={errors}
         />
       </div>
     </div>

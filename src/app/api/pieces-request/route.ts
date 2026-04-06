@@ -60,9 +60,12 @@ export async function POST(request: NextRequest) {
     `;
 
     // 4. Envoyer notification email à l'admin
-    await sendAdminNotification(message, subject);
-
-    console.log("✅ Email envoyé pour demande pièce de:", form.fullName);
+    const emailResult = await sendAdminNotification(message, subject);
+    if (!emailResult.success) {
+      console.error("❌ Échec envoi email pièce:", emailResult.error);
+    } else {
+      console.log("✅ Email envoyé pour demande pièce de:", form.fullName);
+    }
 
     // 5. Retourner succès
     return NextResponse.json({
