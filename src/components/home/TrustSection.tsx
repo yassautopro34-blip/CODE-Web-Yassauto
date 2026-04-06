@@ -1,9 +1,30 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle2, Shield, MapPin, FileSearch, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
+// Images qui défilent - ajoute tes images dans /public/gallery/
+const GALLERY_IMAGES = [
+  "/img1.jpeg",
+  "/img2.jpeg",
+  "/img3.jpeg",
+  "/img4.jpeg",
+  // Pour ajouter d'autres images : copie-les dans public/gallery/ puis ajoute "/gallery/nomimage.jpg"
+];
+
 export const TrustSection: React.FC = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // Change d'image toutes les 3 secondes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % GALLERY_IMAGES.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const features = [
     {
       icon: FileSearch,
@@ -65,42 +86,81 @@ export const TrustSection: React.FC = () => {
               ))}
             </div>
 
-            <Link 
-              href="/propos"
+            <a
+              href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-brand-red font-bold text-sm hover:gap-3 transition-all"
             >
-              Découvrir notre histoire
+              Voir tous les avis
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
 
-          {/* Images - hidden on mobile, simplified */}
-          <div className="hidden lg:grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <Image
-                width={300}
-                height={300}
-                src="/img1.jpeg"
-                className="rounded-2xl border border-zinc-800 w-full object-cover"
-                alt="Inspection engine"
-              />
-              <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-center">
-                <p className="text-3xl font-black text-white mb-1">500+</p>
-                <p className="text-zinc-500 text-xs">Clients satisfaits</p>
+          {/* Images avec défilement - visible sur TOUS les écrans */}
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            {/* Colonne gauche */}
+            <div className="space-y-3 md:space-y-4">
+              {/* Image qui défile */}
+              <div className="relative aspect-[3/4] rounded-2xl border border-zinc-800 overflow-hidden">
+                {GALLERY_IMAGES.map((src, index) => (
+                  <Image
+                    key={src}
+                    width={300}
+                    height={400}
+                    src={src}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                      index === currentImage ? "opacity-100" : "opacity-0"
+                    }`}
+                    alt={`Photo garage ${index + 1}`}
+                  />
+                ))}
+                {/* Indicateurs */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                  {GALLERY_IMAGES.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                        i === currentImage ? "bg-brand-red" : "bg-white/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Stats */}
+              <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-3 md:p-4 text-center">
+                <p className="text-2xl md:text-3xl font-black text-white mb-0.5">500+</p>
+                <p className="text-zinc-500 text-[10px] md:text-xs">Clients satisfaits</p>
               </div>
             </div>
-            <div className="space-y-4 pt-8">
-              <div className="bg-brand-red rounded-xl p-4 text-center">
-                <p className="text-3xl font-black text-white mb-1">5.0</p>
-                <p className="text-white/70 text-xs">Note Google</p>
+
+            {/* Colonne droite */}
+            <div className="space-y-3 md:space-y-4 pt-6 md:pt-8">
+              {/* Stats Google */}
+              <div className="bg-brand-red rounded-xl p-3 md:p-4 text-center">
+                <p className="text-2xl md:text-3xl font-black text-white mb-0.5">5.0</p>
+                <p className="text-white/70 text-[10px] md:text-xs">Note Google</p>
               </div>
-              <Image
-                width={300}
-                height={300}
-                src="/img4.jpeg"
-                className="rounded-2xl border border-zinc-800 w-full object-cover"
-                alt="Happy client"
-              />
+              
+              {/* Deuxième image qui défile (décalée) */}
+              <div className="relative aspect-[3/4] rounded-2xl border border-zinc-800 overflow-hidden">
+                {GALLERY_IMAGES.map((src, index) => {
+                  const offsetIndex = (index + 1) % GALLERY_IMAGES.length;
+                  return (
+                    <Image
+                      key={src}
+                      width={300}
+                      height={400}
+                      src={GALLERY_IMAGES[offsetIndex]}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                        index === currentImage ? "opacity-100" : "opacity-0"
+                      }`}
+                      alt={`Photo travail ${index + 1}`}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
 

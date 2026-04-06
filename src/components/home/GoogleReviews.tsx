@@ -156,7 +156,7 @@ export const GoogleReviews: React.FC = () => {
 
           {/* CTA Card */}
           <a
-            href="https://www.google.com/maps/place/?q=place_id:ChIJBS1siOtLsRIRRZ79zpwidHY"
+            href="https://maps.app.goo.gl/79vPS7FCQyuf3Pge6"
             target="_blank"
             rel="noopener noreferrer"
             className="w-[260px] md:w-80 lg:w-96 shrink-0 snap-start bg-gradient-to-br from-brand-red to-red-700 p-4 md:p-5 rounded-2xl flex flex-col items-center justify-center text-center hover:scale-[1.02] transition-transform group"

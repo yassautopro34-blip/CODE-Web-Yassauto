@@ -20,42 +20,51 @@ export const usePieces = () => {
 
   const updateFormData = (data: Partial<PiecesRequest>) => {
     setFormData((prev) => ({ ...prev, ...data }));
+    // Efface l'erreur du champ modifié
+    const key = Object.keys(data)[0];
+    if (key) setErrors((prev) => ({ ...prev, [key]: false, global: false }));
   };
+
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
 
-    try {
-      // Validation basique
-      if (!formData.fullName || !formData.phone || !formData.email) {
-        throw new Error("Veuillez remplir tous les champs obligatoires");
-      }
-      if (!formData.licensePlate) {
-        throw new Error("La plaque d'immatriculation est obligatoire");
-      }
-      if (!formData.partDescription) {
-        throw new Error("Veuillez décrire la pièce recherchée");
-      }
+    // Validation centralisée
+    const newErrors: Record<string, boolean> = {};
+    if (!formData.fullName) newErrors.fullName = true;
+    if (!formData.phone) newErrors.phone = true;
+    if (!formData.email) newErrors.email = true;
+    if (!formData.licensePlate) newErrors.licensePlate = true;
+    if (!formData.partDescription) newErrors.partDescription = true;
 
-      // Envoyer la demande
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      setIsProcessing(false);
+      return;
+    }
+
+    try {
+      // Log du formData envoyé
+      console.log("[PIECES] Données envoyées:", formData);
       const res = await fetch("/api/pieces-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
-
+      // Log de la réponse backend
+      console.log("[PIECES] Réponse backend:", data);
       if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de l'envoi");
+        setErrors({ global: true });
+        return;
       }
-
       setSubmitted(true);
     } catch (error) {
-      const errorMsg =
-        error instanceof Error ? error.message : "Une erreur est survenue";
-      alert(errorMsg);
+      // Affiche l'erreur dans la console pour debug
+      console.error("Erreur handleSubmit pieces:", error);
+      setErrors({ global: true });
     } finally {
       setIsProcessing(false);
     }
@@ -79,6 +88,7 @@ export const usePieces = () => {
 
   return {
     formData,
+    errors,
     submitted,
     isProcessing,
     updateFormData,
