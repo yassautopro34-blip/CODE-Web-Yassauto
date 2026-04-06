@@ -20,6 +20,7 @@ interface PiecesFormProps {
   updateFormData: (data: Partial<PiecesRequest>) => void;
   handleSubmit: (e: React.FormEvent) => void;
   isProcessing: boolean;
+  errors?: Record<string, boolean>;
 }
 
 export const PiecesForm: React.FC<PiecesFormProps> = ({
@@ -27,6 +28,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
   updateFormData,
   handleSubmit,
   isProcessing,
+  errors = {},
 }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">

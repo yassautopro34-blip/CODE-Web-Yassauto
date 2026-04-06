@@ -76,7 +76,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Demande envoyée avec succès",
-      bookingId: booking.data._id || null,
     });
   } catch (error) {
     console.error("Booking request error:", error);
