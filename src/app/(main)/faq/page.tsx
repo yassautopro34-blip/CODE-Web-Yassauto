@@ -1,8 +1,8 @@
-"use client";
-import React, { useState } from "react";
-import { ChevronDown, Wrench, Lightbulb, Smartphone, Car, Search, ShieldCheck } from "lucide-react";
+﻿"use client";
 
-// Types
+import React, { useState } from "react";
+import { ChevronDown, Wrench, Lightbulb, Smartphone, Car, Search, ShieldCheck, Cpu } from "lucide-react";
+
 interface FAQItem {
   question: string;
   answer: string | React.ReactNode;
@@ -16,7 +16,6 @@ interface FAQSection {
   items: FAQItem[];
 }
 
-// Accordion Item Component
 const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onToggle: () => void }> = ({
   item,
   isOpen,
@@ -39,7 +38,7 @@ const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onToggle: () => 
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[500px] opacity-100 pb-5" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[700px] opacity-100 pb-5" : "max-h-0 opacity-0"
         }`}
       >
         <div className="text-zinc-600 leading-relaxed px-1 text-[15px]">
@@ -50,7 +49,6 @@ const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onToggle: () => 
   );
 };
 
-// Section Component
 const FAQSectionComponent: React.FC<{
   section: FAQSection;
   openItems: Set<string>;
@@ -58,16 +56,12 @@ const FAQSectionComponent: React.FC<{
 }> = ({ section, openItems, toggleItem }) => {
   return (
     <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-      {/* Section Header */}
       <div className={`px-6 py-4 border-b border-zinc-100 ${section.color}`}>
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-white/80 rounded-xl shadow-sm">
-            {section.icon}
-          </div>
+          <div className="p-2 bg-white/80 rounded-xl shadow-sm">{section.icon}</div>
           <h2 className="text-lg font-bold text-zinc-900">{section.title}</h2>
         </div>
       </div>
-      {/* Questions */}
       <div className="px-6">
         {section.items.map((item, index) => {
           const itemId = `${section.id}-${index}`;
@@ -85,314 +79,217 @@ const FAQSectionComponent: React.FC<{
   );
 };
 
-// FAQ Data
 const faqSections: FAQSection[] = [
   {
+    id: "reprogrammation",
+    title: "Reprog moteur",
+    icon: <Cpu className="w-5 h-5 text-red-500" />,
+    color: "bg-red-50",
+    items: [
+      {
+        question: "Quels types de reprog faites-vous ?",
+        answer: (
+          <div className="space-y-2">
+            <p>
+              Nous realisons differents niveaux de preparation selon votre objectif : Stage 1, Stage 2,
+              Stage 3, conversion E85, Pop and Bang, Launch Control et Multimap.
+            </p>
+            <p>
+              Chaque projet est ajuste au vehicule, a l etat mecanique et a votre usage (daily, route,
+              ou usage prive/circuit).
+            </p>
+          </div>
+        ),
+      },
+      {
+        question: "Mon vehicule nest pas liste, cest possible quand meme ?",
+        answer: (
+          <div className="space-y-2">
+            <p>
+              Oui, completement. Le catalogue affiche les demandes les plus frequentes, mais il nest pas
+              exhaustif.
+            </p>
+            <p>
+              Envoyez-nous la marque, le modele, l annee et la motorisation : nous verifions la
+              compatibilite, les gains realistes et les options disponibles.
+            </p>
+          </div>
+        ),
+      },
+      {
+        question: "FAP off, AdBlue off, EGR off : homologe route ou pas ?",
+        answer: (
+          <div className="space-y-3">
+            <p>
+              Point legal important : certaines modifications anti-pollution peuvent rendre le vehicule non conforme
+              pour un usage sur route ouverte et poser probleme au controle technique.
+            </p>
+            <p className="text-amber-800 bg-amber-50 px-3 py-2 rounded-lg border border-amber-200">
+              En clair : ce nest pas toujours homologue route.
+            </p>
+            <p>
+              Nous vous expliquons toujours les implications avant intervention et nous proposons des solutions adaptees
+              a votre usage reel.
+            </p>
+          </div>
+        ),
+      },
+      {
+        question: "Si jai un souci FAP ou AdBlue, vous avez dautres solutions ?",
+        answer: (
+          <div className="space-y-3">
+            <p>Oui. On commence toujours par un diagnostic, puis on propose la meilleure option :</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>correction de gestion et cycles de regeneration</li>
+              <li>controle capteurs, pompe et injection AdBlue</li>
+              <li>remise en etat ciblee pour retrouver fiabilite et performance</li>
+              <li>orientation route ou usage prive/circuit selon votre besoin</li>
+            </ul>
+            <p>
+              L objectif est clair : solution durable, budget maitrise, et aucune surprise apres intervention.
+            </p>
+          </div>
+        ),
+      },
+      {
+        question: "Comment choisir la bonne configuration ?",
+        answer: (
+          <div className="space-y-2">
+            <p>
+              Nous faisons un echange technique avant intervention pour valider une configuration coherente
+              avec votre budget, votre usage et l etat du vehicule.
+            </p>
+            <p>
+              Vous savez exactement ce qui est fait, pourquoi c est fait, et ce que vous pouvez attendre en resultat.
+            </p>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
     id: "accompagnement",
-    title: "Accompagnement Achat Véhicule",
+    title: "Accompagnement achat",
     icon: <ShieldCheck className="w-5 h-5 text-brand-red" />,
     color: "bg-red-50",
     items: [
       {
-        question: "En quoi consiste l'accompagnement achat ?",
-        answer: (
-          <div className="space-y-3">
-            <p>
-              <strong>Je me déplace avec vous</strong> pour inspecter le véhicule que vous souhaitez acheter. 
-              L&apos;objectif : vous éviter les arnaques et les mauvaises surprises !
-            </p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Diagnostic complet</strong> : passage à la valise, inspection moteur, châssis, carrosserie</li>
-              <li><strong>Vérification des documents</strong> : carte grise, historique d&apos;entretien, factures</li>
-              <li><strong>Estimation des réparations</strong> : devis sur place si problèmes détectés</li>
-              <li><strong>Conseil achat</strong> : je vous dis honnêtement si c&apos;est une bonne affaire ou non</li>
-            </ul>
-            <p className="text-green-700 bg-green-50 px-3 py-2 rounded-lg border border-green-100 mt-3">
-              💡 Déplacement inclus sur Montpellier et rayon 30 km. Au-delà, supplément kilométrique.
-            </p>
-          </div>
-        ),
-      },
-      {
-        question: "Comment réserver un accompagnement ?",
-        answer: (
-          <div className="space-y-3">
-            <p>Le processus est simple et rapide :</p>
-            <ol className="space-y-2">
-              <li className="flex gap-2">
-                <span className="bg-brand-red text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
-                <span>Remplissez le formulaire sur la page <strong>Accompagnement</strong> avec vos infos et le créneau souhaité</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="bg-brand-red text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
-                <span>Nous vérifions nos disponibilités et vous recontactons</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="bg-brand-red text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
-                <span>Vous recevez un <strong>lien de paiement</strong> pour valider définitivement le RDV</span>
-              </li>
-            </ol>
-            <p className="text-blue-700 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100 mt-3">
-              ⏰ <strong>Confirmation sous 60 minutes max</strong> pendant nos horaires d&apos;ouverture !
-            </p>
-          </div>
-        ),
-      },
-      {
-        question: "Quel est le tarif de l'accompagnement ?",
-        answer: (
-          <div className="space-y-2">
-            <div className="flex justify-between items-center py-2 border-b border-zinc-100">
-              <span>Tarif standard</span>
-              <span className="font-bold text-lg">150 €</span>
-            </div>
-            <div className="flex justify-between items-center py-2">
-              <span>Tarif étudiant <span className="text-zinc-400 text-sm">(carte étudiante)</span></span>
-              <span className="font-bold text-lg text-green-600">100 € <span className="text-sm font-normal">(-30%)</span></span>
-            </div>
-            <p className="text-zinc-500 text-sm mt-3">
-              Le paiement se fait après confirmation du créneau par lien sécurisé.
-            </p>
-          </div>
-        ),
-      },
-      {
-        question: "Pourquoi je ne peux plus payer directement en ligne ?",
+        question: "En quoi consiste laccompagnement achat ?",
         answer: (
           <div className="space-y-2">
             <p>
-              Pour vous offrir un <strong>meilleur service</strong>, nous avons changé notre fonctionnement :
+              Nous vous accompagnons sur place pour verifier le vehicule avant achat et eviter les mauvaises surprises.
             </p>
-            <ul className="list-disc pl-5 space-y-1 mt-2">
-              <li>Nous vérifions d&apos;abord nos disponibilités réelles</li>
-              <li>Nous pouvons échanger avec vous si besoin (lieu, horaire...)</li>
-              <li>Vous ne payez que quand le RDV est 100% confirmé</li>
-            </ul>
-            <p className="mt-3">
-              Résultat : <strong>moins d&apos;annulations</strong> et un service plus flexible !
-            </p>
-          </div>
-        ),
-      },
-      {
-        question: "Dans quels secteurs vous déplacez-vous ?",
-        answer: (
-          <div className="space-y-2">
-            <p><strong>Déplacement inclus dans le tarif :</strong></p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Montpellier et agglomération</li>
-              <li>Sète, Frontignan, Mèze</li>
-              <li>Lunel, Nîmes</li>
-              <li>Tout le rayon 30 km autour de Gigean</li>
+              <li>inspection mecanique et electronique</li>
+              <li>controle de l historique et des documents</li>
+              <li>estimation des frais a prevoir</li>
+              <li>avis clair avant de signer</li>
             </ul>
-            <p className="text-zinc-500 text-sm mt-3">
-              Au-delà de 30 km : supplément de 0,50€/km appliqué.
-            </p>
           </div>
         ),
       },
       {
-        question: "Que se passe-t-il si je dois annuler ?",
-        answer: (
-          <div className="space-y-2">
-            <p><strong>Politique d&apos;annulation :</strong></p>
-            <ul className="space-y-1 mt-2">
-              <li className="flex items-start gap-2">
-                <span className="text-green-600">✓</span>
-                <span>Annulation <strong>&gt; 2h avant</strong> : remboursement intégral</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-600">✗</span>
-                <span>Annulation <strong>&lt; 2h avant</strong> ou absence : non remboursé</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-600">✗</span>
-                <span>Retard <strong>&gt; 20 min</strong> : RDV considéré comme annulé</span>
-              </li>
-            </ul>
-          </div>
-        ),
+        question: "Comment reserver ?",
+        answer: "Vous remplissez le formulaire, nous validons le creneau avec vous, puis vous recevez un lien de paiement securise.",
+      },
+      {
+        question: "Quel est le tarif ?",
+        answer: "Tarif standard 150 EUR. Tarif etudiant 100 EUR sur presentation de carte etudiante.",
+      },
+      {
+        question: "Zone de deplacement ?",
+        answer:
+          "Montpellier et autour de Gigean. Au-dela de 30 km, supplement kilometrique.",
       },
     ],
   },
   {
     id: "pieces",
-    title: "Pièces et Services",
+    title: "Pieces et services",
     icon: <Wrench className="w-5 h-5 text-orange-500" />,
     color: "bg-orange-50",
     items: [
       {
-        question: "Vendez-vous des pièces détachées sans prestation de montage ?",
+        question: "Vendez-vous des pieces sans montage ?",
+        answer: "Oui. Vous pouvez commander uniquement les pieces, en retrait atelier, livraison locale ou expedition.",
+      },
+      {
+        question: "Comment commander ?",
+        answer: "Passez au garage, appelez-nous, ou utilisez le formulaire. Nous confirmons la reference, puis nous envoyons un lien de paiement securise.",
+      },
+      {
+        question: "Tarif diagnostic ?",
         answer:
-          "Oui, tout à fait ! Si vous souhaitez effectuer les réparations vous-même, vous pouvez nous commander uniquement les pièces. Nous proposons une livraison sous 48h sur le secteur de Montpellier et Sète, ou une expédition sous 48h partout ailleurs en France.",
-      },
-      {
-        question: "Comment se passe la commande de pièces ?",
-        answer: (
-          <div className="space-y-3">
-            <p>Le processus est très simple et s&apos;adapte à vos préférences. Vous pouvez :</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Passer directement nous voir au garage à Gigean</li>
-              <li>Nous appeler par téléphone</li>
-              <li>Remplir le formulaire dédié sur notre site</li>
-            </ul>
-            <p>
-              Une fois votre demande traitée, nous vous envoyons un lien de paiement sécurisé. 
-              Dès que le règlement est validé, vous recevez votre facture et votre commande est 
-              préparée pour l&apos;expédition ou la livraison !
-            </p>
-          </div>
-        ),
-      },
-      {
-        question: "Quel est le tarif pour un diagnostic auto ?",
-        answer: (
-          <div className="space-y-2">
-            <p>
-              <strong>Diagnostic classique :</strong> 50 €
-            </p>
-            <p>
-              <strong>Tarif étudiant :</strong> 30 € (sur présentation de la carte)
-            </p>
-            <p className="text-green-700 bg-green-50 px-3 py-2 rounded-lg border border-green-100 mt-3">
-              💡 Ce montant vous est <strong>intégralement remboursé</strong> si vous faites effectuer 
-              les réparations chez nous !
-            </p>
-          </div>
-        ),
+          "Diagnostic classique 50 EUR. Tarif etudiant 30 EUR. Le montant est deduit si les reparations sont faites chez nous.",
       },
     ],
   },
   {
     id: "garage",
-    title: "Fonctionnement du Garage",
+    title: "Fonctionnement garage",
     icon: <Lightbulb className="w-5 h-5 text-amber-500" />,
     color: "bg-amber-50",
     items: [
       {
-        question: "Faut-il obligatoirement prendre rendez-vous ?",
-        answer:
-          "Non, mais c'est fortement conseillé pour vous accueillir dans les meilleures conditions et commander les pièces à l'avance. En cas d'urgence, n'hésitez pas à nous appeler ou passer directement.",
+        question: "Faut-il prendre rendez-vous ?",
+        answer: "Ce nest pas obligatoire, mais fortement conseille pour eviter l attente et preparer votre intervention dans les meilleures conditions.",
       },
       {
-        question: "Prenez-vous en charge toutes les marques de véhicules ?",
-        answer:
-          "Oui, notre équipe est multimarque et formée pour intervenir sur tous types de véhicules, de la citadine à l'utilitaire.",
+        question: "Intervention toutes marques ?",
+        answer: "Oui, nous travaillons sur la plupart des marques et motorisations.",
       },
       {
-        question: "Prêtez-vous un véhicule pendant l'immobilisation du mien ?",
-        answer: "Oui, nous proposons un véhicule de prêt pour vous dépanner pendant que nous intervenons sur le vôtre.",
+        question: "Vehicule de pret ?",
+        answer: "Oui, selon disponibilite.",
       },
       {
-        question: "Quels moyens de paiement acceptez-vous ?",
-        answer:
-          "Nous acceptons les cartes bancaires, les espèces et les paiements sécurisés en ligne via notre lien de facturation.",
+        question: "Paiements acceptes ?",
+        answer: "Carte bancaire, especes et paiement en ligne securise.",
       },
       {
-        question: "Vos réparations sont-elles garanties ?",
-        answer:
-          "Oui, toutes nos interventions et les pièces que nous fournissons sont couvertes par la garantie constructeur/légale.",
-      },
-      {
-        question: "Proposez-vous de passer le contrôle technique à ma place ?",
-        answer: (
-          <div className="space-y-2">
-            <p>
-              Oui, absolument ! Nous prenons en charge votre véhicule et l&apos;emmenons passer son 
-              contrôle technique dans un centre partenaire.
-            </p>
-            <p>
-              Vous nous déposez simplement votre voiture au garage, et on s&apos;occupe du reste.
-              Fini la perte de temps dans les salles d&apos;attente !
-            </p>
-            <p className="text-blue-700 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100 mt-2">
-              💡 Si nécessaire, nous pouvons faire un pré-contrôle avant pour éviter toute contre-visite.
-            </p>
-          </div>
-        ),
+        question: "Garantie des reparations ?",
+        answer: "Oui, interventions et pieces sont couvertes par les garanties applicables. Les details vous sont rappeles sur votre facture.",
       },
     ],
   },
   {
     id: "multimedia",
-    title: "Multimédia et Électronique",
+    title: "Multimedia et electronique",
     icon: <Smartphone className="w-5 h-5 text-blue-500" />,
     color: "bg-blue-50",
     items: [
       {
-        question: "Installez-vous des systèmes Apple CarPlay ou Android Auto ?",
-        answer: (
-          <div className="space-y-2">
-            <p>
-              Oui ! Nous proposons l&apos;installation d&apos;écrans et de modules CarPlay/Android Auto 
-              pour moderniser votre véhicule.
-            </p>
-            <p>
-              Vous pourrez profiter du GPS, de votre musique et de vos applications directement 
-              sur le tableau de bord.
-            </p>
-            <p className="text-zinc-500 text-sm mt-2">
-              Contactez-nous avec la marque, le modèle et l&apos;année de votre voiture pour vérifier 
-              la compatibilité et recevoir un devis.
-            </p>
-          </div>
-        ),
+        question: "Installez-vous CarPlay et Android Auto ?",
+        answer: "Oui, selon la compatibilite du vehicule. Nous vous confirmons la solution adaptee avant montage.",
       },
       {
-        question: "Proposez-vous la réparation de pannes électroniques ?",
-        answer:
-          "Oui, nous sommes équipés des valises de diagnostic pour lire et effacer les codes défauts, et nous intervenons sur les pannes électroniques.",
+        question: "Reparation pannes electroniques ?",
+        answer: "Oui, avec diagnostic valise, controle des defauts et intervention ciblee sur la panne electronique.",
       },
       {
-        question: "Puis-je faire vérifier une voiture d'occasion avant de l'acheter ?",
-        answer: (
-          <div className="space-y-2">
-            <p>
-              <strong>C&apos;est même fortement recommandé !</strong>
-            </p>
-            <p>
-              Nous effectuons un bilan complet (mécanique et électronique) d&apos;un véhicule
-              d&apos;occasion avant votre achat pour vous éviter les mauvaises surprises.
-            </p>
-          </div>
-        ),
+        question: "Controle avant achat occasion ?",
+        answer: "Oui, bilan mecanique et electronique avant achat pour eviter les mauvaises surprises.",
       },
     ],
   },
   {
     id: "achat",
-    title: "Achat, Revente et Dépôt-Vente",
+    title: "Achat et depot-vente",
     icon: <Car className="w-5 h-5 text-green-600" />,
     color: "bg-green-50",
     items: [
       {
-        question: "Rachetez-vous des véhicules d'occasion ?",
-        answer:
-          "Oui, nous rachetons des véhicules de toutes marques. Nous évaluons l'état de votre voiture et vous proposons une offre de rachat ferme et rapide, sans obligation d'achat chez nous.",
+        question: "Rachat de vehicules doccasion ?",
+        answer: "Oui, avec estimation sur etat reel du vehicule et offre rapide.",
       },
       {
-        question: "Vendez-vous des voitures d'occasion révisées et garanties ?",
-        answer:
-          "Oui, nous proposons régulièrement une sélection de véhicules d'occasion. Chaque voiture est rigoureusement contrôlée et révisée dans notre atelier à Gigean, et vendue avec garantie.",
+        question: "Vente de vehicules revises ?",
+        answer: "Oui, avec selection de vehicules controles, prepares et verifies avant mise en vente.",
       },
       {
-        question: "Comment fonctionne votre service de dépôt-vente ?",
-        answer: (
-          <div className="space-y-2">
-            <p>
-              Vous voulez vendre votre voiture au meilleur prix sans gérer les annonces, 
-              appels ou visites d&apos;inconnus ? Confiez-nous la vente !
-            </p>
-            <ul className="list-disc pl-5 space-y-1 mt-2">
-              <li>Nous exposons votre véhicule sur notre parc</li>
-              <li>Nous gérons les essais avec les acheteurs potentiels</li>
-              <li>Nous sécurisons entièrement la transaction financière</li>
-            </ul>
-            <p className="text-green-700 font-medium mt-2">
-              Vous gagnez du temps et vous évitez les arnaques !
-            </p>
-          </div>
-        ),
+        question: "Comment fonctionne le depot-vente ?",
+        answer: "Nous gerons exposition, essais, vente et securisation de la transaction.",
       },
     ],
   },
@@ -412,16 +309,13 @@ export default function FAQPage() {
     setOpenItems(newOpenItems);
   };
 
-  // Filter sections based on search
   const filteredSections = faqSections
     .map((section) => ({
       ...section,
       items: section.items.filter((item) => {
         const searchLower = searchQuery.toLowerCase();
         const questionMatch = item.question.toLowerCase().includes(searchLower);
-        const answerMatch =
-          typeof item.answer === "string" &&
-          item.answer.toLowerCase().includes(searchLower);
+        const answerMatch = typeof item.answer === "string" && item.answer.toLowerCase().includes(searchLower);
         return questionMatch || answerMatch;
       }),
     }))
@@ -429,24 +323,19 @@ export default function FAQPage() {
 
   return (
     <div className="bg-zinc-50 min-h-screen">
-      {/* Hero */}
       <div className="bg-brand-black text-white py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-transparent" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-black mb-4">
-            Questions Fréquentes
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-black mb-4">FAQ Yassauto</h1>
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto mb-8">
-            Tout ce que vous devez savoir sur nos services. Vous ne trouvez pas 
-            votre réponse ? Contactez-nous directement !
+            Reponses claires sur la reprog, la mecanique, les pieces et l accompagnement.
           </p>
-          
-          {/* Search Bar */}
+
           <div className="relative max-w-xl mx-auto">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
             <input
               type="text"
-              placeholder="Rechercher une question..."
+              placeholder="Ex: reprog, FAP, tarif, rendez-vous..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-red/50 focus:border-transparent backdrop-blur-sm transition-all"
@@ -455,7 +344,6 @@ export default function FAQPage() {
         </div>
       </div>
 
-      {/* Quick Navigation */}
       <div className="bg-white border-b border-zinc-200 sticky top-[80px] z-30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-2 py-3 overflow-x-auto scrollbar-hide">
@@ -473,49 +361,34 @@ export default function FAQPage() {
         </div>
       </div>
 
-      {/* FAQ Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {searchQuery && filteredSections.length === 0 ? (
           <div className="text-center py-16">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-bold text-zinc-700 mb-2">
-              Aucun résultat trouvé
-            </h3>
+            <div className="text-6xl mb-4">?</div>
+            <h3 className="text-xl font-bold text-zinc-700 mb-2">Aucun resultat trouve</h3>
             <p className="text-zinc-500">
-              Essayez avec d&apos;autres mots-clés ou{" "}
-              <a href="/contact" className="text-brand-red hover:underline">
-                contactez-nous directement
-              </a>
+              Essayez un autre mot-cle ou <a href="/contact" className="text-brand-red hover:underline">contactez-nous</a>
             </p>
           </div>
         ) : (
           <div className="space-y-8">
             {(searchQuery ? filteredSections : faqSections).map((section) => (
               <div key={section.id} id={section.id} className="scroll-mt-36">
-                <FAQSectionComponent
-                  section={section}
-                  openItems={openItems}
-                  toggleItem={toggleItem}
-                />
+                <FAQSectionComponent section={section} openItems={openItems} toggleItem={toggleItem} />
               </div>
             ))}
           </div>
         )}
 
-        {/* CTA */}
         <div className="mt-16 bg-gradient-to-r from-brand-black to-zinc-800 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-3">
-            Vous avez encore des questions ?
-          </h3>
-          <p className="text-zinc-400 mb-6">
-            Notre équipe est là pour vous aider. N&apos;hésitez pas à nous contacter !
-          </p>
+          <h3 className="text-2xl font-bold mb-3">Vous avez encore des questions ?</h3>
+          <p className="text-zinc-400 mb-6">Notre equipe est la pour vous orienter vers la meilleure solution.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:0648380568"
               className="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition-colors"
             >
-              📞 06 48 38 05 68
+              06 48 38 05 68
             </a>
             <a
               href="/contact"
