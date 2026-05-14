@@ -4,7 +4,7 @@ import { Button } from "@/components/Button";
 import Image from "next/image";
 import VideoCard from "@/components/home/video-card";
 import { trackButtonClick } from "@/lib/gtag";
-import { Wrench, Package } from "lucide-react";
+import { Wrench, Cpu } from "lucide-react";
 
 export const HeroSection: React.FC = () => {
   const handleTracking = useCallback((eventName: string) => {
@@ -61,13 +61,13 @@ export const HeroSection: React.FC = () => {
               </Link>
               
               <Link
-                href="/pieces"
-                onClick={() => handleTracking("pieces_home_button")}
+                href="/reprogrammation"
+                onClick={() => handleTracking("reprogrammation_home_button")}
                 className="group"
               >
                 <button className="w-full h-12 md:h-14 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-sm md:text-base flex items-center justify-center gap-2 transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
-                  <Package className="w-4 h-4" />
-                  Pièces auto
+                  <Cpu className="w-4 h-4" />
+                  Reprogrammation
                 </button>
               </Link>
             </div>

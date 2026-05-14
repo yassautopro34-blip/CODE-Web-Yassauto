@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Package, Sparkles, Wrench, Car, ArrowRight, Phone, Shield, Clock, Zap, Settings, Gauge, ThermometerSun } from "lucide-react";
+import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Clock, Zap, Settings, Gauge, ThermometerSun, AlertTriangle } from "lucide-react";
 
 export const ServicesGrid: React.FC = () => {
   return (
@@ -102,21 +102,26 @@ export const ServicesGrid: React.FC = () => {
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:translate-x-1 transition-transform" />
           </Link>
 
-          {/* CUSTOMISATION */}
+          {/* REPROGRAMMATION */}
           <Link 
-            href="/mecanique"
-            className="col-span-1 lg:col-span-7 group bg-zinc-900 rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-6 border border-zinc-800 hover:border-purple-500/40 relative overflow-hidden"
+            href="/reprogrammation"
+            className="col-span-1 lg:col-span-7 group bg-zinc-900 rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-6 border border-zinc-800 hover:border-brand-red/40 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-purple-500/20 rounded-full blur-[40px] md:blur-[50px]"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-brand-red/20 rounded-full blur-[40px] md:blur-[50px]"></div>
             <div className="relative">
-              <Sparkles className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-purple-400 mb-2 md:mb-3 lg:mb-4" />
-              <h3 className="text-sm md:text-lg lg:text-xl font-black text-white mb-1.5 md:mb-2">Custom</h3>
+              <Cpu className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-brand-red mb-2 md:mb-3 lg:mb-4" />
+              <h3 className="text-sm md:text-lg lg:text-xl font-black text-white mb-1.5 md:mb-2">Reprogrammation</h3>
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3 lg:mb-4">
-                {["CarPlay", "LED", "Cover"].map((tag, i) => (
-                  <span key={i} className="bg-purple-500/15 text-purple-300 text-[8px] md:text-[10px] lg:text-xs px-1.5 md:px-2 py-0.5 rounded-full">{tag}</span>
+                {["Stage 1", "E85", "FAP off"].map((tag, i) => (
+                  <span key={i} className="bg-brand-red/15 text-red-300 text-[8px] md:text-[10px] lg:text-xs px-1.5 md:px-2 py-0.5 rounded-full">{tag}</span>
                 ))}
               </div>
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-400 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-brand-red group-hover:translate-x-1 transition-transform" />
+            </div>
+
+            <div className="absolute right-2 bottom-2 md:right-3 md:bottom-3 inline-flex items-center gap-1 bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[7px] md:text-[8px] px-1 py-0.5 rounded-full">
+              <AlertTriangle className="w-2.5 h-2.5" />
+              <span>Route: pas toujours homologué</span>
             </div>
           </Link>
 
