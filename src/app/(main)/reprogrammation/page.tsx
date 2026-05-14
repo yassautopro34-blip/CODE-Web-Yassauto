@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import vehiclesRaw from "@/data/reprogrammation/vehicles.json";
 import enginesRaw from "@/data/reprogrammation/engines.json";
@@ -295,6 +295,8 @@ export default function ReprogrammationPage() {
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedVariantKey, setSelectedVariantKey] = useState("");
   const [activeInfoTab, setActiveInfoTab] = useState<ReprogTab | null>(null);
+  const modelMotorisationSectionRef = useRef<HTMLDivElement | null>(null);
+  const motorisationSelectRef = useRef<HTMLSelectElement | null>(null);
 
   const brands = useMemo(() => {
     return [...new Set(allVehicles.map((v) => v.brand))].sort((a, b) => a.localeCompare(b, "fr"));
@@ -350,6 +352,23 @@ export default function ReprogrammationPage() {
     setSelectedModel(model);
     setSelectedVariantKey("");
   };
+
+  useEffect(() => {
+    if (!selectedBrand || !modelMotorisationSectionRef.current) {
+      return;
+    }
+
+    modelMotorisationSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [selectedBrand]);
+
+  useEffect(() => {
+    if (!selectedModel || !motorisationSelectRef.current) {
+      return;
+    }
+
+    motorisationSelectRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    motorisationSelectRef.current.focus();
+  }, [selectedModel]);
 
   return (
     <div className="min-h-screen bg-zinc-100">
@@ -452,7 +471,7 @@ export default function ReprogrammationPage() {
         </div>
 
         {selectedBrand && (
-          <div className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-4 md:p-6">
+          <div ref={modelMotorisationSectionRef} className="bg-white rounded-2xl border border-zinc-200 shadow-sm p-4 md:p-6">
             <h2 className="text-lg md:text-xl font-bold text-zinc-900 mb-5">Étape 2 &amp; 3 : Modèle et motorisation</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="block">
@@ -473,6 +492,7 @@ export default function ReprogrammationPage() {
               <label className="block">
                 <span className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Motorisation</span>
                 <select
+                  ref={motorisationSelectRef}
                   className="mt-1.5 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm disabled:bg-zinc-100 disabled:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red"
                   value={selectedVariantKey}
                   disabled={!selectedModel}
