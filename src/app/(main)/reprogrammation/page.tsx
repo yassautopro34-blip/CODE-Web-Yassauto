@@ -26,7 +26,9 @@ type StageData = {
   nm: number;
 };
 
-type EthanolData = StageData & {
+type EthanolData = {
+  hp?: number;
+  nm?: number;
   available: boolean;
 };
 
@@ -330,6 +332,13 @@ export default function ReprogrammationPage() {
   }, [selectedVariantKey, variants]);
 
   const selectedEngine = selectedVehicle ? enginesById[selectedVehicle.engine_id] : null;
+  const hasEthanolData =
+    !!selectedEngine &&
+    selectedEngine.ethanol.available &&
+    typeof selectedEngine.ethanol.hp === "number" &&
+    typeof selectedEngine.ethanol.nm === "number";
+  const ethanolHpValue = hasEthanolData ? selectedEngine.ethanol.hp! : null;
+  const ethanolNmValue = hasEthanolData ? selectedEngine.ethanol.nm! : null;
 
   const resetModelAndVariant = (brand: string) => {
     setSelectedBrand(brand);
@@ -548,17 +557,17 @@ export default function ReprogrammationPage() {
                       <span className="text-sm font-black text-emerald-600">{ETHANOL_PRICE} EUR</span>
                     </div>
 
-                    {selectedEngine.ethanol.available ? (
+                    {hasEthanolData ? (
                       <div className="grid grid-cols-2 gap-3 text-sm">
                         <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
                           <p className="text-zinc-500 uppercase text-[11px] font-semibold">Puissance</p>
-                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_hp} ch {"->"} {selectedEngine.ethanol.hp} ch</p>
-                          <p className="text-green-700 font-semibold text-xs mt-1">+{selectedEngine.ethanol.hp - selectedEngine.stock_hp} ch</p>
+                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_hp} ch {"->"} {ethanolHpValue!} ch</p>
+                          <p className="text-green-700 font-semibold text-xs mt-1">+{ethanolHpValue! - selectedEngine.stock_hp} ch</p>
                         </div>
                         <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
                           <p className="text-zinc-500 uppercase text-[11px] font-semibold">Couple</p>
-                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_nm} Nm {"->"} {selectedEngine.ethanol.nm} Nm</p>
-                          <p className="text-green-700 font-semibold text-xs mt-1">+{selectedEngine.ethanol.nm - selectedEngine.stock_nm} Nm</p>
+                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_nm} Nm {"->"} {ethanolNmValue!} Nm</p>
+                          <p className="text-green-700 font-semibold text-xs mt-1">+{ethanolNmValue! - selectedEngine.stock_nm} Nm</p>
                         </div>
                       </div>
                     ) : (
@@ -570,10 +579,10 @@ export default function ReprogrammationPage() {
                 <CurveCard
                   stockHp={selectedEngine.stock_hp}
                   stageHp={selectedEngine.stage1.hp}
-                  ethanolHp={selectedEngine.ethanol.available ? selectedEngine.ethanol.hp : null}
+                  ethanolHp={ethanolHpValue}
                   stockNm={selectedEngine.stock_nm}
                   stageNm={selectedEngine.stage1.nm}
-                  ethanolNm={selectedEngine.ethanol.available ? selectedEngine.ethanol.nm : null}
+                  ethanolNm={ethanolNmValue}
                 />
               </div>
 
