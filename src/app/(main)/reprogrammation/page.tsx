@@ -59,7 +59,7 @@ type InfoEntry = {
 };
 
 const STAGE_1_PRICE = 490;
-const ETHANOL_PRICE = 590;
+const ETHANOL_PRICE = 400;
 
 const TAB_LABELS: Record<ReprogTab, string> = {
   stages: "Stages perf",
