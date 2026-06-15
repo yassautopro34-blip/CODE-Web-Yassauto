@@ -28,7 +28,6 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
   updateFormData,
   handleSubmit,
   isProcessing,
-  errors = {},
 }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
@@ -345,8 +344,9 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
       </Button>
 
       <p className="text-center text-xs text-zinc-500">
-        Réponse sous 24h • Devis sans engagement • Paiement sécurisé
+        Réponse sous 24h • Devis sans engagement • Paiement sécurisé • 3x/4x avec Oney*
       </p>
+      <p className="text-center text-[11px] text-zinc-400 mt-1">*Sous réserve d&apos;éligibilité et d&apos;acceptation Oney.</p>
     </form>
   );
 };

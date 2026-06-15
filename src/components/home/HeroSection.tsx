@@ -4,7 +4,7 @@ import { Button } from "@/components/Button";
 import Image from "next/image";
 import VideoCard from "@/components/home/video-card";
 import { trackButtonClick } from "@/lib/gtag";
-import { Wrench, Cpu } from "lucide-react";
+import { Wrench, Cpu, WalletCards } from "lucide-react";
 
 export const HeroSection: React.FC = () => {
   const handleTracking = useCallback((eventName: string) => {
@@ -46,6 +46,11 @@ export const HeroSection: React.FC = () => {
               Ne te fais plus arnaquer sur ton achat de voiture d&apos;occasion.
               Je t&apos;accompagne, j&apos;inspecte, et je sécurise ton achat.
             </p>
+
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 px-3 py-2 rounded-xl text-xs md:text-sm font-semibold mb-4 md:mb-6">
+              <WalletCards className="w-4 h-4" />
+              Paiement possible en 3x/4x avec Oney*
+            </div>
             
             {/* Boutons optimisés */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
@@ -80,6 +85,7 @@ export const HeroSection: React.FC = () => {
               <span>•</span>
               <span>Réponse en 24h</span>
             </div>
+            <p className="text-[11px] text-zinc-600 mt-2">*Sous réserve d&apos;éligibilité Oney.</p>
           </div>
 
           {/* Visual Element */}

@@ -30,6 +30,9 @@ export default function Mecanique() {
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               Disponible
             </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
+              3x/4x avec Oney*
+            </span>
           </div>
         </div>
       </div>

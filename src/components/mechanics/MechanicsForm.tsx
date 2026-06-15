@@ -204,6 +204,10 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
             ? "Demander mon RDV Diagnostic"
             : "Envoyer ma demande"}
         </Button>
+        <p className="text-center text-xs text-zinc-500 -mt-1">
+          Paiement possible en 3x/4x avec Oney* selon la prestation
+        </p>
+        <p className="text-center text-[11px] text-zinc-400 -mt-2">*Sous réserve d&apos;éligibilité et d&apos;acceptation Oney.</p>
       </form>
     </div>
   );

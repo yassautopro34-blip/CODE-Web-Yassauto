@@ -245,7 +245,7 @@ const faqSections: FAQSection[] = [
       },
       {
         question: "Paiements acceptes ?",
-        answer: "Carte bancaire, especes et paiement en ligne securise.",
+        answer: "Carte bancaire, especes, paiement en ligne securise, et paiement en 3x/4x avec Oney (selon eligibilite).",
       },
       {
         question: "Garantie des reparations ?",

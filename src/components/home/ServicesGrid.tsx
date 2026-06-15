@@ -28,6 +28,10 @@ export const ServicesGrid: React.FC = () => {
             Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">on gère tout.</span>
           </p>
 
+          <p className="text-emerald-300/90 text-xs md:text-sm font-semibold mb-4">
+            Paiement en 3x/4x avec Oney disponible sur prestations éligibles*
+          </p>
+
           <a 
             href="tel:0648380568" 
             className="inline-flex items-center gap-2 bg-brand-red hover:bg-red-600 text-white px-5 py-2.5 md:px-7 md:py-3.5 rounded-xl font-bold text-sm md:text-base transition-all"
@@ -155,7 +159,7 @@ export const ServicesGrid: React.FC = () => {
             <span>•</span>
             <span>⚡ Réponse 24h</span>
             <span>•</span>
-            <span>💳 CB/Espèces</span>
+            <span>💳 CB/Espèces/3x4x Oney*</span>
             <span>•</span>
             <span>👥 +500 clients depuis 2023</span>
           </div>
@@ -176,6 +180,7 @@ export const ServicesGrid: React.FC = () => {
             ))}
           </div>
         </div>
+        <p className="text-center text-[11px] text-zinc-600 mt-3">*Sous réserve d&apos;acceptation par Oney.</p>
       </div>
     </section>
   );
