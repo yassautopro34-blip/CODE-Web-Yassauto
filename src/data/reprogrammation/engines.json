@@ -1,185 +1,1427 @@
 {
-  "_comment": "Base de codes moteurs avec gains Stage 1 + Ethanol (E85). Gains réalistes basés sur les pratiques pros — pas du marketing. E85 disponible uniquement sur moteurs essence à injection directe compatibles.",
+  "_comment": "Base de codes moteurs avec gains Stage 1 + Ethanol (E85). Gains realistes bases sur les pratiques pros.",
   "engines": {
+    "vag-1.4-16v-75": {
+      "code": "AKQ/APE",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 75,
+      "stock_nm": 126,
+      "stage1": {
+        "hp": 85,
+        "nm": 140
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.4-16v-100": {
+      "code": "BBY/BUD",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 130,
+      "stage1": {
+        "hp": 115,
+        "nm": 150
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.6-8v-100": {
+      "code": "AEH/AKL",
+      "displacement": "1.6 8v",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 140,
+      "stage1": {
+        "hp": 115,
+        "nm": 160
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.6-16v-105": {
+      "code": "BAD/BCB",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 105,
+      "stock_nm": 148,
+      "stage1": {
+        "hp": 120,
+        "nm": 170
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.6-fsi-115": {
+      "code": "BAG/BLP",
+      "displacement": "1.6 FSI",
+      "fuel": "essence",
+      "stock_hp": 115,
+      "stock_nm": 155,
+      "stage1": {
+        "hp": 128,
+        "nm": 175
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0-8v-115": {
+      "code": "AZJ/AZG",
+      "displacement": "2.0 8v",
+      "fuel": "essence",
+      "stock_hp": 115,
+      "stock_nm": 170,
+      "stage1": {
+        "hp": 130,
+        "nm": 195
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0-fsi-150": {
+      "code": "AXW/BLR",
+      "displacement": "2.0 FSI",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 170,
+        "nm": 225
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.8t-150": {
+      "code": "AGU/AUM",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 210,
+      "stage1": {
+        "hp": 200,
+        "nm": 290
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 328,
+        "available": true
+      }
+    },
+    "vag-1.8t-180": {
+      "code": "AUQ/AMK",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 180,
+      "stock_nm": 235,
+      "stage1": {
+        "hp": 235,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 273,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "vag-1.8t-190": {
+      "code": "AMK",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 190,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 240,
+        "nm": 330
+      },
+      "ethanol": {
+        "hp": 278,
+        "nm": 373,
+        "available": true
+      }
+    },
+    "vag-1.8t-210": {
+      "code": "BFB",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 210,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 270,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 313,
+        "nm": 407,
+        "available": true
+      }
+    },
+    "vag-1.8t-225": {
+      "code": "APX/BAM",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 225,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 290,
+        "nm": 380
+      },
+      "ethanol": {
+        "hp": 336,
+        "nm": 429,
+        "available": true
+      }
+    },
+    "vag-1.8t-240": {
+      "code": "BFV",
+      "displacement": "1.8T 20v",
+      "fuel": "essence",
+      "stock_hp": 240,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 305,
+        "nm": 410
+      },
+      "ethanol": {
+        "hp": 354,
+        "nm": 463,
+        "available": true
+      }
+    },
+    "vag-2.3-v5-150": {
+      "code": "AGZ",
+      "displacement": "2.3 V5",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 205,
+      "stage1": {
+        "hp": 170,
+        "nm": 230
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.8-vr6-204": {
+      "code": "AQP",
+      "displacement": "2.8 VR6",
+      "fuel": "essence",
+      "stock_hp": 204,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 225,
+        "nm": 295
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.2-vr6-250": {
+      "code": "BFH/BML",
+      "displacement": "3.2 VR6",
+      "fuel": "essence",
+      "stock_hp": 250,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 280,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.6-fsi-300": {
+      "code": "BLV",
+      "displacement": "3.6 FSI",
+      "fuel": "essence",
+      "stock_hp": 300,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 335,
+        "nm": 395
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-4.2-v8-340": {
+      "code": "BHF",
+      "displacement": "4.2 V8 FSI",
+      "fuel": "essence",
+      "stock_hp": 340,
+      "stock_nm": 430,
+      "stage1": {
+        "hp": 380,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-ea113-2.0tfsi-200": {
+      "code": "BWA/BPY",
+      "displacement": "2.0 TFSI",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 265,
+        "nm": 380
+      },
+      "ethanol": {
+        "hp": 307,
+        "nm": 429,
+        "available": true
+      }
+    },
+    "vag-ea113-2.0tfsi-211": {
+      "code": "CCZA",
+      "displacement": "2.0 TFSI",
+      "fuel": "essence",
+      "stock_hp": 211,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 275,
+        "nm": 380
+      },
+      "ethanol": {
+        "hp": 319,
+        "nm": 429,
+        "available": true
+      }
+    },
+    "vag-ea113-2.0tfsi-230": {
+      "code": "CDLF",
+      "displacement": "2.0 TFSI",
+      "fuel": "essence",
+      "stock_hp": 230,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 295,
+        "nm": 400
+      },
+      "ethanol": {
+        "hp": 342,
+        "nm": 452,
+        "available": true
+      }
+    },
+    "vag-ea113-2.0tfsi-265": {
+      "code": "CDLA",
+      "displacement": "2.0 TFSI",
+      "fuel": "essence",
+      "stock_hp": 265,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 330,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 383,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "vag-ea888gen1-1.8tsi-160": {
+      "code": "CDAA",
+      "displacement": "1.8 TSI",
+      "fuel": "essence",
+      "stock_hp": 160,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 215,
+        "nm": 340
+      },
+      "ethanol": {
+        "hp": 249,
+        "nm": 384,
+        "available": true
+      }
+    },
+    "vag-ea888gen1-2.0tsi-180": {
+      "code": "CCZB",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 180,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 245,
+        "nm": 410
+      },
+      "ethanol": {
+        "hp": 284,
+        "nm": 463,
+        "available": true
+      }
+    },
+    "vag-ea888gen1-2.0tsi-210": {
+      "code": "CCZD",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 210,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 270,
+        "nm": 380
+      },
+      "ethanol": {
+        "hp": 313,
+        "nm": 429,
+        "available": true
+      }
+    },
+    "vag-ea888gen2-1.4tsi-160": {
+      "code": "CAVD",
+      "displacement": "1.4 TSI twincharger",
+      "fuel": "essence",
+      "stock_hp": 160,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 205,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 238,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "vag-ea888gen2-1.4tsi-185": {
+      "code": "CTHE",
+      "displacement": "1.4 TSI twincharger",
+      "fuel": "essence",
+      "stock_hp": 185,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 230,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 267,
+        "nm": 362,
+        "available": true
+      }
+    },
     "ea211-1.0-tsi-95": {
-      "code": "EA211",
+      "code": "CHZB",
       "displacement": "1.0 TSI",
       "fuel": "essence",
       "stock_hp": 95,
       "stock_nm": 175,
-      "stage1": { "hp": 125, "nm": 220 },
-      "ethanol": { "hp": 145, "nm": 250, "available": true }
+      "stage1": {
+        "hp": 125,
+        "nm": 220
+      },
+      "ethanol": {
+        "hp": 145,
+        "nm": 249,
+        "available": true
+      }
+    },
+    "ea211-1.0-tsi-110": {
+      "code": "DKR",
+      "displacement": "1.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 110,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 140,
+        "nm": 245
+      },
+      "ethanol": {
+        "hp": 162,
+        "nm": 277,
+        "available": true
+      }
     },
     "ea211-1.0-tsi-115": {
-      "code": "EA211",
+      "code": "DKLA/CHZJ",
       "displacement": "1.0 TSI",
       "fuel": "essence",
       "stock_hp": 115,
       "stock_nm": 200,
-      "stage1": { "hp": 145, "nm": 250 },
-      "ethanol": { "hp": 165, "nm": 280, "available": true }
+      "stage1": {
+        "hp": 145,
+        "nm": 250
+      },
+      "ethanol": {
+        "hp": 168,
+        "nm": 282,
+        "available": true
+      }
+    },
+    "ea211-1.2-tsi-86": {
+      "code": "CBZA",
+      "displacement": "1.2 TSI",
+      "fuel": "essence",
+      "stock_hp": 86,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 115,
+        "nm": 200
+      },
+      "ethanol": {
+        "hp": 133,
+        "nm": 226,
+        "available": true
+      }
     },
     "ea211-1.2-tsi-105": {
-      "code": "EA211",
+      "code": "CBZB",
       "displacement": "1.2 TSI",
       "fuel": "essence",
       "stock_hp": 105,
       "stock_nm": 175,
-      "stage1": { "hp": 140, "nm": 230 },
-      "ethanol": { "hp": 160, "nm": 260, "available": true }
+      "stage1": {
+        "hp": 140,
+        "nm": 230
+      },
+      "ethanol": {
+        "hp": 162,
+        "nm": 260,
+        "available": true
+      }
+    },
+    "ea211-1.2-tsi-110": {
+      "code": "CYVB",
+      "displacement": "1.2 TSI",
+      "fuel": "essence",
+      "stock_hp": 110,
+      "stock_nm": 175,
+      "stage1": {
+        "hp": 145,
+        "nm": 230
+      },
+      "ethanol": {
+        "hp": 168,
+        "nm": 260,
+        "available": true
+      }
     },
     "ea211-1.4-tsi-122": {
-      "code": "EA211",
+      "code": "CMBA/CAXA",
       "displacement": "1.4 TSI",
       "fuel": "essence",
       "stock_hp": 122,
       "stock_nm": 200,
-      "stage1": { "hp": 160, "nm": 260 },
-      "ethanol": { "hp": 185, "nm": 295, "available": true }
+      "stage1": {
+        "hp": 160,
+        "nm": 260
+      },
+      "ethanol": {
+        "hp": 186,
+        "nm": 294,
+        "available": true
+      }
+    },
+    "ea211-1.4-tsi-125": {
+      "code": "CZCA",
+      "displacement": "1.4 TSI",
+      "fuel": "essence",
+      "stock_hp": 125,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 165,
+        "nm": 260
+      },
+      "ethanol": {
+        "hp": 191,
+        "nm": 294,
+        "available": true
+      }
     },
     "ea211-1.4-tsi-140": {
-      "code": "EA211",
-      "displacement": "1.4 TSI",
+      "code": "CHPA",
+      "displacement": "1.4 TSI ACT",
       "fuel": "essence",
       "stock_hp": 140,
       "stock_nm": 250,
-      "stage1": { "hp": 180, "nm": 310 },
-      "ethanol": { "hp": 210, "nm": 350, "available": true }
+      "stage1": {
+        "hp": 180,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 209,
+        "nm": 350,
+        "available": true
+      }
     },
-    "ea211evo-1.5-tsi-130": {
-      "code": "EA211 Evo",
-      "displacement": "1.5 TSI",
-      "fuel": "essence",
-      "stock_hp": 130,
-      "stock_nm": 200,
-      "stage1": { "hp": 170, "nm": 270 },
-      "ethanol": { "hp": 200, "nm": 305, "available": true }
-    },
-    "ea211evo-1.5-tsi-150": {
-      "code": "EA211 Evo",
-      "displacement": "1.5 TSI",
+    "ea211-1.4-tsi-150": {
+      "code": "CZDA",
+      "displacement": "1.4 TSI ACT",
       "fuel": "essence",
       "stock_hp": 150,
       "stock_nm": 250,
-      "stage1": { "hp": 195, "nm": 320 },
-      "ethanol": { "hp": 225, "nm": 360, "available": true }
+      "stage1": {
+        "hp": 195,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "ea211evo-1.5-tsi-130": {
+      "code": "DADA",
+      "displacement": "1.5 TSI Evo",
+      "fuel": "essence",
+      "stock_hp": 130,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 170,
+        "nm": 270
+      },
+      "ethanol": {
+        "hp": 197,
+        "nm": 305,
+        "available": true
+      }
+    },
+    "ea211evo-1.5-tsi-150": {
+      "code": "DPCA",
+      "displacement": "1.5 TSI Evo",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 195,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "ea888gen3-1.8-tsi-170": {
+      "code": "CJSA",
+      "displacement": "1.8 TSI",
+      "fuel": "essence",
+      "stock_hp": 170,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 225,
+        "nm": 350
+      },
+      "ethanol": {
+        "hp": 261,
+        "nm": 395,
+        "available": true
+      }
     },
     "ea888gen3-1.8-tsi-180": {
-      "code": "EA888 Gen3",
+      "code": "CJSB",
       "displacement": "1.8 TSI",
       "fuel": "essence",
       "stock_hp": 180,
       "stock_nm": 250,
-      "stage1": { "hp": 240, "nm": 360 },
-      "ethanol": { "hp": 280, "nm": 410, "available": true }
+      "stage1": {
+        "hp": 240,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 278,
+        "nm": 407,
+        "available": true
+      }
     },
     "ea888gen3-2.0-tsi-190": {
-      "code": "EA888 Gen3",
+      "code": "CYRC",
       "displacement": "2.0 TSI",
       "fuel": "essence",
       "stock_hp": 190,
       "stock_nm": 320,
-      "stage1": { "hp": 260, "nm": 420 },
-      "ethanol": { "hp": 300, "nm": 470, "available": true }
+      "stage1": {
+        "hp": 260,
+        "nm": 420
+      },
+      "ethanol": {
+        "hp": 302,
+        "nm": 475,
+        "available": true
+      }
+    },
+    "ea888gen3-2.0-tsi-200": {
+      "code": "CYRB",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 265,
+        "nm": 390
+      },
+      "ethanol": {
+        "hp": 307,
+        "nm": 441,
+        "available": true
+      }
     },
     "ea888gen3-2.0-tsi-220": {
-      "code": "EA888 Gen3",
+      "code": "CHHB",
       "displacement": "2.0 TSI",
       "fuel": "essence",
       "stock_hp": 220,
       "stock_nm": 350,
-      "stage1": { "hp": 290, "nm": 450 },
-      "ethanol": { "hp": 335, "nm": 500, "available": true }
+      "stage1": {
+        "hp": 290,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 336,
+        "nm": 508,
+        "available": true
+      }
     },
     "ea888gen3-2.0-tsi-230": {
-      "code": "EA888 Gen3",
+      "code": "CXCB",
       "displacement": "2.0 TSI",
       "fuel": "essence",
       "stock_hp": 230,
       "stock_nm": 370,
-      "stage1": { "hp": 300, "nm": 470 },
-      "ethanol": { "hp": 345, "nm": 520, "available": true }
+      "stage1": {
+        "hp": 300,
+        "nm": 470
+      },
+      "ethanol": {
+        "hp": 348,
+        "nm": 531,
+        "available": true
+      }
     },
     "ea888gen3-2.0-tsi-245": {
-      "code": "EA888 Gen3",
+      "code": "CHHA",
       "displacement": "2.0 TSI",
       "fuel": "essence",
       "stock_hp": 245,
       "stock_nm": 370,
-      "stage1": { "hp": 320, "nm": 470 },
-      "ethanol": { "hp": 365, "nm": 525, "available": true }
+      "stage1": {
+        "hp": 320,
+        "nm": 470
+      },
+      "ethanol": {
+        "hp": 371,
+        "nm": 531,
+        "available": true
+      }
+    },
+    "ea888gen3-2.0-tsi-265": {
+      "code": "CJXA",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 265,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 340,
+        "nm": 460
+      },
+      "ethanol": {
+        "hp": 394,
+        "nm": 520,
+        "available": true
+      }
+    },
+    "ea888gen3-2.0-tsi-280": {
+      "code": "CJXC",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 355,
+        "nm": 480
+      },
+      "ethanol": {
+        "hp": 412,
+        "nm": 542,
+        "available": true
+      }
+    },
+    "ea888gen3-2.0-tsi-290": {
+      "code": "CJXG",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 290,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 360,
+        "nm": 485
+      },
+      "ethanol": {
+        "hp": 418,
+        "nm": 548,
+        "available": true
+      }
     },
     "ea888gen3-2.0-tsi-300": {
-      "code": "EA888 Gen3",
+      "code": "CJXB",
       "displacement": "2.0 TSI",
       "fuel": "essence",
       "stock_hp": 300,
       "stock_nm": 380,
-      "stage1": { "hp": 365, "nm": 480 },
-      "ethanol": { "hp": 420, "nm": 540, "available": true }
+      "stage1": {
+        "hp": 365,
+        "nm": 490
+      },
+      "ethanol": {
+        "hp": 423,
+        "nm": 554,
+        "available": true
+      }
     },
-    "ea288-1.6-tdi-90": {
-      "code": "EA288",
-      "displacement": "1.6 TDI",
+    "ea888gen3-2.0-tsi-310": {
+      "code": "CJXE",
+      "displacement": "2.0 TSI",
+      "fuel": "essence",
+      "stock_hp": 310,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 380,
+        "nm": 510
+      },
+      "ethanol": {
+        "hp": 441,
+        "nm": 576,
+        "available": true
+      }
+    },
+    "vag-1.9tdi-vp-90": {
+      "code": "AHU/ALH",
+      "displacement": "1.9 TDI VP",
       "fuel": "diesel",
       "stock_hp": 90,
-      "stock_nm": 230,
-      "stage1": { "hp": 120, "nm": 290 },
-      "ethanol": { "available": false }
+      "stock_nm": 210,
+      "stage1": {
+        "hp": 125,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "ea288-1.6-tdi-105": {
-      "code": "EA288",
-      "displacement": "1.6 TDI",
+    "vag-1.9tdi-vp-110": {
+      "code": "AFN/AHF",
+      "displacement": "1.9 TDI VP",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 235,
+      "stage1": {
+        "hp": 145,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.9tdi-pd-100": {
+      "code": "ATD/AXR",
+      "displacement": "1.9 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 140,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.9tdi-pd-105": {
+      "code": "BLS/BXE",
+      "displacement": "1.9 TDI PD",
       "fuel": "diesel",
       "stock_hp": 105,
       "stock_nm": 250,
-      "stage1": { "hp": 135, "nm": 310 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.9tdi-pd-115": {
+      "code": "AJM/AUY",
+      "displacement": "1.9 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 285,
+      "stage1": {
+        "hp": 160,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.9tdi-pd-130": {
+      "code": "ASZ/BKC",
+      "displacement": "1.9 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 310,
+      "stage1": {
+        "hp": 180,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.9tdi-pd-150": {
+      "code": "ARL",
+      "displacement": "1.9 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 200,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.4tdi-75": {
+      "code": "AMF",
+      "displacement": "1.4 TDI",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 195,
+      "stage1": {
+        "hp": 105,
+        "nm": 245
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.4tdi-80": {
+      "code": "ATL",
+      "displacement": "1.4 TDI 3cyl",
+      "fuel": "diesel",
+      "stock_hp": 80,
+      "stock_nm": 195,
+      "stage1": {
+        "hp": 110,
+        "nm": 240
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.4tdi-90-cr": {
+      "code": "CUSA",
+      "displacement": "1.4 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 125,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-1.6tdi-75": {
+      "code": "CAYA",
+      "displacement": "1.6 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 195,
+      "stage1": {
+        "hp": 105,
+        "nm": 245
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ea288-1.6-tdi-90": {
+      "code": "CAYB/CLNA",
+      "displacement": "1.6 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 120,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ea288-1.6-tdi-105": {
+      "code": "CAYC/CLHA",
+      "displacement": "1.6 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 105,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 135,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ea288-1.6-tdi-115": {
-      "code": "EA288",
-      "displacement": "1.6 TDI",
+      "code": "DGTE",
+      "displacement": "1.6 TDI Evo",
       "fuel": "diesel",
       "stock_hp": 115,
       "stock_nm": 250,
-      "stage1": { "hp": 145, "nm": 320 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 145,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "ea189-2.0-tdi-140": {
-      "code": "EA189",
-      "displacement": "2.0 TDI",
+    "ea288-1.6-tdi-120": {
+      "code": "DGTE",
+      "displacement": "1.6 TDI Evo",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 155,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-pd-100": {
+      "code": "BMM",
+      "displacement": "2.0 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 140,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-pd-136": {
+      "code": "BKP/CBAB",
+      "displacement": "2.0 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 180,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-pd-140": {
+      "code": "BKD",
+      "displacement": "2.0 TDI PD",
       "fuel": "diesel",
       "stock_hp": 140,
       "stock_nm": 320,
-      "stage1": { "hp": 185, "nm": 400 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 185,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-pd-170": {
+      "code": "BMN/BUZ",
+      "displacement": "2.0 TDI PD",
+      "fuel": "diesel",
+      "stock_hp": 170,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 215,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-110": {
+      "code": "CFHB",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-120": {
+      "code": "CFHF",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 290,
+      "stage1": {
+        "hp": 160,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-136": {
+      "code": "CFFB",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 180,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-143": {
+      "code": "CAGA",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 143,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 185,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ea189-2.0-tdi-140": {
+      "code": "CBAB",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 140,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 185,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ea288-2.0-tdi-150": {
-      "code": "EA288",
-      "displacement": "2.0 TDI",
+      "code": "CRLB/DCYA",
+      "displacement": "2.0 TDI CR",
       "fuel": "diesel",
       "stock_hp": 150,
       "stock_nm": 340,
-      "stage1": { "hp": 195, "nm": 420 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 195,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-170": {
+      "code": "CAHA",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 170,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 220,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0tdi-cr-177": {
+      "code": "CGLB",
+      "displacement": "2.0 TDI CR",
+      "fuel": "diesel",
+      "stock_hp": 177,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 225,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ea288-2.0-tdi-184": {
-      "code": "EA288",
-      "displacement": "2.0 TDI",
+      "code": "CUNA/DEUA",
+      "displacement": "2.0 TDI CR",
       "fuel": "diesel",
       "stock_hp": 184,
       "stock_nm": 380,
-      "stage1": { "hp": 235, "nm": 460 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 235,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ea288-2.0-tdi-190": {
-      "code": "EA288 Evo",
-      "displacement": "2.0 TDI",
+      "code": "DFGA",
+      "displacement": "2.0 TDI Evo",
       "fuel": "diesel",
       "stock_hp": 190,
       "stock_nm": 400,
-      "stage1": { "hp": 240, "nm": 480 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 240,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ea288-2.0-tdi-200": {
+      "code": "DFHA",
+      "displacement": "2.0 TDI Evo",
+      "fuel": "diesel",
+      "stock_hp": 200,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 250,
+        "nm": 490
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.0bitdi-240": {
+      "code": "CKUB/CUAA",
+      "displacement": "2.0 BiTDI",
+      "fuel": "diesel",
+      "stock_hp": 240,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 285,
+        "nm": 580
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.5tdi-v6-150": {
+      "code": "AKE",
+      "displacement": "2.5 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 310,
+      "stage1": {
+        "hp": 195,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.5tdi-v6-163": {
+      "code": "BCZ",
+      "displacement": "2.5 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 310,
+      "stage1": {
+        "hp": 210,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.5tdi-v6-180": {
+      "code": "BDG",
+      "displacement": "2.5 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 180,
+      "stock_nm": 370,
+      "stage1": {
+        "hp": 230,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.7tdi-180": {
+      "code": "CGKA",
+      "displacement": "2.7 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 180,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 230,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-2.7tdi-190": {
+      "code": "CGKB",
+      "displacement": "2.7 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 190,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 245,
+        "nm": 490
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-204": {
+      "code": "CDYA",
+      "displacement": "3.0 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 204,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 255,
+        "nm": 490
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-225": {
+      "code": "BMK",
+      "displacement": "3.0 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 225,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 280,
+        "nm": 550
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-240": {
+      "code": "BUG",
+      "displacement": "3.0 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 240,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 295,
+        "nm": 600
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-245": {
+      "code": "CNRC",
+      "displacement": "3.0 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 245,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 300,
+        "nm": 600
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-272": {
+      "code": "CRTC",
+      "displacement": "3.0 TDI V6",
+      "fuel": "diesel",
+      "stock_hp": 272,
+      "stock_nm": 580,
+      "stage1": {
+        "hp": 330,
+        "nm": 680
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-3.0tdi-313": {
+      "code": "CGQB",
+      "displacement": "3.0 BiTDI V6",
+      "fuel": "diesel",
+      "stock_hp": 313,
+      "stock_nm": 650,
+      "stage1": {
+        "hp": 370,
+        "nm": 760
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "vag-4.2tdi-326": {
+      "code": "CCFA",
+      "displacement": "4.2 TDI V8",
+      "fuel": "diesel",
+      "stock_hp": 326,
+      "stock_nm": 650,
+      "stage1": {
+        "hp": 390,
+        "nm": 780
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.0-vti-68": {
+      "code": "EB0",
+      "displacement": "1.0 VTi",
+      "fuel": "essence",
+      "stock_hp": 68,
+      "stock_nm": 95,
+      "stage1": {
+        "hp": 78,
+        "nm": 108
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.2-vti-82": {
+      "code": "EB2F",
+      "displacement": "1.2 VTi",
+      "fuel": "essence",
+      "stock_hp": 82,
+      "stock_nm": 118,
+      "stage1": {
+        "hp": 92,
+        "nm": 130
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-1.2-puretech-110": {
       "code": "EB2DT",
@@ -187,8 +1429,15 @@
       "fuel": "essence",
       "stock_hp": 110,
       "stock_nm": 205,
-      "stage1": { "hp": 140, "nm": 250 },
-      "ethanol": { "hp": 160, "nm": 280, "available": true }
+      "stage1": {
+        "hp": 140,
+        "nm": 250
+      },
+      "ethanol": {
+        "hp": 162,
+        "nm": 282,
+        "available": true
+      }
     },
     "psa-1.2-puretech-130": {
       "code": "EB2DTS",
@@ -196,8 +1445,117 @@
       "fuel": "essence",
       "stock_hp": 130,
       "stock_nm": 230,
-      "stage1": { "hp": 165, "nm": 285 },
-      "ethanol": { "hp": 190, "nm": 320, "available": true }
+      "stage1": {
+        "hp": 165,
+        "nm": 285
+      },
+      "ethanol": {
+        "hp": 191,
+        "nm": 322,
+        "available": true
+      }
+    },
+    "psa-1.2-puretech-155": {
+      "code": "EB2ADTS",
+      "displacement": "1.2 PureTech",
+      "fuel": "essence",
+      "stock_hp": 155,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 195,
+        "nm": 305
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 345,
+        "available": true
+      }
+    },
+    "psa-1.4-8v-75": {
+      "code": "TU3JP",
+      "displacement": "1.4 8v",
+      "fuel": "essence",
+      "stock_hp": 75,
+      "stock_nm": 117,
+      "stage1": {
+        "hp": 82,
+        "nm": 130
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.4-16v-90": {
+      "code": "TU3JP4",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 90,
+      "stock_nm": 133,
+      "stage1": {
+        "hp": 100,
+        "nm": 150
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-8v-100": {
+      "code": "TU5JP4",
+      "displacement": "1.6 8v",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 147,
+      "stage1": {
+        "hp": 112,
+        "nm": 165
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-16v-110": {
+      "code": "TU5JP4-16v",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 110,
+      "stock_nm": 147,
+      "stage1": {
+        "hp": 122,
+        "nm": 165
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-vti-120": {
+      "code": "EP6",
+      "displacement": "1.6 VTi",
+      "fuel": "essence",
+      "stock_hp": 120,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 132,
+        "nm": 180
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-thp-140": {
+      "code": "EP6DT",
+      "displacement": "1.6 THP",
+      "fuel": "essence",
+      "stock_hp": 140,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 180,
+        "nm": 305
+      },
+      "ethanol": {
+        "hp": 209,
+        "nm": 345,
+        "available": true
+      }
     },
     "psa-1.6-thp-150": {
       "code": "EP6CDT",
@@ -205,8 +1563,47 @@
       "fuel": "essence",
       "stock_hp": 150,
       "stock_nm": 240,
-      "stage1": { "hp": 195, "nm": 310 },
-      "ethanol": { "hp": 225, "nm": 350, "available": true }
+      "stage1": {
+        "hp": 195,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "psa-1.6-thp-156": {
+      "code": "EP6CDT",
+      "displacement": "1.6 THP",
+      "fuel": "essence",
+      "stock_hp": 156,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 200,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "psa-1.6-thp-165": {
+      "code": "EP6CDTM",
+      "displacement": "1.6 THP",
+      "fuel": "essence",
+      "stock_hp": 165,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 210,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 244,
+        "nm": 362,
+        "available": true
+      }
     },
     "psa-1.6-thp-200": {
       "code": "EP6CDTX",
@@ -214,8 +1611,173 @@
       "fuel": "essence",
       "stock_hp": 200,
       "stock_nm": 275,
-      "stage1": { "hp": 250, "nm": 360 },
-      "ethanol": { "hp": 290, "nm": 410, "available": true }
+      "stage1": {
+        "hp": 250,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 290,
+        "nm": 407,
+        "available": true
+      }
+    },
+    "psa-1.6-thp-208": {
+      "code": "EP6FDTX",
+      "displacement": "1.6 THP",
+      "fuel": "essence",
+      "stock_hp": 208,
+      "stock_nm": 285,
+      "stage1": {
+        "hp": 260,
+        "nm": 370
+      },
+      "ethanol": {
+        "hp": 302,
+        "nm": 418,
+        "available": true
+      }
+    },
+    "psa-1.6-thp-270": {
+      "code": "EP6FDTR",
+      "displacement": "1.6 THP GTi",
+      "fuel": "essence",
+      "stock_hp": 270,
+      "stock_nm": 330,
+      "stage1": {
+        "hp": 320,
+        "nm": 410
+      },
+      "ethanol": {
+        "hp": 371,
+        "nm": 463,
+        "available": true
+      }
+    },
+    "psa-1.8-16v-117": {
+      "code": "XU7JP4",
+      "displacement": "1.8 16v",
+      "fuel": "essence",
+      "stock_hp": 117,
+      "stock_nm": 170,
+      "stage1": {
+        "hp": 130,
+        "nm": 190
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-16v-138": {
+      "code": "EW10J4",
+      "displacement": "2.0 16v",
+      "fuel": "essence",
+      "stock_hp": 138,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 155,
+        "nm": 225
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-16v-143": {
+      "code": "EW10A",
+      "displacement": "2.0 16v",
+      "fuel": "essence",
+      "stock_hp": 143,
+      "stock_nm": 202,
+      "stage1": {
+        "hp": 160,
+        "nm": 225
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.4-hdi-68": {
+      "code": "DV4TD",
+      "displacement": "1.4 HDi",
+      "fuel": "diesel",
+      "stock_hp": 68,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 95,
+        "nm": 205
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.4-hdi-70": {
+      "code": "DV4TED4",
+      "displacement": "1.4 HDi",
+      "fuel": "diesel",
+      "stock_hp": 70,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 100,
+        "nm": 210
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.4-hdi-90": {
+      "code": "DV4C",
+      "displacement": "1.4 HDi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 205,
+      "stage1": {
+        "hp": 120,
+        "nm": 260
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.5-bluehdi-100": {
+      "code": "DV5RC",
+      "displacement": "1.5 BlueHDi",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 130,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.5-bluehdi-130": {
+      "code": "DV5R",
+      "displacement": "1.5 BlueHDi",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 170,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-hdi-75": {
+      "code": "DV6ATED4",
+      "displacement": "1.6 HDi",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 185,
+      "stage1": {
+        "hp": 105,
+        "nm": 235
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-1.6-hdi-90": {
       "code": "DV6",
@@ -223,8 +1785,27 @@
       "fuel": "diesel",
       "stock_hp": 90,
       "stock_nm": 215,
-      "stage1": { "hp": 120, "nm": 270 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 120,
+        "nm": 270
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-hdi-92": {
+      "code": "DV6DTED",
+      "displacement": "1.6 HDi",
+      "fuel": "diesel",
+      "stock_hp": 92,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 125,
+        "nm": 285
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-1.6-hdi-110": {
       "code": "DV6TED4",
@@ -232,8 +1813,41 @@
       "fuel": "diesel",
       "stock_hp": 110,
       "stock_nm": 240,
-      "stage1": { "hp": 140, "nm": 295 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 140,
+        "nm": 295
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-hdi-112": {
+      "code": "DV6C",
+      "displacement": "1.6 e-HDi",
+      "fuel": "diesel",
+      "stock_hp": 112,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 145,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-1.6-hdi-115": {
+      "code": "DV6FE",
+      "displacement": "1.6 HDi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 285,
+      "stage1": {
+        "hp": 150,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-1.6-bluehdi-100": {
       "code": "DV6FD",
@@ -241,8 +1855,13 @@
       "fuel": "diesel",
       "stock_hp": 100,
       "stock_nm": 254,
-      "stage1": { "hp": 130, "nm": 305 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 130,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-1.6-bluehdi-120": {
       "code": "DV6FC",
@@ -250,17 +1869,139 @@
       "fuel": "diesel",
       "stock_hp": 120,
       "stock_nm": 300,
-      "stage1": { "hp": 155, "nm": 360 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 155,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-90": {
+      "code": "DW10TD",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 205,
+      "stage1": {
+        "hp": 125,
+        "nm": 260
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-107": {
+      "code": "DW10ATED",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 107,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 145,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-109": {
+      "code": "DW10ATED",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 109,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 145,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-110": {
+      "code": "DW10ATED4",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 145,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-136": {
+      "code": "DW10BTED4",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 180,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-138": {
+      "code": "DW10C",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 138,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 180,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-140": {
+      "code": "DW10BTED4",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 140,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 185,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-2.0-hdi-150": {
-      "code": "DW10",
+      "code": "DW10C",
       "displacement": "2.0 HDi",
       "fuel": "diesel",
       "stock_hp": 150,
       "stock_nm": 340,
-      "stage1": { "hp": 195, "nm": 420 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 195,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-hdi-163": {
+      "code": "DW10C",
+      "displacement": "2.0 HDi",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 210,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-2.0-bluehdi-150": {
       "code": "DW10FC",
@@ -268,8 +2009,27 @@
       "fuel": "diesel",
       "stock_hp": 150,
       "stock_nm": 370,
-      "stage1": { "hp": 195, "nm": 440 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 195,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.0-bluehdi-163": {
+      "code": "DW10F",
+      "displacement": "2.0 BlueHDi",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 205,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "psa-2.0-bluehdi-180": {
       "code": "DW10FC",
@@ -277,8 +2037,111 @@
       "fuel": "diesel",
       "stock_hp": 180,
       "stock_nm": 400,
-      "stage1": { "hp": 225, "nm": 470 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 225,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.2-hdi-128": {
+      "code": "DW12TED4",
+      "displacement": "2.2 HDi",
+      "fuel": "diesel",
+      "stock_hp": 128,
+      "stock_nm": 314,
+      "stage1": {
+        "hp": 165,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.2-hdi-130": {
+      "code": "DW12TED4",
+      "displacement": "2.2 HDi",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 314,
+      "stage1": {
+        "hp": 170,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.2-hdi-170": {
+      "code": "DW12BTED4",
+      "displacement": "2.2 HDi",
+      "fuel": "diesel",
+      "stock_hp": 170,
+      "stock_nm": 370,
+      "stage1": {
+        "hp": 215,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-2.2-hdi-204": {
+      "code": "DW12C",
+      "displacement": "2.2 HDi",
+      "fuel": "diesel",
+      "stock_hp": 204,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 250,
+        "nm": 530
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "psa-3.0-hdi-240": {
+      "code": "DT17BiTurbo",
+      "displacement": "3.0 HDi V6",
+      "fuel": "diesel",
+      "stock_hp": 240,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 290,
+        "nm": 540
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.2-8v-60": {
+      "code": "D7F",
+      "displacement": "1.2 8v",
+      "fuel": "essence",
+      "stock_hp": 60,
+      "stock_nm": 93,
+      "stage1": {
+        "hp": 68,
+        "nm": 105
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.2-16v-75": {
+      "code": "D4F",
+      "displacement": "1.2 16v",
+      "fuel": "essence",
+      "stock_hp": 75,
+      "stock_nm": 105,
+      "stage1": {
+        "hp": 85,
+        "nm": 118
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ren-0.9-tce-90": {
       "code": "H4Bt",
@@ -286,8 +2149,31 @@
       "fuel": "essence",
       "stock_hp": 90,
       "stock_nm": 135,
-      "stage1": { "hp": 115, "nm": 175 },
-      "ethanol": { "hp": 130, "nm": 195, "available": true }
+      "stage1": {
+        "hp": 115,
+        "nm": 175
+      },
+      "ethanol": {
+        "hp": 133,
+        "nm": 198,
+        "available": true
+      }
+    },
+    "ren-1.0-tce-100": {
+      "code": "H4Dt",
+      "displacement": "1.0 TCe",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 130,
+        "nm": 200
+      },
+      "ethanol": {
+        "hp": 151,
+        "nm": 226,
+        "available": true
+      }
     },
     "ren-1.2-tce-115": {
       "code": "H5Ft",
@@ -295,8 +2181,31 @@
       "fuel": "essence",
       "stock_hp": 115,
       "stock_nm": 190,
-      "stage1": { "hp": 150, "nm": 240 },
-      "ethanol": { "hp": 175, "nm": 270, "available": true }
+      "stage1": {
+        "hp": 150,
+        "nm": 240
+      },
+      "ethanol": {
+        "hp": 174,
+        "nm": 271,
+        "available": true
+      }
+    },
+    "ren-1.2-tce-130": {
+      "code": "H5Ft",
+      "displacement": "1.2 TCe",
+      "fuel": "essence",
+      "stock_hp": 130,
+      "stock_nm": 205,
+      "stage1": {
+        "hp": 165,
+        "nm": 255
+      },
+      "ethanol": {
+        "hp": 191,
+        "nm": 288,
+        "available": true
+      }
     },
     "ren-1.3-tce-140": {
       "code": "H5Ht",
@@ -304,8 +2213,31 @@
       "fuel": "essence",
       "stock_hp": 140,
       "stock_nm": 240,
-      "stage1": { "hp": 180, "nm": 300 },
-      "ethanol": { "hp": 210, "nm": 340, "available": true }
+      "stage1": {
+        "hp": 180,
+        "nm": 300
+      },
+      "ethanol": {
+        "hp": 209,
+        "nm": 339,
+        "available": true
+      }
+    },
+    "ren-1.3-tce-150": {
+      "code": "H5Ht",
+      "displacement": "1.3 TCe",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 190,
+        "nm": 315
+      },
+      "ethanol": {
+        "hp": 220,
+        "nm": 356,
+        "available": true
+      }
     },
     "ren-1.3-tce-160": {
       "code": "H5Ht",
@@ -313,8 +2245,297 @@
       "fuel": "essence",
       "stock_hp": 160,
       "stock_nm": 270,
-      "stage1": { "hp": 200, "nm": 330 },
-      "ethanol": { "hp": 235, "nm": 370, "available": true }
+      "stage1": {
+        "hp": 200,
+        "nm": 330
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 373,
+        "available": true
+      }
+    },
+    "ren-1.4-16v-98": {
+      "code": "K4J",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 98,
+      "stock_nm": 127,
+      "stage1": {
+        "hp": 110,
+        "nm": 145
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.6-16v-110": {
+      "code": "K4M",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 110,
+      "stock_nm": 151,
+      "stage1": {
+        "hp": 125,
+        "nm": 170
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.6-16v-115": {
+      "code": "K4M",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 115,
+      "stock_nm": 158,
+      "stage1": {
+        "hp": 130,
+        "nm": 175
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.8-16v-117": {
+      "code": "F4P",
+      "displacement": "1.8 16v",
+      "fuel": "essence",
+      "stock_hp": 117,
+      "stock_nm": 175,
+      "stage1": {
+        "hp": 132,
+        "nm": 195
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-16v-140": {
+      "code": "F4R",
+      "displacement": "2.0 16v",
+      "fuel": "essence",
+      "stock_hp": 140,
+      "stock_nm": 191,
+      "stage1": {
+        "hp": 158,
+        "nm": 215
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-ide-140": {
+      "code": "F5R",
+      "displacement": "2.0 IDE",
+      "fuel": "essence",
+      "stock_hp": 140,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 158,
+        "nm": 225
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-turbo-165": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 165,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 215,
+        "nm": 350
+      },
+      "ethanol": {
+        "hp": 249,
+        "nm": 395,
+        "available": true
+      }
+    },
+    "ren-2.0-turbo-200": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 255,
+        "nm": 390
+      },
+      "ethanol": {
+        "hp": 296,
+        "nm": 441,
+        "available": true
+      }
+    },
+    "ren-2.0-turbo-225": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo RS",
+      "fuel": "essence",
+      "stock_hp": 225,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 285,
+        "nm": 400
+      },
+      "ethanol": {
+        "hp": 331,
+        "nm": 452,
+        "available": true
+      }
+    },
+    "ren-2.0-turbo-250": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo RS",
+      "fuel": "essence",
+      "stock_hp": 250,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 305,
+        "nm": 430
+      },
+      "ethanol": {
+        "hp": 354,
+        "nm": 486,
+        "available": true
+      }
+    },
+    "ren-2.0-turbo-265": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo Cup",
+      "fuel": "essence",
+      "stock_hp": 265,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 320,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 371,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "ren-2.0-turbo-275": {
+      "code": "F4Rt",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 275,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 325,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 377,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "ren-1.8-tce-280": {
+      "code": "M5Pt",
+      "displacement": "1.8 TCe RS",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 390,
+      "stage1": {
+        "hp": 335,
+        "nm": 470
+      },
+      "ethanol": {
+        "hp": 389,
+        "nm": 531,
+        "available": true
+      }
+    },
+    "ren-1.8-tce-300": {
+      "code": "M5Pt",
+      "displacement": "1.8 TCe Trophy",
+      "fuel": "essence",
+      "stock_hp": 300,
+      "stock_nm": 420,
+      "stage1": {
+        "hp": 355,
+        "nm": 490
+      },
+      "ethanol": {
+        "hp": 412,
+        "nm": 554,
+        "available": true
+      }
+    },
+    "ren-1.5-dci-65": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 65,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 90,
+        "nm": 210
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-70": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 70,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 95,
+        "nm": 210
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-75": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 180,
+      "stage1": {
+        "hp": 100,
+        "nm": 235
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-80": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 80,
+      "stock_nm": 185,
+      "stage1": {
+        "hp": 105,
+        "nm": 240
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-85": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 85,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 110,
+        "nm": 250
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ren-1.5-dci-90": {
       "code": "K9K",
@@ -322,8 +2543,55 @@
       "fuel": "diesel",
       "stock_hp": 90,
       "stock_nm": 220,
-      "stage1": { "hp": 115, "nm": 270 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 115,
+        "nm": 270
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-95": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 95,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 120,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-100": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 130,
+        "nm": 295
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-105": {
+      "code": "K9K",
+      "displacement": "1.5 dCi",
+      "fuel": "diesel",
+      "stock_hp": 105,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 135,
+        "nm": 300
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ren-1.5-dci-110": {
       "code": "K9K",
@@ -331,8 +2599,27 @@
       "fuel": "diesel",
       "stock_hp": 110,
       "stock_nm": 250,
-      "stage1": { "hp": 140, "nm": 310 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 140,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.5-dci-115": {
+      "code": "K9K",
+      "displacement": "1.5 dCi Energy",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ren-1.6-dci-130": {
       "code": "R9M",
@@ -340,8 +2627,97 @@
       "fuel": "diesel",
       "stock_hp": 130,
       "stock_nm": 320,
-      "stage1": { "hp": 170, "nm": 380 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 170,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.6-dci-160": {
+      "code": "R9M",
+      "displacement": "1.6 dCi BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 160,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 200,
+        "nm": 450
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.9-dci-100": {
+      "code": "F9Q",
+      "displacement": "1.9 dCi",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 135,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.9-dci-110": {
+      "code": "F9Q",
+      "displacement": "1.9 dCi",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 145,
+        "nm": 310
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.9-dci-115": {
+      "code": "F9Q",
+      "displacement": "1.9 dCi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.9-dci-120": {
+      "code": "F9Q",
+      "displacement": "1.9 dCi",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 160,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-1.9-dci-130": {
+      "code": "F9Q",
+      "displacement": "1.9 dCi",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 170,
+        "nm": 370
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ren-2.0-dci-150": {
       "code": "M9R",
@@ -349,26 +2725,603 @@
       "fuel": "diesel",
       "stock_hp": 150,
       "stock_nm": 340,
-      "stage1": { "hp": 195, "nm": 420 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 195,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-dci-175": {
+      "code": "M9R",
+      "displacement": "2.0 dCi",
+      "fuel": "diesel",
+      "stock_hp": 175,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 220,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-dci-180": {
+      "code": "M9R",
+      "displacement": "2.0 dCi",
+      "fuel": "diesel",
+      "stock_hp": 180,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 225,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.0-dci-200": {
+      "code": "M9R",
+      "displacement": "2.0 dCi",
+      "fuel": "diesel",
+      "stock_hp": 200,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 250,
+        "nm": 530
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.2-dci-115": {
+      "code": "G9T",
+      "displacement": "2.2 dCi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 150,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-2.2-dci-150": {
+      "code": "G9T",
+      "displacement": "2.2 dCi",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-3.0-dci-180": {
+      "code": "P9X",
+      "displacement": "3.0 dCi V6",
+      "fuel": "diesel",
+      "stock_hp": 180,
+      "stock_nm": 370,
+      "stage1": {
+        "hp": 225,
+        "nm": 450
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ren-3.0-dci-235": {
+      "code": "V9X",
+      "displacement": "3.0 dCi V6",
+      "fuel": "diesel",
+      "stock_hp": 235,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 285,
+        "nm": 540
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n42-1.8-115": {
+      "code": "N42B18",
+      "displacement": "1.8i",
+      "fuel": "essence",
+      "stock_hp": 115,
+      "stock_nm": 175,
+      "stage1": {
+        "hp": 128,
+        "nm": 195
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n46-2.0-150": {
+      "code": "N46B20",
+      "displacement": "2.0i",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 168,
+        "nm": 225
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n52-2.5-218": {
+      "code": "N52B25",
+      "displacement": "2.5i",
+      "fuel": "essence",
+      "stock_hp": 218,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 240,
+        "nm": 280
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n52-3.0-272": {
+      "code": "N52B30",
+      "displacement": "3.0i",
+      "fuel": "essence",
+      "stock_hp": 272,
+      "stock_nm": 315,
+      "stage1": {
+        "hp": 295,
+        "nm": 345
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n20-2.0-184": {
+      "code": "N20B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 184,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 240,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 278,
+        "nm": 407,
+        "available": true
+      }
+    },
+    "bmw-n20-2.0-245": {
+      "code": "N20B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 245,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 310,
+        "nm": 460
+      },
+      "ethanol": {
+        "hp": 360,
+        "nm": 520,
+        "available": true
+      }
+    },
+    "bmw-n54-3.0-306": {
+      "code": "N54B30",
+      "displacement": "3.0i BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 306,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 400,
+        "nm": 580
+      },
+      "ethanol": {
+        "hp": 464,
+        "nm": 655,
+        "available": true
+      }
+    },
+    "bmw-n55-3.0-306": {
+      "code": "N55B30",
+      "displacement": "3.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 306,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 380,
+        "nm": 540
+      },
+      "ethanol": {
+        "hp": 441,
+        "nm": 610,
+        "available": true
+      }
+    },
+    "bmw-n55-3.0-340": {
+      "code": "N55B30",
+      "displacement": "3.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 340,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 410,
+        "nm": 580
+      },
+      "ethanol": {
+        "hp": 476,
+        "nm": 655,
+        "available": true
+      }
+    },
+    "bmw-b48-2.0-184": {
+      "code": "B48B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 184,
+      "stock_nm": 290,
+      "stage1": {
+        "hp": 245,
+        "nm": 390
+      },
+      "ethanol": {
+        "hp": 284,
+        "nm": 441,
+        "available": true
+      }
+    },
+    "bmw-b48-2.0-231": {
+      "code": "B48B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 231,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 295,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 342,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "bmw-b48-2.0-252": {
+      "code": "B48B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 252,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 315,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 365,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "bmw-b48-2.0-265": {
+      "code": "B48B20",
+      "displacement": "2.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 265,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 330,
+        "nm": 490
+      },
+      "ethanol": {
+        "hp": 383,
+        "nm": 554,
+        "available": true
+      }
+    },
+    "bmw-b58-3.0-340": {
+      "code": "B58B30",
+      "displacement": "3.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 340,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 420,
+        "nm": 620
+      },
+      "ethanol": {
+        "hp": 487,
+        "nm": 701,
+        "available": true
+      }
+    },
+    "bmw-b58-3.0-374": {
+      "code": "B58B30",
+      "displacement": "3.0i Turbo",
+      "fuel": "essence",
+      "stock_hp": 374,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 450,
+        "nm": 640
+      },
+      "ethanol": {
+        "hp": 522,
+        "nm": 723,
+        "available": true
+      }
+    },
+    "bmw-s55-3.0-431": {
+      "code": "S55B30",
+      "displacement": "3.0 M BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 431,
+      "stock_nm": 550,
+      "stage1": {
+        "hp": 510,
+        "nm": 670
+      },
+      "ethanol": {
+        "hp": 592,
+        "nm": 757,
+        "available": true
+      }
+    },
+    "bmw-s58-3.0-510": {
+      "code": "S58B30",
+      "displacement": "3.0 M BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 510,
+      "stock_nm": 650,
+      "stage1": {
+        "hp": 600,
+        "nm": 780
+      },
+      "ethanol": {
+        "hp": 696,
+        "nm": 881,
+        "available": true
+      }
+    },
+    "bmw-n63-4.4-407": {
+      "code": "N63B44",
+      "displacement": "4.4 V8 BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 407,
+      "stock_nm": 600,
+      "stage1": {
+        "hp": 490,
+        "nm": 720
+      },
+      "ethanol": {
+        "hp": 568,
+        "nm": 814,
+        "available": true
+      }
+    },
+    "bmw-n63-4.4-450": {
+      "code": "N63B44",
+      "displacement": "4.4 V8 BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 450,
+      "stock_nm": 650,
+      "stage1": {
+        "hp": 530,
+        "nm": 770
+      },
+      "ethanol": {
+        "hp": 615,
+        "nm": 870,
+        "available": true
+      }
+    },
+    "bmw-m47-2.0d-136": {
+      "code": "M47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 175,
+        "nm": 350
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m47-2.0d-150": {
+      "code": "M47TU",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 330,
+      "stage1": {
+        "hp": 195,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m47-2.0d-163": {
+      "code": "M47TU2",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 210,
+        "nm": 410
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m57-2.5d-177": {
+      "code": "M57D25",
+      "displacement": "2.5d",
+      "fuel": "diesel",
+      "stock_hp": 177,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 220,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m57-3.0d-184": {
+      "code": "M57D30",
+      "displacement": "3.0d",
+      "fuel": "diesel",
+      "stock_hp": 184,
+      "stock_nm": 410,
+      "stage1": {
+        "hp": 230,
+        "nm": 500
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m57-3.0d-218": {
+      "code": "M57TUD30",
+      "displacement": "3.0d",
+      "fuel": "diesel",
+      "stock_hp": 218,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 265,
+        "nm": 610
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m57-3.0d-231": {
+      "code": "M57N2",
+      "displacement": "3.0d",
+      "fuel": "diesel",
+      "stock_hp": 231,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 280,
+        "nm": 610
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-m57-3.0d-286": {
+      "code": "M57BiTurbo",
+      "displacement": "3.0d BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 286,
+      "stock_nm": 580,
+      "stage1": {
+        "hp": 340,
+        "nm": 700
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n47-2.0d-143": {
+      "code": "N47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 143,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 185,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n47-2.0d-163": {
+      "code": "N47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 210,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n47-2.0d-177": {
+      "code": "N47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 177,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 225,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "bmw-n47-2.0d-184": {
-      "code": "N47D20",
+      "code": "N47D20O1",
       "displacement": "2.0d",
       "fuel": "diesel",
       "stock_hp": 184,
       "stock_nm": 380,
-      "stage1": { "hp": 230, "nm": 460 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 230,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "bmw-b47-2.0d-190": {
-      "code": "B47D20",
-      "displacement": "2.0d",
+    "bmw-n47-2.0d-204": {
+      "code": "N47S BiTurbo",
+      "displacement": "2.0d BiTurbo",
       "fuel": "diesel",
-      "stock_hp": 190,
+      "stock_hp": 204,
       "stock_nm": 400,
-      "stage1": { "hp": 240, "nm": 480 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 250,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n47-2.0d-218": {
+      "code": "N47S BiTurbo",
+      "displacement": "2.0d BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 218,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 265,
+        "nm": 540
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "bmw-n57-3.0d-258": {
       "code": "N57D30",
@@ -376,8 +3329,111 @@
       "fuel": "diesel",
       "stock_hp": 258,
       "stock_nm": 560,
-      "stage1": { "hp": 310, "nm": 650 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 310,
+        "nm": 660
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n57-3.0d-313": {
+      "code": "N57S TriTurbo",
+      "displacement": "3.0d TriTurbo",
+      "fuel": "diesel",
+      "stock_hp": 313,
+      "stock_nm": 630,
+      "stage1": {
+        "hp": 370,
+        "nm": 740
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-n57-3.0d-381": {
+      "code": "N57S TriTurbo",
+      "displacement": "3.0d TriTurbo",
+      "fuel": "diesel",
+      "stock_hp": 381,
+      "stock_nm": 740,
+      "stage1": {
+        "hp": 440,
+        "nm": 850
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b47-2.0d-150": {
+      "code": "B47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b47-2.0d-163": {
+      "code": "B47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 210,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b47-2.0d-184": {
+      "code": "B47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 184,
+      "stock_nm": 380,
+      "stage1": {
+        "hp": 235,
+        "nm": 460
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b47-2.0d-190": {
+      "code": "B47D20",
+      "displacement": "2.0d",
+      "fuel": "diesel",
+      "stock_hp": 190,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 240,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b47-2.0d-224": {
+      "code": "B47D20 BiTurbo",
+      "displacement": "2.0d BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 224,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 270,
+        "nm": 540
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "bmw-b57-3.0d-265": {
       "code": "B57D30",
@@ -385,44 +3441,549 @@
       "fuel": "diesel",
       "stock_hp": 265,
       "stock_nm": 620,
-      "stage1": { "hp": 320, "nm": 720 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 320,
+        "nm": 720
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "bmw-n20-2.0-184": {
-      "code": "N20B20",
-      "displacement": "2.0",
+    "bmw-b57-3.0d-320": {
+      "code": "B57D30 BiTurbo",
+      "displacement": "3.0d BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 320,
+      "stock_nm": 680,
+      "stage1": {
+        "hp": 380,
+        "nm": 790
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "bmw-b57-3.0d-400": {
+      "code": "B57D30 QuadTurbo",
+      "displacement": "3.0d M50d",
+      "fuel": "diesel",
+      "stock_hp": 400,
+      "stock_nm": 760,
+      "stage1": {
+        "hp": 460,
+        "nm": 870
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-m271-1.8k-143": {
+      "code": "M271 Kompr",
+      "displacement": "1.8 Kompr",
+      "fuel": "essence",
+      "stock_hp": 143,
+      "stock_nm": 220,
+      "stage1": {
+        "hp": 185,
+        "nm": 290
+      },
+      "ethanol": {
+        "hp": 215,
+        "nm": 328,
+        "available": true
+      }
+    },
+    "mb-m271-1.8k-156": {
+      "code": "M271 Kompr",
+      "displacement": "1.8 Kompr",
+      "fuel": "essence",
+      "stock_hp": 156,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 200,
+        "nm": 300
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 339,
+        "available": true
+      }
+    },
+    "mb-m271-1.8k-184": {
+      "code": "M271 Kompr",
+      "displacement": "1.8 Kompr",
+      "fuel": "essence",
+      "stock_hp": 184,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 235,
+        "nm": 325
+      },
+      "ethanol": {
+        "hp": 273,
+        "nm": 367,
+        "available": true
+      }
+    },
+    "mb-m271evo-1.8-156": {
+      "code": "M271 Evo",
+      "displacement": "1.8 CGI",
+      "fuel": "essence",
+      "stock_hp": 156,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 200,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "mb-m271evo-1.8-184": {
+      "code": "M271 Evo",
+      "displacement": "1.8 CGI",
       "fuel": "essence",
       "stock_hp": 184,
       "stock_nm": 270,
-      "stage1": { "hp": 240, "nm": 360 },
-      "ethanol": { "hp": 280, "nm": 410, "available": true }
+      "stage1": {
+        "hp": 235,
+        "nm": 350
+      },
+      "ethanol": {
+        "hp": 273,
+        "nm": 395,
+        "available": true
+      }
     },
-    "bmw-b48-2.0-252": {
-      "code": "B48B20",
-      "displacement": "2.0",
+    "mb-m271evo-1.8-204": {
+      "code": "M271 Evo",
+      "displacement": "1.8 CGI",
       "fuel": "essence",
-      "stock_hp": 252,
+      "stock_hp": 204,
+      "stock_nm": 310,
+      "stage1": {
+        "hp": 255,
+        "nm": 400
+      },
+      "ethanol": {
+        "hp": 296,
+        "nm": 452,
+        "available": true
+      }
+    },
+    "mb-m272-2.5v6-204": {
+      "code": "M272",
+      "displacement": "2.5 V6",
+      "fuel": "essence",
+      "stock_hp": 204,
+      "stock_nm": 245,
+      "stage1": {
+        "hp": 225,
+        "nm": 270
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-m272-3.0v6-231": {
+      "code": "M272",
+      "displacement": "3.0 V6",
+      "fuel": "essence",
+      "stock_hp": 231,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 255,
+        "nm": 330
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-m272-3.5v6-272": {
+      "code": "M272",
+      "displacement": "3.5 V6",
+      "fuel": "essence",
+      "stock_hp": 272,
       "stock_nm": 350,
-      "stage1": { "hp": 315, "nm": 450 },
-      "ethanol": { "hp": 360, "nm": 500, "available": true }
+      "stage1": {
+        "hp": 300,
+        "nm": 385
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "bmw-n55-3.0-306": {
-      "code": "N55B30",
-      "displacement": "3.0",
+    "mb-m274-1.6-156": {
+      "code": "M274",
+      "displacement": "1.6 Turbo",
       "fuel": "essence",
-      "stock_hp": 306,
-      "stock_nm": 400,
-      "stage1": { "hp": 380, "nm": 540 },
-      "ethanol": { "hp": 440, "nm": 600, "available": true }
+      "stock_hp": 156,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 200,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 232,
+        "nm": 362,
+        "available": true
+      }
     },
-    "bmw-b58-3.0-340": {
-      "code": "B58B30",
-      "displacement": "3.0",
+    "mb-m274-2.0-184": {
+      "code": "M274",
+      "displacement": "2.0 Turbo",
       "fuel": "essence",
-      "stock_hp": 340,
+      "stock_hp": 184,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 240,
+        "nm": 400
+      },
+      "ethanol": {
+        "hp": 278,
+        "nm": 452,
+        "available": true
+      }
+    },
+    "mb-m274-2.0-211": {
+      "code": "M274",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 211,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 270,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 313,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "mb-m260-2.0-224": {
+      "code": "M260",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 224,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 285,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 331,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "mb-m133-2.0-360": {
+      "code": "M133",
+      "displacement": "2.0 Turbo AMG",
+      "fuel": "essence",
+      "stock_hp": 360,
+      "stock_nm": 450,
+      "stage1": {
+        "hp": 425,
+        "nm": 540
+      },
+      "ethanol": {
+        "hp": 493,
+        "nm": 610,
+        "available": true
+      }
+    },
+    "mb-m139-2.0-421": {
+      "code": "M139",
+      "displacement": "2.0 Turbo AMG",
+      "fuel": "essence",
+      "stock_hp": 421,
       "stock_nm": 500,
-      "stage1": { "hp": 420, "nm": 620 },
-      "ethanol": { "hp": 490, "nm": 700, "available": true }
+      "stage1": {
+        "hp": 490,
+        "nm": 590
+      },
+      "ethanol": {
+        "hp": 568,
+        "nm": 667,
+        "available": true
+      }
+    },
+    "mb-m276-3.0v6-333": {
+      "code": "M276",
+      "displacement": "3.0 V6 BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 333,
+      "stock_nm": 480,
+      "stage1": {
+        "hp": 400,
+        "nm": 580
+      },
+      "ethanol": {
+        "hp": 464,
+        "nm": 655,
+        "available": true
+      }
+    },
+    "mb-m276-3.0v6-367": {
+      "code": "M276",
+      "displacement": "3.0 V6 BiTurbo",
+      "fuel": "essence",
+      "stock_hp": 367,
+      "stock_nm": 520,
+      "stage1": {
+        "hp": 430,
+        "nm": 620
+      },
+      "ethanol": {
+        "hp": 499,
+        "nm": 701,
+        "available": true
+      }
+    },
+    "mb-m177-4.0v8-476": {
+      "code": "M177",
+      "displacement": "4.0 V8 BiTurbo AMG",
+      "fuel": "essence",
+      "stock_hp": 476,
+      "stock_nm": 700,
+      "stage1": {
+        "hp": 560,
+        "nm": 830
+      },
+      "ethanol": {
+        "hp": 650,
+        "nm": 938,
+        "available": true
+      }
+    },
+    "mb-m177-4.0v8-510": {
+      "code": "M177",
+      "displacement": "4.0 V8 BiTurbo AMG",
+      "fuel": "essence",
+      "stock_hp": 510,
+      "stock_nm": 700,
+      "stage1": {
+        "hp": 590,
+        "nm": 840
+      },
+      "ethanol": {
+        "hp": 684,
+        "nm": 949,
+        "available": true
+      }
+    },
+    "mb-om611-2.1cdi-95": {
+      "code": "OM611",
+      "displacement": "2.1 CDI",
+      "fuel": "diesel",
+      "stock_hp": 95,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 130,
+        "nm": 260
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om611-2.2cdi-125": {
+      "code": "OM611",
+      "displacement": "2.2 CDI",
+      "fuel": "diesel",
+      "stock_hp": 125,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 165,
+        "nm": 370
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om611-2.2cdi-143": {
+      "code": "OM611",
+      "displacement": "2.2 CDI",
+      "fuel": "diesel",
+      "stock_hp": 143,
+      "stock_nm": 315,
+      "stage1": {
+        "hp": 185,
+        "nm": 395
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om612-2.7cdi-170": {
+      "code": "OM612",
+      "displacement": "2.7 CDI",
+      "fuel": "diesel",
+      "stock_hp": 170,
+      "stock_nm": 370,
+      "stage1": {
+        "hp": 215,
+        "nm": 450
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om613-3.2cdi-197": {
+      "code": "OM613",
+      "displacement": "3.2 CDI",
+      "fuel": "diesel",
+      "stock_hp": 197,
+      "stock_nm": 470,
+      "stage1": {
+        "hp": 250,
+        "nm": 560
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om646-2.2cdi-150": {
+      "code": "OM646",
+      "displacement": "2.2 CDI",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 195,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om647-2.7cdi-177": {
+      "code": "OM647",
+      "displacement": "2.7 CDI",
+      "fuel": "diesel",
+      "stock_hp": 177,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 225,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om648-3.2cdi-204": {
+      "code": "OM648",
+      "displacement": "3.2 CDI",
+      "fuel": "diesel",
+      "stock_hp": 204,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 260,
+        "nm": 600
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om642-3.0cdi-184": {
+      "code": "OM642",
+      "displacement": "3.0 V6 CDI",
+      "fuel": "diesel",
+      "stock_hp": 184,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 230,
+        "nm": 490
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om642-3.0cdi-204": {
+      "code": "OM642",
+      "displacement": "3.0 V6 CDI",
+      "fuel": "diesel",
+      "stock_hp": 204,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 255,
+        "nm": 600
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om642-3.0cdi-224": {
+      "code": "OM642",
+      "displacement": "3.0 V6 CDI",
+      "fuel": "diesel",
+      "stock_hp": 224,
+      "stock_nm": 510,
+      "stage1": {
+        "hp": 275,
+        "nm": 610
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om642-3.0cdi-231": {
+      "code": "OM642",
+      "displacement": "3.0 V6 CDI",
+      "fuel": "diesel",
+      "stock_hp": 231,
+      "stock_nm": 540,
+      "stage1": {
+        "hp": 285,
+        "nm": 640
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om642-3.0cdi-258": {
+      "code": "OM642",
+      "displacement": "3.0 V6 CDI",
+      "fuel": "diesel",
+      "stock_hp": 258,
+      "stock_nm": 620,
+      "stage1": {
+        "hp": 310,
+        "nm": 720
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om651-2.1cdi-136": {
+      "code": "OM651",
+      "displacement": "2.1 CDI",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 180,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om651-2.1cdi-163": {
+      "code": "OM651",
+      "displacement": "2.1 CDI",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 205,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "mb-om651-2.1cdi-170": {
       "code": "OM651",
@@ -430,8 +3991,41 @@
       "fuel": "diesel",
       "stock_hp": 170,
       "stock_nm": 400,
-      "stage1": { "hp": 215, "nm": 470 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 215,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om651-2.1cdi-204": {
+      "code": "OM651",
+      "displacement": "2.1 CDI",
+      "fuel": "diesel",
+      "stock_hp": 204,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 250,
+        "nm": 590
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om654-2.0cdi-150": {
+      "code": "OM654",
+      "displacement": "2.0 CDI",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 400
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "mb-om654-2.0cdi-194": {
       "code": "OM654",
@@ -439,17 +4033,71 @@
       "fuel": "diesel",
       "stock_hp": 194,
       "stock_nm": 400,
-      "stage1": { "hp": 245, "nm": 480 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 245,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "mb-m274-2.0-184": {
-      "code": "M274",
-      "displacement": "2.0",
+    "mb-om654-2.0cdi-245": {
+      "code": "OM654",
+      "displacement": "2.0 CDI",
+      "fuel": "diesel",
+      "stock_hp": 245,
+      "stock_nm": 500,
+      "stage1": {
+        "hp": 295,
+        "nm": 590
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om656-3.0cdi-286": {
+      "code": "OM656",
+      "displacement": "3.0 CDI",
+      "fuel": "diesel",
+      "stock_hp": 286,
+      "stock_nm": 600,
+      "stage1": {
+        "hp": 340,
+        "nm": 700
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "mb-om656-3.0cdi-330": {
+      "code": "OM656",
+      "displacement": "3.0 CDI",
+      "fuel": "diesel",
+      "stock_hp": 330,
+      "stock_nm": 700,
+      "stage1": {
+        "hp": 390,
+        "nm": 810
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.0-ecoboost-100": {
+      "code": "Fox",
+      "displacement": "1.0 EcoBoost",
       "fuel": "essence",
-      "stock_hp": 184,
-      "stock_nm": 300,
-      "stage1": { "hp": 240, "nm": 400 },
-      "ethanol": { "hp": 280, "nm": 450, "available": true }
+      "stock_hp": 100,
+      "stock_nm": 170,
+      "stage1": {
+        "hp": 130,
+        "nm": 220
+      },
+      "ethanol": {
+        "hp": 151,
+        "nm": 249,
+        "available": true
+      }
     },
     "ford-1.0-ecoboost-125": {
       "code": "Fox",
@@ -457,8 +4105,47 @@
       "fuel": "essence",
       "stock_hp": 125,
       "stock_nm": 170,
-      "stage1": { "hp": 160, "nm": 220 },
-      "ethanol": { "hp": 185, "nm": 250, "available": true }
+      "stage1": {
+        "hp": 160,
+        "nm": 220
+      },
+      "ethanol": {
+        "hp": 186,
+        "nm": 249,
+        "available": true
+      }
+    },
+    "ford-1.0-ecoboost-140": {
+      "code": "Fox",
+      "displacement": "1.0 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 140,
+      "stock_nm": 180,
+      "stage1": {
+        "hp": 175,
+        "nm": 235
+      },
+      "ethanol": {
+        "hp": 203,
+        "nm": 266,
+        "available": true
+      }
+    },
+    "ford-1.0-ecoboost-155": {
+      "code": "Fox MHEV",
+      "displacement": "1.0 EcoBoost mHEV",
+      "fuel": "essence",
+      "stock_hp": 155,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 195,
+        "nm": 305
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 345,
+        "available": true
+      }
     },
     "ford-1.5-ecoboost-150": {
       "code": "Sigma",
@@ -466,8 +4153,79 @@
       "fuel": "essence",
       "stock_hp": 150,
       "stock_nm": 240,
-      "stage1": { "hp": 195, "nm": 310 },
-      "ethanol": { "hp": 225, "nm": 355, "available": true }
+      "stage1": {
+        "hp": 195,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "ford-1.5-ecoboost-180": {
+      "code": "Sigma",
+      "displacement": "1.5 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 180,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 230,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 267,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "ford-1.5-ecoboost-200": {
+      "code": "Sigma 3cyl",
+      "displacement": "1.5 EcoBoost 3cyl",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 290,
+      "stage1": {
+        "hp": 250,
+        "nm": 380
+      },
+      "ethanol": {
+        "hp": 290,
+        "nm": 429,
+        "available": true
+      }
+    },
+    "ford-1.6-ecoboost-150": {
+      "code": "Sigma",
+      "displacement": "1.6 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 195,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "ford-1.6-ecoboost-182": {
+      "code": "Sigma",
+      "displacement": "1.6 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 182,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 230,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 267,
+        "nm": 362,
+        "available": true
+      }
     },
     "ford-2.0-ecoboost-203": {
       "code": "Duratec",
@@ -475,8 +4233,227 @@
       "fuel": "essence",
       "stock_hp": 203,
       "stock_nm": 300,
-      "stage1": { "hp": 265, "nm": 400 },
-      "ethanol": { "hp": 310, "nm": 460, "available": true }
+      "stage1": {
+        "hp": 265,
+        "nm": 400
+      },
+      "ethanol": {
+        "hp": 307,
+        "nm": 452,
+        "available": true
+      }
+    },
+    "ford-2.0-ecoboost-240": {
+      "code": "Duratec",
+      "displacement": "2.0 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 240,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 305,
+        "nm": 450
+      },
+      "ethanol": {
+        "hp": 354,
+        "nm": 508,
+        "available": true
+      }
+    },
+    "ford-2.0-ecoboost-250": {
+      "code": "Duratec",
+      "displacement": "2.0 EcoBoost ST",
+      "fuel": "essence",
+      "stock_hp": 250,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 315,
+        "nm": 470
+      },
+      "ethanol": {
+        "hp": 365,
+        "nm": 531,
+        "available": true
+      }
+    },
+    "ford-2.0-ecoboost-280": {
+      "code": "Duratec",
+      "displacement": "2.0 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 415,
+      "stage1": {
+        "hp": 340,
+        "nm": 520
+      },
+      "ethanol": {
+        "hp": 394,
+        "nm": 588,
+        "available": true
+      }
+    },
+    "ford-2.3-ecoboost-280": {
+      "code": "Duratec",
+      "displacement": "2.3 EcoBoost",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 432,
+      "stage1": {
+        "hp": 345,
+        "nm": 530
+      },
+      "ethanol": {
+        "hp": 400,
+        "nm": 599,
+        "available": true
+      }
+    },
+    "ford-2.3-ecoboost-317": {
+      "code": "Duratec",
+      "displacement": "2.3 EcoBoost Mustang",
+      "fuel": "essence",
+      "stock_hp": 317,
+      "stock_nm": 434,
+      "stage1": {
+        "hp": 380,
+        "nm": 540
+      },
+      "ethanol": {
+        "hp": 441,
+        "nm": 610,
+        "available": true
+      }
+    },
+    "ford-2.3-ecoboost-350": {
+      "code": "Duratec",
+      "displacement": "2.3 EcoBoost RS",
+      "fuel": "essence",
+      "stock_hp": 350,
+      "stock_nm": 470,
+      "stage1": {
+        "hp": 410,
+        "nm": 580
+      },
+      "ethanol": {
+        "hp": 476,
+        "nm": 655,
+        "available": true
+      }
+    },
+    "ford-1.6-16v-100": {
+      "code": "Zetec",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 150,
+      "stage1": {
+        "hp": 112,
+        "nm": 170
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-16v-115": {
+      "code": "Sigma",
+      "displacement": "1.6 Ti-VCT",
+      "fuel": "essence",
+      "stock_hp": 115,
+      "stock_nm": 155,
+      "stage1": {
+        "hp": 128,
+        "nm": 175
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-duratec-145": {
+      "code": "Duratec",
+      "displacement": "2.0 Duratec",
+      "fuel": "essence",
+      "stock_hp": 145,
+      "stock_nm": 185,
+      "stage1": {
+        "hp": 162,
+        "nm": 210
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.5t-225": {
+      "code": "B5254T",
+      "displacement": "2.5T",
+      "fuel": "essence",
+      "stock_hp": 225,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 285,
+        "nm": 410
+      },
+      "ethanol": {
+        "hp": 331,
+        "nm": 463,
+        "available": true
+      }
+    },
+    "ford-2.5t-305": {
+      "code": "B5254T",
+      "displacement": "2.5T RS",
+      "fuel": "essence",
+      "stock_hp": 305,
+      "stock_nm": 440,
+      "stage1": {
+        "hp": 370,
+        "nm": 540
+      },
+      "ethanol": {
+        "hp": 429,
+        "nm": 610,
+        "available": true
+      }
+    },
+    "ford-1.4-tdci-68": {
+      "code": "DV4TD",
+      "displacement": "1.4 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 68,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 95,
+        "nm": 205
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.4-tdci-70": {
+      "code": "DV4",
+      "displacement": "1.4 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 70,
+      "stock_nm": 160,
+      "stage1": {
+        "hp": 100,
+        "nm": 210
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.5-tdci-95": {
+      "code": "Duratorq",
+      "displacement": "1.5 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 95,
+      "stock_nm": 215,
+      "stage1": {
+        "hp": 125,
+        "nm": 270
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ford-1.5-tdci-120": {
       "code": "Duratorq",
@@ -484,8 +4461,195 @@
       "fuel": "diesel",
       "stock_hp": 120,
       "stock_nm": 270,
-      "stage1": { "hp": 155, "nm": 330 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 155,
+        "nm": 330
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.5-ecoblue-120": {
+      "code": "EcoBlue",
+      "displacement": "1.5 EcoBlue",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 155,
+        "nm": 330
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-tdci-75": {
+      "code": "DV6",
+      "displacement": "1.6 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 185,
+      "stage1": {
+        "hp": 105,
+        "nm": 235
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-tdci-90": {
+      "code": "DV6",
+      "displacement": "1.6 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 215,
+      "stage1": {
+        "hp": 120,
+        "nm": 270
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-tdci-95": {
+      "code": "DV6",
+      "displacement": "1.6 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 95,
+      "stock_nm": 220,
+      "stage1": {
+        "hp": 125,
+        "nm": 280
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-tdci-109": {
+      "code": "DV6",
+      "displacement": "1.6 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 109,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 140,
+        "nm": 295
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.6-tdci-115": {
+      "code": "DV6",
+      "displacement": "1.6 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 150,
+        "nm": 330
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.8-tdci-90": {
+      "code": "Endura",
+      "displacement": "1.8 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 220,
+      "stage1": {
+        "hp": 120,
+        "nm": 280
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.8-tdci-115": {
+      "code": "Lynx",
+      "displacement": "1.8 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 150,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-1.8-tdci-125": {
+      "code": "Lynx",
+      "displacement": "1.8 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 125,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 160,
+        "nm": 350
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-tdci-115": {
+      "code": "Duratorq",
+      "displacement": "2.0 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 150,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-tdci-130": {
+      "code": "Duratorq",
+      "displacement": "2.0 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 170,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-tdci-136": {
+      "code": "Duratorq",
+      "displacement": "2.0 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 136,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 175,
+        "nm": 410
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-tdci-140": {
+      "code": "Duratorq",
+      "displacement": "2.0 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 140,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 180,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "ford-2.0-tdci-150": {
       "code": "Duratorq",
@@ -493,8 +4657,169 @@
       "fuel": "diesel",
       "stock_hp": 150,
       "stock_nm": 370,
-      "stage1": { "hp": 195, "nm": 440 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 195,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-tdci-163": {
+      "code": "Duratorq",
+      "displacement": "2.0 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 163,
+      "stock_nm": 340,
+      "stage1": {
+        "hp": 210,
+        "nm": 410
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-ecoblue-150": {
+      "code": "EcoBlue",
+      "displacement": "2.0 EcoBlue",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 370,
+      "stage1": {
+        "hp": 195,
+        "nm": 440
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.0-ecoblue-190": {
+      "code": "EcoBlue",
+      "displacement": "2.0 EcoBlue",
+      "fuel": "diesel",
+      "stock_hp": 190,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 240,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.2-tdci-130": {
+      "code": "Duratorq",
+      "displacement": "2.2 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 310,
+      "stage1": {
+        "hp": 170,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.2-tdci-155": {
+      "code": "Duratorq",
+      "displacement": "2.2 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 155,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 200,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.2-tdci-175": {
+      "code": "Duratorq",
+      "displacement": "2.2 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 175,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 220,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "ford-2.2-tdci-200": {
+      "code": "Duratorq",
+      "displacement": "2.2 TDCi",
+      "fuel": "diesel",
+      "stock_hp": 200,
+      "stock_nm": 470,
+      "stage1": {
+        "hp": 245,
+        "nm": 540
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.2-12v-65": {
+      "code": "X12XE",
+      "displacement": "1.2 12v",
+      "fuel": "essence",
+      "stock_hp": 65,
+      "stock_nm": 110,
+      "stage1": {
+        "hp": 73,
+        "nm": 125
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.2-16v-75": {
+      "code": "Z12XE",
+      "displacement": "1.2 16v",
+      "fuel": "essence",
+      "stock_hp": 75,
+      "stock_nm": 110,
+      "stage1": {
+        "hp": 85,
+        "nm": 125
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.4-16v-90": {
+      "code": "Z14XEP",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 90,
+      "stock_nm": 125,
+      "stage1": {
+        "hp": 100,
+        "nm": 142
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.4-turbo-120": {
+      "code": "A14NEL",
+      "displacement": "1.4 Turbo",
+      "fuel": "essence",
+      "stock_hp": 120,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 155,
+        "nm": 260
+      },
+      "ethanol": {
+        "hp": 180,
+        "nm": 294,
+        "available": true
+      }
     },
     "opel-1.4-turbo-140": {
       "code": "B14NET",
@@ -502,8 +4827,211 @@
       "fuel": "essence",
       "stock_hp": 140,
       "stock_nm": 200,
-      "stage1": { "hp": 175, "nm": 260 },
-      "ethanol": { "hp": 200, "nm": 290, "available": true }
+      "stage1": {
+        "hp": 175,
+        "nm": 260
+      },
+      "ethanol": {
+        "hp": 203,
+        "nm": 294,
+        "available": true
+      }
+    },
+    "opel-1.4-turbo-150": {
+      "code": "D14NET",
+      "displacement": "1.4 Turbo",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 245,
+      "stage1": {
+        "hp": 190,
+        "nm": 310
+      },
+      "ethanol": {
+        "hp": 220,
+        "nm": 350,
+        "available": true
+      }
+    },
+    "opel-1.6-16v-105": {
+      "code": "Z16XEP",
+      "displacement": "1.6 16v",
+      "fuel": "essence",
+      "stock_hp": 105,
+      "stock_nm": 150,
+      "stage1": {
+        "hp": 118,
+        "nm": 170
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.6-turbo-180": {
+      "code": "A16LET",
+      "displacement": "1.6 Turbo",
+      "fuel": "essence",
+      "stock_hp": 180,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 230,
+        "nm": 320
+      },
+      "ethanol": {
+        "hp": 267,
+        "nm": 362,
+        "available": true
+      }
+    },
+    "opel-1.6-turbo-200": {
+      "code": "B16LER",
+      "displacement": "1.6 Turbo",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 275,
+      "stage1": {
+        "hp": 250,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 290,
+        "nm": 407,
+        "available": true
+      }
+    },
+    "opel-1.6-turbo-280": {
+      "code": "A16LES",
+      "displacement": "1.6 Turbo OPC",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 335,
+        "nm": 490
+      },
+      "ethanol": {
+        "hp": 389,
+        "nm": 554,
+        "available": true
+      }
+    },
+    "opel-1.8-16v-125": {
+      "code": "Z18XER",
+      "displacement": "1.8 16v",
+      "fuel": "essence",
+      "stock_hp": 125,
+      "stock_nm": 175,
+      "stage1": {
+        "hp": 140,
+        "nm": 195
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-turbo-200": {
+      "code": "Z20LEH",
+      "displacement": "2.0 Turbo",
+      "fuel": "essence",
+      "stock_hp": 200,
+      "stock_nm": 262,
+      "stage1": {
+        "hp": 255,
+        "nm": 360
+      },
+      "ethanol": {
+        "hp": 296,
+        "nm": 407,
+        "available": true
+      }
+    },
+    "opel-2.0-turbo-240": {
+      "code": "Z20LEH",
+      "displacement": "2.0 Turbo OPC",
+      "fuel": "essence",
+      "stock_hp": 240,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 305,
+        "nm": 425
+      },
+      "ethanol": {
+        "hp": 354,
+        "nm": 480,
+        "available": true
+      }
+    },
+    "opel-2.0-turbo-280": {
+      "code": "A20NHT/LSJ",
+      "displacement": "2.0 Turbo OPC",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 340,
+        "nm": 500
+      },
+      "ethanol": {
+        "hp": 394,
+        "nm": 565,
+        "available": true
+      }
+    },
+    "opel-1.3-cdti-75": {
+      "code": "Z13DTJ",
+      "displacement": "1.3 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 170,
+      "stage1": {
+        "hp": 105,
+        "nm": 220
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.3-cdti-90": {
+      "code": "Z13DTH",
+      "displacement": "1.3 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 190,
+      "stage1": {
+        "hp": 120,
+        "nm": 240
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.6-cdti-95": {
+      "code": "B16DTL",
+      "displacement": "1.6 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 95,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 130,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.6-cdti-110": {
+      "code": "B16DTH",
+      "displacement": "1.6 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 145,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "opel-1.6-cdti-136": {
       "code": "B16DTH",
@@ -511,26 +5039,785 @@
       "fuel": "diesel",
       "stock_hp": 136,
       "stock_nm": 320,
-      "stage1": { "hp": 175, "nm": 380 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 175,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.7-cdti-80": {
+      "code": "Z17DTL",
+      "displacement": "1.7 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 80,
+      "stock_nm": 170,
+      "stage1": {
+        "hp": 110,
+        "nm": 220
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.7-cdti-100": {
+      "code": "Z17DTH",
+      "displacement": "1.7 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 240,
+      "stage1": {
+        "hp": 135,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.7-cdti-110": {
+      "code": "A17DTC",
+      "displacement": "1.7 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 145,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.7-cdti-125": {
+      "code": "Z17DTR",
+      "displacement": "1.7 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 125,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 160,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.7-cdti-130": {
+      "code": "A17DTR",
+      "displacement": "1.7 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 300,
+      "stage1": {
+        "hp": 165,
+        "nm": 360
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.9-cdti-100": {
+      "code": "Z19DT",
+      "displacement": "1.9 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 135,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.9-cdti-120": {
+      "code": "Z19DTL",
+      "displacement": "1.9 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 155,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-1.9-cdti-150": {
+      "code": "Z19DTH",
+      "displacement": "1.9 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-cdti-110": {
+      "code": "A20DTL",
+      "displacement": "2.0 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 145,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-cdti-130": {
+      "code": "A20DTH",
+      "displacement": "2.0 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 130,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 170,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-cdti-160": {
+      "code": "A20DTH",
+      "displacement": "2.0 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 160,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 205,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-cdti-170": {
+      "code": "B20DTH",
+      "displacement": "2.0 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 170,
+      "stock_nm": 350,
+      "stage1": {
+        "hp": 215,
+        "nm": 420
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.0-cdti-195": {
+      "code": "A20DTR BiTurbo",
+      "displacement": "2.0 CDTI BiTurbo",
+      "fuel": "diesel",
+      "stock_hp": 195,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 240,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.2-cdti-125": {
+      "code": "Y22DTR",
+      "displacement": "2.2 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 125,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 160,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "opel-2.2-cdti-150": {
+      "code": "Y22DTR",
+      "displacement": "2.2 CDTI",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-0.9-twinair-85": {
+      "code": "TwinAir",
+      "displacement": "0.9 TwinAir",
+      "fuel": "essence",
+      "stock_hp": 85,
+      "stock_nm": 145,
+      "stage1": {
+        "hp": 110,
+        "nm": 185
+      },
+      "ethanol": {
+        "hp": 128,
+        "nm": 209,
+        "available": true
+      }
+    },
+    "fiat-0.9-twinair-105": {
+      "code": "TwinAir",
+      "displacement": "0.9 TwinAir",
+      "fuel": "essence",
+      "stock_hp": 105,
+      "stock_nm": 145,
+      "stage1": {
+        "hp": 130,
+        "nm": 185
+      },
+      "ethanol": {
+        "hp": 151,
+        "nm": 209,
+        "available": true
+      }
+    },
+    "fiat-1.2-8v-69": {
+      "code": "169A4",
+      "displacement": "1.2 Fire",
+      "fuel": "essence",
+      "stock_hp": 69,
+      "stock_nm": 102,
+      "stage1": {
+        "hp": 78,
+        "nm": 115
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.4-16v-95": {
+      "code": "192B2",
+      "displacement": "1.4 16v",
+      "fuel": "essence",
+      "stock_hp": 95,
+      "stock_nm": 128,
+      "stage1": {
+        "hp": 105,
+        "nm": 145
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.4-tjet-120": {
+      "code": "198A1",
+      "displacement": "1.4 T-Jet",
+      "fuel": "essence",
+      "stock_hp": 120,
+      "stock_nm": 206,
+      "stage1": {
+        "hp": 155,
+        "nm": 270
+      },
+      "ethanol": {
+        "hp": 180,
+        "nm": 305,
+        "available": true
+      }
+    },
+    "fiat-1.4-tjet-150": {
+      "code": "198A4",
+      "displacement": "1.4 T-Jet",
+      "fuel": "essence",
+      "stock_hp": 150,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 195,
+        "nm": 305
+      },
+      "ethanol": {
+        "hp": 226,
+        "nm": 345,
+        "available": true
+      }
+    },
+    "fiat-1.4-multiair-135": {
+      "code": "940A2",
+      "displacement": "1.4 MultiAir",
+      "fuel": "essence",
+      "stock_hp": 135,
+      "stock_nm": 230,
+      "stage1": {
+        "hp": 175,
+        "nm": 305
+      },
+      "ethanol": {
+        "hp": 203,
+        "nm": 345,
+        "available": true
+      }
+    },
+    "fiat-1.4-multiair-170": {
+      "code": "940A2",
+      "displacement": "1.4 MultiAir",
+      "fuel": "essence",
+      "stock_hp": 170,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 215,
+        "nm": 330
+      },
+      "ethanol": {
+        "hp": 249,
+        "nm": 373,
+        "available": true
+      }
+    },
+    "fiat-1.4-tjet-180": {
+      "code": "Abarth",
+      "displacement": "1.4 T-Jet Abarth",
+      "fuel": "essence",
+      "stock_hp": 180,
+      "stock_nm": 250,
+      "stage1": {
+        "hp": 225,
+        "nm": 335
+      },
+      "ethanol": {
+        "hp": 261,
+        "nm": 379,
+        "available": true
+      }
+    },
+    "fiat-1.4-tjet-190": {
+      "code": "Abarth",
+      "displacement": "1.4 T-Jet Abarth",
+      "fuel": "essence",
+      "stock_hp": 190,
+      "stock_nm": 270,
+      "stage1": {
+        "hp": 235,
+        "nm": 350
+      },
+      "ethanol": {
+        "hp": 273,
+        "nm": 395,
+        "available": true
+      }
+    },
+    "fiat-1.3-mjet-75": {
+      "code": "199A2",
+      "displacement": "1.3 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 75,
+      "stock_nm": 145,
+      "stage1": {
+        "hp": 105,
+        "nm": 195
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.3-mjet-85": {
+      "code": "199A3",
+      "displacement": "1.3 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 85,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 115,
+        "nm": 250
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.3-mjet-90": {
+      "code": "199B1",
+      "displacement": "1.3 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 120,
+        "nm": 250
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "fiat-1.3-mjet-95": {
-      "code": "Multijet",
+      "code": "199B1",
       "displacement": "1.3 Multijet",
       "fuel": "diesel",
       "stock_hp": 95,
       "stock_nm": 200,
-      "stage1": { "hp": 120, "nm": 250 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 125,
+        "nm": 255
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.6-mjet-105": {
+      "code": "198A3",
+      "displacement": "1.6 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 105,
+      "stock_nm": 290,
+      "stage1": {
+        "hp": 140,
+        "nm": 350
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "fiat-1.6-mjet-120": {
-      "code": "Multijet",
+      "code": "198A2",
       "displacement": "1.6 Multijet",
       "fuel": "diesel",
       "stock_hp": 120,
       "stock_nm": 320,
-      "stage1": { "hp": 155, "nm": 380 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 155,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.9-jtd-100": {
+      "code": "192A1",
+      "displacement": "1.9 JTD",
+      "fuel": "diesel",
+      "stock_hp": 100,
+      "stock_nm": 200,
+      "stage1": {
+        "hp": 135,
+        "nm": 260
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.9-jtd-115": {
+      "code": "192A5",
+      "displacement": "1.9 JTD",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 255,
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.9-jtd-120": {
+      "code": "192A8",
+      "displacement": "1.9 JTD",
+      "fuel": "diesel",
+      "stock_hp": 120,
+      "stock_nm": 280,
+      "stage1": {
+        "hp": 160,
+        "nm": 340
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.9-jtd-140": {
+      "code": "192B5",
+      "displacement": "1.9 JTD",
+      "fuel": "diesel",
+      "stock_hp": 140,
+      "stock_nm": 305,
+      "stage1": {
+        "hp": 185,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-1.9-jtd-150": {
+      "code": "192B5",
+      "displacement": "1.9 JTD",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 305,
+      "stage1": {
+        "hp": 195,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-2.0-mjet-140": {
+      "code": "940A5",
+      "displacement": "2.0 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 140,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 185,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-2.0-mjet-165": {
+      "code": "940A5",
+      "displacement": "2.0 Multijet",
+      "fuel": "diesel",
+      "stock_hp": 165,
+      "stock_nm": 360,
+      "stage1": {
+        "hp": 210,
+        "nm": 430
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-2.4-jtdm-200": {
+      "code": "939A3",
+      "displacement": "2.4 JTDm",
+      "fuel": "diesel",
+      "stock_hp": 200,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 245,
+        "nm": 470
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "fiat-2.4-jtdm-210": {
+      "code": "939A9",
+      "displacement": "2.4 JTDm",
+      "fuel": "diesel",
+      "stock_hp": 210,
+      "stock_nm": 400,
+      "stage1": {
+        "hp": 255,
+        "nm": 480
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.0-tgdi-100": {
+      "code": "Kappa T-GDI",
+      "displacement": "1.0 T-GDI",
+      "fuel": "essence",
+      "stock_hp": 100,
+      "stock_nm": 172,
+      "stage1": {
+        "hp": 130,
+        "nm": 220
+      },
+      "ethanol": {
+        "hp": 151,
+        "nm": 249,
+        "available": true
+      }
+    },
+    "hyundai-1.0-tgdi-120": {
+      "code": "Kappa T-GDI",
+      "displacement": "1.0 T-GDI",
+      "fuel": "essence",
+      "stock_hp": 120,
+      "stock_nm": 172,
+      "stage1": {
+        "hp": 155,
+        "nm": 220
+      },
+      "ethanol": {
+        "hp": 180,
+        "nm": 249,
+        "available": true
+      }
+    },
+    "hyundai-1.4-tgdi-140": {
+      "code": "Gamma T-GDI",
+      "displacement": "1.4 T-GDI",
+      "fuel": "essence",
+      "stock_hp": 140,
+      "stock_nm": 242,
+      "stage1": {
+        "hp": 180,
+        "nm": 300
+      },
+      "ethanol": {
+        "hp": 209,
+        "nm": 339,
+        "available": true
+      }
+    },
+    "hyundai-1.6-tgdi-177": {
+      "code": "Gamma T-GDI",
+      "displacement": "1.6 T-GDI",
+      "fuel": "essence",
+      "stock_hp": 177,
+      "stock_nm": 265,
+      "stage1": {
+        "hp": 225,
+        "nm": 340
+      },
+      "ethanol": {
+        "hp": 261,
+        "nm": 384,
+        "available": true
+      }
+    },
+    "hyundai-1.6-tgdi-204": {
+      "code": "Gamma T-GDI",
+      "displacement": "1.6 T-GDI",
+      "fuel": "essence",
+      "stock_hp": 204,
+      "stock_nm": 265,
+      "stage1": {
+        "hp": 245,
+        "nm": 340
+      },
+      "ethanol": {
+        "hp": 284,
+        "nm": 384,
+        "available": true
+      }
+    },
+    "hyundai-2.0-tgdi-275": {
+      "code": "Theta T-GDI",
+      "displacement": "2.0 T-GDI N",
+      "fuel": "essence",
+      "stock_hp": 275,
+      "stock_nm": 378,
+      "stage1": {
+        "hp": 330,
+        "nm": 470
+      },
+      "ethanol": {
+        "hp": 383,
+        "nm": 531,
+        "available": true
+      }
+    },
+    "hyundai-2.0-tgdi-280": {
+      "code": "Theta T-GDI",
+      "displacement": "2.0 T-GDI N",
+      "fuel": "essence",
+      "stock_hp": 280,
+      "stock_nm": 392,
+      "stage1": {
+        "hp": 335,
+        "nm": 480
+      },
+      "ethanol": {
+        "hp": 389,
+        "nm": 542,
+        "available": true
+      }
+    },
+    "hyundai-1.6-gdi-135": {
+      "code": "Gamma GDi",
+      "displacement": "1.6 GDi",
+      "fuel": "essence",
+      "stock_hp": 135,
+      "stock_nm": 165,
+      "stage1": {
+        "hp": 150,
+        "nm": 185
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.4-crdi-90": {
+      "code": "U-II",
+      "displacement": "1.4 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 220,
+      "stage1": {
+        "hp": 120,
+        "nm": 280
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.5-crdi-110": {
+      "code": "U-II",
+      "displacement": "1.5 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 110,
+      "stock_nm": 245,
+      "stage1": {
+        "hp": 145,
+        "nm": 305
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.6-crdi-90": {
+      "code": "U-II",
+      "displacement": "1.6 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 90,
+      "stock_nm": 235,
+      "stage1": {
+        "hp": 120,
+        "nm": 290
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.6-crdi-115": {
+      "code": "D4FB",
+      "displacement": "1.6 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 115,
+      "stock_nm": 255,
+      "stage1": {
+        "hp": 150,
+        "nm": 320
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-1.6-crdi-128": {
+      "code": "D4FB",
+      "displacement": "1.6 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 128,
+      "stock_nm": 260,
+      "stage1": {
+        "hp": 165,
+        "nm": 330
+      },
+      "ethanol": {
+        "available": false
+      }
     },
     "hyundai-1.6-crdi-136": {
       "code": "D4FB",
@@ -538,17 +5825,97 @@
       "fuel": "diesel",
       "stock_hp": 136,
       "stock_nm": 320,
-      "stage1": { "hp": 175, "nm": 380 },
-      "ethanol": { "available": false }
+      "stage1": {
+        "hp": 175,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
     },
-    "hyundai-1.4-tgdi-140": {
-      "code": "Gamma",
-      "displacement": "1.4 T-GDi",
-      "fuel": "essence",
+    "hyundai-2.0-crdi-140": {
+      "code": "D4EA",
+      "displacement": "2.0 CRDi",
+      "fuel": "diesel",
       "stock_hp": 140,
-      "stock_nm": 242,
-      "stage1": { "hp": 180, "nm": 300 },
-      "ethanol": { "hp": 210, "nm": 340, "available": true }
+      "stock_nm": 305,
+      "stage1": {
+        "hp": 185,
+        "nm": 380
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-2.0-crdi-150": {
+      "code": "D4HA",
+      "displacement": "2.0 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 320,
+      "stage1": {
+        "hp": 195,
+        "nm": 390
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-2.0-crdi-184": {
+      "code": "D4HA",
+      "displacement": "2.0 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 184,
+      "stock_nm": 422,
+      "stage1": {
+        "hp": 230,
+        "nm": 490
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-2.2-crdi-150": {
+      "code": "D4EB",
+      "displacement": "2.2 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 150,
+      "stock_nm": 343,
+      "stage1": {
+        "hp": 195,
+        "nm": 410
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-2.2-crdi-197": {
+      "code": "D4HB",
+      "displacement": "2.2 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 197,
+      "stock_nm": 440,
+      "stage1": {
+        "hp": 245,
+        "nm": 530
+      },
+      "ethanol": {
+        "available": false
+      }
+    },
+    "hyundai-2.2-crdi-200": {
+      "code": "D4HB",
+      "displacement": "2.2 CRDi",
+      "fuel": "diesel",
+      "stock_hp": 200,
+      "stock_nm": 440,
+      "stage1": {
+        "hp": 250,
+        "nm": 530
+      },
+      "ethanol": {
+        "available": false
+      }
     }
   }
 }
