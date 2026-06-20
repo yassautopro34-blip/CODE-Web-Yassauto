@@ -220,32 +220,22 @@ function buildCurvePath(values: number[], chartWidth: number, chartHeight: numbe
 function CurveCard({
   stockHp,
   stageHp,
-  ethanolHp,
   stockNm,
   stageNm,
-  ethanolNm,
 }: {
   stockHp: number;
   stageHp: number;
-  ethanolHp: number | null;
   stockNm: number;
   stageNm: number;
-  ethanolNm: number | null;
 }) {
   const chartWidth = 300;
   const chartHeight = 140;
 
   const hpStockCurve = [stockHp * 0.35, stockHp * 0.52, stockHp * 0.7, stockHp * 0.83, stockHp * 0.94, stockHp];
   const hpStageCurve = [stageHp * 0.36, stageHp * 0.56, stageHp * 0.76, stageHp * 0.9, stageHp * 0.97, stageHp];
-  const hpEthanolCurve = ethanolHp
-    ? [ethanolHp * 0.36, ethanolHp * 0.58, ethanolHp * 0.78, ethanolHp * 0.92, ethanolHp * 0.98, ethanolHp]
-    : null;
 
   const nmStockCurve = [stockNm * 0.45, stockNm * 0.68, stockNm * 0.84, stockNm * 0.93, stockNm * 0.97, stockNm];
   const nmStageCurve = [stageNm * 0.47, stageNm * 0.72, stageNm * 0.88, stageNm * 0.96, stageNm * 0.99, stageNm];
-  const nmEthanolCurve = ethanolNm
-    ? [ethanolNm * 0.48, ethanolNm * 0.74, ethanolNm * 0.89, ethanolNm * 0.97, ethanolNm, ethanolNm]
-    : null;
 
   return (
     <article className="bg-zinc-950 rounded-2xl border border-zinc-800 p-5 md:p-6 text-white">
@@ -263,9 +253,6 @@ function CurveCard({
           <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="w-full h-28">
             <path d={buildCurvePath(hpStockCurve, chartWidth, chartHeight)} fill="none" stroke="#71717a" strokeWidth="3" />
             <path d={buildCurvePath(hpStageCurve, chartWidth, chartHeight)} fill="none" stroke="#ef4444" strokeWidth="3" />
-            {hpEthanolCurve && (
-              <path d={buildCurvePath(hpEthanolCurve, chartWidth, chartHeight)} fill="none" stroke="#10b981" strokeWidth="3" />
-            )}
           </svg>
         </div>
 
@@ -274,9 +261,6 @@ function CurveCard({
           <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="w-full h-28">
             <path d={buildCurvePath(nmStockCurve, chartWidth, chartHeight)} fill="none" stroke="#71717a" strokeWidth="3" />
             <path d={buildCurvePath(nmStageCurve, chartWidth, chartHeight)} fill="none" stroke="#ef4444" strokeWidth="3" />
-            {nmEthanolCurve && (
-              <path d={buildCurvePath(nmEthanolCurve, chartWidth, chartHeight)} fill="none" stroke="#10b981" strokeWidth="3" />
-            )}
           </svg>
         </div>
       </div>
@@ -284,7 +268,7 @@ function CurveCard({
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
         <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-zinc-500 mr-2" />Origine</div>
         <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2" />Stage 1</div>
-        <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2" />E85</div>
+        <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2" />Conversion E85</div>
       </div>
     </article>
   );
@@ -334,13 +318,7 @@ export default function ReprogrammationPage() {
   }, [selectedVariantKey, variants]);
 
   const selectedEngine = selectedVehicle ? enginesById[selectedVehicle.engine_id] : null;
-  const hasEthanolData =
-    !!selectedEngine &&
-    selectedEngine.ethanol.available &&
-    typeof selectedEngine.ethanol.hp === "number" &&
-    typeof selectedEngine.ethanol.nm === "number";
-  const ethanolHpValue = hasEthanolData ? selectedEngine.ethanol.hp! : null;
-  const ethanolNmValue = hasEthanolData ? selectedEngine.ethanol.nm! : null;
+  const hasEthanolData = !!selectedEngine && selectedEngine.ethanol.available;
 
   const resetModelAndVariant = (brand: string) => {
     setSelectedBrand(brand);
@@ -386,7 +364,7 @@ export default function ReprogrammationPage() {
           </h1>
 
           <p className="text-zinc-300 mt-4 max-w-3xl text-sm md:text-base">
-            Sélectionne ton véhicule et découvre instantanément les gains en puissance et en couple.
+            Sélectionne ton véhicule et découvre instantanément les options Stage 1 et conversion carburant disponibles.
           </p>
         </div>
       </section>
@@ -512,7 +490,7 @@ export default function ReprogrammationPage() {
         <div className="mt-6">
           {!selectedVehicle && (
             <div className="bg-white rounded-2xl border border-dashed border-zinc-300 p-8 md:p-10 text-center text-zinc-500">
-              Sélectionne ton véhicule pour afficher les gains et les tarifs.
+              Sélectionne ton véhicule pour afficher les tarifs et les options disponibles.
             </div>
           )}
 
@@ -573,22 +551,23 @@ export default function ReprogrammationPage() {
 
                   <article className="bg-white rounded-2xl border border-zinc-200 p-5 md:p-6">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2"><Flame className="w-4 h-4 text-emerald-600" /><h4 className="font-bold text-zinc-900">Passage E85</h4></div>
+                      <div className="flex items-center gap-2"><Flame className="w-4 h-4 text-emerald-600" /><h4 className="font-bold text-zinc-900">Conversion E85</h4></div>
                       <span className="text-sm font-black text-emerald-600">{ETHANOL_PRICE} EUR</span>
                     </div>
 
                     {hasEthanolData ? (
-                      <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="space-y-3 text-sm">
                         <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
-                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Puissance</p>
-                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_hp} ch {"->"} {ethanolHpValue!} ch</p>
-                          <p className="text-green-700 font-semibold text-xs mt-1">+{ethanolHpValue! - selectedEngine.stock_hp} ch</p>
+                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Objectif</p>
+                          <p className="text-zinc-900 font-bold mt-1">Adaptation du moteur au carburant E85</p>
                         </div>
                         <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
-                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Couple</p>
-                          <p className="text-zinc-900 font-bold mt-1">{selectedEngine.stock_nm} Nm {"->"} {ethanolNmValue!} Nm</p>
-                          <p className="text-green-700 font-semibold text-xs mt-1">+{ethanolNmValue! - selectedEngine.stock_nm} Nm</p>
+                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Bénéfice</p>
+                          <p className="text-zinc-900 font-bold mt-1">Réduction du coût au plein selon la consommation et l&apos;usage</p>
                         </div>
+                        <p className="text-xs text-zinc-500 leading-relaxed">
+                          La conversion E85 est présentée comme une adaptation carburant. On ne met pas en avant de gain de puissance sur cette prestation.
+                        </p>
                       </div>
                     ) : (
                       <p className="text-sm text-zinc-600 bg-zinc-50 border border-zinc-200 rounded-xl p-3">Conversion E85 non disponible sur cette motorisation.</p>
@@ -599,10 +578,8 @@ export default function ReprogrammationPage() {
                 <CurveCard
                   stockHp={selectedEngine.stock_hp}
                   stageHp={selectedEngine.stage1.hp}
-                  ethanolHp={ethanolHpValue}
                   stockNm={selectedEngine.stock_nm}
                   stageNm={selectedEngine.stage1.nm}
-                  ethanolNm={ethanolNmValue}
                 />
               </div>
 
