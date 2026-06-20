@@ -565,9 +565,6 @@ export default function ReprogrammationPage() {
                           <p className="text-zinc-500 uppercase text-[11px] font-semibold">Bénéfice</p>
                           <p className="text-zinc-900 font-bold mt-1">Réduction du coût au plein selon la consommation et l&apos;usage</p>
                         </div>
-                        <p className="text-xs text-zinc-500 leading-relaxed">
-                          La conversion E85 est présentée comme une adaptation carburant. On ne met pas en avant de gain de puissance sur cette prestation.
-                        </p>
                       </div>
                     ) : (
                       <p className="text-sm text-zinc-600 bg-zinc-50 border border-zinc-200 rounded-xl p-3">Conversion E85 non disponible sur cette motorisation.</p>
