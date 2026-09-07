@@ -40,30 +40,13 @@ export default function Mecanique() {
       {/* 2-Column Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left: Form */}
-          <MechanicsForm
-            formData={formData}
-            updateFormData={updateFormData}
-            handleSubmit={handleSubmit}
-          />
-
-          {/* Right: Calendly (sticky) */}
-          <div className="lg:sticky lg:top-24 order-first lg:order-last">
-            <div className="bg-white rounded-2xl shadow-lg border border-zinc-200 overflow-hidden">
-              <div className="bg-gradient-to-r from-brand-red to-red-600 px-4 sm:px-6 py-3 sm:py-4">
-                <h3 className="text-base sm:text-lg font-bold text-white">
-                  📅 Réserver un créneau
-                </h3>
-                <p className="text-red-100 text-xs sm:text-sm mt-0.5 sm:mt-1">
-                  Prenez rendez-vous directement en ligne
-                </p>
-              </div>
-              <iframe
-                src="https://calendly.com/yassauto-pro34/30min"
-                className="w-full border-0 h-[450px] sm:h-[520px] lg:h-[580px]"
-                title="Prendre rendez-vous — Mécanique"
-              />
-            </div>
+          {/* Form (full width on large screens) */}
+          <div className="lg:col-span-2">
+            <MechanicsForm
+              formData={formData}
+              updateFormData={updateFormData}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
