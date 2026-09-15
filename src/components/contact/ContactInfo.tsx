@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, MapPin, Instagram, Video, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin, Video, Facebook } from "lucide-react";
 
 export const ContactInfo: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ export const ContactInfo: React.FC = () => {
               06 48 38 05 68
             </a>
             <p className="text-sm text-zinc-400 mt-1">
-              Réponse rapide de 9h à 19h
+              Ouvert du lundi au vendredi, 10h-22h
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ export const ContactInfo: React.FC = () => {
           <div>
             <p className="font-bold text-zinc-900">Notre Garage</p>
             <p className="text-zinc-600">
-              7 rue André Marie Ampère, Gigean
+              7 rue André Marie Ampère, 34770 Gigean
             </p>
             <p className="text-sm text-zinc-400 mt-1">
               101 781 854 R.C.S. Montpellier
@@ -60,13 +60,7 @@ export const ContactInfo: React.FC = () => {
 
       <div className="mt-12 pt-8 border-t border-zinc-100">
         <h3 className="font-bold mb-4">Suivez-nous sur les réseaux</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <a
-            href="#"
-            className="bg-zinc-900 text-white px-4 py-3 rounded-lg flex items-center justify-center hover:bg-zinc-700 transition"
-          >
-            <Instagram className="w-5 h-5 mr-2" /> Instagram
-          </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a
             href="https://www.tiktok.com/@yass.auto.pro?_r=1&_t=ZN-91rLyuryMFP"
             className="bg-black text-white px-4 py-3 rounded-lg flex items-center justify-center hover:bg-zinc-800 transition"

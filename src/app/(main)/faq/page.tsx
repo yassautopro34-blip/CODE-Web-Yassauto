@@ -117,19 +117,19 @@ const faqSections: FAQSection[] = [
         ),
       },
       {
-        question: "FAP off, AdBlue off, EGR off : homologe route ou pas ?",
+        question: "Les interventions antipollution sont-elles homologuées route ?",
         answer: (
           <div className="space-y-3">
             <p>
-              Point legal important : certaines modifications anti-pollution peuvent rendre le vehicule non conforme
-              pour un usage sur route ouverte et poser probleme au controle technique.
+              Point légal important : nous ne désactivons pas les systèmes antipollution.
+              Toute reprogrammation est étudiée selon le véhicule, son usage et la conformité route.
             </p>
             <p className="text-amber-800 bg-amber-50 px-3 py-2 rounded-lg border border-amber-200">
-              En clair : ce nest pas toujours homologue route.
+              En clair : le diagnostic et la réparation restent prioritaires avant toute intervention.
             </p>
             <p>
-              Nous vous expliquons toujours les implications avant intervention et nous proposons des solutions adaptees
-              a votre usage reel.
+              Nous vous expliquons toujours les implications avant intervention et nous proposons une solution adaptée
+              à votre usage réel.
             </p>
           </div>
         ),

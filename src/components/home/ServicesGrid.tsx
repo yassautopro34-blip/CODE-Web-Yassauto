@@ -116,7 +116,7 @@ export const ServicesGrid: React.FC = () => {
               <Cpu className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-brand-red mb-2 md:mb-3 lg:mb-4" />
               <h3 className="text-sm md:text-lg lg:text-xl font-black text-white mb-1.5 md:mb-2">Reprogrammation</h3>
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3 lg:mb-4">
-                {["Stage 1", "E85", "FAP off"].map((tag, i) => (
+                {["Stage 1", "E85", "Diagnostic antipollution"].map((tag, i) => (
                   <span key={i} className="bg-brand-red/15 text-red-300 text-[8px] md:text-[10px] lg:text-xs px-1.5 md:px-2 py-0.5 rounded-full">{tag}</span>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export const ServicesGrid: React.FC = () => {
 
             <div className="absolute right-2 bottom-2 md:right-3 md:bottom-3 inline-flex items-center gap-1 bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[7px] md:text-[8px] px-1 py-0.5 rounded-full">
               <AlertTriangle className="w-2.5 h-2.5" />
-              <span>Route: pas toujours homologué</span>
+              <span>Selon véhicule et usage</span>
             </div>
           </Link>
 

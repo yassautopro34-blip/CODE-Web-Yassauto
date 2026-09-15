@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Video } from "lucide-react";
+import { Facebook, Video } from "lucide-react";
 import { BrandLogo } from "@/components/layout/brand-logo";
 
 
@@ -36,14 +36,14 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-brand-red">Contact</h3>
             <ul className="space-y-2 text-zinc-400 text-sm">
-              <li>7 rue André Marie Ampère, Gigean</li>
+              <li>7 rue André Marie Ampère, 34770 Gigean</li>
+              <li>Lundi-vendredi, 10h-22h</li>
               <li><a href="tel:0648380568" className="hover:text-white transition-colors">06 48 38 05 68</a></li>
               <li><a href="mailto:yassauto.pro34@gmail.com" className="hover:text-white transition-colors">yassauto.pro34@gmail.com</a></li>
 
               <li className="flex space-x-4 mt-4 pt-2">
-                <SocialLink href="#" icon={<Instagram className="w-5 h-5" />} />
                 <SocialLink href="https://www.tiktok.com/@yass.auto.pro" icon={<Video className="w-5 h-5" />} />
-                <SocialLink href="https://www.facebook.com/share/17kdB2B3po" icon={<Facebook className="w-5 h-5" />} />
+                <SocialLink href="https://www.facebook.com/share/17kdB2B3po/?mibextid=wwXIfr" icon={<Facebook className="w-5 h-5" />} />
               </li>
             </ul>
           </div>

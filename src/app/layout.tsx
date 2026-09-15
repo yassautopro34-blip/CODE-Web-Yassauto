@@ -12,12 +12,63 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "YassAuto - Expert Auto Montpellier",
+  metadataBase: new URL("https://www.yassauto.fr"),
+  title: "Garage YASSAUTO Gigean - Mécanique auto près de Montpellier",
   icons: {
     icon: "/logo.png",
   },
   description:
-    "Accompagnement achat véhicule d'occasion et mécanique générale à Montpellier",
+    "Garage à Gigean près de Montpellier : mécanique générale, entretien, diagnostic moteur et reprogrammation légale.",
+};
+
+const autoRepairJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "@id": "https://www.yassauto.fr/#garage",
+  name: "YASSAUTO MKLF",
+  image: "https://www.yassauto.fr/img1.jpeg",
+  url: "https://www.yassauto.fr",
+  telephone: "+33648380568",
+  email: "yassauto.pro34@gmail.com",
+  priceRange: "€€",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "7 rue André Marie Ampère",
+    addressLocality: "Gigean",
+    postalCode: "34770",
+    addressRegion: "Hérault",
+    addressCountry: "FR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.4981,
+    longitude: 3.7047,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "22:00",
+    },
+  ],
+  areaServed: ["Gigean", "Sète", "Frontignan", "Balaruc-les-Bains", "Poussan", "Mèze", "Cournonterral", "Montpellier"],
+  sameAs: [
+    "https://www.tiktok.com/@yass.auto.pro",
+    "https://www.facebook.com/share/17kdB2B3po/?mibextid=wwXIfr",
+  ],
+  makesOffer: [
+    "Vidange et entretien",
+    "Distribution et pompe à eau",
+    "Freinage disques et plaquettes",
+    "Diagnostic FAP, EGR et AdBlue",
+    "Recharge climatisation",
+    "Installation CarPlay et Android Auto",
+    "Reprogrammation moteur légale",
+  ].map((name) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name },
+  })),
 };
 
 export default function RootLayout({
@@ -27,8 +78,12 @@ export default function RootLayout({
 }>) {
   connectToMongoDB().catch((err) => console.log(err));
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(autoRepairJsonLd) }}
+        />
         <Script id="google-consent-mode" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
