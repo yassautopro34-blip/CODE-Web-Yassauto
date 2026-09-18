@@ -14,8 +14,32 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.yassauto.fr"),
   title: "Garage YASSAUTO Gigean - Mécanique auto près de Montpellier",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://www.yassauto.fr",
+    siteName: "YASSAUTO MKLF",
+    title: "YASSAUTO | Garage automobile à Gigean",
+    description:
+      "Mécanique générale, diagnostic, pièces auto et accompagnement automobile à Gigean près de Montpellier.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "YASSAUTO, garage automobile à Gigean" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YASSAUTO | Garage automobile à Gigean",
+    description:
+      "Mécanique générale, diagnostic et accompagnement automobile près de Montpellier.",
+    images: ["/opengraph-image"],
+  },
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/logo.png", sizes: "512x512", type: "image/png" }],
   },
   description:
     "Garage à Gigean près de Montpellier : mécanique générale, entretien, diagnostic moteur et reprogrammation légale.",
@@ -96,7 +120,6 @@ export default function RootLayout({
             });
           `}
         </Script>
-        <link rel="icon" href="/logo.ico" sizes="any" />
       </head>
       <Analytics />
       <body className={`${inter.variable} antialiased`}>

@@ -112,7 +112,7 @@ export const TrustSection: React.FC = () => {
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                       index === currentImage ? "opacity-100" : "opacity-0"
                     }`}
-                    alt={`Photo garage ${index + 1}`}
+                    alt={`Atelier mécanique YASSAUTO à Gigean, vue ${index + 1}`}
                   />
                 ))}
                 {/* Indicateurs */}
@@ -156,7 +156,7 @@ export const TrustSection: React.FC = () => {
                       className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                         index === currentImage ? "opacity-100" : "opacity-0"
                       }`}
-                      alt={`Photo travail ${index + 1}`}
+                      alt={`Intervention automobile réalisée par YASSAUTO près de Montpellier, vue ${index + 1}`}
                     />
                   );
                 })}

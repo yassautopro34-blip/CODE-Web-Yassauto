@@ -27,9 +27,15 @@ export default function CookieBanner() {
   }, []);
 
   const handleAction = async (granted: boolean) => {
-    await setConsentAction(granted); // Server Action
-    updateGA4Consent(granted); // GA Update
     setIsVisible(false);
+    document.cookie = `cookie_consent=${granted}; Max-Age=31536000; Path=/; SameSite=Lax`;
+    updateGA4Consent(granted);
+
+    try {
+      await setConsentAction(granted);
+    } catch (error) {
+      console.error("Unable to persist cookie consent on the server:", error);
+    }
   };
 
   if (!isVisible) return null;
