@@ -21,6 +21,17 @@ export const DetailsFormStep: React.FC<DetailsFormStepProps> = ({
     <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
       <h3 className="text-xl font-bold mb-4">2. Informations Véhicule</h3>
 
+      <input
+        type="text"
+        name="website"
+        value={bookingData.website ?? ""}
+        onChange={handleInputChange}
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input
           type="text"

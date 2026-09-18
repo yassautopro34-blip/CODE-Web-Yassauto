@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 import { getQuoteById, updateQuote, deleteQuote } from "@/lib/quote-actions";
 import { MechanicQuote } from "@/types";
+import { getAdminSession } from "@/lib/admin-session";
 
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await getAdminSession())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const { id } = await params;
     const result = await getQuoteById(id);
@@ -25,6 +29,9 @@ export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await getAdminSession())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const { id } = await params;
     const body: Partial<MechanicQuote> = await req.json();
@@ -45,6 +52,9 @@ export async function DELETE(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await getAdminSession())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const { id } = await params;
     const result = await deleteQuote(id);

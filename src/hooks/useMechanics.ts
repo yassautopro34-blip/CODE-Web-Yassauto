@@ -3,6 +3,7 @@ import { MechanicQuote } from "@/types";
 
 export const useMechanics = () => {
   const [formData, setFormData] = useState<MechanicQuote>({
+    website: "",
     firstName: "",
     lastName: "",
     phone: "",
@@ -39,6 +40,7 @@ export const useMechanics = () => {
           requestType: formData.requestType,
           issueDescription: formData.issueDescription,
           hasPhotos: formData.hasPhotos,
+          website: formData.website,
         }),
       });
 

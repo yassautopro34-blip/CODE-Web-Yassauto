@@ -31,6 +31,16 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      <input
+        type="text"
+        name="website"
+        value={formData.website ?? ""}
+        onChange={(e) => updateFormData({ website: e.target.value })}
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
       {/* Section 1: Coordonnées */}
       <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
         <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100">
