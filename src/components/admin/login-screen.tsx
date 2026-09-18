@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
-export function LoginScreen({ onLogin }: { onLogin: (pw: string) => boolean }) {
+export function LoginScreen({
+  onLogin,
+}: {
+  onLogin: (pw: string) => boolean | Promise<boolean>;
+}) {
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!onLogin(password)) alert("Mot de passe incorrect");
+    const success = await onLogin(password);
+    if (!success) alert("Mot de passe incorrect");
     else setPassword("");
   };
 

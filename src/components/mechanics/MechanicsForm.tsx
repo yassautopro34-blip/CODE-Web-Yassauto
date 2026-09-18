@@ -28,6 +28,16 @@ export const MechanicsForm: React.FC<MechanicsFormProps> = ({
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="website"
+          value={formData.website ?? ""}
+          onChange={(e) => updateFormData({ website: e.target.value })}
+          autoComplete="off"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="absolute -left-[9999px] h-px w-px opacity-0"
+        />
         {/* Type de demande - En premier pour UX */}
         <div>
           <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-2">

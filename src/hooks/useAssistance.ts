@@ -4,6 +4,7 @@ import { BookingDetails, Step } from "@/types";
 export const useAssistance = () => {
   const [currentStep, setCurrentStep] = useState<Step>(Step.DATE_SELECTION);
   const [bookingData, setBookingData] = useState<BookingDetails>({
+    website: "",
     date: "",
     timeSlot: "",
     status: "pending",
@@ -78,6 +79,7 @@ export const useAssistance = () => {
         bookingType: "accompagnement",
         isStudent: bookingData.isStudent,
         description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
+        website: bookingData.website,
       };
 
       // Envoyer la demande au backend
@@ -133,6 +135,7 @@ export const useAssistance = () => {
         bookingType: "accompagnement",
         isStudent: bookingData.isStudent,
         description: `Véhicule: ${bookingData.carModel} | Ville: ${bookingData.address} | Annonce: ${bookingData.postLink} | Docs: ${bookingData.hasDocs ? "Oui" : "Non"}`,
+        website: bookingData.website,
       };
 
       const res = await fetch(`/api/create-checkout-session`, {

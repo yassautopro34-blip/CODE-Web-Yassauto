@@ -7,31 +7,32 @@ import {
   RequestStatus,
 } from "@/components/admin/admin-utils";
 
-const ADMIN_PASSWORD =
-  process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LesMakhloufs";
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 // --- Auth Hook ---
 export function useAdminAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("adminAuth");
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- initializing state from localStorage on mount
-    if (stored) setIsAuthenticated(true);
+    fetch("/api/admin/session")
+      .then((response) => response.json())
+      .then((data) => setIsAuthenticated(data.authenticated === true))
+      .catch(() => setIsAuthenticated(false));
   }, []);
 
-  const login = (password: string) => {
-    if (password === ADMIN_PASSWORD) {
-      localStorage.setItem("adminAuth", "true");
-      setIsAuthenticated(true);
-      return true;
-    }
-    return false;
+  const login = async (password: string) => {
+    const response = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+    const success = response.ok;
+    if (success) setIsAuthenticated(true);
+    return success;
   };
 
-  const logout = () => {
-    localStorage.removeItem("adminAuth");
+  const logout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" });
     setIsAuthenticated(false);
   };
 

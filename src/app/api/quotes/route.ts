@@ -2,8 +2,15 @@ import { NextResponse } from "next/server";
 import { getQuotes, createQuote } from "@/lib/quote-actions";
 import { MechanicQuote } from "@/types";
 import { sendAdminNotification } from "@/lib/email-actions";
+import { getAdminSession } from "@/lib/admin-session";
+import { isHoneypotFilled, isRateLimited } from "@/lib/security";
+import { mechanicQuoteSchema } from "@/lib/validation";
+import { NextRequest } from "next/server";
 
 export async function GET() {
+  if (!(await getAdminSession())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const result = await getQuotes();
     return NextResponse.json(result);
@@ -15,9 +22,23 @@ export async function GET() {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  if (isRateLimited(req, "quotes")) {
+    return NextResponse.json({ error: "Trop de demandes" }, { status: 429 });
+  }
+
   try {
-    const body: MechanicQuote = await req.json();
+    const input = await req.json();
+    if (isHoneypotFilled(input.website)) {
+      return NextResponse.json({ success: true }, { status: 202 });
+    }
+
+    const parsed = mechanicQuoteSchema.safeParse(input);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Données invalides" }, { status: 400 });
+    }
+
+    const body = parsed.data as MechanicQuote;
     const result = await createQuote(body);
 
     // Send notification asynchronously
@@ -51,7 +72,7 @@ export async function POST(req: Request) {
       console.error("Failed to send admin notification:", emailError);
     }
 
-    return NextResponse.json(result, { status: 201 });
+    return NextResponse.json({ success: result.success }, { status: 201 });
   } catch {
     return NextResponse.json(
       { error: "Failed to create quote" },

@@ -1,20 +1,29 @@
 import { NextResponse, NextRequest } from "next/server";
 import { sendAdminNotification } from "@/lib/email-actions";
+import { isHoneypotFilled, isRateLimited } from "@/lib/security";
+import { piecesRequestSchema } from "@/lib/validation";
 
 export async function POST(request: NextRequest) {
+  if (isRateLimited(request, "pieces-request")) {
+    return NextResponse.json({ error: "Trop de demandes" }, { status: 429 });
+  }
+
   try {
     // 1. Parse JSON body
-    const form = await request.json();
+    const input = await request.json();
+
+    if (isHoneypotFilled(input.website)) {
+      return NextResponse.json({ success: true }, { status: 202 });
+    }
+
+    const parsed = piecesRequestSchema.safeParse(input);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Données invalides" }, { status: 400 });
+    }
+    const validatedForm = parsed.data;
 
     // 2. Validation - utilise les bons noms de champs du formulaire
-    if (!form.fullName || !form.phone || !form.email || !form.licensePlate || !form.partDescription) {
-      return NextResponse.json(
-        {
-          error: "Champs manquants : nom, téléphone, email, immatriculation et description requis",
-        },
-        { status: 400 },
-      );
-    }
+    const form = validatedForm;
 
     // 3. Construire le message email
     const preferenceLabels: Record<string, string> = {

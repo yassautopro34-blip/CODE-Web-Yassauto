@@ -1,4 +1,5 @@
 export interface BookingDetails {
+  website?: string;
   clientName: string;
   clientPhone: string;
   description: string;
@@ -19,6 +20,7 @@ export interface BookingDetails {
 }
 
 export interface MechanicQuote {
+  website?: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -30,6 +32,7 @@ export interface MechanicQuote {
 }
 
 export interface PiecesRequest {
+  website?: string;
   fullName: string;
   phone: string;
   email: string;

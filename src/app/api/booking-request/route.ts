@@ -1,28 +1,52 @@
 import { NextResponse, NextRequest } from "next/server";
 import { createBookingInternal } from "@/lib/booking-actions";
 import { sendAdminNotification } from "@/lib/email-actions";
+import { isHoneypotFilled, isRateLimited } from "@/lib/security";
+import { bookingRequestSchema } from "@/lib/validation";
+import { BookingDetails } from "@/types";
 
 export async function POST(request: NextRequest) {
+  if (isRateLimited(request, "booking-request")) {
+    return NextResponse.json({ error: "Trop de demandes" }, { status: 429 });
+  }
+
   try {
     // 1. Parse JSON body
-    const form = await request.json();
+    const input = await request.json();
 
-    // 2. Validation
-    if (!form.clientName || !form.clientPhone || !form.date || !form.clientEmail) {
-      return NextResponse.json(
-        {
-          error: "Champs manquants : clientName, clientPhone, clientEmail, date requis",
-        },
-        { status: 400 },
-      );
+    if (isHoneypotFilled(input.website)) {
+      return NextResponse.json({ success: true }, { status: 202 });
     }
 
+    const parsed = bookingRequestSchema.safeParse(input);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Données invalides" }, { status: 400 });
+    }
+    const validatedForm = parsed.data;
+
+    // 2. Validation
+    const form = validatedForm;
+
     // 3. Sauvegarder la demande en base de données
-    const booking = await createBookingInternal({
-      ...form,
+    await createBookingInternal({
+      clientName: form.clientName,
+      clientPhone: form.clientPhone,
+      clientEmail: form.clientEmail,
+      date: form.date,
+      timeSlot: form.timeSlot,
+      address: form.address,
+      carModel: form.carModel,
+      postLink: form.postLink,
+      hasDocs: form.hasDocs,
+      isStudent: form.isStudent,
       bookingDate: form.date,
       status: "pending",
-    });
+      description: `Véhicule: ${form.carModel} | Ville: ${form.address} | Annonce: ${form.postLink}`,
+      amount_cents: 0,
+      currency: "eur",
+      bookingType: "accompagnement",
+      confirmedAt: "",
+    } satisfies BookingDetails);
 
     // 4. Envoyer une notification email à l'admin
     const formatDate = (dateStr: string) => {

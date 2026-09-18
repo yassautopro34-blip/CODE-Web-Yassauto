@@ -4,6 +4,7 @@ import { PiecesRequest } from "@/types";
 export const usePieces = () => {
   const [formData, setFormData] = useState<PiecesRequest>({
     fullName: "",
+    website: "",
     phone: "",
     email: "",
     licensePlate: "",
@@ -72,6 +73,7 @@ export const usePieces = () => {
 
   const resetForm = () => {
     setFormData({
+      website: "",
       fullName: "",
       phone: "",
       email: "",
