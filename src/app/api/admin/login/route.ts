@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createAdminSession, getAdminSecret } from "@/lib/admin-session";
+import { createAdminSession, getAdminPassword } from "@/lib/admin-session";
 
 export async function POST(request: NextRequest) {
   try {
@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Mot de passe requis" }, { status: 400 });
     }
 
-    if (password !== getAdminSecret()) {
+    if (password !== getAdminPassword()) {
       return NextResponse.json({ error: "Identifiants invalides" }, { status: 401 });
     }
 

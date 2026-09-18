@@ -7,8 +7,8 @@ const SESSION_DURATION_SECONDS = 60 * 60 * 8;
 
 function getSecret() {
   const secret = process.env.ADMIN_SECRET;
-  if (!secret || secret.length < 12) {
-    throw new Error("ADMIN_SECRET must contain at least 12 characters");
+  if (!secret || !/^[a-f0-9]{64}$/i.test(secret)) {
+    throw new Error("ADMIN_SECRET must contain 64 hexadecimal characters");
   }
   return createHash("sha256").update(secret).digest();
 }
@@ -55,8 +55,8 @@ export async function clearAdminSession() {
   });
 }
 
-export function getAdminSecret() {
-  const secret = process.env.ADMIN_SECRET;
-  if (!secret) throw new Error("ADMIN_SECRET is not configured");
-  return secret;
+export function getAdminPassword() {
+  const password = process.env.ADMIN_PASSWORD;
+  if (!password) throw new Error("ADMIN_PASSWORD is not configured");
+  return password;
 }
