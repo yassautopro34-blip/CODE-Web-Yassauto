@@ -1,10 +1,21 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Clock, Zap, Settings, Gauge, ThermometerSun, AlertTriangle } from "lucide-react";
 
 export const ServicesGrid: React.FC = () => {
   return (
     <section className="py-12 md:py-20 lg:py-28 bg-brand-black relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-10">
+        <Image
+          src="/background/5.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 80px), repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 80px)' }}></div>
@@ -20,11 +31,11 @@ export const ServicesGrid: React.FC = () => {
             <span className="text-zinc-400 text-xs md:text-sm">Tous les services auto</span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-3 md:mb-5">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.92] tracking-tight mb-4 md:mb-6">
             Un souci avec <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">ta voiture ?</span>
           </h2>
           
-          <p className="text-zinc-500 text-sm md:text-base lg:text-lg max-w-xl mx-auto mb-5 md:mb-7">
+          <p className="text-zinc-300 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-5 md:mb-7">
             Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">on gère tout.</span>
           </p>
 
@@ -59,7 +70,7 @@ export const ServicesGrid: React.FC = () => {
                     <Zap className="w-3 h-3 text-brand-red" />
                     <span className="text-brand-red text-[10px] md:text-xs font-bold uppercase">Principal</span>
                   </div>
-                  <h3 className="text-lg md:text-2xl lg:text-3xl font-black text-white">Mécanique</h3>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight">Mécanique</h3>
                 </div>
               </div>
 
@@ -73,7 +84,7 @@ export const ServicesGrid: React.FC = () => {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 bg-zinc-800/50 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2">
                     <item.icon className="w-3 h-3 md:w-4 md:h-4 text-brand-red shrink-0" />
-                    <span className="text-zinc-300 text-[11px] md:text-xs lg:text-sm">{item.label}</span>
+                    <span className="text-zinc-200 text-xs md:text-sm lg:text-base font-semibold">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -99,8 +110,8 @@ export const ServicesGrid: React.FC = () => {
                 48h
               </span>
             </div>
-            <h3 className="text-sm md:text-lg lg:text-xl font-black text-white mb-1 lg:mb-2">Pièces</h3>
-            <p className="text-white/70 text-[10px] md:text-xs lg:text-sm mb-2 md:mb-3 lg:mb-4 line-clamp-2 lg:line-clamp-none flex-1">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 lg:mb-3">Pièces</h3>
+            <p className="text-white/85 text-xs md:text-sm lg:text-base leading-relaxed mb-2 md:mb-3 lg:mb-4 line-clamp-2 lg:line-clamp-none flex-1">
               Neuf ou occasion, meilleur prix
             </p>
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:translate-x-1 transition-transform" />
@@ -114,7 +125,7 @@ export const ServicesGrid: React.FC = () => {
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-brand-red/20 rounded-full blur-[40px] md:blur-[50px]"></div>
             <div className="relative">
               <Cpu className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-brand-red mb-2 md:mb-3 lg:mb-4" />
-              <h3 className="text-sm md:text-lg lg:text-xl font-black text-white mb-1.5 md:mb-2">Reprogrammation</h3>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3">Reprogrammation</h3>
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3 lg:mb-4">
                 {["Stage 1", "E85", "Diagnostic antipollution"].map((tag, i) => (
                   <span key={i} className="bg-brand-red/15 text-red-300 text-[8px] md:text-[10px] lg:text-xs px-1.5 md:px-2 py-0.5 rounded-full">{tag}</span>
@@ -142,7 +153,7 @@ export const ServicesGrid: React.FC = () => {
                 <h3 className="text-sm md:text-lg lg:text-xl font-black text-white">Achat / Vente</h3>
                 <Shield className="w-3 h-3 md:w-3.5 md:h-3.5 text-emerald-400 shrink-0" />
               </div>
-              <p className="text-emerald-200/60 text-[10px] md:text-xs lg:text-sm line-clamp-1 md:line-clamp-2">
+              <p className="text-emerald-100/80 text-xs md:text-sm lg:text-base line-clamp-1 md:line-clamp-2">
                 Je t&apos;accompagne pour éviter les arnaques
               </p>
             </div>
