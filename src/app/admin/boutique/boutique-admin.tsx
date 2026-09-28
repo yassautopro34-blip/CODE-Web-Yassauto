@@ -88,7 +88,17 @@ const btn = "inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-me
 
 function ConnectionCard() {
   const [status, setStatus] = useState<{ connected: boolean; accountName?: string; refreshExpiresAt?: string } | null>(null);
+  const [flash, setFlash] = useState<{ ok: boolean; text: string } | null>(null);
   useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const st = q.get("aliexpress");
+    if (st) {
+      setFlash({
+        ok: st === "ok",
+        text: st === "ok" ? "Compte AliExpress connecté." : `Connexion échouée : ${q.get("detail") ?? st}`,
+      });
+      window.history.replaceState(null, "", "/admin/boutique");
+    }
     fetch("/api/shop/admin/aliexpress/status")
       .then((r) => r.json())
       .then(setStatus)
@@ -106,6 +116,7 @@ function ConnectionCard() {
               ? `Connecté${status.accountName ? ` (${status.accountName})` : ""} · valable jusqu'au ${new Date(status.refreshExpiresAt ?? "").toLocaleDateString("fr-FR")}`
               : "Non connecté : l'import automatique est désactivé, la saisie manuelle reste possible."}
         </p>
+        {flash && <p className={`text-sm mt-1 ${flash.ok ? "text-green-700" : "text-red-600"}`}>{flash.text}</p>}
       </div>
       <a href="/api/shop/aliexpress/connect" className={`${btn} bg-orange-500 hover:bg-orange-600 text-white`}>
         <Link2 size={16} /> {status?.connected ? "Reconnecter" : "Connecter mon compte"}
