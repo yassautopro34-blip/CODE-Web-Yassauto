@@ -5,9 +5,8 @@ import { saveTokens } from "@/lib/shop/aliexpress/token";
 import { getOAuthBaseUrl } from "@/lib/shop/aliexpress/oauth-url";
 
 /**
- * Retour OAuth AliExpress. La session admin (SameSite=Strict) n'est pas envoyée sur cette
- * redirection inter-sites : c'est le paramètre `state`, lié au cookie posé par /connect, qui prouve
- * que la demande vient bien de l'admin.
+ * La valeur `state`, liée au cookie posé par /connect, valide le retour OAuth indépendamment
+ * de la session admin, qui peut être absente sur une navigation depuis AliExpress.
  */
 export async function GET(req: NextRequest) {
   const back = (status: string, detail?: string) => {

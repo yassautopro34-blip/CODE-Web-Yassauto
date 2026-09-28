@@ -25,7 +25,7 @@ export async function createAdminSession() {
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "lax",
     maxAge: SESSION_DURATION_SECONDS,
     path: "/",
   });
@@ -49,7 +49,7 @@ export async function clearAdminSession() {
   cookieStore.set(COOKIE_NAME, "", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "lax",
     maxAge: 0,
     path: "/",
   });
