@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { timingSafeEqual } from "node:crypto";
 import { AliExpressError, createToken } from "@/lib/shop/aliexpress/client";
 import { saveTokens } from "@/lib/shop/aliexpress/token";
+import { getOAuthBaseUrl } from "@/lib/shop/aliexpress/oauth-url";
 
 /**
  * Retour OAuth AliExpress. La session admin (SameSite=Strict) n'est pas envoyée sur cette
@@ -12,7 +13,7 @@ export async function GET(req: NextRequest) {
   const back = (status: string, detail?: string) => {
     const q = new URLSearchParams({ aliexpress: status });
     if (detail) q.set("detail", detail.slice(0, 200));
-    return NextResponse.redirect(`${process.env.FRONTEND_URL}/admin/boutique?${q}`);
+    return NextResponse.redirect(`${getOAuthBaseUrl()}/admin/boutique?${q}`);
   };
 
   const code = req.nextUrl.searchParams.get("code");
