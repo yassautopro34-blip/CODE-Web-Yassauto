@@ -17,10 +17,15 @@ export async function GET(req: NextRequest) {
   };
 
   const code = req.nextUrl.searchParams.get("code");
+  const oauthError = req.nextUrl.searchParams.get("error");
+  const oauthErrorDescription = req.nextUrl.searchParams.get("error_description");
   const state = req.nextUrl.searchParams.get("state") ?? "";
   const expected = req.cookies.get("ae_oauth_state")?.value ?? "";
 
-  if (!code) return back("refuse", "Aucun code reçu d'AliExpress");
+  if (oauthError) {
+    return back("erreur", [oauthError, oauthErrorDescription].filter(Boolean).join(" : "));
+  }
+  if (!code) return back("refuse", oauthErrorDescription ?? "Aucun code reçu d'AliExpress");
   if (!expected) return back("refuse", "Cookie de sécurité absent (lance la connexion depuis www.yassauto.fr/admin/boutique)");
   if (state.length !== expected.length || !timingSafeEqual(Buffer.from(state), Buffer.from(expected))) {
     return back("refuse", "Code de sécurité différent : relance la connexion");
@@ -34,12 +39,16 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     const payload = error instanceof AliExpressError ? error.payload : undefined;
     console.error("AliExpress OAuth callback failed:", error, JSON.stringify(payload));
-    const p = payload as { code?: string; message?: string; msg?: string } | undefined;
-    const detail = p?.code
-      ? `AliExpress ${p.code} : ${p.message ?? p.msg ?? ""}`
-      : error instanceof Error
-        ? error.message
-        : "Erreur inconnue";
+    const p = payload && typeof payload === "object" ? (payload as Record<string, unknown>) : undefined;
+    const nested = p?.error_response && typeof p.error_response === "object"
+      ? (p.error_response as Record<string, unknown>)
+      : undefined;
+    const apiCode = p?.code ?? nested?.code;
+    const apiMessage = p?.message ?? p?.msg ?? p?.error_description ?? nested?.message ?? nested?.msg;
+    const detail = [
+      apiCode ? `AliExpress ${String(apiCode)}` : undefined,
+      apiMessage ? String(apiMessage) : undefined,
+    ].filter(Boolean).join(" : ") || (error instanceof Error ? error.message : "Erreur inconnue");
     return back("erreur", detail);
   }
 }
