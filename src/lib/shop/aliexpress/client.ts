@@ -12,7 +12,7 @@ import { createHmac } from "node:crypto";
 const GATEWAY = "https://api-sg.aliexpress.com";
 
 function env(name: string): string {
-  const value = process.env[name];
+  const value = process.env[name]?.trim();
   if (!value) throw new Error(`Variable d'environnement manquante : ${name}`);
   return value;
 }
