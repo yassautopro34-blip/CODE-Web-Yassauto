@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import Link from "next/link";
+import { LogOut, ShoppingBag } from "lucide-react";
 import { RequestsTable } from "@/components/admin/requests-table";
 import { useAdminAuth, useRequests } from "@/components/admin/admin-hooks";
 import { FilterState, AdminRequest } from "@/components/admin/admin-utils";
@@ -37,6 +38,10 @@ export default function AdminDashboard() {
             <h1 className="text-2xl font-bold">YassAuto Dashboard</h1>
             <p className="text-gray-400 text-sm">Réservations et devis</p>
           </div>
+          <div className="flex items-center gap-3">
+          <Link href="/admin/boutique" className="flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-gray-200 rounded-lg transition">
+            <ShoppingBag size={18} /> Boutique
+          </Link>
           <button
             onClick={async () => {
               await logout();
@@ -46,6 +51,7 @@ export default function AdminDashboard() {
           >
             <LogOut size={18} /> Déconnexion
           </button>
+          </div>
         </div>
       </header>
 
