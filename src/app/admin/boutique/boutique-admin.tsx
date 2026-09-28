@@ -108,7 +108,14 @@ function ConnectionCard() {
   return (
     <div className="bg-white rounded-xl shadow-sm p-4 flex flex-wrap items-center justify-between gap-3">
       <div>
-        <p className="font-semibold">Connexion AliExpress</p>
+        <p className="flex items-center gap-2 font-semibold">
+          <span
+            aria-hidden="true"
+            title={status === null ? "Vérification en cours" : status.connected ? "Compte connecté" : "Compte non connecté"}
+            className={`h-2.5 w-2.5 rounded-full ${status === null ? "bg-gray-400" : status.connected ? "bg-green-500" : "bg-red-500"}`}
+          />
+          Connexion AliExpress
+        </p>
         <p className="text-sm text-gray-500">
           {status === null
             ? "Vérification…"
