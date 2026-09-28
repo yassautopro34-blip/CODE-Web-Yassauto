@@ -7,6 +7,7 @@ export const variantInput = z.object({
   priceTtcCents: z.number().int().min(0).max(10_000_000),
   costCents: z.number().int().min(0).max(10_000_000),
   available: z.boolean().default(true),
+  shipFrom: z.string().trim().max(60).optional(),
 });
 
 export const productInput = z.object({

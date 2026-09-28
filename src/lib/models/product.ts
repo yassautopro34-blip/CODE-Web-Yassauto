@@ -10,6 +10,7 @@ export interface ProductVariant {
   priceTtcCents: number;
   costCents: number; // produit + livraison + douane, au moment de la dernière sync
   available: boolean;
+  shipFrom?: string; // entrepôt AliExpress (Chine, Allemagne…)
 }
 
 export interface VehicleFitment {
@@ -57,6 +58,7 @@ const variantSchema = new mongoose.Schema<ProductVariant>(
     priceTtcCents: { type: Number, required: true, min: 0 },
     costCents: { type: Number, required: true, min: 0 },
     available: { type: Boolean, default: true },
+    shipFrom: String,
   },
   { _id: false },
 );

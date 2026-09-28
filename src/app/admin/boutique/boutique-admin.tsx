@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Download, Eye, EyeOff, Link2, Loader2, PenLine, Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, Download, Eye, EyeOff, ImagePlus, Link2, Loader2, PenLine, Plus, Trash2 } from "lucide-react";
 import { breakdown, formatEuros } from "@/lib/shop/pricing";
 import { slugify } from "@/lib/shop/product-schema";
 
@@ -16,6 +16,7 @@ interface Variant {
   priceTtcCents: number;
   costCents: number;
   available: boolean;
+  shipFrom?: string;
 }
 
 interface Fitment {
@@ -92,17 +93,25 @@ function ConnectionCard() {
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
     const st = q.get("aliexpress");
-    if (st) {
-      setFlash({
+    const flashMessage = st
+      ? {
         ok: st === "ok",
         text: st === "ok" ? "Compte AliExpress connecté." : `Connexion échouée : ${q.get("detail") ?? st}`,
-      });
+      }
+      : null;
+    if (flashMessage) {
       window.history.replaceState(null, "", "/admin/boutique");
     }
     fetch("/api/shop/admin/aliexpress/status")
       .then((r) => r.json())
-      .then(setStatus)
-      .catch(() => setStatus({ connected: false }));
+      .then((data) => {
+        setStatus(data);
+        if (flashMessage) setFlash(flashMessage);
+      })
+      .catch(() => {
+        setStatus({ connected: false });
+        if (flashMessage) setFlash(flashMessage);
+      });
   }, []);
 
   return (
@@ -157,13 +166,14 @@ function ImportBox({ onReady }: { onReady: (f: ProductForm) => void }) {
         slug: slugify(data.title),
         description: data.descriptionHtml ?? "",
         images: data.images ?? [],
-        variants: (data.variants ?? []).map((v: { aeSkuId: string; aeSkuAttr: string; label: string; stock: number; pricing: { priceTtcCents: number; costCents: number } }, i: number) => ({
+        variants: (data.variants ?? []).map((v: { aeSkuId: string; aeSkuAttr: string; label: string; shipFrom?: string; stock: number; pricing: { priceTtcCents: number; costCents: number } }, i: number) => ({
           sku: v.aeSkuId || `v${i + 1}`,
           label: v.label,
           aeSkuAttr: v.aeSkuAttr,
           priceTtcCents: v.pricing.priceTtcCents,
           costCents: v.pricing.costCents,
           available: v.stock > 0,
+          shipFrom: v.shipFrom,
         })),
         supplier: {
           platform: "aliexpress",
@@ -216,6 +226,21 @@ function Field({ label, children, hint }: { label: string; children: React.React
   );
 }
 
+/** Réduit une photo (max 1600 px, JPEG) avant envoi : plus rapide et sous la limite de Vercel. */
+async function resizeImage(file: File, max: number): Promise<Blob> {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return file;
+  ctx.fillStyle = "#fff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve) => canvas.toBlob((b) => resolve(b ?? file), "image/jpeg", 0.85));
+}
+
 function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; onClose: () => void; onSaved: () => void }) {
   const [f, setF] = useState<ProductForm>(initial);
   const [saving, setSaving] = useState(false);
@@ -225,6 +250,48 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
     set("variants", f.variants.map((v, j) => (j === i ? { ...v, ...patch } : v)));
   const setFitment = (i: number, patch: Partial<Fitment>) =>
     set("fitments", f.fitments.map((v, j) => (j === i ? { ...v, ...patch } : v)));
+
+  // --- Entrepôt d'expédition : on ne garde que les origines choisies (Chine par défaut) ---
+  const pool = useRef<Variant[]>(initial.variants);
+  const origins = Array.from(new Set(pool.current.map((v) => v.shipFrom).filter((o): o is string => !!o)));
+  const [keep, setKeep] = useState<string[]>(() => {
+    const china = origins.find((o) => /china|chine|^cn$/i.test(o));
+    return china ? [china] : origins;
+  });
+  const applyOrigins = (next: string[]) => {
+    setKeep(next);
+    const edited = new Map(f.variants.map((v) => [v.sku, v]));
+    pool.current = pool.current.map((v) => edited.get(v.sku) ?? v);
+    set("variants", pool.current.filter((v) => !v.shipFrom || next.includes(v.shipFrom)));
+  };
+  useEffect(() => {
+    if (origins.length > 1) applyOrigins(keep);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // --- Photos : glisser-déposer ou sélection de fichiers ---
+  const [uploading, setUploading] = useState(0);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const uploadFiles = async (files: FileList | File[]) => {
+    const list = Array.from(files).filter((file) => file.type.startsWith("image/"));
+    setUploading((n) => n + list.length);
+    for (const file of list) {
+      try {
+        const blob = await resizeImage(file, 1600);
+        const body = new FormData();
+        body.append("file", blob, file.name.replace(/\.[^.]+$/, "") + ".jpg");
+        const res = await fetch("/api/shop/admin/upload", { method: "POST", body });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error ?? "Envoi impossible");
+        setF((p) => ({ ...p, images: [...p.images, data.url] }));
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Envoi de photo impossible");
+      } finally {
+        setUploading((n) => n - 1);
+      }
+    }
+  };
 
   const save = async (status: Status) => {
     setSaving(true);
@@ -284,6 +351,17 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
       {/* Photos */}
       <div className="space-y-2">
         <p className="text-sm font-medium text-gray-700">Photos ({f.images.length}) — la première est la photo principale</p>
+        <div
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => { e.preventDefault(); setDragOver(false); void uploadFiles(e.dataTransfer.files); }}
+          onClick={() => fileInput.current?.click()}
+          className={`border-2 border-dashed rounded-lg p-4 text-center text-sm cursor-pointer transition ${dragOver ? "border-black bg-gray-100" : "border-gray-300 text-gray-500 hover:border-gray-500"}`}
+        >
+          <ImagePlus size={20} className="inline mr-2" />
+          {uploading > 0 ? `Envoi de ${uploading} photo(s)…` : "Glisse tes photos ici, ou clique pour les choisir"}
+          <input ref={fileInput} type="file" accept="image/*" multiple hidden onChange={(e) => { if (e.target.files) void uploadFiles(e.target.files); e.target.value = ""; }} />
+        </div>
         <div className="flex flex-wrap gap-3">
           {f.images.map((src, i) => (
             <div key={src} className="relative w-24 h-24 border rounded-lg overflow-hidden group">
@@ -314,6 +392,22 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
       {/* Variantes & prix */}
       <div className="space-y-2">
         <p className="text-sm font-medium text-gray-700">Variantes et prix</p>
+        {origins.length > 1 && (
+          <div className="flex flex-wrap items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm">
+            <span className="font-medium">Expédié depuis :</span>
+            {origins.map((o) => (
+              <button
+                key={o}
+                type="button"
+                onClick={() => applyOrigins(keep.includes(o) ? keep.filter((k) => k !== o) : [...keep, o])}
+                className={`px-3 py-1 rounded-full border ${keep.includes(o) ? "bg-black text-white border-black" : "bg-white text-gray-600 border-gray-300"}`}
+              >
+                {o} ({pool.current.filter((v) => v.shipFrom === o).length})
+              </button>
+            ))}
+            <span className="text-xs text-gray-500 w-full">Seules les variantes des entrepôts sélectionnés seront enregistrées. Évite le Royaume-Uni et les États-Unis (douane en plus).</span>
+          </div>
+        )}
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="text-left text-gray-500">
@@ -324,7 +418,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
                 const b = breakdown(v.priceTtcCents, v.costCents);
                 return (
                   <tr key={i} className="border-t">
-                    <td className="py-2 pr-2"><input className={input} value={v.label} onChange={(e) => setVariant(i, { label: e.target.value })} /></td>
+                    <td className="py-2 pr-2"><input className={input} value={v.label} onChange={(e) => setVariant(i, { label: e.target.value })} />{v.shipFrom && <span className="text-xs text-gray-500">Expédié de {v.shipFrom}</span>}</td>
                     <td className="pr-2"><input className={`${input} w-28`} defaultValue={euroInput(v.costCents)} onBlur={(e) => setVariant(i, { costCents: toCents(e.target.value) })} /></td>
                     <td className="pr-2"><input className={`${input} w-28`} defaultValue={euroInput(v.priceTtcCents)} onBlur={(e) => setVariant(i, { priceTtcCents: toCents(e.target.value) })} /></td>
                     <td className={`pr-2 whitespace-nowrap ${b.netMarginCents < 0 ? "text-red-600" : "text-green-700"}`}>
@@ -339,7 +433,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
           </table>
         </div>
         <button onClick={() => set("variants", [...f.variants, { sku: `v${f.variants.length + 1}`, label: "", aeSkuAttr: "", priceTtcCents: 0, costCents: 0, available: true }])} className="text-sm text-gray-600 hover:text-black inline-flex items-center gap-1"><Plus size={14} /> Ajouter une variante</button>
-        <p className="text-xs text-gray-500">Marge nette = prix HT − coût − frais Stripe estimés. Le prix conseillé à l'import applique ton coefficient × 2,5.</p>
+        <p className="text-xs text-gray-500">Marge nette = prix HT − coût − frais Stripe estimés. Le prix conseillé à l&apos;import applique ton coefficient × 2,5.</p>
       </div>
 
       {/* Compatibilité */}
@@ -367,7 +461,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
       {/* Pose atelier */}
       <div className="space-y-2">
         <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
-          <input type="checkbox" checked={f.installOffer.enabled} onChange={(e) => set("installOffer", { ...f.installOffer, enabled: e.target.checked })} /> Proposer la pose à l'atelier de Gigean
+          <input type="checkbox" checked={f.installOffer.enabled} onChange={(e) => set("installOffer", { ...f.installOffer, enabled: e.target.checked })} /> Proposer la pose à l&apos;atelier de Gigean
         </label>
         {f.installOffer.enabled && (
           <div className="flex gap-3">
@@ -405,15 +499,29 @@ export default function BoutiqueAdmin() {
   const [editing, setEditing] = useState<ProductForm | null>(null);
 
   const load = useCallback(async () => {
-    setLoading(true);
     const res = await fetch("/api/shop/admin/products");
     setProducts(res.ok ? await res.json() : []);
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    let active = true;
+    fetch("/api/shop/admin/products")
+      .then(async (res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if (!active) return;
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!active) return;
+        setProducts([]);
+        setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const setStatus = async (p: ProductForm, status: Status) => {
     await fetch(`/api/shop/admin/products/${p._id}`, {
@@ -421,12 +529,14 @@ export default function BoutiqueAdmin() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status }),
     });
+    setLoading(true);
     void load();
   };
 
   const remove = async (p: ProductForm) => {
     if (!window.confirm(`Supprimer « ${p.title} » ?`)) return;
     await fetch(`/api/shop/admin/products/${p._id}`, { method: "DELETE" });
+    setLoading(true);
     void load();
   };
 
@@ -445,7 +555,7 @@ export default function BoutiqueAdmin() {
       <div className="max-w-7xl mx-auto p-4 space-y-6">
         <ConnectionCard />
         {editing ? (
-          <ProductEditor key={editing._id ?? "new"} initial={editing} onClose={() => setEditing(null)} onSaved={() => { setEditing(null); void load(); }} />
+          <ProductEditor key={editing._id ?? "new"} initial={editing} onClose={() => setEditing(null)} onSaved={() => { setEditing(null); setLoading(true); void load(); }} />
         ) : (
           <ImportBox onReady={setEditing} />
         )}
@@ -457,7 +567,7 @@ export default function BoutiqueAdmin() {
             </thead>
             <tbody>
               {loading && <tr><td colSpan={6} className="p-6 text-center text-gray-500">Chargement…</td></tr>}
-              {!loading && products.length === 0 && <tr><td colSpan={6} className="p-6 text-center text-gray-500">Aucun produit pour l'instant. Colle une URL AliExpress ci-dessus.</td></tr>}
+              {!loading && products.length === 0 && <tr><td colSpan={6} className="p-6 text-center text-gray-500">Aucun produit pour l&apos;instant. Colle une URL AliExpress ci-dessus.</td></tr>}
               {products.map((p) => {
                 const v = p.variants[0];
                 const b = v ? breakdown(v.priceTtcCents, v.costCents) : null;

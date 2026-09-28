@@ -25,6 +25,7 @@ export interface ImportedVariant {
   aeSkuId: string;
   aeSkuAttr: string;
   label: string;
+  shipFrom?: string; // entrepôt d'expédition (Chine, Allemagne, France…)
   productCents: number;
   stock: number;
   image?: string;
@@ -58,14 +59,24 @@ export async function fetchProduct(productId: string, accessToken: string): Prom
 
   const variants = list<Record<string, any>>(r.ae_item_sku_info_dtos).map((sku) => {
     const props = list<Record<string, any>>(sku.ae_sku_property_dtos);
+    const valueOf = (p: Record<string, any>) => String(p.property_value_definition_name || p.sku_property_value || "");
+    // Propriété "Expédié depuis" (id 200007763 chez AliExpress) : on la sépare du libellé
+    const shipProp = props.find(
+      (p) => String(p.sku_property_id) === "200007763" || /ship|exp[ée]di|envoy|origine/i.test(String(p.sku_property_name ?? "")),
+    );
+    const shipFrom = shipProp ? valueOf(shipProp) : undefined;
     const label =
-      props.map((p) => p.property_value_definition_name || p.sku_property_value).filter(Boolean).join(" / ") ||
-      "Standard";
+      props
+        .filter((p) => p !== shipProp)
+        .map(valueOf)
+        .filter(Boolean)
+        .join(" / ") || "Standard";
     const image = props.find((p) => p.sku_image)?.sku_image as string | undefined;
     return {
       aeSkuId: String(sku.sku_id ?? ""),
       aeSkuAttr: String(sku.sku_attr ?? sku.id ?? ""),
       label,
+      shipFrom,
       productCents: toCents(sku.offer_sale_price ?? sku.sku_price),
       stock: Number(sku.sku_available_stock ?? sku.ipm_sku_stock ?? 0),
       image,
