@@ -128,7 +128,7 @@ export const ServicesGrid: React.FC = () => {
           {/* REPROGRAMMATION */}
           <Link 
             href="/reprogrammation"
-            className="col-span-1 lg:col-span-7 group bg-zinc-900 rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-6 border border-zinc-800 hover:border-brand-red/40 relative overflow-hidden"
+            className="col-span-2 lg:col-span-7 group bg-zinc-900 rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-6 border border-zinc-800 hover:border-brand-red/40 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-brand-red/20 rounded-full blur-[40px] md:blur-[50px]"></div>
             <div className="relative">
