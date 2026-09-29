@@ -6,7 +6,7 @@ import { ArrowLeft, Download, Eye, EyeOff, ImagePlus, Link2, Loader2, PenLine, P
 import { breakdown, formatEuros } from "@/lib/shop/pricing";
 import { slugify } from "@/lib/shop/product-schema";
 
-type Category = "carplay" | "led" | "ciel-etoile" | "accessoire";
+type Category = "carplay" | "volant" | "led" | "ciel-etoile" | "accessoire" | "universel";
 type Status = "draft" | "published" | "unavailable";
 
 interface Variant {
@@ -52,6 +52,8 @@ interface ProductForm {
 
 const CATEGORIES: { value: Category; label: string }[] = [
   { value: "carplay", label: "Écrans CarPlay / Android Auto" },
+  { value: "volant", label: "Volants personnalisés" },
+  { value: "universel", label: "Universel (tous véhicules)" },
   { value: "led", label: "Bandes LED intérieures" },
   { value: "ciel-etoile", label: "Ciel étoilé" },
   { value: "accessoire", label: "Accessoires" },
@@ -333,7 +335,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
           <input className={input} value={f.slug} onChange={(e) => set("slug", slugify(e.target.value))} />
         </Field>
         <Field label="Catégorie">
-          <select className={input} value={f.category} onChange={(e) => set("category", e.target.value as Category)}>
+          <select className={input} value={f.category} onChange={(e) => { const category = e.target.value as Category; setF((p) => ({ ...p, category, universal: category === "universel" ? true : p.universal })); }}>
             {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
           </select>
         </Field>

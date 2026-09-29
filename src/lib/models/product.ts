@@ -1,7 +1,7 @@
 import mongoose, { Document, Model } from "mongoose";
 
 export type ProductStatus = "draft" | "published" | "unavailable";
-export type ProductCategory = "carplay" | "led" | "ciel-etoile" | "accessoire";
+export type ProductCategory = "carplay" | "volant" | "led" | "ciel-etoile" | "accessoire" | "universel";
 
 export interface ProductVariant {
   sku: string; // identifiant interne
@@ -69,7 +69,7 @@ const productSchema = new mongoose.Schema<IProductDocument>(
     title: { type: String, required: true },
     shortDescription: { type: String, default: "" },
     description: { type: String, default: "" },
-    category: { type: String, enum: ["carplay", "led", "ciel-etoile", "accessoire"], required: true },
+    category: { type: String, enum: ["carplay", "volant", "led", "ciel-etoile", "accessoire", "universel"], required: true },
     status: { type: String, enum: ["draft", "published", "unavailable"], default: "draft", index: true },
     images: { type: [String], default: [] },
     videoUrl: String,

@@ -5,7 +5,6 @@ import { ChevronRight } from "lucide-react";
 import { CATEGORY_LABELS, getPublishedProduct } from "@/lib/shop/catalog";
 import { ProductView } from "@/components/shop/product-view";
 import { ShopBackdrop } from "@/components/shop/shop-bits";
-import { CartButton } from "@/components/shop/cart-button";
 
 export const dynamic = "force-dynamic";
 
@@ -27,8 +26,8 @@ export default async function ProductPage({ params }: { params: Params }) {
   return (
     <div className="bg-brand-black min-h-screen relative overflow-hidden">
       <ShopBackdrop />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-32 lg:pb-16">
-        <div className="flex items-center justify-between gap-3 mb-5">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-32 md:pt-12 lg:pb-16">
+        <div className="mb-5">
         <nav className="flex items-center gap-1 text-xs text-zinc-500 overflow-hidden whitespace-nowrap min-w-0">
           <Link href="/boutique" className="hover:text-white transition">Boutique</Link>
           <ChevronRight size={14} className="shrink-0" />
@@ -36,7 +35,6 @@ export default async function ProductPage({ params }: { params: Params }) {
           <ChevronRight size={14} className="shrink-0" />
           <span className="text-zinc-400 truncate">{product.title}</span>
         </nav>
-        <CartButton />
         </div>
         <ProductView product={product} />
       </div>

@@ -22,10 +22,23 @@ export interface PublicProduct {
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
   carplay: "Écrans CarPlay / Android Auto",
+  volant: "Volants personnalisés",
   led: "Bandes LED intérieures",
   "ciel-etoile": "Ciel étoilé",
   accessoire: "Accessoires",
+  universel: "Universel",
 };
+
+/** Retire les codes d'autoradio et de génération pour regrouper une même gamme de modèle. */
+export function vehicleModelFamily(model: string): string {
+  const normalized = model
+    .replace(/\b(?:CCC|CIC|NBT(?:\s*EVO)?|MIB\s*[23]?|RNS\s*\d*|RCD\s*\d*)\b/gi, "")
+    .replace(/\b(?:E\d{2}|F\d{2}|G\d{2}|W\d{3}|B\d{1,2})\b/gi, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s*[/|,]\s*$/, "")
+    .trim();
+  return normalized || model.trim();
+}
 
 /** Transforme la description HTML importée en paragraphes de texte (pas de HTML injecté sur le site). */
 export function htmlToParagraphs(html: string): string[] {
@@ -158,17 +171,37 @@ type ProductFilters = { category?: string; brand?: string; model?: string; year?
 export async function getPublishedProducts(filters: ProductFilters = {}) {
   return devFallback(
     () => queryPublishedProducts(filters),
-    () => DEMO_PRODUCTS.filter((p) => !filters.category || p.category === filters.category),
+    () =>
+      DEMO_PRODUCTS.filter((product) => {
+        const isUniversal = product.universal || product.category === "universel";
+        if (filters.category === "universel") return isUniversal;
+        if (filters.category && product.category !== filters.category) return false;
+        if (!filters.brand) return true;
+        if (isUniversal) return false; // les produits universels n'apparaissent que dans leur catégorie
+        return product.fitments.some((fitment) => {
+          if (fitment.brand.toLocaleLowerCase("fr") !== filters.brand?.toLocaleLowerCase("fr")) return false;
+          if (filters.model && vehicleModelFamily(fitment.model).toLocaleLowerCase("fr") !== filters.model.toLocaleLowerCase("fr")) return false;
+          const year = Number(filters.year);
+          return !filters.year || !Number.isInteger(year) ||
+            ((!fitment.yearFrom || year >= fitment.yearFrom) && (!fitment.yearTo || year <= fitment.yearTo));
+        });
+      }),
   );
 }
 
 async function queryPublishedProducts(filters: ProductFilters) {
   await connectToMongoDB();
   const query: Doc = { status: "published" };
+  // Catégorie "Universel" : produits universels, sans filtre véhicule
+  if (filters.category === "universel") {
+    query.$or = [{ category: "universel" }, { universal: true }];
+    const docs = await Product.find(query).sort({ updatedAt: -1 }).lean();
+    return docs.map(toPublic);
+  }
   if (filters.category && filters.category in CATEGORY_LABELS) query.category = filters.category;
   if (filters.brand) {
     const vehicle: Doc = { brand: new RegExp(`^${escape(filters.brand)}$`, "i") };
-    if (filters.model) vehicle.model = new RegExp(`^${escape(filters.model)}$`, "i");
+    if (filters.model) vehicle.model = new RegExp(`^${escape(filters.model)}(?:\\s|$)`, "i");
     const year = Number(filters.year);
     if (filters.model && Number.isInteger(year) && year >= 1980 && year <= 2100) {
       vehicle.$or = [
@@ -178,7 +211,10 @@ async function queryPublishedProducts(filters: ProductFilters) {
         { yearFrom: { $exists: false }, yearTo: { $exists: false } },
       ];
     }
-    query.$or = [{ universal: true }, { fitments: { $elemMatch: vehicle } }];
+    // Recherche par véhicule : uniquement les produits réellement compatibles (pas les universels)
+    query.universal = { $ne: true };
+    query.category = query.category ?? { $ne: "universel" };
+    query.fitments = { $elemMatch: vehicle };
   }
   const docs = await Product.find(query).sort({ updatedAt: -1 }).lean();
   return docs.map(toPublic);
@@ -200,7 +236,7 @@ async function queryPublishedProduct(slug: string) {
 /** Marques, modèles et années présents dans les compatibilités des produits en ligne. */
 export async function getVehicleFacets() {
   return devFallback(queryVehicleFacets, () => [
-    { brand: "BMW", models: [{ model: "X3 F25", years: [2011, 2012, 2013, 2014, 2015, 2016, 2017] }, { model: "X4 F26", years: [2014, 2015, 2016, 2017, 2018] }] },
+    { brand: "BMW", models: [{ model: "X3", years: [2011, 2012, 2013, 2014, 2015, 2016, 2017] }, { model: "X4", years: [2014, 2015, 2016, 2017, 2018] }] },
   ]);
 }
 
@@ -220,7 +256,7 @@ async function queryVehicleFacets() {
       },
     },
   ]);
-  const map = new Map<string, Map<string, Set<number>>>();
+  const map = new Map<string, Map<string, { model: string; years: Set<number> }>>();
   for (const r of rows) {
     const { brand, model, yearFrom, yearTo } = r._id as {
       brand: string;
@@ -232,8 +268,10 @@ async function queryVehicleFacets() {
     if (!map.has(brand)) map.set(brand, new Map());
     if (!model) continue;
     const models = map.get(brand)!;
-    if (!models.has(model)) models.set(model, new Set());
-    const years = models.get(model)!;
+    const family = vehicleModelFamily(model);
+    const modelKey = family.toLocaleLowerCase("fr");
+    if (!models.has(modelKey)) models.set(modelKey, { model: family, years: new Set() });
+    const years = models.get(modelKey)!.years;
     const first = Number(yearFrom);
     const last = Number(yearTo);
     if (Number.isInteger(first) && Number.isInteger(last)) {
@@ -248,9 +286,9 @@ async function queryVehicleFacets() {
     .sort(([a], [b]) => a.localeCompare(b, "fr"))
     .map(([brand, models]) => ({
       brand,
-      models: [...models.entries()]
-        .sort(([a], [b]) => a.localeCompare(b, "fr"))
-        .map(([model, years]) => ({ model, years: [...years].sort((a, b) => a - b) })),
+      models: [...models.values()]
+        .sort((a, b) => a.model.localeCompare(b.model, "fr"))
+        .map(({ model, years }) => ({ model, years: [...years].sort((a, b) => a - b) })),
     }));
 }
 

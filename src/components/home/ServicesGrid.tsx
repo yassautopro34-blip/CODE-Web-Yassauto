@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Clock, Zap, Settings, Gauge, ThermometerSun, AlertTriangle } from "lucide-react";
+import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Zap, Settings, Gauge, ThermometerSun, AlertTriangle } from "lucide-react";
 
 export const ServicesGrid: React.FC = () => {
   return (
@@ -98,24 +98,32 @@ export const ServicesGrid: React.FC = () => {
             </div>
           </Link>
 
-          {/* PIÈCES AUTO */}
-          <Link 
-            href="/pieces"
-            className="col-span-1 lg:col-span-5 lg:row-span-2 group bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-6 hover:scale-[1.02] transition-transform flex flex-col"
-          >
-            <div className="flex items-center justify-between mb-2 md:mb-3 lg:mb-4">
+          {/* BOUTIQUE */}
+          <div className="col-span-2 lg:col-span-5 lg:row-span-2 rounded-2xl lg:rounded-3xl bg-gradient-to-br from-orange-600 to-orange-700 p-4 md:p-5 lg:p-6 flex flex-col shadow-xl shadow-orange-950/20">
+            <div className="flex items-center justify-between mb-2 md:mb-3">
               <Package className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-white" />
-              <span className="flex items-center gap-1 bg-black/20 text-white text-[9px] md:text-[10px] lg:text-xs font-bold px-2 py-0.5 md:py-1 rounded-full">
-                <Clock className="w-2.5 h-2.5 md:w-3 md:h-3" />
-                48h
-              </span>
+              <span className="rounded-full bg-black/20 px-2.5 py-1 text-[10px] md:text-xs font-bold text-white">La sélection</span>
             </div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 lg:mb-3">Pièces</h3>
-            <p className="text-white/85 text-xs md:text-sm lg:text-base leading-relaxed mb-2 md:mb-3 lg:mb-4 line-clamp-2 lg:line-clamp-none flex-1">
-              Neuf ou occasion, meilleur prix
-            </p>
-            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <Link href="/boutique" className="group inline-flex items-center gap-2 self-start text-xl md:text-2xl lg:text-3xl font-black text-white">
+              La boutique <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <p className="mt-1 mb-4 text-xs md:text-sm text-white/85">Pièces de rechange ou accessoires : choisis ton parcours.</p>
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:gap-3">
+              {[
+                { label: "Pièces de rechange", detail: "Neuf ou occasion", href: "/pieces", icon: Package },
+                { label: "Accessoires", detail: "CarPlay, LED, volant, ciel étoilé…", href: "/boutique?section=accessoires", icon: Car },
+              ].map(({ label, href, icon: Icon }) => (
+                <Link key={label} href={href} className="group flex min-h-16 items-center gap-3 rounded-xl border border-white/20 bg-black/15 px-3 py-3 text-white transition hover:border-white/50 hover:bg-black/25 md:px-4">
+                  <Icon className="h-5 w-5 shrink-0" />
+                  <span className="min-w-0 flex-1 leading-tight">
+                    <span className="block text-xs font-black md:text-sm">{label}</span>
+                    <span className="mt-1 block text-[10px] font-medium text-white/70 md:text-xs">{label === "Pièces de rechange" ? "Neuf ou occasion" : "CarPlay, LED, volant, ciel étoilé…"}</span>
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+          </div>
 
           {/* REPROGRAMMATION */}
           <Link 

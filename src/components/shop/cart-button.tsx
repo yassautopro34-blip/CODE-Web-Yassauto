@@ -4,14 +4,13 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "./cart-context";
 
-/** Lien panier intégré dans l'en-tête des pages boutique (pas de bouton flottant qui masque le contenu). */
 export function CartButton({ className = "" }: { className?: string }) {
   const { count } = useCart();
   return (
     <Link
       href="/boutique/panier"
       aria-label={`Panier (${count} article${count > 1 ? "s" : ""})`}
-      className={`shrink-0 inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 hover:border-brand-red/60 text-white font-bold pl-3 pr-4 py-2 rounded-full transition ${className}`}
+      className={`inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-zinc-700 bg-zinc-950/95 pl-3 pr-4 font-bold text-white shadow-xl shadow-black/30 backdrop-blur transition hover:border-brand-red/70 ${className}`}
     >
       <span className="relative">
         <ShoppingBag size={18} />
