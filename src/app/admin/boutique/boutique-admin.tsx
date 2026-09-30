@@ -148,6 +148,7 @@ function ConnectionCard() {
 
 function ImportBox({ onReady }: { onReady: (f: ProductForm) => void }) {
   const [url, setUrl] = useState("");
+  const [category, setCategory] = useState<Category>("carplay");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -158,13 +159,15 @@ function ImportBox({ onReady }: { onReady: (f: ProductForm) => void }) {
       const res = await fetch("/api/shop/admin/import", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, category }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Import impossible");
       const sel = data.delivery?.selected;
       onReady({
         ...emptyForm(),
+        category,
+        universal: category === "universel",
         title: data.title,
         slug: slugify(data.title),
         description: data.descriptionHtml ?? "",
@@ -199,6 +202,12 @@ function ImportBox({ onReady }: { onReady: (f: ProductForm) => void }) {
     <div className="bg-white rounded-xl shadow-sm p-4 space-y-3">
       <p className="font-semibold">Ajouter un produit</p>
       <div className="flex flex-wrap gap-2">
+        <label className="w-full space-y-1 sm:w-60">
+          <span className="text-xs font-medium text-gray-600">Catégorie</span>
+          <select className={input} value={category} onChange={(e) => setCategory(e.target.value as Category)}>
+            {CATEGORIES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+          </select>
+        </label>
         <input
           className={`${input} flex-1 min-w-[260px]`}
           placeholder="Colle l'URL du produit AliExpress (…/item/1005….html)"
@@ -436,7 +445,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: ProductForm; on
           </table>
         </div>
         <button onClick={() => set("variants", [...f.variants, { sku: `v${f.variants.length + 1}`, label: "", aeSkuAttr: "", priceTtcCents: 0, costCents: 0, available: true }])} className="text-sm text-gray-600 hover:text-black inline-flex items-center gap-1"><Plus size={14} /> Ajouter une variante</button>
-        <p className="text-xs text-gray-500">Marge nette = prix HT − coût − frais Stripe estimés. Le prix conseillé à l&apos;import applique ton coefficient × 2,5.</p>
+        <p className="text-xs text-gray-500">Marge nette = prix HT − coût − frais Stripe estimés. Coefficient conseillé à l&apos;import : × {f.category === "compteur-digital" ? "2" : "2,5"}.</p>
       </div>
 
       {/* Compatibilité */}

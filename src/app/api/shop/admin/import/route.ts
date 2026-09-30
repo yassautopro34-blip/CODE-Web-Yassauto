@@ -6,6 +6,7 @@ import { buildImportPreview } from "@/lib/shop/aliexpress/products";
 
 const bodySchema = z.object({
   url: z.string().trim().min(8).max(1000),
+  category: z.enum(["carplay", "compteur-digital", "volant", "led", "ciel-etoile", "accessoire", "universel"]).optional(),
   coefficient: z.number().min(1).max(10).optional(),
 });
 
@@ -20,7 +21,8 @@ export async function POST(req: NextRequest) {
   }
   try {
     const token = await getValidAccessToken();
-    const preview = await buildImportPreview(parsed.data.url, token, parsed.data.coefficient);
+    const coefficient = parsed.data.category === "compteur-digital" ? 2 : parsed.data.coefficient;
+    const preview = await buildImportPreview(parsed.data.url, token, coefficient);
     return NextResponse.json(preview);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Import impossible";
