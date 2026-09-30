@@ -30,14 +30,45 @@ export const CATEGORY_LABELS: Record<ProductCategory, string> = {
   universel: "Universel",
 };
 
-/** Retire les codes d'autoradio et de génération pour regrouper une même gamme de modèle. */
+/** Regroupe les variantes de marque connues sous un seul libellé de recherche. */
+export function vehicleBrandFamily(brand: string): string {
+  const key = brand.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").replace(/[^a-z0-9]/g, "");
+  if (key === "mercedes" || key === "mercedesbenz") return "Mercedes-Benz";
+  const commonLabels: Record<string, string> = {
+    audi: "Audi",
+    bmw: "BMW",
+    citroen: "Citroën",
+    dacia: "Dacia",
+    fiat: "Fiat",
+    ford: "Ford",
+    peugeot: "Peugeot",
+    renault: "Renault",
+    seat: "Seat",
+    skoda: "Skoda",
+    toyota: "Toyota",
+    volkswagen: "Volkswagen",
+  };
+  return commonLabels[key] ?? brand.trim();
+}
+
+function vehicleBrandQuery(brand: string) {
+  if (vehicleBrandFamily(brand) === "Mercedes-Benz") {
+    return { $in: [/^Mercedes$/i, /^Mercedes[\s-]?Benz$/i] };
+  }
+  return new RegExp(`^${escape(vehicleBrandFamily(brand))}$`, "i");
+}
+
+/** Retire codes d'autoradio, montage et génération afin de proposer le modèle connu du client. */
 export function vehicleModelFamily(model: string): string {
   const normalized = model
+    .replace(/\s*\(?\s*montage\s+[a-z0-9]+\s*\)?/gi, "")
     .replace(/\b(?:CCC|CIC|NBT(?:\s*EVO)?|MIB\s*[23]?|RNS\s*\d*|RCD\s*\d*)\b/gi, "")
     .replace(/\b(?:E\d{2}|F\d{2}|G\d{2}|W\d{3}|B\d{1,2})\b/gi, "")
+    .replace(/\bEVO\b/gi, "")
     .replace(/\s+/g, " ")
-    .replace(/\s*[/|,]\s*$/, "")
-    .trim();
+    .replace(/\s*[/|,]+\s*$/g, "")
+    .trim()
+    .replace(/\s+/g, " ");
   return normalized || model.trim();
 }
 
@@ -172,22 +203,32 @@ type ProductFilters = { category?: string; brand?: string; model?: string; year?
 export async function getPublishedProducts(filters: ProductFilters = {}) {
   return devFallback(
     () => queryPublishedProducts(filters),
-    () =>
-      DEMO_PRODUCTS.filter((product) => {
+    () => {
+      const matches = DEMO_PRODUCTS.filter((product) => {
         const isUniversal = product.universal || product.category === "universel";
         if (filters.category === "universel") return isUniversal;
         if (filters.category && product.category !== filters.category) return false;
         if (!filters.brand) return true;
-        if (isUniversal) return false; // les produits universels n'apparaissent que dans leur catégorie
+        if (isUniversal) return true;
         return product.fitments.some((fitment) => {
-          if (fitment.brand.toLocaleLowerCase("fr") !== filters.brand?.toLocaleLowerCase("fr")) return false;
+          if (vehicleBrandFamily(fitment.brand).toLocaleLowerCase("fr") !== vehicleBrandFamily(filters.brand!).toLocaleLowerCase("fr")) return false;
           if (filters.model && vehicleModelFamily(fitment.model).toLocaleLowerCase("fr") !== filters.model.toLocaleLowerCase("fr")) return false;
           const year = Number(filters.year);
           return !filters.year || !Number.isInteger(year) ||
             ((!fitment.yearFrom || year >= fitment.yearFrom) && (!fitment.yearTo || year <= fitment.yearTo));
         });
-      }),
+      });
+      return filters.brand ? prioritizeVehicleProducts(matches) : matches;
+    },
   );
+}
+
+function isUniversalProduct(product: Pick<PublicProduct, "universal" | "category">) {
+  return product.universal || product.category === "universel";
+}
+
+function prioritizeVehicleProducts(products: PublicProduct[]) {
+  return [...products].sort((first, second) => Number(isUniversalProduct(first)) - Number(isUniversalProduct(second)));
 }
 
 async function queryPublishedProducts(filters: ProductFilters) {
@@ -201,7 +242,7 @@ async function queryPublishedProducts(filters: ProductFilters) {
   }
   if (filters.category && filters.category in CATEGORY_LABELS) query.category = filters.category;
   if (filters.brand) {
-    const vehicle: Doc = { brand: new RegExp(`^${escape(filters.brand)}$`, "i") };
+    const vehicle: Doc = { brand: vehicleBrandQuery(filters.brand) };
     if (filters.model) vehicle.model = new RegExp(`^${escape(filters.model)}(?:\\s|$)`, "i");
     const year = Number(filters.year);
     if (filters.model && Number.isInteger(year) && year >= 1980 && year <= 2100) {
@@ -212,13 +253,16 @@ async function queryPublishedProducts(filters: ProductFilters) {
         { yearFrom: { $exists: false }, yearTo: { $exists: false } },
       ];
     }
-    // Recherche par véhicule : uniquement les produits réellement compatibles (pas les universels)
-    query.universal = { $ne: true };
-    query.category = query.category ?? { $ne: "universel" };
-    query.fitments = { $elemMatch: vehicle };
+    // Les correspondances exactes passent avant les produits universels au tri.
+    query.$or = [
+      { universal: { $ne: true }, category: { $ne: "universel" }, fitments: { $elemMatch: vehicle } },
+      { universal: true },
+      { category: "universel" },
+    ];
   }
   const docs = await Product.find(query).sort({ updatedAt: -1 }).lean();
-  return docs.map(toPublic);
+  const products = docs.map(toPublic);
+  return filters.brand ? prioritizeVehicleProducts(products) : products;
 }
 
 export async function getPublishedProduct(slug: string) {
@@ -257,7 +301,7 @@ async function queryVehicleFacets() {
       },
     },
   ]);
-  const map = new Map<string, Map<string, { model: string; years: Set<number> }>>();
+  const map = new Map<string, { brand: string; models: Map<string, { model: string; years: Set<number> }> }>();
   for (const r of rows) {
     const { brand, model, yearFrom, yearTo } = r._id as {
       brand: string;
@@ -266,9 +310,12 @@ async function queryVehicleFacets() {
       yearTo?: number;
     };
     if (!brand) continue;
-    if (!map.has(brand)) map.set(brand, new Map());
+    const brandFamily = vehicleBrandFamily(brand);
+    if (brandFamily.toLocaleLowerCase("fr") === "universel") continue;
+    const brandKey = brandFamily.toLocaleLowerCase("fr");
+    if (!map.has(brandKey)) map.set(brandKey, { brand: brandFamily, models: new Map() });
     if (!model) continue;
-    const models = map.get(brand)!;
+    const models = map.get(brandKey)!.models;
     const family = vehicleModelFamily(model);
     const modelKey = family.toLocaleLowerCase("fr");
     if (!models.has(modelKey)) models.set(modelKey, { model: family, years: new Set() });
@@ -283,9 +330,9 @@ async function queryVehicleFacets() {
       years.add(last);
     }
   }
-  return [...map.entries()]
-    .sort(([a], [b]) => a.localeCompare(b, "fr"))
-    .map(([brand, models]) => ({
+  return [...map.values()]
+    .sort((a, b) => a.brand.localeCompare(b.brand, "fr"))
+    .map(({ brand, models }) => ({
       brand,
       models: [...models.values()]
         .sort((a, b) => a.model.localeCompare(b.model, "fr"))
