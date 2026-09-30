@@ -11,6 +11,8 @@ export const dynamic = "force-dynamic";
 
 type Search = Promise<{ section?: string; categorie?: string; famille?: string; marque?: string; modele?: string; annee?: string }>;
 
+const PUBLIC_ACCESSORY_CATEGORIES: ProductCategory[] = ["carplay", "compteur-digital", "led", "volant", "ciel-etoile"];
+
 const CATEGORY_STORIES: Record<ProductCategory, { eyebrow: string; description: string; icon: LucideIcon }> = {
   carplay: {
     eyebrow: "Connectivité embarquée",
@@ -52,7 +54,9 @@ const CATEGORY_STORIES: Record<ProductCategory, { eyebrow: string; description: 
 export default async function BoutiquePage({ searchParams }: { searchParams: Search }) {
   const sp = await searchParams;
   const vehicleComplete = Boolean(sp.marque && sp.modele && sp.annee);
-  const selectedCategory = sp.categorie && sp.categorie in CATEGORY_LABELS ? sp.categorie as ProductCategory : undefined;
+  const selectedCategory = sp.categorie && PUBLIC_ACCESSORY_CATEGORIES.includes(sp.categorie as ProductCategory)
+    ? sp.categorie as ProductCategory
+    : undefined;
   const legacyTouchscreenLink = sp.famille === "ecran-tactile";
   const resultCategory = selectedCategory ?? (legacyTouchscreenLink ? "carplay" : undefined);
   const showProducts = Boolean(resultCategory || vehicleComplete);
@@ -71,7 +75,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
     return `/boutique${query.toString() ? `?${query}` : ""}`;
   };
 
-  const productTiles = (Object.keys(CATEGORY_LABELS) as ProductCategory[]).map((category) => {
+  const productTiles = PUBLIC_ACCESSORY_CATEGORIES.map((category) => {
     const categoryProducts = products.filter((product) => product.category === category);
     return {
       category,
@@ -80,6 +84,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
       story: CATEGORY_STORIES[category],
       count: categoryProducts.length,
       cover: categoryProducts.find((product) => product.images[0])?.images[0],
+      covers: undefined as string[] | undefined,
       href: catLink(category),
       action: categoryProducts.length ? "Voir la sélection" : "Bientôt disponible",
       available: categoryProducts.length > 0,
@@ -89,26 +94,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
     .filter(({ category }) => category === "carplay" || category === "led" || category === "ciel-etoile")
     .flatMap((tile) => tile.cover ? [tile.cover] : [])
     .slice(0, 3);
-  const accessoryTiles: {
-    key: string;
-    category?: ProductCategory;
-    label: string;
-    story: { eyebrow: string; description: string; icon: LucideIcon };
-    count: number | null;
-    cover?: string;
-    covers?: string[];
-    href: string;
-    action: string;
-    available: boolean;
-  }[] = [
-    ...productTiles.filter(({ category }) => category === "carplay"),
-    ...productTiles.filter(({ category }) => category === "compteur-digital"),
-    ...productTiles.filter(({ category }) => category === "led"),
-    ...productTiles.filter(({ category }) => category === "volant"),
-    ...productTiles.filter(({ category }) => category === "ciel-etoile"),
-    ...productTiles.filter(({ category }) => category === "accessoire"),
-    ...productTiles.filter(({ category }) => category === "universel"),
-  ];
+  const accessoryTiles = productTiles;
   const accessoryCount = productTiles.reduce((sum, tile) => sum + tile.count, 0);
   const categoryTiles = sp.section === "accessoires"
     ? accessoryTiles
@@ -251,7 +237,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
             <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
               <Link href="/pieces" className="shrink-0 rounded-full border border-zinc-700 px-4 py-2 text-xs font-bold text-zinc-400 transition hover:text-white">Pièces auto</Link>
               <Link href={sp.section === "accessoires" ? catLink(undefined, "accessoires") : catLink(undefined, "")} className={`shrink-0 rounded-full border px-4 py-2 text-xs font-bold transition ${!selectedCategory ? "border-brand-red bg-brand-red text-white" : "border-zinc-700 text-zinc-400 hover:text-white"}`}>Toutes les catégories</Link>
-              {(Object.keys(CATEGORY_LABELS) as ProductCategory[]).map((category) => (
+              {PUBLIC_ACCESSORY_CATEGORIES.map((category) => (
                 <Link key={category} href={catLink(category, "accessoires")} className={`shrink-0 rounded-full border px-4 py-2 text-xs font-bold transition ${selectedCategory === category ? "border-brand-red bg-brand-red text-white" : "border-zinc-700 text-zinc-400 hover:text-white"}`}>
                   {CATEGORY_LABELS[category]}
                 </Link>
