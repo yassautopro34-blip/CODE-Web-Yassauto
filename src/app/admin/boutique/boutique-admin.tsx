@@ -6,7 +6,7 @@ import { ArrowLeft, Download, Eye, EyeOff, ImagePlus, Link2, Loader2, PenLine, P
 import { breakdown, formatEuros } from "@/lib/shop/pricing";
 import { slugify } from "@/lib/shop/product-schema";
 
-type Category = "carplay" | "volant" | "led" | "ciel-etoile" | "accessoire" | "universel";
+type Category = "carplay" | "compteur-digital" | "volant" | "led" | "ciel-etoile" | "accessoire" | "universel";
 type Status = "draft" | "published" | "unavailable";
 
 interface Variant {
@@ -52,6 +52,7 @@ interface ProductForm {
 
 const CATEGORIES: { value: Category; label: string }[] = [
   { value: "carplay", label: "Écrans CarPlay / Android Auto" },
+  { value: "compteur-digital", label: "Compteurs digitaux" },
   { value: "volant", label: "Volants personnalisés" },
   { value: "universel", label: "Universel (tous véhicules)" },
   { value: "led", label: "Bandes LED intérieures" },

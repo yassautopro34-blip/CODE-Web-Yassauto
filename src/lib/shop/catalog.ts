@@ -22,6 +22,7 @@ export interface PublicProduct {
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
   carplay: "Écrans CarPlay / Android Auto",
+  "compteur-digital": "Compteurs digitaux",
   volant: "Volants personnalisés",
   led: "Bandes LED intérieures",
   "ciel-etoile": "Ciel étoilé",

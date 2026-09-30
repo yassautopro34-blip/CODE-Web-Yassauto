@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, CarFront, CircleDot, Lightbulb, Package, Sparkles, Truck, Wrench } from "lucide-react";
+import { ArrowRight, CarFront, CircleDot, Gauge, Lightbulb, Package, Sparkles, Truck, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { CATEGORY_LABELS, euros, getPublishedProducts, getVehicleFacets } from "@/lib/shop/catalog";
 import type { ProductCategory } from "@/lib/models/product";
@@ -16,6 +16,11 @@ const CATEGORY_STORIES: Record<ProductCategory, { eyebrow: string; description: 
     eyebrow: "Connectivité embarquée",
     description: "Trouve l'écran ou l'autoradio adapté à ta voiture.",
     icon: CarFront,
+  },
+  "compteur-digital": {
+    eyebrow: "Tableau de bord",
+    description: "Modernise l'affichage de conduite avec un compteur adapté à ton véhicule.",
+    icon: Gauge,
   },
   volant: {
     eyebrow: "Finition sur mesure",
@@ -97,6 +102,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
     available: boolean;
   }[] = [
     ...productTiles.filter(({ category }) => category === "carplay"),
+    ...productTiles.filter(({ category }) => category === "compteur-digital"),
     ...productTiles.filter(({ category }) => category === "led"),
     ...productTiles.filter(({ category }) => category === "volant"),
     ...productTiles.filter(({ category }) => category === "ciel-etoile"),

@@ -20,7 +20,7 @@ export const productInput = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug : minuscules, chiffres et tirets"),
   shortDescription: z.string().trim().max(300).default(""),
   description: z.string().max(20000).default(""),
-  category: z.enum(["carplay", "volant", "led", "ciel-etoile", "accessoire", "universel"]),
+  category: z.enum(["carplay", "compteur-digital", "volant", "led", "ciel-etoile", "accessoire", "universel"]),
   status: z.enum(["draft", "published", "unavailable"]).default("draft"),
   images: z.array(z.string().url()).max(20).default([]),
   videoUrl: z.string().url().or(z.literal("")).optional(),
