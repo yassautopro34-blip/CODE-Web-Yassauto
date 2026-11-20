@@ -137,6 +137,8 @@ function ConnectionCard() {
         </p>
         {flash && <p className={`text-sm mt-1 ${flash.ok ? "text-green-700" : "text-red-600"}`}>{flash.text}</p>}
       </div>
+      {/* Navigation serveur (redirection OAuth) : pas de <Link>. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <a href="/api/shop/aliexpress/connect" className={`${btn} bg-orange-500 hover:bg-orange-600 text-white`}>
         <Link2 size={16} /> {status?.connected ? "Reconnecter" : "Connecter mon compte"}
       </a>

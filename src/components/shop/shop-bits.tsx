@@ -26,13 +26,13 @@ export const TRUST_ITEMS = [
 
 export function TrustStrip() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {TRUST_ITEMS.map(({ icon: Icon, title, text }) => (
-        <div key={title} className="flex items-center gap-3 bg-zinc-900/70 border border-zinc-800 rounded-xl p-3">
-          <span className="w-9 h-9 shrink-0 rounded-lg bg-brand-red/15 text-brand-red flex items-center justify-center"><Icon size={18} /></span>
+        <div key={title} className="flex items-center gap-3 rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-4 transition hover:-translate-y-0.5 hover:border-zinc-700">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-red/15 text-brand-red"><Icon size={19} /></span>
           <span className="leading-tight">
-            <span className="block text-white text-sm font-bold">{title}</span>
-            <span className="block text-zinc-500 text-xs">{text}</span>
+            <span className="block text-sm font-bold text-white">{title}</span>
+            <span className="mt-0.5 block text-xs text-zinc-400">{text}</span>
           </span>
         </div>
       ))}

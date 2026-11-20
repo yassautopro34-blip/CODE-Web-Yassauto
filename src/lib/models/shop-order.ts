@@ -21,6 +21,7 @@ export interface ShopOrderLine {
   variantLabel: string;
   quantity: number;
   unitPriceTtcCents: number;
+  installPriceTtcCents?: number;
   unitCostCents: number; // figé au moment de la commande (marge réelle)
   aeProductId: string;
   aeSkuAttr?: string;
@@ -46,6 +47,7 @@ export interface IShopOrder {
   delivery: { mode: DeliveryMode; relayPointId?: string; feeCents: number };
   lines: ShopOrderLine[];
   totalTtcCents: number;
+  shippingDataAcknowledgedAt?: Date;
   stripeSessionId?: string;
   stripePaymentIntentId?: string;
   supplier?: {
@@ -86,6 +88,7 @@ const shopOrderSchema = new mongoose.Schema<IShopOrderDocument>(
         variantLabel: String,
         quantity: Number,
         unitPriceTtcCents: Number,
+        installPriceTtcCents: Number,
         unitCostCents: Number,
         aeProductId: String,
         aeSkuAttr: String,
@@ -93,6 +96,7 @@ const shopOrderSchema = new mongoose.Schema<IShopOrderDocument>(
       },
     ],
     totalTtcCents: { type: Number, required: true },
+    shippingDataAcknowledgedAt: Date,
     stripeSessionId: { type: String, index: true },
     stripePaymentIntentId: String,
     supplier: { aeOrderIds: [String], trackingNumbers: [String], lastError: String },

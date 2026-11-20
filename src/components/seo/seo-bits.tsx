@@ -52,14 +52,3 @@ export function Breadcrumbs({ items, dark = false }: { items: Crumb[]; dark?: bo
     </>
   );
 }
-
-export function StickyCallBar() {
-  return (
-    <a
-      href={`tel:${PHONE_TEL}`}
-      className="fixed inset-x-0 bottom-0 z-50 bg-emerald-600 py-4 text-center text-lg font-bold text-white md:hidden"
-    >
-      Appeler – {PHONE_DISPLAY}
-    </a>
-  );
-}

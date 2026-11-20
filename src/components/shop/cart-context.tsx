@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export interface CartLine {
   productId: string;
@@ -31,6 +31,7 @@ const same = (l: CartLine, sku: string, productId: string) => l.sku === sku && l
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const clear = useCallback(() => setLines([]), []);
 
   useEffect(() => {
     let active = true;
@@ -78,9 +79,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           prev.map((l) => (same(l, sku, productId) ? { ...l, quantity: Math.max(1, Math.min(10, qty)) } : l)),
         ),
       remove: (sku, productId) => setLines((prev) => prev.filter((l) => !same(l, sku, productId))),
-      clear: () => setLines([]),
+      clear,
     };
-  }, [lines]);
+  }, [clear, lines]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

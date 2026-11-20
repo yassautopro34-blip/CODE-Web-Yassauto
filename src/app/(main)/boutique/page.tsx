@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, CarFront, CircleDot, Gauge, Lightbulb, Package, Sparkles, Truck, Wrench } from "lucide-react";
+import { ArrowRight, CarFront, CircleDot, Gauge, Lightbulb, Package, Phone, Search, Sparkles, Truck, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { CATEGORY_LABELS, euros, getPublishedProducts, getVehicleFacets } from "@/lib/shop/catalog";
 import type { ProductCategory } from "@/lib/models/product";
 import { VehicleFilter } from "@/components/shop/vehicle-filter";
 import { ShopBackdrop, TrustStrip } from "@/components/shop/shop-bits";
 import { buildPageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/seo-bits";
+import { SITE_URL } from "@/lib/site-info";
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/boutique",
@@ -130,6 +132,23 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
           available: accessoryCount > 0,
         },
       ];
+  const catalogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Boutique accessoires auto YASSAUTO",
+    description: "Accessoires auto, écrans CarPlay, LED, volants et ciels étoilés avec compatibilité vérifiée et pose à Gigean.",
+    url: `${SITE_URL}/boutique`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: products.length,
+      itemListElement: products.slice(0, 20).map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/boutique/${product.slug}`,
+        name: product.title,
+      })),
+    },
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-brand-black text-white">
@@ -150,9 +169,17 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
               Choisis une famille de produits ou retrouve directement ce qui est compatible avec ton véhicule.
               Les systèmes comme CCC et CIC restent indiqués sur chaque fiche.
             </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href="#mon-vehicule" className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-red px-5 py-3 text-sm font-bold text-white transition hover:bg-red-600">
+                <Search size={17} /> Trouver par véhicule
+              </a>
+              <a href="tel:+33648380568" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/10">
+                <Phone size={17} /> Conseil compatibilité
+              </a>
+            </div>
           </div>
 
-          <div className="relative z-10">
+          <div id="mon-vehicule" className="relative z-10 scroll-mt-28">
             {facets.length > 0 && (
               <Suspense>
                 <VehicleFilter facets={facets} />
@@ -176,7 +203,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
                 <p className="text-xs font-bold uppercase text-brand-red">La boutique</p>
                 <h2 id="category-heading" className="mt-1 text-2xl font-black md:text-3xl">Tu cherches quoi ?</h2>
               </div>
-              <p className="max-w-md text-sm text-zinc-500">Des produits ciblés par véhicule, avec la pose possible à l&apos;atelier.</p>
+              <p className="max-w-md text-sm text-zinc-500">Sélection testée, compatibilité vérifiée et pose possible à l&apos;atelier de Gigean.</p>
             </div>
 
             <div className={`grid grid-cols-1 gap-3 sm:grid-cols-2 ${sp.section === "accessoires" ? "lg:grid-cols-4" : "lg:grid-cols-2"}`}>
@@ -273,7 +300,7 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
                     <div className="relative m-2 aspect-square overflow-hidden rounded-xl bg-white">
                       {product.images[0] && (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={product.images[0]} alt={product.title} loading="lazy" className="h-full w-full object-contain p-2 transition duration-500 group-hover:scale-105" />
+                        <img src={product.images[0]} alt={`${product.title} – disponible chez YASSAUTO`} loading="lazy" decoding="async" className="h-full w-full object-contain p-2 transition duration-500 group-hover:scale-105" />
                       )}
                       {product.installOffer && <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-full bg-brand-black/90 px-2 py-1 text-[10px] font-bold text-white"><Wrench size={12} className="text-brand-red" /> Pose à Gigean</span>}
                     </div>
@@ -293,8 +320,18 @@ export default async function BoutiquePage({ searchParams }: { searchParams: Sea
           </section>
         )}
 
-        <TrustStrip />
+        <section className="space-y-4" aria-labelledby="shop-benefits-heading">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase text-brand-red">Sans mauvaise surprise</p>
+              <h2 id="shop-benefits-heading" className="mt-1 text-xl font-black text-white">Un produit, un conseil, une installation possible</h2>
+            </div>
+            <Link href="/contact" className="text-sm font-bold text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-white">Une question sur la compatibilité ?</Link>
+          </div>
+          <TrustStrip />
+        </section>
       </div>
+      <JsonLd data={catalogJsonLd} />
     </div>
   );
 }

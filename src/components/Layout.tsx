@@ -2,7 +2,7 @@ import React from "react";
 import { StudentBanner } from "@/components/layout/student-banner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { StickyCallBar } from "@/components/seo/seo-bits";
+import { StickyCallBar } from "@/components/layout/sticky-call-bar";
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({
   children,

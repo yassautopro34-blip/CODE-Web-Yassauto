@@ -33,11 +33,14 @@ export const ServicesGrid: React.FC = () => {
           
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.02] tracking-tight mb-4 md:mb-6">
             Garage auto à Gigean :
-            <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500 md:mt-3">on répare, on explique, sans arnaque</span>
+            <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500 md:mt-3">
+              un diagnostic clair, un travail de confiance
+            </span>
           </h1>
           
           <p className="text-zinc-300 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-5 md:mb-7">
-            Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">on gère tout.</span>
+            Entretien, réparation, pièces et accompagnement automobile.
+            <span className="block text-zinc-300">Le prix est annoncé avant chaque intervention.</span>
           </p>
 
           <p className="text-emerald-300/90 text-xs md:text-sm font-semibold mb-4">
@@ -163,7 +166,7 @@ export const ServicesGrid: React.FC = () => {
                 <Shield className="w-3 h-3 md:w-3.5 md:h-3.5 text-emerald-400 shrink-0" />
               </div>
               <p className="text-emerald-100/80 text-xs md:text-sm lg:text-base line-clamp-1 md:line-clamp-2">
-                Je t&apos;accompagne pour éviter les arnaques
+                Je sécurise ton achat grâce à un contrôle complet
               </p>
             </div>
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-emerald-400 shrink-0 group-hover:translate-x-1 transition-transform" />

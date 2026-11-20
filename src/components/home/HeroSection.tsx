@@ -24,17 +24,17 @@ export const HeroSection: React.FC = () => {
             
             {/* Titre optimisé mobile */}
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-4 md:mb-6">
-              Tu ne t&apos;y connais pas en{" "}
-              <span className="text-brand-red">mécanique</span>,
+              Une mécanique expliquée,{" "}
+              <span className="text-brand-red">sans surprise</span>.
               <span className="block mt-2 md:mt-3 text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-400">
-                viens là, je t&apos;explique !
+                Le bon travail, au bon prix.
               </span>
             </h2>
             
             {/* Description plus courte */}
             <p className="text-sm md:text-base lg:text-lg text-zinc-400 mb-6 md:mb-8 max-w-md mx-auto md:mx-0">
-              Ne te fais plus arnaquer sur ton achat de voiture d&apos;occasion.
-              Je t&apos;accompagne, j&apos;inspecte, et je sécurise ton achat.
+              Avant toute intervention, je vous explique le diagnostic et le devis.
+              Vous décidez en toute transparence.
             </p>
 
             <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 px-3 py-2 rounded-xl text-xs md:text-sm font-semibold mb-4 md:mb-6">

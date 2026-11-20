@@ -2,9 +2,11 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site-info";
 import { SERVICES } from "@/lib/services";
 import { PUBLISHED_CITIES } from "@/lib/cities";
+import { getPublishedProducts } from "@/lib/shop/catalog";
 
-// Date de dernière modification réelle du contenu de chaque page (à mettre à jour quand la page change).
-const LAST_MODIFIED = "2026-10-29";
+const LAST_MODIFIED = "2026-11-20";
+
+export const dynamic = "force-dynamic";
 
 const corePages: { path: string; priority: number }[] = [
   { path: "", priority: 1 },
@@ -23,16 +25,24 @@ const corePages: { path: string; priority: number }[] = [
   { path: "/politique-confidentialite", priority: 0.3 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const products = await getPublishedProducts();
   const pages = [
     ...corePages,
     ...SERVICES.map((s) => ({ path: `/${s.slug}`, priority: 0.8 })),
     ...PUBLISHED_CITIES.map((c) => ({ path: `/${c.slug}`, priority: 0.7 })),
   ];
-  return pages.map(({ path, priority }) => ({
+  const staticPages = pages.map(({ path, priority }) => ({
     url: `${SITE_URL}${path}`,
     lastModified: new Date(LAST_MODIFIED),
-    changeFrequency: path === "" || path === "/boutique" ? "weekly" : "monthly",
+    changeFrequency: path === "" || path === "/boutique" ? ("weekly" as const) : ("monthly" as const),
     priority,
   }));
+  const productPages = products.map((product) => ({
+    url: `${SITE_URL}/boutique/${product.slug}`,
+    lastModified: new Date(LAST_MODIFIED),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+  return [...staticPages, ...productPages];
 }

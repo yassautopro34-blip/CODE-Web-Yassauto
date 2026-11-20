@@ -12,9 +12,11 @@ export const WORKSHOP_ADDRESS = {
 
 /** Téléphone au format attendu par AliExpress : indicatif séparé du numéro. */
 function splitPhone(phone: string) {
-  const digits = phone.replace(/[^\d+]/g, "");
-  if (digits.startsWith("+33")) return { phone_country: "+33", mobile_no: "0" + digits.slice(3) };
-  if (digits.startsWith("0033")) return { phone_country: "+33", mobile_no: "0" + digits.slice(4) };
+  // Format national sans le 0 initial (ex. +33 6 12 34 56 78 -> "612345678")
+  let digits = phone.replace(/[^\d+]/g, "");
+  if (digits.startsWith("+33")) digits = digits.slice(3);
+  else if (digits.startsWith("0033")) digits = digits.slice(4);
+  digits = digits.replace(/\D/g, "").replace(/^0+/, "");
   return { phone_country: "+33", mobile_no: digits };
 }
 
@@ -58,7 +60,7 @@ export function buildPlaceOrderRequest(order: IShopOrder) {
       product_count: l.quantity,
       sku_attr: l.aeSkuAttr ?? "",
       logistics_service_name: l.logisticsServiceName ?? "",
-      order_memo: `Commande ${order.number} - merci de ne pas joindre de facture`,
+      order_memo: `Dropshipping order ${order.number}. Please do NOT include any invoice, price, receipt or promotional material in the parcel. Thank you.`,
     })),
   };
 }

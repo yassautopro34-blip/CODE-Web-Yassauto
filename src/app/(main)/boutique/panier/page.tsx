@@ -13,8 +13,44 @@ type Mode = "home" | "workshop_pickup";
 export default function PanierPage() {
   const { lines, count, totalCents, setQuantity, remove } = useCart();
   const [chosen, setChosen] = useState<Mode>("home");
+  const [customer, setCustomer] = useState({ name: "", email: "", phone: "" });
+  const [address, setAddress] = useState({ line1: "", line2: "", zip: "", city: "" });
+  const [shippingDataAcknowledged, setShippingDataAcknowledged] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const hasInstall = lines.some((l) => l.install);
-  const mode: Mode = hasInstall ? "workshop_pickup" : chosen;
+  const selectedMode: Mode = hasInstall ? "workshop_pickup" : chosen;
+  const deliveryMode = hasInstall ? "workshop_install" : chosen;
+
+  const startCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCheckoutLoading(true);
+    setCheckoutError("");
+    try {
+      const response = await fetch("/api/shop/checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer,
+          shippingAddress: { ...address, country: "FR" },
+          deliveryMode,
+          shippingDataAcknowledged,
+          lines: lines.map((line) => ({
+            productId: line.productId,
+            sku: line.sku,
+            quantity: line.quantity,
+            install: Boolean(line.install),
+          })),
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.url) throw new Error(result.error ?? "Le paiement n'a pas pu être préparé.");
+      window.location.assign(result.url);
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "Le paiement n'a pas pu être préparé.");
+      setCheckoutLoading(false);
+    }
+  };
 
   if (lines.length === 0) {
     return (
@@ -31,7 +67,7 @@ export default function PanierPage() {
   }
 
   const option = (value: Mode, icon: React.ReactNode, title: string, text: string, price: string) => {
-    const active = mode === value;
+    const active = selectedMode === value;
     const disabled = hasInstall && value === "home";
     return (
       <button
@@ -86,12 +122,36 @@ export default function PanierPage() {
             ))}
           </div>
 
-          <aside className="lg:col-span-5 lg:sticky lg:top-24 self-start bg-zinc-900/80 border border-zinc-800 rounded-3xl p-5 md:p-6 space-y-5">
+          <form onSubmit={startCheckout} className="lg:col-span-5 lg:sticky lg:top-24 self-start bg-zinc-900/80 border border-zinc-800 rounded-3xl p-5 md:p-6 space-y-5">
             <div className="space-y-2">
               <p className="text-white font-black text-lg">Livraison</p>
               {option("home", <Truck size={18} />, "À domicile", "Frais inclus · 7 à 15 jours, suivi par email", "Offerte")}
               {option("workshop_pickup", <MapPin size={18} />, "Retrait à l'atelier de Gigean", "On te prévient dès que le colis arrive", "Gratuit")}
               {hasInstall && <p className="text-xs text-zinc-500 pl-1">Tu as choisi une pose : le retrait se fait à l&apos;atelier.</p>}
+            </div>
+
+            <div className="space-y-3 border-t border-zinc-800 pt-4">
+              <p className="text-white font-black text-lg">Tes coordonnées</p>
+              <input autoComplete="name" required maxLength={120} value={customer.name} onChange={(e) => setCustomer((p) => ({ ...p, name: e.target.value }))} placeholder="Nom complet" className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+              <input autoComplete="email" type="email" required maxLength={254} value={customer.email} onChange={(e) => setCustomer((p) => ({ ...p, email: e.target.value }))} placeholder="Adresse email" className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+              <input autoComplete="tel" type="tel" required maxLength={24} value={customer.phone} onChange={(e) => setCustomer((p) => ({ ...p, phone: e.target.value }))} placeholder="Téléphone" className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+              {selectedMode === "home" ? (
+                <div className="space-y-3 pt-1">
+                  <p className="text-sm font-bold text-white">Adresse de livraison</p>
+                  <input autoComplete="street-address" required maxLength={160} value={address.line1} onChange={(e) => setAddress((p) => ({ ...p, line1: e.target.value }))} placeholder="Adresse" className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+                  <input autoComplete="address-line2" maxLength={160} value={address.line2} onChange={(e) => setAddress((p) => ({ ...p, line2: e.target.value }))} placeholder="Complément (facultatif)" className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+                  <div className="grid grid-cols-2 gap-2">
+                    <input autoComplete="postal-code" required maxLength={16} value={address.zip} onChange={(e) => setAddress((p) => ({ ...p, zip: e.target.value }))} placeholder="Code postal" className="min-w-0 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+                    <input autoComplete="address-level2" required maxLength={100} value={address.city} onChange={(e) => setAddress((p) => ({ ...p, city: e.target.value }))} placeholder="Ville" className="min-w-0 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-red focus:outline-none" />
+                  </div>
+                </div>
+              ) : (
+                <p className="rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-3 text-xs leading-relaxed text-zinc-400">Le colis sera envoyé à l&apos;atelier de Gigean; nous te contacterons dès son arrivée.</p>
+              )}
+              <label className="flex items-start gap-2 text-xs leading-relaxed text-zinc-400">
+                <input type="checkbox" required checked={shippingDataAcknowledged} onChange={(e) => setShippingDataAcknowledged(e.target.checked)} className="mt-0.5 accent-red-600" />
+                <span>J&apos;accepte les <Link href="/cgv" className="text-white underline">CGV</Link> et j&apos;accepte que mes coordonnées soient transmises à nos partenaires logistiques pour l&apos;expédition. <Link href="/livraison-retours" className="text-white underline">Livraison et retours</Link> · <Link href="/politique-confidentialite" className="text-white underline">Confidentialité</Link></span>
+              </label>
             </div>
 
             <div className="space-y-2 text-sm border-t border-zinc-800 pt-4">
@@ -103,15 +163,16 @@ export default function PanierPage() {
               </div>
             </div>
 
-            <button disabled className="w-full flex items-center justify-center gap-2 bg-zinc-800 text-zinc-500 font-black py-4 rounded-xl cursor-not-allowed">
-              <Lock size={18} /> Paiement bientôt disponible
+            {checkoutError && <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{checkoutError}</p>}
+            <button type="submit" disabled={checkoutLoading} className="w-full flex items-center justify-center gap-2 bg-brand-red hover:bg-red-600 disabled:opacity-60 text-white font-black py-4 rounded-xl transition">
+              <Lock size={18} /> {checkoutLoading ? "Préparation du paiement…" : "Payer par carte avec Stripe"}
             </button>
             <ul className="space-y-1.5 text-xs text-zinc-500">
               <li className="flex items-center gap-2"><Check size={14} className="text-emerald-400" /> Paiement sécurisé par carte (Stripe)</li>
               <li className="flex items-center gap-2"><Check size={14} className="text-emerald-400" /> Retour possible sous 14 jours</li>
               <li className="flex items-center gap-2"><Check size={14} className="text-emerald-400" /> Une question ? 06 48 38 05 68</li>
             </ul>
-          </aside>
+          </form>
         </div>
       </div>
     </div>
