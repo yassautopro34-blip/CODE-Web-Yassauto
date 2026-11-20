@@ -79,25 +79,25 @@ export const SERVICES: Service[] = [
   {
     slug: "distribution",
     name: "Distribution",
-    priceValue: 349,
-    priceLabel: "dès 349 € TTC",
+    priceValue: 450,
+    priceLabel: "dès 450 € TTC",
     offerName: "Kit de distribution",
-    title: "Courroie de distribution à Gigean dès 349 € – YASSAUTO",
+    title: "Distribution à Gigean dès 450 € TTC – YASSAUTO",
     description:
-      "Remplacement du kit de distribution dès 349 € TTC (1.5 dCi), pompe à eau d'origine 400 €. Garage à Gigean, prix annoncé avant travaux. 06 48 38 05 68.",
-    h1: "Courroie de distribution à Gigean, dès 349 € TTC",
+      "Kit de distribution dès 450 € TTC pour 1.5 dCi, ou 600 € TTC avec pièces d'origine. Garage à Gigean, prix annoncé avant travaux. 06 48 38 05 68.",
+    h1: "Courroie de distribution à Gigean, dès 450 € TTC",
     answer:
-      "Remplacement du kit de distribution à partir de 349 € TTC pour un 1.5 dCi, pièces et main-d'œuvre. Avec pompe à eau d'origine : 400 €. Le prix exact dépend de votre moteur, annoncé au téléphone avant les travaux.",
+      "Remplacement du kit de distribution à partir de 450 € TTC pour un 1.5 dCi, pièces et main-d'œuvre. Version avec pièces d'origine : 600 € TTC. Le prix exact dépend de votre moteur et est annoncé au téléphone avant les travaux.",
     duration: "à confirmer au téléphone selon le moteur",
     included: [
       "Courroie (ou chaîne selon moteur), galets et tendeur neufs",
-      "Pompe à eau remplacée selon l'offre (kit + pompe à eau d'origine : 400 €)",
+      "Pompe à eau incluse selon le kit retenu (version pièces d'origine : 600 € TTC)",
       "Contrôle des courroies d'accessoires et des fuites autour du moteur",
       "Essai et remise à zéro des rappels d'entretien",
     ],
     priceTable: [
-      { label: "Kit de distribution (1.5 dCi)", price: "dès 349 € TTC" },
-      { label: "Kit + pompe à eau d'origine", price: "400 € TTC" },
+      { label: "Kit de distribution 1.5 dCi", price: "dès 450 € TTC" },
+      { label: "Kit distribution 1.5 dCi avec pièces d'origine", price: "600 € TTC" },
     ],
     when: {
       title: "Quand changer la distribution ?",
@@ -110,7 +110,7 @@ export const SERVICES: Service[] = [
     ],
     faq: [
       { q: "Pourquoi changer aussi la pompe à eau ?", a: "Elle est souvent entraînée par la courroie : la remplacer en même temps évite de démonter deux fois le moteur." },
-      { q: "Le prix dépend de quoi ?", a: "Du moteur, du kit et de l'accès aux pièces. Le tarif dès 349 € concerne un 1.5 dCi, les autres moteurs sont chiffrés au téléphone." },
+      { q: "Le prix dépend de quoi ?", a: "Du moteur, du kit et de l'accès aux pièces. Le tarif à partir de 450 € concerne un 1.5 dCi, avec une version à 600 € TTC en pièces d'origine. Les autres moteurs sont chiffrés au téléphone." },
       { q: "Comment savoir si ma voiture a une courroie ou une chaîne ?", a: "Donnez-nous l'immatriculation, on vous le confirme au téléphone." },
       { q: "Je peux payer en plusieurs fois ?", a: "Oui, en 3x ou 4x avec Oney selon éligibilité." },
     ],

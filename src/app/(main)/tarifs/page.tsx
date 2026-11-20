@@ -8,7 +8,7 @@ export const metadata = buildPageMetadata({
   path: "/tarifs",
   title: "Tarifs garage Gigean – Vidange, freins, distribution",
   description:
-    "Nos prix TTC pièces et main-d'œuvre : vidange 80 €, plaquettes 60 €, distribution 349 €, embrayage 450 €. Garage à Gigean, sortie A9.",
+    "Nos prix TTC pièces et main-d'œuvre : vidange dès 80 €, plaquettes dès 60 €, distribution dès 450 €, embrayage dès 450 €. Garage à Gigean.",
 });
 
 export default function TarifsPage() {
