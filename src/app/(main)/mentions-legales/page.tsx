@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Mentions légales - YASSAUTO",
-  description: "Mentions légales du site YASSAUTO MKLF.",
+  ...buildPageMetadata({
+    path: "/mentions-legales",
+    title: "Mentions légales - YASSAUTO",
+    description: "Mentions légales du site YASSAUTO MKLF.",
+  }),
 };
 
 export default function MentionsLegalesPage() {

@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/Button";
-import Image from "next/image";
 import VideoCard from "@/components/home/video-card";
 import { trackButtonClick } from "@/lib/gtag";
 import { Wrench, Cpu, WalletCards } from "lucide-react";
@@ -12,16 +11,7 @@ export const HeroSection: React.FC = () => {
   }, []);
   return (
     <section className="relative bg-brand-black py-12 md:py-16 lg:py-24 overflow-hidden">
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 z-0 opacity-15">
-        <Image
-          src="/background/5.png"
-          alt="Background mechanic"
-          width={"1920"}
-          height={"1080"}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-zinc-900/60 via-brand-black to-brand-black" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -29,17 +19,17 @@ export const HeroSection: React.FC = () => {
             {/* Badge plus compact */}
             <div className="inline-flex items-center gap-2 bg-brand-red text-white px-3 py-1 rounded-full text-xs font-bold mb-4 md:mb-6">
               <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
-              L&apos;expert auto de Montpellier
+              Garage auto à Gigean
             </div>
             
             {/* Titre optimisé mobile */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-4 md:mb-6">
               Tu ne t&apos;y connais pas en{" "}
               <span className="text-brand-red">mécanique</span>,
               <span className="block mt-2 md:mt-3 text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-400">
                 viens là, je t&apos;explique !
               </span>
-            </h1>
+            </h2>
             
             {/* Description plus courte */}
             <p className="text-sm md:text-base lg:text-lg text-zinc-400 mb-6 md:mb-8 max-w-md mx-auto md:mx-0">
@@ -83,7 +73,7 @@ export const HeroSection: React.FC = () => {
                 <span className="text-yellow-500">★</span> 5.0 Google
               </span>
               <span>•</span>
-              <span>Réponse en 24h</span>
+              <span>Prix annoncé au téléphone</span>
             </div>
             <p className="text-[11px] text-zinc-600 mt-2">*Sous réserve d&apos;éligibilité Oney.</p>
           </div>

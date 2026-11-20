@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { CheckCircle2, Shield, MapPin, FileSearch, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -39,7 +38,7 @@ export const TrustSection: React.FC = () => {
     {
       icon: MapPin,
       title: "Déplacement inclus",
-      desc: "Montpellier + 30km"
+      desc: "Gigean et 20 km autour"
     },
   ];
 

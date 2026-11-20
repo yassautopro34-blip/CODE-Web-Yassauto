@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Zap, Settings, Gauge, ThermometerSun, AlertTriangle } from "lucide-react";
+import { Package, Cpu, Wrench, Car, ArrowRight, Phone, Shield, Zap, Settings, Gauge, AlertTriangle } from "lucide-react";
 
 export const ServicesGrid: React.FC = () => {
   return (
@@ -31,9 +31,10 @@ export const ServicesGrid: React.FC = () => {
             <span className="text-zinc-400 text-xs md:text-sm">Tous les services auto</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.92] tracking-tight mb-4 md:mb-6">
-            Un souci avec <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">ta voiture ?</span>
-          </h2>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.02] tracking-tight mb-4 md:mb-6">
+            Garage auto à Gigean :
+            <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500 md:mt-3">on répare, on explique, sans arnaque</span>
+          </h1>
           
           <p className="text-zinc-300 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-5 md:mb-7">
             Mécanique, pièces, custom ou accompagnement — <span className="text-zinc-300">on gère tout.</span>
@@ -80,7 +81,7 @@ export const ServicesGrid: React.FC = () => {
                   { icon: Settings, label: "Entretien" },
                   { icon: Gauge, label: "Diagnostic" },
                   { icon: Shield, label: "Freins" },
-                  { icon: ThermometerSun, label: "Clim" },
+                  { icon: Wrench, label: "Distribution" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 bg-zinc-800/50 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2">
                     <item.icon className="w-3 h-3 md:w-4 md:h-4 text-brand-red shrink-0" />
@@ -133,9 +134,9 @@ export const ServicesGrid: React.FC = () => {
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-brand-red/20 rounded-full blur-[40px] md:blur-[50px]"></div>
             <div className="relative">
               <Cpu className="w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 text-brand-red mb-2 md:mb-3 lg:mb-4" />
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3">Reprogrammation</h3>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3">FAP, EGR, AdBlue</h3>
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3 lg:mb-4">
-                {["Stage 1", "E85", "Diagnostic antipollution"].map((tag, i) => (
+                {["Diagnostic 50 €", "Nettoyage FAP", "Vanne EGR", "AdBlue"].map((tag, i) => (
                   <span key={i} className="bg-brand-red/15 text-red-300 text-[8px] md:text-[10px] lg:text-xs px-1.5 md:px-2 py-0.5 rounded-full">{tag}</span>
                 ))}
               </div>
@@ -144,7 +145,7 @@ export const ServicesGrid: React.FC = () => {
 
             <div className="absolute right-2 bottom-2 md:right-3 md:bottom-3 inline-flex items-center gap-1 bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[7px] md:text-[8px] px-1 py-0.5 rounded-full">
               <AlertTriangle className="w-2.5 h-2.5" />
-              <span>Selon véhicule et usage</span>
+              <span>Aucun système antipollution supprimé</span>
             </div>
           </Link>
 
@@ -176,7 +177,7 @@ export const ServicesGrid: React.FC = () => {
           <div className="flex md:hidden flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-zinc-500">
             <span>📍 Gigean</span>
             <span>•</span>
-            <span>⚡ Réponse 24h</span>
+            <span>💬 Prix annoncé au téléphone</span>
             <span>•</span>
             <span>💳 CB/Espèces/3x4x Oney*</span>
             <span>•</span>
@@ -187,9 +188,9 @@ export const ServicesGrid: React.FC = () => {
           <div className="hidden md:grid grid-cols-4 gap-6 lg:gap-8">
             {[
               { value: "500+", label: "Clients satisfaits", icon: "👥" },
-              { value: "24h", label: "Réponse garantie", icon: "⚡" },
+              { value: "Prix", label: "Annoncé au téléphone", icon: "💶" },
               { value: "34770", label: "Gigean & environs", icon: "📍" },
-              { value: "7j/7", label: "Disponible", icon: "🕐" },
+              { value: "10h-21h", label: "Lun-Ven", icon: "🕐" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="text-2xl lg:text-3xl mb-1 lg:mb-2">{stat.icon}</div>

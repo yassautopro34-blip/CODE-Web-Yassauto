@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Pièces auto neuves et occasion à Gigean",
+export const metadata = buildPageMetadata({
+  path: "/pieces",
+  title: "Pièces auto neuves et occasion – Gigean, Hérault",
   description:
-    "Commandez vos pièces auto neuves ou d'occasion à Gigean. Recherche de référence, devis sous 24h et livraison rapide.",
-};
+    "Pièces auto neuves ou d'occasion sous 48h, retrait à Gigean ou montage au garage. Appelez le 06 48 38 05 68 pour un prix.",
+  socialTitle: "Pièces de rechange auto : demandez votre devis | YASSAUTO",
+});
 
 export default function PiecesLayout({ children }: { children: React.ReactNode }) {
   return children;

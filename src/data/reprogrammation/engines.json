@@ -1,5 +1,5 @@
 {
-  "_comment": "Base de codes moteurs avec gains Stage 1 + Ethanol (E85). Gains realistes bases sur les pratiques pros.",
+  "_comment": "Base de codes moteurs avec gains Stage 1. Gains réalistes basés sur les pratiques professionnelles.",
   "engines": {
     "vag-1.4-16v-75": {
       "code": "AKQ/APE",
@@ -10,9 +10,6 @@
       "stage1": {
         "hp": 85,
         "nm": 146
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.4-16v-100": {
@@ -24,9 +21,6 @@
       "stage1": {
         "hp": 115,
         "nm": 150
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.6-8v-100": {
@@ -38,9 +32,6 @@
       "stage1": {
         "hp": 115,
         "nm": 160
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.6-16v-105": {
@@ -52,9 +43,6 @@
       "stage1": {
         "hp": 120,
         "nm": 168
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.6-fsi-115": {
@@ -66,9 +54,6 @@
       "stage1": {
         "hp": 125,
         "nm": 175
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0-8v-115": {
@@ -80,9 +65,6 @@
       "stage1": {
         "hp": 130,
         "nm": 190
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0-fsi-150": {
@@ -94,9 +76,6 @@
       "stage1": {
         "hp": 165,
         "nm": 220
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.8t-150": {
@@ -108,11 +87,6 @@
       "stage1": {
         "hp": 190,
         "nm": 280
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 305,
-        "available": true
       }
     },
     "vag-1.8t-180": {
@@ -124,11 +98,6 @@
       "stage1": {
         "hp": 225,
         "nm": 305
-      },
-      "ethanol": {
-        "hp": 245,
-        "nm": 325,
-        "available": true
       }
     },
     "vag-1.8t-190": {
@@ -140,11 +109,6 @@
       "stage1": {
         "hp": 230,
         "nm": 315
-      },
-      "ethanol": {
-        "hp": 250,
-        "nm": 340,
-        "available": true
       }
     },
     "vag-1.8t-210": {
@@ -156,11 +120,6 @@
       "stage1": {
         "hp": 255,
         "nm": 340
-      },
-      "ethanol": {
-        "hp": 275,
-        "nm": 360,
-        "available": true
       }
     },
     "vag-1.8t-225": {
@@ -172,11 +131,6 @@
       "stage1": {
         "hp": 270,
         "nm": 350
-      },
-      "ethanol": {
-        "hp": 290,
-        "nm": 370,
-        "available": true
       }
     },
     "vag-1.8t-240": {
@@ -188,11 +142,6 @@
       "stage1": {
         "hp": 285,
         "nm": 380
-      },
-      "ethanol": {
-        "hp": 305,
-        "nm": 400,
-        "available": true
       }
     },
     "vag-2.3-v5-150": {
@@ -204,9 +153,6 @@
       "stage1": {
         "hp": 165,
         "nm": 225
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.8-vr6-204": {
@@ -218,9 +164,6 @@
       "stage1": {
         "hp": 224,
         "nm": 290
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.2-vr6-250": {
@@ -232,9 +175,6 @@
       "stage1": {
         "hp": 275,
         "nm": 355
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.6-fsi-300": {
@@ -246,9 +186,6 @@
       "stage1": {
         "hp": 330,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-4.2-v8-340": {
@@ -260,9 +197,6 @@
       "stage1": {
         "hp": 375,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-ea113-2.0tfsi-200": {
@@ -274,11 +208,6 @@
       "stage1": {
         "hp": 245,
         "nm": 350
-      },
-      "ethanol": {
-        "hp": 265,
-        "nm": 375,
-        "available": true
       }
     },
     "vag-ea113-2.0tfsi-211": {
@@ -290,11 +219,6 @@
       "stage1": {
         "hp": 256,
         "nm": 350
-      },
-      "ethanol": {
-        "hp": 276,
-        "nm": 370,
-        "available": true
       }
     },
     "vag-ea113-2.0tfsi-230": {
@@ -306,11 +230,6 @@
       "stage1": {
         "hp": 275,
         "nm": 370
-      },
-      "ethanol": {
-        "hp": 295,
-        "nm": 390,
-        "available": true
       }
     },
     "vag-ea113-2.0tfsi-265": {
@@ -322,11 +241,6 @@
       "stage1": {
         "hp": 310,
         "nm": 420
-      },
-      "ethanol": {
-        "hp": 330,
-        "nm": 440,
-        "available": true
       }
     },
     "vag-ea888gen1-1.8tsi-160": {
@@ -338,11 +252,6 @@
       "stage1": {
         "hp": 205,
         "nm": 325
-      },
-      "ethanol": {
-        "hp": 225,
-        "nm": 350,
-        "available": true
       }
     },
     "vag-ea888gen1-2.0tsi-180": {
@@ -354,11 +263,6 @@
       "stage1": {
         "hp": 225,
         "nm": 380
-      },
-      "ethanol": {
-        "hp": 245,
-        "nm": 405,
-        "available": true
       }
     },
     "vag-ea888gen1-2.0tsi-210": {
@@ -370,11 +274,6 @@
       "stage1": {
         "hp": 255,
         "nm": 355
-      },
-      "ethanol": {
-        "hp": 275,
-        "nm": 380,
-        "available": true
       }
     },
     "vag-ea888gen2-1.4tsi-160": {
@@ -386,11 +285,6 @@
       "stage1": {
         "hp": 200,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 220,
-        "nm": 325,
-        "available": true
       }
     },
     "vag-ea888gen2-1.4tsi-185": {
@@ -402,11 +296,6 @@
       "stage1": {
         "hp": 225,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 245,
-        "nm": 335,
-        "available": true
       }
     },
     "ea211-1.0-tsi-95": {
@@ -418,11 +307,6 @@
       "stage1": {
         "hp": 120,
         "nm": 215
-      },
-      "ethanol": {
-        "hp": 135,
-        "nm": 235,
-        "available": true
       }
     },
     "ea211-1.0-tsi-110": {
@@ -434,11 +318,6 @@
       "stage1": {
         "hp": 135,
         "nm": 240
-      },
-      "ethanol": {
-        "hp": 150,
-        "nm": 260,
-        "available": true
       }
     },
     "ea211-1.0-tsi-115": {
@@ -450,11 +329,6 @@
       "stage1": {
         "hp": 140,
         "nm": 240
-      },
-      "ethanol": {
-        "hp": 155,
-        "nm": 260,
-        "available": true
       }
     },
     "ea211-1.2-tsi-86": {
@@ -466,11 +340,6 @@
       "stage1": {
         "hp": 111,
         "nm": 195
-      },
-      "ethanol": {
-        "hp": 126,
-        "nm": 215,
-        "available": true
       }
     },
     "ea211-1.2-tsi-105": {
@@ -482,11 +351,6 @@
       "stage1": {
         "hp": 135,
         "nm": 220
-      },
-      "ethanol": {
-        "hp": 150,
-        "nm": 240,
-        "available": true
       }
     },
     "ea211-1.2-tsi-110": {
@@ -498,11 +362,6 @@
       "stage1": {
         "hp": 140,
         "nm": 220
-      },
-      "ethanol": {
-        "hp": 155,
-        "nm": 240,
-        "available": true
       }
     },
     "ea211-1.4-tsi-122": {
@@ -514,11 +373,6 @@
       "stage1": {
         "hp": 152,
         "nm": 250
-      },
-      "ethanol": {
-        "hp": 172,
-        "nm": 275,
-        "available": true
       }
     },
     "ea211-1.4-tsi-125": {
@@ -530,11 +384,6 @@
       "stage1": {
         "hp": 160,
         "nm": 250
-      },
-      "ethanol": {
-        "hp": 180,
-        "nm": 275,
-        "available": true
       }
     },
     "ea211-1.4-tsi-140": {
@@ -546,11 +395,6 @@
       "stage1": {
         "hp": 175,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 195,
-        "nm": 330,
-        "available": true
       }
     },
     "ea211-1.4-tsi-150": {
@@ -562,11 +406,6 @@
       "stage1": {
         "hp": 190,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 335,
-        "available": true
       }
     },
     "ea211evo-1.5-tsi-130": {
@@ -578,11 +417,6 @@
       "stage1": {
         "hp": 165,
         "nm": 260
-      },
-      "ethanol": {
-        "hp": 185,
-        "nm": 285,
-        "available": true
       }
     },
     "ea211evo-1.5-tsi-150": {
@@ -594,11 +428,6 @@
       "stage1": {
         "hp": 190,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 335,
-        "available": true
       }
     },
     "ea888gen3-1.8-tsi-170": {
@@ -610,11 +439,6 @@
       "stage1": {
         "hp": 215,
         "nm": 330
-      },
-      "ethanol": {
-        "hp": 235,
-        "nm": 355,
-        "available": true
       }
     },
     "ea888gen3-1.8-tsi-180": {
@@ -626,11 +450,6 @@
       "stage1": {
         "hp": 225,
         "nm": 330
-      },
-      "ethanol": {
-        "hp": 245,
-        "nm": 355,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-190": {
@@ -642,11 +461,6 @@
       "stage1": {
         "hp": 235,
         "nm": 385
-      },
-      "ethanol": {
-        "hp": 255,
-        "nm": 410,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-200": {
@@ -658,11 +472,6 @@
       "stage1": {
         "hp": 245,
         "nm": 355
-      },
-      "ethanol": {
-        "hp": 265,
-        "nm": 380,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-220": {
@@ -674,11 +483,6 @@
       "stage1": {
         "hp": 265,
         "nm": 415
-      },
-      "ethanol": {
-        "hp": 285,
-        "nm": 440,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-230": {
@@ -690,11 +494,6 @@
       "stage1": {
         "hp": 275,
         "nm": 435
-      },
-      "ethanol": {
-        "hp": 295,
-        "nm": 460,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-245": {
@@ -706,11 +505,6 @@
       "stage1": {
         "hp": 290,
         "nm": 430
-      },
-      "ethanol": {
-        "hp": 310,
-        "nm": 455,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-265": {
@@ -722,11 +516,6 @@
       "stage1": {
         "hp": 310,
         "nm": 415
-      },
-      "ethanol": {
-        "hp": 330,
-        "nm": 435,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-280": {
@@ -738,11 +527,6 @@
       "stage1": {
         "hp": 325,
         "nm": 440
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 460,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-290": {
@@ -754,11 +538,6 @@
       "stage1": {
         "hp": 335,
         "nm": 450
-      },
-      "ethanol": {
-        "hp": 355,
-        "nm": 470,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-300": {
@@ -770,11 +549,6 @@
       "stage1": {
         "hp": 345,
         "nm": 455
-      },
-      "ethanol": {
-        "hp": 365,
-        "nm": 475,
-        "available": true
       }
     },
     "ea888gen3-2.0-tsi-310": {
@@ -786,11 +560,6 @@
       "stage1": {
         "hp": 355,
         "nm": 470
-      },
-      "ethanol": {
-        "hp": 375,
-        "nm": 490,
-        "available": true
       }
     },
     "vag-1.9tdi-vp-90": {
@@ -802,9 +571,6 @@
       "stage1": {
         "hp": 120,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-vp-110": {
@@ -816,9 +582,6 @@
       "stage1": {
         "hp": 140,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-pd-100": {
@@ -830,9 +593,6 @@
       "stage1": {
         "hp": 135,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-pd-105": {
@@ -844,9 +604,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-pd-115": {
@@ -858,9 +615,6 @@
       "stage1": {
         "hp": 155,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-pd-130": {
@@ -872,9 +626,6 @@
       "stage1": {
         "hp": 170,
         "nm": 385
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.9tdi-pd-150": {
@@ -886,9 +637,6 @@
       "stage1": {
         "hp": 190,
         "nm": 405
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.4tdi-75": {
@@ -900,9 +648,6 @@
       "stage1": {
         "hp": 100,
         "nm": 235
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.4tdi-80": {
@@ -914,9 +659,6 @@
       "stage1": {
         "hp": 105,
         "nm": 235
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.4tdi-90-cr": {
@@ -928,9 +670,6 @@
       "stage1": {
         "hp": 120,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-1.6tdi-75": {
@@ -942,9 +681,6 @@
       "stage1": {
         "hp": 100,
         "nm": 235
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-1.6-tdi-90": {
@@ -956,9 +692,6 @@
       "stage1": {
         "hp": 115,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-1.6-tdi-105": {
@@ -970,9 +703,6 @@
       "stage1": {
         "hp": 130,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-1.6-tdi-115": {
@@ -984,9 +714,6 @@
       "stage1": {
         "hp": 140,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-1.6-tdi-120": {
@@ -998,9 +725,6 @@
       "stage1": {
         "hp": 150,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-pd-100": {
@@ -1012,9 +736,6 @@
       "stage1": {
         "hp": 135,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-pd-136": {
@@ -1026,9 +747,6 @@
       "stage1": {
         "hp": 171,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-pd-140": {
@@ -1040,9 +758,6 @@
       "stage1": {
         "hp": 180,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-pd-170": {
@@ -1054,9 +769,6 @@
       "stage1": {
         "hp": 210,
         "nm": 425
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-110": {
@@ -1068,9 +780,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-120": {
@@ -1082,9 +791,6 @@
       "stage1": {
         "hp": 155,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-136": {
@@ -1096,9 +802,6 @@
       "stage1": {
         "hp": 171,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-143": {
@@ -1110,9 +813,6 @@
       "stage1": {
         "hp": 178,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea189-2.0-tdi-140": {
@@ -1124,9 +824,6 @@
       "stage1": {
         "hp": 180,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-2.0-tdi-150": {
@@ -1138,9 +835,6 @@
       "stage1": {
         "hp": 190,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-170": {
@@ -1152,9 +846,6 @@
       "stage1": {
         "hp": 210,
         "nm": 425
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0tdi-cr-177": {
@@ -1166,9 +857,6 @@
       "stage1": {
         "hp": 217,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-2.0-tdi-184": {
@@ -1180,9 +868,6 @@
       "stage1": {
         "hp": 229,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-2.0-tdi-190": {
@@ -1194,9 +879,6 @@
       "stage1": {
         "hp": 230,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ea288-2.0-tdi-200": {
@@ -1208,9 +890,6 @@
       "stage1": {
         "hp": 240,
         "nm": 475
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.0bitdi-240": {
@@ -1222,9 +901,6 @@
       "stage1": {
         "hp": 280,
         "nm": 570
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.5tdi-v6-150": {
@@ -1236,9 +912,6 @@
       "stage1": {
         "hp": 190,
         "nm": 385
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.5tdi-v6-163": {
@@ -1250,9 +923,6 @@
       "stage1": {
         "hp": 203,
         "nm": 385
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.5tdi-v6-180": {
@@ -1264,9 +934,6 @@
       "stage1": {
         "hp": 220,
         "nm": 445
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.7tdi-180": {
@@ -1278,9 +945,6 @@
       "stage1": {
         "hp": 220,
         "nm": 455
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-2.7tdi-190": {
@@ -1292,9 +956,6 @@
       "stage1": {
         "hp": 235,
         "nm": 475
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-204": {
@@ -1306,9 +967,6 @@
       "stage1": {
         "hp": 249,
         "nm": 475
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-225": {
@@ -1320,9 +978,6 @@
       "stage1": {
         "hp": 270,
         "nm": 530
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-240": {
@@ -1334,9 +989,6 @@
       "stage1": {
         "hp": 285,
         "nm": 580
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-245": {
@@ -1348,9 +1000,6 @@
       "stage1": {
         "hp": 290,
         "nm": 580
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-272": {
@@ -1362,9 +1011,6 @@
       "stage1": {
         "hp": 317,
         "nm": 660
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-3.0tdi-313": {
@@ -1376,9 +1022,6 @@
       "stage1": {
         "hp": 358,
         "nm": 735
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "vag-4.2tdi-326": {
@@ -1390,9 +1033,6 @@
       "stage1": {
         "hp": 371,
         "nm": 740
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.0-vti-68": {
@@ -1404,9 +1044,6 @@
       "stage1": {
         "hp": 78,
         "nm": 115
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.2-vti-82": {
@@ -1418,9 +1055,6 @@
       "stage1": {
         "hp": 92,
         "nm": 138
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.2-puretech-110": {
@@ -1432,11 +1066,6 @@
       "stage1": {
         "hp": 135,
         "nm": 245
-      },
-      "ethanol": {
-        "hp": 150,
-        "nm": 265,
-        "available": true
       }
     },
     "psa-1.2-puretech-130": {
@@ -1448,11 +1077,6 @@
       "stage1": {
         "hp": 160,
         "nm": 275
-      },
-      "ethanol": {
-        "hp": 180,
-        "nm": 300,
-        "available": true
       }
     },
     "psa-1.2-puretech-155": {
@@ -1464,11 +1088,6 @@
       "stage1": {
         "hp": 190,
         "nm": 295
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 320,
-        "available": true
       }
     },
     "psa-1.4-8v-75": {
@@ -1480,9 +1099,6 @@
       "stage1": {
         "hp": 85,
         "nm": 137
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.4-16v-90": {
@@ -1494,9 +1110,6 @@
       "stage1": {
         "hp": 100,
         "nm": 153
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-8v-100": {
@@ -1508,9 +1121,6 @@
       "stage1": {
         "hp": 110,
         "nm": 167
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-16v-110": {
@@ -1522,9 +1132,6 @@
       "stage1": {
         "hp": 120,
         "nm": 167
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-vti-120": {
@@ -1536,9 +1143,6 @@
       "stage1": {
         "hp": 130,
         "nm": 180
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-thp-140": {
@@ -1550,11 +1154,6 @@
       "stage1": {
         "hp": 175,
         "nm": 295
-      },
-      "ethanol": {
-        "hp": 195,
-        "nm": 325,
-        "available": true
       }
     },
     "psa-1.6-thp-150": {
@@ -1566,11 +1165,6 @@
       "stage1": {
         "hp": 190,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 325,
-        "available": true
       }
     },
     "psa-1.6-thp-156": {
@@ -1582,11 +1176,6 @@
       "stage1": {
         "hp": 191,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 211,
-        "nm": 325,
-        "available": true
       }
     },
     "psa-1.6-thp-165": {
@@ -1598,11 +1187,6 @@
       "stage1": {
         "hp": 205,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 225,
-        "nm": 335,
-        "available": true
       }
     },
     "psa-1.6-thp-200": {
@@ -1614,11 +1198,6 @@
       "stage1": {
         "hp": 240,
         "nm": 345
-      },
-      "ethanol": {
-        "hp": 260,
-        "nm": 370,
-        "available": true
       }
     },
     "psa-1.6-thp-208": {
@@ -1630,11 +1209,6 @@
       "stage1": {
         "hp": 253,
         "nm": 355
-      },
-      "ethanol": {
-        "hp": 273,
-        "nm": 380,
-        "available": true
       }
     },
     "psa-1.6-thp-270": {
@@ -1646,11 +1220,6 @@
       "stage1": {
         "hp": 310,
         "nm": 400
-      },
-      "ethanol": {
-        "hp": 330,
-        "nm": 420,
-        "available": true
       }
     },
     "psa-1.8-16v-117": {
@@ -1662,9 +1231,6 @@
       "stage1": {
         "hp": 127,
         "nm": 190
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-16v-138": {
@@ -1676,9 +1242,6 @@
       "stage1": {
         "hp": 153,
         "nm": 220
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-16v-143": {
@@ -1690,9 +1253,6 @@
       "stage1": {
         "hp": 158,
         "nm": 222
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.4-hdi-68": {
@@ -1704,9 +1264,6 @@
       "stage1": {
         "hp": 93,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.4-hdi-70": {
@@ -1718,9 +1275,6 @@
       "stage1": {
         "hp": 95,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.4-hdi-90": {
@@ -1732,9 +1286,6 @@
       "stage1": {
         "hp": 115,
         "nm": 250
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.5-bluehdi-100": {
@@ -1746,9 +1297,6 @@
       "stage1": {
         "hp": 125,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.5-bluehdi-130": {
@@ -1760,9 +1308,6 @@
       "stage1": {
         "hp": 165,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-75": {
@@ -1774,9 +1319,6 @@
       "stage1": {
         "hp": 100,
         "nm": 225
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-90": {
@@ -1788,9 +1330,6 @@
       "stage1": {
         "hp": 115,
         "nm": 260
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-92": {
@@ -1802,9 +1341,6 @@
       "stage1": {
         "hp": 122,
         "nm": 275
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-110": {
@@ -1816,9 +1352,6 @@
       "stage1": {
         "hp": 135,
         "nm": 285
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-112": {
@@ -1830,9 +1363,6 @@
       "stage1": {
         "hp": 142,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-hdi-115": {
@@ -1844,9 +1374,6 @@
       "stage1": {
         "hp": 145,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-bluehdi-100": {
@@ -1858,9 +1385,6 @@
       "stage1": {
         "hp": 125,
         "nm": 299
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-1.6-bluehdi-120": {
@@ -1872,9 +1396,6 @@
       "stage1": {
         "hp": 150,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-90": {
@@ -1886,9 +1407,6 @@
       "stage1": {
         "hp": 120,
         "nm": 250
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-107": {
@@ -1900,9 +1418,6 @@
       "stage1": {
         "hp": 137,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-109": {
@@ -1914,9 +1429,6 @@
       "stage1": {
         "hp": 139,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-110": {
@@ -1928,9 +1440,6 @@
       "stage1": {
         "hp": 140,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-136": {
@@ -1942,9 +1451,6 @@
       "stage1": {
         "hp": 171,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-138": {
@@ -1956,9 +1462,6 @@
       "stage1": {
         "hp": 173,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-140": {
@@ -1970,9 +1473,6 @@
       "stage1": {
         "hp": 180,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-150": {
@@ -1984,9 +1484,6 @@
       "stage1": {
         "hp": 190,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-hdi-163": {
@@ -1998,9 +1495,6 @@
       "stage1": {
         "hp": 203,
         "nm": 415
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-bluehdi-150": {
@@ -2012,9 +1506,6 @@
       "stage1": {
         "hp": 190,
         "nm": 430
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-bluehdi-163": {
@@ -2026,9 +1517,6 @@
       "stage1": {
         "hp": 198,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.0-bluehdi-180": {
@@ -2040,9 +1528,6 @@
       "stage1": {
         "hp": 220,
         "nm": 460
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.2-hdi-128": {
@@ -2054,9 +1539,6 @@
       "stage1": {
         "hp": 158,
         "nm": 369
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.2-hdi-130": {
@@ -2068,9 +1550,6 @@
       "stage1": {
         "hp": 165,
         "nm": 369
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.2-hdi-170": {
@@ -2082,9 +1561,6 @@
       "stage1": {
         "hp": 210,
         "nm": 430
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-2.2-hdi-204": {
@@ -2096,9 +1572,6 @@
       "stage1": {
         "hp": 244,
         "nm": 520
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "psa-3.0-hdi-240": {
@@ -2110,9 +1583,6 @@
       "stage1": {
         "hp": 280,
         "nm": 525
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.2-8v-60": {
@@ -2124,9 +1594,6 @@
       "stage1": {
         "hp": 70,
         "nm": 113
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.2-16v-75": {
@@ -2138,9 +1605,6 @@
       "stage1": {
         "hp": 85,
         "nm": 125
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-0.9-tce-90": {
@@ -2152,11 +1616,6 @@
       "stage1": {
         "hp": 110,
         "nm": 170
-      },
-      "ethanol": {
-        "hp": 125,
-        "nm": 185,
-        "available": true
       }
     },
     "ren-1.0-tce-100": {
@@ -2168,11 +1627,6 @@
       "stage1": {
         "hp": 125,
         "nm": 195
-      },
-      "ethanol": {
-        "hp": 140,
-        "nm": 215,
-        "available": true
       }
     },
     "ren-1.2-tce-115": {
@@ -2184,11 +1638,6 @@
       "stage1": {
         "hp": 145,
         "nm": 230
-      },
-      "ethanol": {
-        "hp": 160,
-        "nm": 250,
-        "available": true
       }
     },
     "ren-1.2-tce-130": {
@@ -2200,11 +1649,6 @@
       "stage1": {
         "hp": 160,
         "nm": 245
-      },
-      "ethanol": {
-        "hp": 180,
-        "nm": 270,
-        "available": true
       }
     },
     "ren-1.3-tce-140": {
@@ -2216,11 +1660,6 @@
       "stage1": {
         "hp": 175,
         "nm": 290
-      },
-      "ethanol": {
-        "hp": 195,
-        "nm": 315,
-        "available": true
       }
     },
     "ren-1.3-tce-150": {
@@ -2232,11 +1671,6 @@
       "stage1": {
         "hp": 185,
         "nm": 305
-      },
-      "ethanol": {
-        "hp": 205,
-        "nm": 330,
-        "available": true
       }
     },
     "ren-1.3-tce-160": {
@@ -2248,11 +1682,6 @@
       "stage1": {
         "hp": 195,
         "nm": 320
-      },
-      "ethanol": {
-        "hp": 215,
-        "nm": 345,
-        "available": true
       }
     },
     "ren-1.4-16v-98": {
@@ -2264,9 +1693,6 @@
       "stage1": {
         "hp": 108,
         "nm": 147
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.6-16v-110": {
@@ -2278,9 +1704,6 @@
       "stage1": {
         "hp": 125,
         "nm": 171
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.6-16v-115": {
@@ -2292,9 +1715,6 @@
       "stage1": {
         "hp": 130,
         "nm": 178
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.8-16v-117": {
@@ -2306,9 +1726,6 @@
       "stage1": {
         "hp": 132,
         "nm": 195
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-16v-140": {
@@ -2320,9 +1737,6 @@
       "stage1": {
         "hp": 155,
         "nm": 211
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-ide-140": {
@@ -2334,9 +1748,6 @@
       "stage1": {
         "hp": 155,
         "nm": 220
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-turbo-165": {
@@ -2348,11 +1759,6 @@
       "stage1": {
         "hp": 205,
         "nm": 340
-      },
-      "ethanol": {
-        "hp": 225,
-        "nm": 365,
-        "available": true
       }
     },
     "ren-2.0-turbo-200": {
@@ -2364,11 +1770,6 @@
       "stage1": {
         "hp": 245,
         "nm": 375
-      },
-      "ethanol": {
-        "hp": 265,
-        "nm": 400,
-        "available": true
       }
     },
     "ren-2.0-turbo-225": {
@@ -2380,11 +1781,6 @@
       "stage1": {
         "hp": 270,
         "nm": 375
-      },
-      "ethanol": {
-        "hp": 290,
-        "nm": 400,
-        "available": true
       }
     },
     "ren-2.0-turbo-250": {
@@ -2396,11 +1792,6 @@
       "stage1": {
         "hp": 295,
         "nm": 415
-      },
-      "ethanol": {
-        "hp": 315,
-        "nm": 440,
-        "available": true
       }
     },
     "ren-2.0-turbo-265": {
@@ -2412,11 +1803,6 @@
       "stage1": {
         "hp": 310,
         "nm": 435
-      },
-      "ethanol": {
-        "hp": 330,
-        "nm": 460,
-        "available": true
       }
     },
     "ren-2.0-turbo-275": {
@@ -2428,11 +1814,6 @@
       "stage1": {
         "hp": 315,
         "nm": 435
-      },
-      "ethanol": {
-        "hp": 335,
-        "nm": 455,
-        "available": true
       }
     },
     "ren-1.8-tce-280": {
@@ -2444,11 +1825,6 @@
       "stage1": {
         "hp": 325,
         "nm": 455
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 480,
-        "available": true
       }
     },
     "ren-1.8-tce-300": {
@@ -2460,11 +1836,6 @@
       "stage1": {
         "hp": 345,
         "nm": 475
-      },
-      "ethanol": {
-        "hp": 365,
-        "nm": 495,
-        "available": true
       }
     },
     "ren-1.5-dci-65": {
@@ -2476,9 +1847,6 @@
       "stage1": {
         "hp": 85,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-70": {
@@ -2490,9 +1858,6 @@
       "stage1": {
         "hp": 90,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-75": {
@@ -2504,9 +1869,6 @@
       "stage1": {
         "hp": 95,
         "nm": 225
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-80": {
@@ -2518,9 +1880,6 @@
       "stage1": {
         "hp": 100,
         "nm": 230
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-85": {
@@ -2532,9 +1891,6 @@
       "stage1": {
         "hp": 105,
         "nm": 240
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-90": {
@@ -2546,9 +1902,6 @@
       "stage1": {
         "hp": 110,
         "nm": 260
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-95": {
@@ -2560,9 +1913,6 @@
       "stage1": {
         "hp": 115,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-100": {
@@ -2574,9 +1924,6 @@
       "stage1": {
         "hp": 125,
         "nm": 285
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-105": {
@@ -2588,9 +1935,6 @@
       "stage1": {
         "hp": 130,
         "nm": 290
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-110": {
@@ -2602,9 +1946,6 @@
       "stage1": {
         "hp": 135,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.5-dci-115": {
@@ -2616,9 +1957,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.6-dci-130": {
@@ -2630,9 +1968,6 @@
       "stage1": {
         "hp": 165,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.6-dci-160": {
@@ -2644,9 +1979,6 @@
       "stage1": {
         "hp": 195,
         "nm": 440
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.9-dci-100": {
@@ -2658,9 +1990,6 @@
       "stage1": {
         "hp": 130,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.9-dci-110": {
@@ -2672,9 +2001,6 @@
       "stage1": {
         "hp": 140,
         "nm": 300
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.9-dci-115": {
@@ -2686,9 +2012,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.9-dci-120": {
@@ -2700,9 +2023,6 @@
       "stage1": {
         "hp": 155,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-1.9-dci-130": {
@@ -2714,9 +2034,6 @@
       "stage1": {
         "hp": 165,
         "nm": 360
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-dci-150": {
@@ -2728,9 +2045,6 @@
       "stage1": {
         "hp": 190,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-dci-175": {
@@ -2742,9 +2056,6 @@
       "stage1": {
         "hp": 215,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-dci-180": {
@@ -2756,9 +2067,6 @@
       "stage1": {
         "hp": 220,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.0-dci-200": {
@@ -2770,9 +2078,6 @@
       "stage1": {
         "hp": 240,
         "nm": 520
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.2-dci-115": {
@@ -2784,9 +2089,6 @@
       "stage1": {
         "hp": 145,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-2.2-dci-150": {
@@ -2798,9 +2100,6 @@
       "stage1": {
         "hp": 190,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-3.0-dci-180": {
@@ -2812,9 +2111,6 @@
       "stage1": {
         "hp": 220,
         "nm": 440
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ren-3.0-dci-235": {
@@ -2826,9 +2122,6 @@
       "stage1": {
         "hp": 275,
         "nm": 525
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n42-1.8-115": {
@@ -2840,9 +2133,6 @@
       "stage1": {
         "hp": 125,
         "nm": 195
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n46-2.0-150": {
@@ -2854,9 +2144,6 @@
       "stage1": {
         "hp": 165,
         "nm": 220
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n52-2.5-218": {
@@ -2868,9 +2155,6 @@
       "stage1": {
         "hp": 238,
         "nm": 275
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n52-3.0-272": {
@@ -2882,9 +2166,6 @@
       "stage1": {
         "hp": 292,
         "nm": 340
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n20-2.0-184": {
@@ -2896,11 +2177,6 @@
       "stage1": {
         "hp": 229,
         "nm": 340
-      },
-      "ethanol": {
-        "hp": 249,
-        "nm": 365,
-        "available": true
       }
     },
     "bmw-n20-2.0-245": {
@@ -2912,11 +2188,6 @@
       "stage1": {
         "hp": 290,
         "nm": 425
-      },
-      "ethanol": {
-        "hp": 310,
-        "nm": 450,
-        "available": true
       }
     },
     "bmw-n54-3.0-306": {
@@ -2928,11 +2199,6 @@
       "stage1": {
         "hp": 351,
         "nm": 485
-      },
-      "ethanol": {
-        "hp": 371,
-        "nm": 510,
-        "available": true
       }
     },
     "bmw-n55-3.0-306": {
@@ -2944,11 +2210,6 @@
       "stage1": {
         "hp": 351,
         "nm": 485
-      },
-      "ethanol": {
-        "hp": 371,
-        "nm": 510,
-        "available": true
       }
     },
     "bmw-n55-3.0-340": {
@@ -2960,11 +2221,6 @@
       "stage1": {
         "hp": 385,
         "nm": 535
-      },
-      "ethanol": {
-        "hp": 405,
-        "nm": 560,
-        "available": true
       }
     },
     "bmw-b48-2.0-184": {
@@ -2976,11 +2232,6 @@
       "stage1": {
         "hp": 229,
         "nm": 365
-      },
-      "ethanol": {
-        "hp": 249,
-        "nm": 390,
-        "available": true
       }
     },
     "bmw-b48-2.0-231": {
@@ -2992,11 +2243,6 @@
       "stage1": {
         "hp": 276,
         "nm": 420
-      },
-      "ethanol": {
-        "hp": 296,
-        "nm": 445,
-        "available": true
       }
     },
     "bmw-b48-2.0-252": {
@@ -3008,11 +2254,6 @@
       "stage1": {
         "hp": 297,
         "nm": 420
-      },
-      "ethanol": {
-        "hp": 317,
-        "nm": 445,
-        "available": true
       }
     },
     "bmw-b48-2.0-265": {
@@ -3024,11 +2265,6 @@
       "stage1": {
         "hp": 310,
         "nm": 460
-      },
-      "ethanol": {
-        "hp": 330,
-        "nm": 485,
-        "available": true
       }
     },
     "bmw-b58-3.0-340": {
@@ -3040,11 +2276,6 @@
       "stage1": {
         "hp": 385,
         "nm": 570
-      },
-      "ethanol": {
-        "hp": 405,
-        "nm": 595,
-        "available": true
       }
     },
     "bmw-b58-3.0-374": {
@@ -3056,11 +2287,6 @@
       "stage1": {
         "hp": 419,
         "nm": 585
-      },
-      "ethanol": {
-        "hp": 439,
-        "nm": 610,
-        "available": true
       }
     },
     "bmw-s55-3.0-431": {
@@ -3072,11 +2298,6 @@
       "stage1": {
         "hp": 476,
         "nm": 620
-      },
-      "ethanol": {
-        "hp": 496,
-        "nm": 640,
-        "available": true
       }
     },
     "bmw-s58-3.0-510": {
@@ -3088,11 +2309,6 @@
       "stage1": {
         "hp": 555,
         "nm": 715
-      },
-      "ethanol": {
-        "hp": 575,
-        "nm": 735,
-        "available": true
       }
     },
     "bmw-n63-4.4-407": {
@@ -3104,11 +2320,6 @@
       "stage1": {
         "hp": 452,
         "nm": 665
-      },
-      "ethanol": {
-        "hp": 472,
-        "nm": 690,
-        "available": true
       }
     },
     "bmw-n63-4.4-450": {
@@ -3120,11 +2331,6 @@
       "stage1": {
         "hp": 495,
         "nm": 720
-      },
-      "ethanol": {
-        "hp": 515,
-        "nm": 745,
-        "available": true
       }
     },
     "bmw-m47-2.0d-136": {
@@ -3136,9 +2342,6 @@
       "stage1": {
         "hp": 171,
         "nm": 340
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m47-2.0d-150": {
@@ -3150,9 +2353,6 @@
       "stage1": {
         "hp": 190,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m47-2.0d-163": {
@@ -3164,9 +2364,6 @@
       "stage1": {
         "hp": 203,
         "nm": 400
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m57-2.5d-177": {
@@ -3178,9 +2375,6 @@
       "stage1": {
         "hp": 212,
         "nm": 420
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m57-3.0d-184": {
@@ -3192,9 +2386,6 @@
       "stage1": {
         "hp": 224,
         "nm": 485
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m57-3.0d-218": {
@@ -3206,9 +2397,6 @@
       "stage1": {
         "hp": 258,
         "nm": 595
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m57-3.0d-231": {
@@ -3220,9 +2408,6 @@
       "stage1": {
         "hp": 271,
         "nm": 595
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-m57-3.0d-286": {
@@ -3234,9 +2419,6 @@
       "stage1": {
         "hp": 331,
         "nm": 680
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-143": {
@@ -3248,9 +2430,6 @@
       "stage1": {
         "hp": 178,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-163": {
@@ -3262,9 +2441,6 @@
       "stage1": {
         "hp": 203,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-177": {
@@ -3276,9 +2452,6 @@
       "stage1": {
         "hp": 217,
         "nm": 425
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-184": {
@@ -3290,9 +2463,6 @@
       "stage1": {
         "hp": 224,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-204": {
@@ -3304,9 +2474,6 @@
       "stage1": {
         "hp": 244,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n47-2.0d-218": {
@@ -3318,9 +2485,6 @@
       "stage1": {
         "hp": 258,
         "nm": 525
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n57-3.0d-258": {
@@ -3332,9 +2496,6 @@
       "stage1": {
         "hp": 303,
         "nm": 645
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n57-3.0d-313": {
@@ -3346,9 +2507,6 @@
       "stage1": {
         "hp": 358,
         "nm": 715
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-n57-3.0d-381": {
@@ -3360,9 +2518,6 @@
       "stage1": {
         "hp": 426,
         "nm": 825
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b47-2.0d-150": {
@@ -3374,9 +2529,6 @@
       "stage1": {
         "hp": 190,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b47-2.0d-163": {
@@ -3388,9 +2540,6 @@
       "stage1": {
         "hp": 203,
         "nm": 420
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b47-2.0d-184": {
@@ -3402,9 +2551,6 @@
       "stage1": {
         "hp": 229,
         "nm": 450
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b47-2.0d-190": {
@@ -3416,9 +2562,6 @@
       "stage1": {
         "hp": 230,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b47-2.0d-224": {
@@ -3430,9 +2573,6 @@
       "stage1": {
         "hp": 264,
         "nm": 525
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b57-3.0d-265": {
@@ -3444,9 +2584,6 @@
       "stage1": {
         "hp": 310,
         "nm": 700
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b57-3.0d-320": {
@@ -3458,9 +2595,6 @@
       "stage1": {
         "hp": 365,
         "nm": 760
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "bmw-b57-3.0d-400": {
@@ -3472,9 +2606,6 @@
       "stage1": {
         "hp": 445,
         "nm": 840
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-m271-1.8k-143": {
@@ -3486,11 +2617,6 @@
       "stage1": {
         "hp": 178,
         "nm": 280
-      },
-      "ethanol": {
-        "hp": 198,
-        "nm": 305,
-        "available": true
       }
     },
     "mb-m271-1.8k-156": {
@@ -3502,11 +2628,6 @@
       "stage1": {
         "hp": 191,
         "nm": 290
-      },
-      "ethanol": {
-        "hp": 211,
-        "nm": 315,
-        "available": true
       }
     },
     "mb-m271-1.8k-184": {
@@ -3518,11 +2639,6 @@
       "stage1": {
         "hp": 229,
         "nm": 315
-      },
-      "ethanol": {
-        "hp": 249,
-        "nm": 335,
-        "available": true
       }
     },
     "mb-m271evo-1.8-156": {
@@ -3534,11 +2650,6 @@
       "stage1": {
         "hp": 191,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 211,
-        "nm": 335,
-        "available": true
       }
     },
     "mb-m271evo-1.8-184": {
@@ -3550,11 +2661,6 @@
       "stage1": {
         "hp": 229,
         "nm": 340
-      },
-      "ethanol": {
-        "hp": 249,
-        "nm": 365,
-        "available": true
       }
     },
     "mb-m271evo-1.8-204": {
@@ -3566,11 +2672,6 @@
       "stage1": {
         "hp": 249,
         "nm": 385
-      },
-      "ethanol": {
-        "hp": 269,
-        "nm": 410,
-        "available": true
       }
     },
     "mb-m272-2.5v6-204": {
@@ -3582,9 +2683,6 @@
       "stage1": {
         "hp": 224,
         "nm": 265
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-m272-3.0v6-231": {
@@ -3596,9 +2694,6 @@
       "stage1": {
         "hp": 251,
         "nm": 325
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-m272-3.5v6-272": {
@@ -3610,9 +2705,6 @@
       "stage1": {
         "hp": 297,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-m274-1.6-156": {
@@ -3624,11 +2716,6 @@
       "stage1": {
         "hp": 191,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 211,
-        "nm": 335,
-        "available": true
       }
     },
     "mb-m274-2.0-184": {
@@ -3640,11 +2727,6 @@
       "stage1": {
         "hp": 229,
         "nm": 380
-      },
-      "ethanol": {
-        "hp": 249,
-        "nm": 405,
-        "available": true
       }
     },
     "mb-m274-2.0-211": {
@@ -3656,11 +2738,6 @@
       "stage1": {
         "hp": 256,
         "nm": 425
-      },
-      "ethanol": {
-        "hp": 276,
-        "nm": 450,
-        "available": true
       }
     },
     "mb-m260-2.0-224": {
@@ -3672,11 +2749,6 @@
       "stage1": {
         "hp": 269,
         "nm": 425
-      },
-      "ethanol": {
-        "hp": 289,
-        "nm": 450,
-        "available": true
       }
     },
     "mb-m133-2.0-360": {
@@ -3688,11 +2760,6 @@
       "stage1": {
         "hp": 405,
         "nm": 510
-      },
-      "ethanol": {
-        "hp": 425,
-        "nm": 530,
-        "available": true
       }
     },
     "mb-m139-2.0-421": {
@@ -3704,11 +2771,6 @@
       "stage1": {
         "hp": 466,
         "nm": 560
-      },
-      "ethanol": {
-        "hp": 486,
-        "nm": 580,
-        "available": true
       }
     },
     "mb-m276-3.0v6-333": {
@@ -3720,11 +2782,6 @@
       "stage1": {
         "hp": 378,
         "nm": 545
-      },
-      "ethanol": {
-        "hp": 398,
-        "nm": 570,
-        "available": true
       }
     },
     "mb-m276-3.0v6-367": {
@@ -3736,11 +2793,6 @@
       "stage1": {
         "hp": 412,
         "nm": 590
-      },
-      "ethanol": {
-        "hp": 432,
-        "nm": 615,
-        "available": true
       }
     },
     "mb-m177-4.0v8-476": {
@@ -3752,11 +2804,6 @@
       "stage1": {
         "hp": 521,
         "nm": 770
-      },
-      "ethanol": {
-        "hp": 541,
-        "nm": 795,
-        "available": true
       }
     },
     "mb-m177-4.0v8-510": {
@@ -3768,11 +2815,6 @@
       "stage1": {
         "hp": 555,
         "nm": 780
-      },
-      "ethanol": {
-        "hp": 575,
-        "nm": 805,
-        "available": true
       }
     },
     "mb-om611-2.1cdi-95": {
@@ -3784,9 +2826,6 @@
       "stage1": {
         "hp": 125,
         "nm": 250
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om611-2.2cdi-125": {
@@ -3798,9 +2837,6 @@
       "stage1": {
         "hp": 160,
         "nm": 360
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om611-2.2cdi-143": {
@@ -3812,9 +2848,6 @@
       "stage1": {
         "hp": 178,
         "nm": 385
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om612-2.7cdi-170": {
@@ -3826,9 +2859,6 @@
       "stage1": {
         "hp": 210,
         "nm": 440
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om613-3.2cdi-197": {
@@ -3840,9 +2870,6 @@
       "stage1": {
         "hp": 242,
         "nm": 545
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om646-2.2cdi-150": {
@@ -3854,9 +2881,6 @@
       "stage1": {
         "hp": 190,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om647-2.7cdi-177": {
@@ -3868,9 +2892,6 @@
       "stage1": {
         "hp": 217,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om648-3.2cdi-204": {
@@ -3882,9 +2903,6 @@
       "stage1": {
         "hp": 249,
         "nm": 580
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om642-3.0cdi-184": {
@@ -3896,9 +2914,6 @@
       "stage1": {
         "hp": 224,
         "nm": 475
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om642-3.0cdi-204": {
@@ -3910,9 +2925,6 @@
       "stage1": {
         "hp": 249,
         "nm": 585
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om642-3.0cdi-224": {
@@ -3924,9 +2936,6 @@
       "stage1": {
         "hp": 269,
         "nm": 595
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om642-3.0cdi-231": {
@@ -3938,9 +2947,6 @@
       "stage1": {
         "hp": 276,
         "nm": 625
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om642-3.0cdi-258": {
@@ -3952,9 +2958,6 @@
       "stage1": {
         "hp": 303,
         "nm": 705
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om651-2.1cdi-136": {
@@ -3966,9 +2969,6 @@
       "stage1": {
         "hp": 171,
         "nm": 420
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om651-2.1cdi-163": {
@@ -3980,9 +2980,6 @@
       "stage1": {
         "hp": 198,
         "nm": 460
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om651-2.1cdi-170": {
@@ -3994,9 +2991,6 @@
       "stage1": {
         "hp": 210,
         "nm": 460
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om651-2.1cdi-204": {
@@ -4008,9 +3002,6 @@
       "stage1": {
         "hp": 244,
         "nm": 575
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om654-2.0cdi-150": {
@@ -4022,9 +3013,6 @@
       "stage1": {
         "hp": 190,
         "nm": 390
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om654-2.0cdi-194": {
@@ -4036,9 +3024,6 @@
       "stage1": {
         "hp": 239,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om654-2.0cdi-245": {
@@ -4050,9 +3035,6 @@
       "stage1": {
         "hp": 285,
         "nm": 575
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om656-3.0cdi-286": {
@@ -4064,9 +3046,6 @@
       "stage1": {
         "hp": 331,
         "nm": 685
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "mb-om656-3.0cdi-330": {
@@ -4078,9 +3057,6 @@
       "stage1": {
         "hp": 375,
         "nm": 780
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.0-ecoboost-100": {
@@ -4092,11 +3068,6 @@
       "stage1": {
         "hp": 125,
         "nm": 210
-      },
-      "ethanol": {
-        "hp": 140,
-        "nm": 230,
-        "available": true
       }
     },
     "ford-1.0-ecoboost-125": {
@@ -4108,11 +3079,6 @@
       "stage1": {
         "hp": 155,
         "nm": 210
-      },
-      "ethanol": {
-        "hp": 175,
-        "nm": 230,
-        "available": true
       }
     },
     "ford-1.0-ecoboost-140": {
@@ -4124,11 +3090,6 @@
       "stage1": {
         "hp": 170,
         "nm": 225
-      },
-      "ethanol": {
-        "hp": 190,
-        "nm": 245,
-        "available": true
       }
     },
     "ford-1.0-ecoboost-155": {
@@ -4140,11 +3101,6 @@
       "stage1": {
         "hp": 190,
         "nm": 295
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 320,
-        "available": true
       }
     },
     "ford-1.5-ecoboost-150": {
@@ -4156,11 +3112,6 @@
       "stage1": {
         "hp": 190,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 325,
-        "available": true
       }
     },
     "ford-1.5-ecoboost-180": {
@@ -4172,11 +3123,6 @@
       "stage1": {
         "hp": 220,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 240,
-        "nm": 335,
-        "available": true
       }
     },
     "ford-1.5-ecoboost-200": {
@@ -4188,11 +3134,6 @@
       "stage1": {
         "hp": 240,
         "nm": 365
-      },
-      "ethanol": {
-        "hp": 260,
-        "nm": 390,
-        "available": true
       }
     },
     "ford-1.6-ecoboost-150": {
@@ -4204,11 +3145,6 @@
       "stage1": {
         "hp": 190,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 325,
-        "available": true
       }
     },
     "ford-1.6-ecoboost-182": {
@@ -4220,11 +3156,6 @@
       "stage1": {
         "hp": 222,
         "nm": 310
-      },
-      "ethanol": {
-        "hp": 242,
-        "nm": 335,
-        "available": true
       }
     },
     "ford-2.0-ecoboost-203": {
@@ -4236,11 +3167,6 @@
       "stage1": {
         "hp": 248,
         "nm": 375
-      },
-      "ethanol": {
-        "hp": 268,
-        "nm": 400,
-        "available": true
       }
     },
     "ford-2.0-ecoboost-240": {
@@ -4252,11 +3178,6 @@
       "stage1": {
         "hp": 285,
         "nm": 415
-      },
-      "ethanol": {
-        "hp": 305,
-        "nm": 440,
-        "available": true
       }
     },
     "ford-2.0-ecoboost-250": {
@@ -4268,11 +3189,6 @@
       "stage1": {
         "hp": 295,
         "nm": 435
-      },
-      "ethanol": {
-        "hp": 315,
-        "nm": 460,
-        "available": true
       }
     },
     "ford-2.0-ecoboost-280": {
@@ -4284,11 +3200,6 @@
       "stage1": {
         "hp": 325,
         "nm": 495
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 520,
-        "available": true
       }
     },
     "ford-2.3-ecoboost-280": {
@@ -4300,11 +3211,6 @@
       "stage1": {
         "hp": 325,
         "nm": 502
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 527,
-        "available": true
       }
     },
     "ford-2.3-ecoboost-317": {
@@ -4316,11 +3222,6 @@
       "stage1": {
         "hp": 362,
         "nm": 509
-      },
-      "ethanol": {
-        "hp": 382,
-        "nm": 534,
-        "available": true
       }
     },
     "ford-2.3-ecoboost-350": {
@@ -4332,11 +3233,6 @@
       "stage1": {
         "hp": 395,
         "nm": 550
-      },
-      "ethanol": {
-        "hp": 415,
-        "nm": 575,
-        "available": true
       }
     },
     "ford-1.6-16v-100": {
@@ -4348,9 +3244,6 @@
       "stage1": {
         "hp": 110,
         "nm": 170
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-16v-115": {
@@ -4362,9 +3255,6 @@
       "stage1": {
         "hp": 125,
         "nm": 175
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-duratec-145": {
@@ -4376,9 +3266,6 @@
       "stage1": {
         "hp": 160,
         "nm": 205
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.5t-225": {
@@ -4390,11 +3277,6 @@
       "stage1": {
         "hp": 270,
         "nm": 390
-      },
-      "ethanol": {
-        "hp": 290,
-        "nm": 415,
-        "available": true
       }
     },
     "ford-2.5t-305": {
@@ -4406,11 +3288,6 @@
       "stage1": {
         "hp": 350,
         "nm": 510
-      },
-      "ethanol": {
-        "hp": 370,
-        "nm": 535,
-        "available": true
       }
     },
     "ford-1.4-tdci-68": {
@@ -4422,9 +3299,6 @@
       "stage1": {
         "hp": 93,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.4-tdci-70": {
@@ -4436,9 +3310,6 @@
       "stage1": {
         "hp": 95,
         "nm": 200
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.5-tdci-95": {
@@ -4450,9 +3321,6 @@
       "stage1": {
         "hp": 120,
         "nm": 260
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.5-tdci-120": {
@@ -4464,9 +3332,6 @@
       "stage1": {
         "hp": 150,
         "nm": 320
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.5-ecoblue-120": {
@@ -4478,9 +3343,6 @@
       "stage1": {
         "hp": 150,
         "nm": 320
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-tdci-75": {
@@ -4492,9 +3354,6 @@
       "stage1": {
         "hp": 100,
         "nm": 225
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-tdci-90": {
@@ -4506,9 +3365,6 @@
       "stage1": {
         "hp": 115,
         "nm": 260
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-tdci-95": {
@@ -4520,9 +3376,6 @@
       "stage1": {
         "hp": 120,
         "nm": 270
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-tdci-109": {
@@ -4534,9 +3387,6 @@
       "stage1": {
         "hp": 134,
         "nm": 285
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.6-tdci-115": {
@@ -4548,9 +3398,6 @@
       "stage1": {
         "hp": 145,
         "nm": 320
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.8-tdci-90": {
@@ -4562,9 +3409,6 @@
       "stage1": {
         "hp": 115,
         "nm": 270
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.8-tdci-115": {
@@ -4576,9 +3420,6 @@
       "stage1": {
         "hp": 145,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-1.8-tdci-125": {
@@ -4590,9 +3431,6 @@
       "stage1": {
         "hp": 155,
         "nm": 340
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-115": {
@@ -4604,9 +3442,6 @@
       "stage1": {
         "hp": 145,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-130": {
@@ -4618,9 +3453,6 @@
       "stage1": {
         "hp": 165,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-136": {
@@ -4632,9 +3464,6 @@
       "stage1": {
         "hp": 171,
         "nm": 400
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-140": {
@@ -4646,9 +3475,6 @@
       "stage1": {
         "hp": 175,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-150": {
@@ -4660,9 +3486,6 @@
       "stage1": {
         "hp": 190,
         "nm": 430
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-tdci-163": {
@@ -4674,9 +3497,6 @@
       "stage1": {
         "hp": 203,
         "nm": 400
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-ecoblue-150": {
@@ -4688,9 +3508,6 @@
       "stage1": {
         "hp": 190,
         "nm": 430
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.0-ecoblue-190": {
@@ -4702,9 +3519,6 @@
       "stage1": {
         "hp": 230,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.2-tdci-130": {
@@ -4716,9 +3530,6 @@
       "stage1": {
         "hp": 165,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.2-tdci-155": {
@@ -4730,9 +3541,6 @@
       "stage1": {
         "hp": 195,
         "nm": 420
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.2-tdci-175": {
@@ -4744,9 +3552,6 @@
       "stage1": {
         "hp": 215,
         "nm": 460
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "ford-2.2-tdci-200": {
@@ -4758,9 +3563,6 @@
       "stage1": {
         "hp": 240,
         "nm": 530
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.2-12v-65": {
@@ -4772,9 +3574,6 @@
       "stage1": {
         "hp": 75,
         "nm": 130
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.2-16v-75": {
@@ -4786,9 +3585,6 @@
       "stage1": {
         "hp": 85,
         "nm": 130
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.4-16v-90": {
@@ -4800,9 +3596,6 @@
       "stage1": {
         "hp": 100,
         "nm": 145
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.4-turbo-120": {
@@ -4814,11 +3607,6 @@
       "stage1": {
         "hp": 150,
         "nm": 250
-      },
-      "ethanol": {
-        "hp": 170,
-        "nm": 275,
-        "available": true
       }
     },
     "opel-1.4-turbo-140": {
@@ -4830,11 +3618,6 @@
       "stage1": {
         "hp": 170,
         "nm": 250
-      },
-      "ethanol": {
-        "hp": 190,
-        "nm": 275,
-        "available": true
       }
     },
     "opel-1.4-turbo-150": {
@@ -4846,11 +3629,6 @@
       "stage1": {
         "hp": 185,
         "nm": 300
-      },
-      "ethanol": {
-        "hp": 205,
-        "nm": 325,
-        "available": true
       }
     },
     "opel-1.6-16v-105": {
@@ -4862,9 +3640,6 @@
       "stage1": {
         "hp": 115,
         "nm": 170
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.6-turbo-180": {
@@ -4876,11 +3651,6 @@
       "stage1": {
         "hp": 220,
         "nm": 305
-      },
-      "ethanol": {
-        "hp": 240,
-        "nm": 330,
-        "available": true
       }
     },
     "opel-1.6-turbo-200": {
@@ -4892,11 +3662,6 @@
       "stage1": {
         "hp": 240,
         "nm": 345
-      },
-      "ethanol": {
-        "hp": 260,
-        "nm": 370,
-        "available": true
       }
     },
     "opel-1.6-turbo-280": {
@@ -4908,11 +3673,6 @@
       "stage1": {
         "hp": 325,
         "nm": 475
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 500,
-        "available": true
       }
     },
     "opel-1.8-16v-125": {
@@ -4924,9 +3684,6 @@
       "stage1": {
         "hp": 140,
         "nm": 195
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-turbo-200": {
@@ -4938,11 +3695,6 @@
       "stage1": {
         "hp": 245,
         "nm": 342
-      },
-      "ethanol": {
-        "hp": 265,
-        "nm": 367,
-        "available": true
       }
     },
     "opel-2.0-turbo-240": {
@@ -4954,11 +3706,6 @@
       "stage1": {
         "hp": 285,
         "nm": 395
-      },
-      "ethanol": {
-        "hp": 305,
-        "nm": 415,
-        "available": true
       }
     },
     "opel-2.0-turbo-280": {
@@ -4970,11 +3717,6 @@
       "stage1": {
         "hp": 325,
         "nm": 475
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 500,
-        "available": true
       }
     },
     "opel-1.3-cdti-75": {
@@ -4986,9 +3728,6 @@
       "stage1": {
         "hp": 100,
         "nm": 210
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.3-cdti-90": {
@@ -5000,9 +3739,6 @@
       "stage1": {
         "hp": 115,
         "nm": 230
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.6-cdti-95": {
@@ -5014,9 +3750,6 @@
       "stage1": {
         "hp": 125,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.6-cdti-110": {
@@ -5028,9 +3761,6 @@
       "stage1": {
         "hp": 140,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.6-cdti-136": {
@@ -5042,9 +3772,6 @@
       "stage1": {
         "hp": 171,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.7-cdti-80": {
@@ -5056,9 +3783,6 @@
       "stage1": {
         "hp": 105,
         "nm": 210
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.7-cdti-100": {
@@ -5070,9 +3794,6 @@
       "stage1": {
         "hp": 130,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.7-cdti-110": {
@@ -5084,9 +3805,6 @@
       "stage1": {
         "hp": 140,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.7-cdti-125": {
@@ -5098,9 +3816,6 @@
       "stage1": {
         "hp": 155,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.7-cdti-130": {
@@ -5112,9 +3827,6 @@
       "stage1": {
         "hp": 160,
         "nm": 350
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.9-cdti-100": {
@@ -5126,9 +3838,6 @@
       "stage1": {
         "hp": 130,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.9-cdti-120": {
@@ -5140,9 +3849,6 @@
       "stage1": {
         "hp": 150,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-1.9-cdti-150": {
@@ -5154,9 +3860,6 @@
       "stage1": {
         "hp": 190,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-cdti-110": {
@@ -5168,9 +3871,6 @@
       "stage1": {
         "hp": 140,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-cdti-130": {
@@ -5182,9 +3882,6 @@
       "stage1": {
         "hp": 165,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-cdti-160": {
@@ -5196,9 +3893,6 @@
       "stage1": {
         "hp": 200,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-cdti-170": {
@@ -5210,9 +3904,6 @@
       "stage1": {
         "hp": 210,
         "nm": 410
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.0-cdti-195": {
@@ -5224,9 +3915,6 @@
       "stage1": {
         "hp": 235,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.2-cdti-125": {
@@ -5238,9 +3926,6 @@
       "stage1": {
         "hp": 155,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "opel-2.2-cdti-150": {
@@ -5252,9 +3937,6 @@
       "stage1": {
         "hp": 190,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-0.9-twinair-85": {
@@ -5266,11 +3948,6 @@
       "stage1": {
         "hp": 105,
         "nm": 180
-      },
-      "ethanol": {
-        "hp": 120,
-        "nm": 195,
-        "available": true
       }
     },
     "fiat-0.9-twinair-105": {
@@ -5282,11 +3959,6 @@
       "stage1": {
         "hp": 125,
         "nm": 180
-      },
-      "ethanol": {
-        "hp": 140,
-        "nm": 195,
-        "available": true
       }
     },
     "fiat-1.2-8v-69": {
@@ -5298,9 +3970,6 @@
       "stage1": {
         "hp": 79,
         "nm": 122
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.4-16v-95": {
@@ -5312,9 +3981,6 @@
       "stage1": {
         "hp": 105,
         "nm": 148
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.4-tjet-120": {
@@ -5326,11 +3992,6 @@
       "stage1": {
         "hp": 150,
         "nm": 261
-      },
-      "ethanol": {
-        "hp": 170,
-        "nm": 286,
-        "available": true
       }
     },
     "fiat-1.4-tjet-150": {
@@ -5342,11 +4003,6 @@
       "stage1": {
         "hp": 190,
         "nm": 295
-      },
-      "ethanol": {
-        "hp": 210,
-        "nm": 320,
-        "available": true
       }
     },
     "fiat-1.4-multiair-135": {
@@ -5358,11 +4014,6 @@
       "stage1": {
         "hp": 170,
         "nm": 295
-      },
-      "ethanol": {
-        "hp": 190,
-        "nm": 325,
-        "available": true
       }
     },
     "fiat-1.4-multiair-170": {
@@ -5374,11 +4025,6 @@
       "stage1": {
         "hp": 210,
         "nm": 320
-      },
-      "ethanol": {
-        "hp": 230,
-        "nm": 345,
-        "available": true
       }
     },
     "fiat-1.4-tjet-180": {
@@ -5390,11 +4036,6 @@
       "stage1": {
         "hp": 220,
         "nm": 320
-      },
-      "ethanol": {
-        "hp": 240,
-        "nm": 345,
-        "available": true
       }
     },
     "fiat-1.4-tjet-190": {
@@ -5406,11 +4047,6 @@
       "stage1": {
         "hp": 230,
         "nm": 340
-      },
-      "ethanol": {
-        "hp": 250,
-        "nm": 365,
-        "available": true
       }
     },
     "fiat-1.3-mjet-75": {
@@ -5422,9 +4058,6 @@
       "stage1": {
         "hp": 100,
         "nm": 185
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.3-mjet-85": {
@@ -5436,9 +4069,6 @@
       "stage1": {
         "hp": 110,
         "nm": 240
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.3-mjet-90": {
@@ -5450,9 +4080,6 @@
       "stage1": {
         "hp": 115,
         "nm": 240
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.3-mjet-95": {
@@ -5464,9 +4091,6 @@
       "stage1": {
         "hp": 120,
         "nm": 245
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.6-mjet-105": {
@@ -5478,9 +4102,6 @@
       "stage1": {
         "hp": 135,
         "nm": 340
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.6-mjet-120": {
@@ -5492,9 +4113,6 @@
       "stage1": {
         "hp": 150,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.9-jtd-100": {
@@ -5506,9 +4124,6 @@
       "stage1": {
         "hp": 130,
         "nm": 250
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.9-jtd-115": {
@@ -5520,9 +4135,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.9-jtd-120": {
@@ -5534,9 +4146,6 @@
       "stage1": {
         "hp": 155,
         "nm": 330
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.9-jtd-140": {
@@ -5548,9 +4157,6 @@
       "stage1": {
         "hp": 180,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-1.9-jtd-150": {
@@ -5562,9 +4168,6 @@
       "stage1": {
         "hp": 190,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-2.0-mjet-140": {
@@ -5576,9 +4179,6 @@
       "stage1": {
         "hp": 180,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-2.0-mjet-165": {
@@ -5590,9 +4190,6 @@
       "stage1": {
         "hp": 205,
         "nm": 420
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-2.4-jtdm-200": {
@@ -5604,9 +4201,6 @@
       "stage1": {
         "hp": 240,
         "nm": 460
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "fiat-2.4-jtdm-210": {
@@ -5618,9 +4212,6 @@
       "stage1": {
         "hp": 250,
         "nm": 470
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.0-tgdi-100": {
@@ -5632,11 +4223,6 @@
       "stage1": {
         "hp": 125,
         "nm": 212
-      },
-      "ethanol": {
-        "hp": 140,
-        "nm": 232,
-        "available": true
       }
     },
     "hyundai-1.0-tgdi-120": {
@@ -5648,11 +4234,6 @@
       "stage1": {
         "hp": 150,
         "nm": 212
-      },
-      "ethanol": {
-        "hp": 170,
-        "nm": 232,
-        "available": true
       }
     },
     "hyundai-1.4-tgdi-140": {
@@ -5664,11 +4245,6 @@
       "stage1": {
         "hp": 175,
         "nm": 292
-      },
-      "ethanol": {
-        "hp": 195,
-        "nm": 317,
-        "available": true
       }
     },
     "hyundai-1.6-tgdi-177": {
@@ -5680,11 +4256,6 @@
       "stage1": {
         "hp": 217,
         "nm": 330
-      },
-      "ethanol": {
-        "hp": 237,
-        "nm": 355,
-        "available": true
       }
     },
     "hyundai-1.6-tgdi-204": {
@@ -5696,11 +4267,6 @@
       "stage1": {
         "hp": 239,
         "nm": 330
-      },
-      "ethanol": {
-        "hp": 259,
-        "nm": 355,
-        "available": true
       }
     },
     "hyundai-2.0-tgdi-275": {
@@ -5712,11 +4278,6 @@
       "stage1": {
         "hp": 320,
         "nm": 453
-      },
-      "ethanol": {
-        "hp": 340,
-        "nm": 478,
-        "available": true
       }
     },
     "hyundai-2.0-tgdi-280": {
@@ -5728,11 +4289,6 @@
       "stage1": {
         "hp": 325,
         "nm": 462
-      },
-      "ethanol": {
-        "hp": 345,
-        "nm": 487,
-        "available": true
       }
     },
     "hyundai-1.6-gdi-135": {
@@ -5744,9 +4300,6 @@
       "stage1": {
         "hp": 150,
         "nm": 185
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.4-crdi-90": {
@@ -5758,9 +4311,6 @@
       "stage1": {
         "hp": 115,
         "nm": 270
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.5-crdi-110": {
@@ -5772,9 +4322,6 @@
       "stage1": {
         "hp": 140,
         "nm": 295
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.6-crdi-90": {
@@ -5786,9 +4333,6 @@
       "stage1": {
         "hp": 115,
         "nm": 280
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.6-crdi-115": {
@@ -5800,9 +4344,6 @@
       "stage1": {
         "hp": 145,
         "nm": 310
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.6-crdi-128": {
@@ -5814,9 +4355,6 @@
       "stage1": {
         "hp": 158,
         "nm": 320
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-1.6-crdi-136": {
@@ -5828,9 +4366,6 @@
       "stage1": {
         "hp": 171,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.0-crdi-140": {
@@ -5842,9 +4377,6 @@
       "stage1": {
         "hp": 180,
         "nm": 370
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.0-crdi-150": {
@@ -5856,9 +4388,6 @@
       "stage1": {
         "hp": 190,
         "nm": 380
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.0-crdi-184": {
@@ -5870,9 +4399,6 @@
       "stage1": {
         "hp": 224,
         "nm": 482
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.2-crdi-150": {
@@ -5884,9 +4410,6 @@
       "stage1": {
         "hp": 190,
         "nm": 398
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.2-crdi-197": {
@@ -5898,9 +4421,6 @@
       "stage1": {
         "hp": 237,
         "nm": 515
-      },
-      "ethanol": {
-        "available": false
       }
     },
     "hyundai-2.2-crdi-200": {
@@ -5912,9 +4432,6 @@
       "stage1": {
         "hp": 240,
         "nm": 515
-      },
-      "ethanol": {
-        "available": false
       }
     }
   }

@@ -11,12 +11,16 @@ export const dynamic = "force-dynamic";
 type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const product = await getPublishedProduct((await params).slug);
-  if (!product) return { title: "Produit introuvable" };
+  const slug = (await params).slug;
+  const product = await getPublishedProduct(slug);
+  if (!product) return { title: "Produit introuvable", robots: { index: false, follow: false } };
   return {
     title: `${product.title} | Boutique YASSAUTO`,
     description: product.shortDescription || product.descriptionText[0] || product.title,
+    alternates: { canonical: `/boutique/${slug}` },
     openGraph: { images: product.images.slice(0, 1) },
+    // Fiches importées : on les garde hors index tant qu'elles ne sont pas réécrites
+    robots: { index: false, follow: true },
   };
 }
 

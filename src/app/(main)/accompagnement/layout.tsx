@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Accompagnement achat voiture Gigean et Montpellier",
+export const metadata = buildPageMetadata({
+  path: "/accompagnement",
+  title: "Accompagnement achat voiture d'occasion – Montpellier",
   description:
-    "Inspection et accompagnement pour acheter une voiture d'occasion en confiance à Gigean, Sète et Montpellier.",
-};
+    "On inspecte la voiture avec vous avant l'achat : mécanique, électronique, papiers. 150 €, étudiant 100 €. Montpellier et alentours.",
+  socialTitle: "Acheter une voiture d'occasion sans se faire arnaquer | YASSAUTO",
+});
 
 export default function AccompagnementLayout({ children }: { children: React.ReactNode }) {
   return children;

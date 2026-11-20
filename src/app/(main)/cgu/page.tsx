@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Conditions générales d'utilisation - YASSAUTO",
-  description: "Conditions générales d'utilisation du site YASSAUTO.",
+  ...buildPageMetadata({
+    path: "/cgu",
+    title: "Conditions générales d'utilisation - YASSAUTO",
+    description: "Conditions générales d'utilisation du site YASSAUTO.",
+  }),
 };
 
 export default function TermsPage() {

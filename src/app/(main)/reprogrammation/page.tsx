@@ -1,12 +1,13 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { CallButton } from "@/components/seo/seo-bits";
+import { ADDRESS_LINE, HOURS_TEXT, PHONE_DISPLAY } from "@/lib/site-info";
 import vehiclesRaw from "@/data/reprogrammation/vehicles.json";
 import enginesRaw from "@/data/reprogrammation/engines.json";
 import {
   ChevronRight,
-  Flame,
   Gauge,
   TrendingUp,
   Wrench,
@@ -26,12 +27,6 @@ type StageData = {
   nm: number;
 };
 
-type EthanolData = {
-  hp?: number;
-  nm?: number;
-  available: boolean;
-};
-
 type EngineData = {
   code: string;
   displacement: string;
@@ -39,7 +34,6 @@ type EngineData = {
   stock_hp: number;
   stock_nm: number;
   stage1: StageData;
-  ethanol: EthanolData;
 };
 
 type VehiclesFile = {
@@ -50,7 +44,7 @@ type EnginesFile = {
   engines: Record<string, EngineData>;
 };
 
-type ReprogTab = "stages" | "echappement" | "options" | "fiabilisation";
+type ReprogTab = "stage1" | "fiabilite";
 
 type InfoEntry = {
   title: string;
@@ -59,93 +53,30 @@ type InfoEntry = {
 };
 
 const STAGE_1_PRICE = 490;
-const ETHANOL_PRICE = 400;
 
 const TAB_LABELS: Record<ReprogTab, string> = {
-  stages: "Stages perf",
-  echappement: "Echappement",
-  options: "Fonctions",
-  fiabilisation: "Fiabilisation",
+  stage1: "Stage 1",
+  fiabilite: "Diagnostic et fiabilité",
 };
 
 const TAB_CONTENT: Record<ReprogTab, InfoEntry[]> = {
-  stages: [
+  stage1: [
     {
       title: "Stage 1",
-      summary: "Le meilleur compromis perf / fiabilité pour un usage quotidien.",
+      summary: "Le meilleur compromis performance / fiabilité pour un usage quotidien.",
       bullets: [
-        "Optimisation couple + puissance sans ouvrir le moteur",
+        "Optimisation du couple et de la puissance sans ouvrir le moteur",
         "Cartographie sur mesure selon ton moteur et ton carburant",
       ],
     },
-    {
-      title: "Stage 2",
-      summary: "Le vrai cap perf apres Stage 1.",
-      bullets: [
-        "Admission dynamique + ligne sport",
-        "Cartographie sur mesure pour exploiter le hardware",
-      ],
-    },
-    {
-      title: "Stage 3",
-      summary: "Preparation lourde orientee gros objectifs.",
-      bullets: [
-        "Turbo et injecteurs uprates",
-        "Renfort moteur possible + mise au point complete",
-      ],
-    },
   ],
-  echappement: [
+  fiabilite: [
     {
-      title: "Downpipe",
-      summary: "Piece cle pour liberer la sortie turbo.",
+      title: "Diagnostic avant tout",
+      summary: "Toute étude commence par un diagnostic complet du véhicule.",
       bullets: [
-        "Moins de contre-pression, spool plus rapide",
-        "Gestion moteur recalibree pour rester propre",
-      ],
-    },
-    {
-      title: "Cat-Back",
-      summary: "Sonorite plus agressive, style plus racing.",
-      bullets: [
-        "Ligne apres catalyseur",
-        "Setup adapte a ton usage route/plaisir",
-      ],
-    },
-  ],
-  options: [
-    {
-      title: "Pop & Bang / Hard Limiter",
-      summary: "Effet sonore et caractere moteur plus radical.",
-      bullets: [
-        "Reglage rupteur selon niveau souhaite",
-        "Calibration propre pour garder un comportement maitrisable",
-      ],
-    },
-    {
-      title: "Launch Control / Multimap",
-      summary: "Fonctions avancees pour usage sport et daily.",
-      bullets: [
-        "Launch controle pour departs repetables",
-        "Multimap Eco/Sport/E85 selon vehicule",
-      ],
-    },
-  ],
-  fiabilisation: [
-    {
-      title: "FAP / DPF",
-      summary: "Problemes classiques: colmatage, mode degrade, manque de souffle.",
-      bullets: [
-        "Diagnostic regen et contre-pression",
-        "Strategie de gestion adaptee a ton roulage",
-      ],
-    },
-    {
-      title: "EGR / AdBlue",
-      summary: "Encrassement, defauts capteurs et pannes couteuses.",
-      bullets: [
-        "Controle complet des systemes",
-        "Solution logicielle ciblee selon symptomes reels",
+        "Contrôle de l'état mécanique et des défauts enregistrés",
+        "Réparation des pannes (FAP, EGR, AdBlue) avant toute reprogrammation",
       ],
     },
   ],
@@ -268,7 +199,6 @@ function CurveCard({
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
         <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-zinc-500 mr-2" />Origine</div>
         <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2" />Stage 1</div>
-        <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-2"><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2" />Conversion E85</div>
       </div>
     </article>
   );
@@ -318,7 +248,6 @@ export default function ReprogrammationPage() {
   }, [selectedVariantKey, variants]);
 
   const selectedEngine = selectedVehicle ? enginesById[selectedVehicle.engine_id] : null;
-  const hasEthanolData = !!selectedEngine && selectedEngine.ethanol.available;
 
   const resetModelAndVariant = (brand: string) => {
     setSelectedBrand(brand);
@@ -354,18 +283,41 @@ export default function ReprogrammationPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/15 via-transparent to-amber-500/10" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
           <div className="inline-flex items-center gap-2 bg-red-500/15 text-red-200 border border-red-500/25 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Nouveau service performance
+            Garage à Gigean
           </div>
 
           <h1 className="text-3xl md:text-5xl font-black mt-4 leading-tight max-w-4xl">
-            Reprogrammation moteur
-            <span className="text-brand-red"> Stage 1</span>
-            <span className="text-zinc-300"> et conversion E85</span>
+            Perte de puissance, FAP, EGR :
+            <span className="text-brand-red"> diagnostic et solution à Gigean</span>
           </h1>
 
           <p className="text-zinc-300 mt-4 max-w-3xl text-sm md:text-base">
-            Sélectionne ton véhicule et découvre instantanément les options Stage 1 et conversion carburant disponibles.
+            Mode dégradé, voyant antipollution ou AdBlue allumé ? Diagnostic à 50 €, nettoyage et réparation du FAP, de la vanne EGR et du circuit AdBlue. On ne supprime aucun système antipollution.
           </p>
+          <div className="mt-6 max-w-md">
+            <CallButton />
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-10">
+        <div className="rounded-2xl border border-zinc-200 bg-white p-5 md:p-8">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900">FAP, EGR, AdBlue : on diagnostique avant de réparer</h2>
+          <p className="mt-3 text-zinc-700 leading-relaxed">
+            Perte de puissance, mode dégradé, fumée, voyant moteur ou message AdBlue : ces symptômes viennent souvent d&apos;un FAP encrassé, d&apos;une vanne EGR bloquée ou d&apos;un capteur défaillant. On lit les défauts à la valise, on contrôle les capteurs, puis on nettoie ou on répare. Le diagnostic coûte 50 € et il est déduit si la réparation est faite chez nous.
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-zinc-800">
+            <li><Link href="/fap-egr-adblue" className="underline font-semibold">Nettoyage FAP, EGR, AdBlue à Gigean</Link></li>
+            <li><Link href="/diagnostic" className="underline font-semibold">Diagnostic voiture à Gigean</Link></li>
+            <li><Link href="/tarifs" className="underline font-semibold">Nos tarifs</Link></li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-10">
+        <div className="mb-4">
+          <h2 className="text-2xl md:text-3xl font-black text-zinc-900">Reprogrammation Stage 1</h2>
+          <p className="mt-2 text-zinc-700">Sélectionne ton véhicule pour voir les gains estimés du Stage 1.</p>
         </div>
       </section>
 
@@ -375,7 +327,7 @@ export default function ReprogrammationPage() {
           <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-orange-500/10 blur-3xl" />
 
           <div className="relative">
-            <h3 className="text-xl md:text-2xl font-black text-center">Les différentes reprog</h3>
+            <h3 className="text-xl md:text-2xl font-black text-center">Nos reprogrammations</h3>
 
             <div className="mt-4 flex flex-wrap gap-2">
               {(Object.keys(TAB_LABELS) as ReprogTab[]).map((tab) => (
@@ -420,7 +372,7 @@ export default function ReprogrammationPage() {
                 </div>
 
                 <p className="mt-3 text-xs text-zinc-400">
-                  Note importante: certaines modifications sont destinées à la fiabilisation ou à un usage circuit/terrain privé et peuvent affecter l&apos;homologation route.
+                  Note importante : nous ne désactivons pas les systèmes antipollution (FAP, EGR, AdBlue). Chaque reprogrammation est étudiée selon le véhicule, son usage et la réglementation applicable.
                 </p>
               </>
             )}
@@ -548,28 +500,6 @@ export default function ReprogrammationPage() {
                       </div>
                     </div>
                   </article>
-
-                  <article className="bg-white rounded-2xl border border-zinc-200 p-5 md:p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2"><Flame className="w-4 h-4 text-emerald-600" /><h4 className="font-bold text-zinc-900">Conversion E85</h4></div>
-                      <span className="text-sm font-black text-emerald-600">{ETHANOL_PRICE} EUR</span>
-                    </div>
-
-                    {hasEthanolData ? (
-                      <div className="space-y-3 text-sm">
-                        <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
-                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Objectif</p>
-                          <p className="text-zinc-900 font-bold mt-1">Adaptation du moteur au carburant E85</p>
-                        </div>
-                        <div className="bg-zinc-50 rounded-xl p-3 border border-zinc-100">
-                          <p className="text-zinc-500 uppercase text-[11px] font-semibold">Bénéfice</p>
-                          <p className="text-zinc-900 font-bold mt-1">Réduction du coût au plein selon la consommation et l&apos;usage</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="text-sm text-zinc-600 bg-zinc-50 border border-zinc-200 rounded-xl p-3">Conversion E85 non disponible sur cette motorisation.</p>
-                    )}
-                  </article>
                 </div>
 
                 <CurveCard
@@ -604,9 +534,59 @@ export default function ReprogrammationPage() {
             <div>
               <h3 className="text-lg font-bold text-blue-900 mb-2">Ton véhicule n&apos;est pas dans le catalogue ?</h3>
               <p className="text-blue-800 text-sm md:text-base">
-                Pas de panique. On reprog quasiment tout, même si ton modèle n&apos;est pas encore affiché. Catalogue mis à jour en continu. Pour ton cas précis, prends un <Link href="/mecanique" className="underline hover:text-blue-700">rendez-vous mécanique</Link>.
+                Pas de panique. On étudie la plupart des véhicules, même si ton modèle n&apos;est pas encore affiché. Catalogue mis à jour en continu. Pour ton cas précis, prends un <Link href="/mecanique" className="underline hover:text-blue-700">rendez-vous mécanique</Link>.
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-5 md:p-8 space-y-8">
+          <div>
+            <h2 className="text-xl md:text-2xl font-black text-zinc-900">Reprogrammation moteur à Gigean : comment ça se passe</h2>
+            <p className="mt-3 text-zinc-700 leading-relaxed">
+              YASSAUTO reprogramme les moteurs essence et diesel à Gigean, à quelques minutes de Montpellier, Sète et Frontignan. Une reprogrammation consiste à modifier la cartographie du calculateur moteur (injection, pression de turbo, avance) pour améliorer le couple et la puissance, sans toucher à la mécanique. Le résultat dépend de ton moteur, de son état et de ton carburant : c&apos;est pourquoi chaque dossier est étudié individuellement.
+            </p>
+            <ol className="mt-4 list-decimal space-y-2 pl-5 text-zinc-700">
+              <li><strong>Diagnostic préalable</strong> : contrôle de l&apos;état du moteur et lecture des défauts enregistrés. Une panne se répare avant toute reprogrammation.</li>
+              <li><strong>Lecture du calculateur</strong> et création d&apos;un fichier adapté à ton véhicule.</li>
+              <li><strong>Écriture du fichier</strong> et vérifications de bon fonctionnement.</li>
+              <li><strong>Essai et restitution</strong> : on t&apos;explique ce qui a été fait et ce que tu peux en attendre.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-zinc-900">Stage 1 : {STAGE_1_PRICE} €</h3>
+            <p className="mt-2 text-zinc-700 leading-relaxed">
+              Le Stage 1 s&apos;applique à un véhicule de série, sans modification matérielle. Il optimise le couple et la puissance et améliore l&apos;agrément de conduite. Le gain varie selon la motorisation : les valeurs estimées de ton moteur s&apos;affichent dans le catalogue ci-dessus.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-zinc-900">Cadre légal et engagements</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-zinc-700">
+              <li>Nous ne désactivons ni ne supprimons aucun système antipollution (FAP, EGR, catalyseur, AdBlue).</li>
+              <li>Avant intervention, nous t&apos;informons des conséquences possibles sur la garantie constructeur, l&apos;assurance et la conformité du véhicule.</li>
+              <li>La compatibilité est validée véhicule par véhicule : si une reprogrammation n&apos;est pas pertinente, on te le dit.</li>
+              <li>Devis clair et prix annoncé avant toute intervention.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold text-zinc-900">Questions fréquentes</h3>
+            <dl className="mt-3 space-y-4 text-zinc-700">
+              <div>
+                <dt className="font-semibold text-zinc-900">Quel gain avec un Stage 1 ?</dt>
+                <dd>Cela dépend du moteur. Le catalogue affiche une estimation par motorisation ; le gain réel est confirmé après diagnostic.</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-900">Ma voiture est-elle compatible ?</dt>
+                <dd>La plupart des véhicules récents le sont. Si ton modèle n&apos;est pas listé, envoie-nous la marque, le modèle, l&apos;année et la motorisation.</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-900">Où se fait la reprogrammation ?</dt>
+                <dd>Au garage YASSAUTO, {ADDRESS_LINE}. Ouvert {HOURS_TEXT}. Téléphone : <a href="tel:0648380568" className="underline">{PHONE_DISPLAY}</a>.</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>

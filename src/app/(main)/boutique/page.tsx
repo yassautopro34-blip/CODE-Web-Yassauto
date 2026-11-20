@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, CarFront, CircleDot, Gauge, Lightbulb, Package, Sparkles, Truck, Wrench } from "lucide-react";
@@ -6,6 +7,15 @@ import { CATEGORY_LABELS, euros, getPublishedProducts, getVehicleFacets } from "
 import type { ProductCategory } from "@/lib/models/product";
 import { VehicleFilter } from "@/components/shop/vehicle-filter";
 import { ShopBackdrop, TrustStrip } from "@/components/shop/shop-bits";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  path: "/boutique",
+  title: "Boutique accessoires auto à Gigean | YASSAUTO",
+  description:
+    "Écrans CarPlay / Android Auto, LED d'ambiance, ciels étoilés et pièces auto. Pose possible à notre atelier de Gigean, près de Montpellier.",
+  socialTitle: "Boutique accessoires et pièces auto | YASSAUTO Gigean",
+});
 
 export const dynamic = "force-dynamic";
 

@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GraduationCap, X } from "lucide-react";
 
 export const StudentBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check localStorage only on client mount to avoid Hydration Mismatch
@@ -23,7 +24,7 @@ export const StudentBanner = () => {
     localStorage.setItem("studentBannerHidden", "1");
   };
 
-  if (!isVisible) return null;
+  if (!isVisible || pathname?.startsWith("/boutique")) return null;
 
   return (
     <div className="fixed bottom-4 right-4 z-40 max-w-xs">

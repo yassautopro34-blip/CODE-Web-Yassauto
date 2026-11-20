@@ -292,7 +292,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
               <span className={`font-semibold ${formData.deliveryMethod === "pickup" ? "text-green-700" : "text-zinc-700"}`}>
                 Retrait au garage
               </span>
-              <p className="text-xs text-zinc-500">7 rue André Marie Ampère, Gigean</p>
+              <p className="text-xs text-zinc-500">7 rue André Marie Ampère, 34770 Gigean</p>
             </div>
             <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">
               GRATUIT
@@ -354,7 +354,7 @@ export const PiecesForm: React.FC<PiecesFormProps> = ({
       </Button>
 
       <p className="text-center text-xs text-zinc-500">
-        Réponse sous 24h • Devis sans engagement • Paiement sécurisé • 3x/4x avec Oney*
+        Prix annoncé au téléphone • Devis sans engagement • Paiement sécurisé • 3x/4x avec Oney*
       </p>
       <p className="text-center text-[11px] text-zinc-400 mt-1">*Sous réserve d&apos;éligibilité et d&apos;acceptation Oney.</p>
     </form>

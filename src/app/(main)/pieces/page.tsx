@@ -24,7 +24,7 @@ export default function PiecesPage() {
             </span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black mb-3">
-            Commande de Pièces Auto
+            Pièces auto neuves et d&apos;occasion
           </h1>
           <p className="text-zinc-400 max-w-2xl">
             Remplissez le formulaire, on vous envoie un devis gratuit sous 24h. 

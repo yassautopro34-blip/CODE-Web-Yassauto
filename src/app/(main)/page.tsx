@@ -1,18 +1,14 @@
-"use client";
+﻿import { HomePage } from "@/components/home/HomePage";
+import { buildPageMetadata } from "@/lib/seo";
 
-import React from "react";
-import { HeroSection } from "@/components/home/HeroSection";
-import { ServicesGrid } from "@/components/home/ServicesGrid";
-import { GoogleReviews } from "@/components/home/GoogleReviews";
-import { TrustSection } from "@/components/home/TrustSection";
+export const metadata = buildPageMetadata({
+  path: "/",
+  title: "Garage auto à Gigean – Mécanique toutes marques – YASSAUTO",
+  description:
+    "Garage mécanique à Gigean, sortie A9, entre Sète et Montpellier. Vidange dès 80 € TTC, distribution dès 349 €. Ouvert jusqu'à 21h. 06 48 38 05 68",
+  socialTitle: "YASSAUTO | Garage automobile à Gigean",
+});
 
 export default function Home() {
-  return (
-    <div className="flex flex-col">
-      <ServicesGrid />
-      <HeroSection />
-      <GoogleReviews />
-      <TrustSection />
-    </div>
-  );
+  return <HomePage />;
 }

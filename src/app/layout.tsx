@@ -6,6 +6,8 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import CookieBanner from "@/components/shared/cookie-banner";
+import { SERVICES } from "@/lib/services";
+import { HOURS_CLOSES, SITE_URL } from "@/lib/site-info";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -13,14 +15,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.yassauto.fr"),
-  title: "Garage YASSAUTO Gigean - Mécanique auto près de Montpellier",
-  alternates: {
-    canonical: "/",
-  },
+  title: "Garage YASSAUTO à Gigean – Mécanique près de Montpellier",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://www.yassauto.fr",
     siteName: "YASSAUTO MKLF",
     title: "YASSAUTO | Garage automobile à Gigean",
     description:
@@ -73,7 +71,7 @@ const autoRepairJsonLd = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "10:00",
-      closes: "22:00",
+      closes: HOURS_CLOSES,
     },
   ],
   areaServed: ["Gigean", "Sète", "Frontignan", "Balaruc-les-Bains", "Poussan", "Mèze", "Cournonterral", "Montpellier"],
@@ -82,17 +80,18 @@ const autoRepairJsonLd = {
     "https://www.facebook.com/share/17kdB2B3po/?mibextid=wwXIfr",
   ],
   makesOffer: [
-    "Vidange et entretien",
-    "Distribution et pompe à eau",
-    "Freinage disques et plaquettes",
-    "Diagnostic FAP, EGR et AdBlue",
-    "Recharge climatisation",
-    "Installation CarPlay et Android Auto",
-    "Reprogrammation moteur légale",
-  ].map((name) => ({
-    "@type": "Offer",
-    itemOffered: { "@type": "Service", name },
-  })),
+    ...SERVICES.filter((s) => s.priceValue !== null).map((s) => ({
+      "@type": "Offer",
+      price: String(s.priceValue),
+      priceCurrency: "EUR",
+      url: `${SITE_URL}/${s.slug}`,
+      itemOffered: { "@type": "Service", name: s.offerName },
+    })),
+    ...["Installation CarPlay et Android Auto"].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
+  ],
 };
 
 export default function RootLayout({

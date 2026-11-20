@@ -35,7 +35,8 @@ export default function VideoCard() {
           className="w-full h-auto object-cover aspect-[3/4]"
           autoPlay
           loop
-          preload="auto"
+          preload="none"
+          poster="/background/5.png"
           muted={isMuted} // Controlled by state
           playsInline
         >

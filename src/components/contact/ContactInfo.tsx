@@ -22,7 +22,7 @@ export const ContactInfo: React.FC = () => {
               06 48 38 05 68
             </a>
             <p className="text-sm text-zinc-400 mt-1">
-              Ouvert du lundi au vendredi, 10h-22h
+              Ouvert du lundi au vendredi, 10h-21h
             </p>
           </div>
         </div>
